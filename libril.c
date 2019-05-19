@@ -10,6 +10,13 @@
 //-------------------------------------------------------------------------
 // Function declarations
 
+signed int j___ae_r();
+// int __fastcall _errno(_DWORD); weak
+// FILE *fopen(const char *filename, const char *modes);
+// int fgetc(FILE *stream);
+// size_t fread(void *ptr, size_t size, size_t n, FILE *stream);
+// int fclose(FILE *stream);
+// int strncmp(const char *s1, const char *s2, size_t n);
 // int __fastcall _cxa_finalize(_DWORD); weak
 // char *strncpy(char *dest, const char *src, size_t n);
 // int pthread_mutex_lock(pthread_mutex_t *mutex);
@@ -20,15 +27,15 @@
 // int _android_log_buf_print(_DWORD, _DWORD, _DWORD, const char *, ...); weak
 // int pthread_cond_wait(pthread_cond_t *cond, pthread_mutex_t *mutex);
 // int pthread_mutex_unlock(pthread_mutex_t *mutex);
-signed int ril_event_init(void);
+void *ril_event_init(void);
 // int pthread_cond_broadcast(pthread_cond_t *cond);
 // int pipe(int pipedes[2]);
 // int fcntl(int fd, int cmd, ...);
 int __fastcall ril_event_set(int, int fd, int, int, int); // idb
 int __fastcall ril_event_add(int a1);
 int ril_event_loop(void);
-// int __fastcall _errno(_DWORD); weak
 // int kill(__pid_t pid, int sig);
+// void abort(void);
 int j_RIL_startEventLoop();
 // int __fastcall _strncpy_chk2(_DWORD, _DWORD, _DWORD, _DWORD, _DWORD);
 // int _snprintf_chk(_DWORD, _DWORD, _DWORD, _DWORD, const char *, ...); weak
@@ -37,7 +44,6 @@ int j_RIL_startEventLoop();
 // int listen(int fd, int n);
 // int __fastcall _strlen_chk(_DWORD, _DWORD); weak
 // int __fastcall _strlcat_chk(_DWORD, _DWORD, _DWORD, _DWORD); weak
-// void abort(void);
 // void exit(int status);
 // int __fastcall record_stream_get_next(_DWORD, _DWORD, _DWORD); weak
 // _DWORD android::Parcel::Parcel(android::Parcel *this); idb
@@ -128,56 +134,60 @@ void __fastcall RilSapSocket::dispatchRequest(int a1, _DWORD *a2);
 int __fastcall Ril_queue<RilSapSocket::SapSocketRequest>::dequeue(int a1);
 int __fastcall Ril_queue<RilSapSocket::SapSocketRequest>::enqueue(int a1, int a2);
 // int pthread_mutexattr_init(pthread_mutexattr_t *attr);
-// int _sprintf_chk(_DWORD, _DWORD, _DWORD, const char *, ...); weak
 int __fastcall j_pb_get_encoded_size(_DWORD *a1, unsigned __int8 *a2, int *a3);
-int __fastcall j_pb_ostream_from_buffer(int result, int a2, unsigned int a3);
-signed int __fastcall j_pb_write(int a1, int a2, int a3);
+_DWORD *__fastcall j_pb_ostream_from_buffer(_DWORD *result, int a2, int a3);
+signed int __fastcall j_pb_write(_DWORD *a1, int a2, int a3);
 signed int __fastcall j_pb_encode(__int64 *a1, unsigned __int8 *a2, int *a3);
 int __fastcall log_hex(const char *a1, const unsigned __int8 *a2, int a3);
 int __fastcall blockingWrite_helper(int a1, void *a2, unsigned int a3);
-_DWORD *__fastcall j_pb_istream_from_buffer(_DWORD *result, int a2, int a3);
+signed int (__fastcall **__fastcall j_pb_istream_from_buffer(signed int (__fastcall **result)(int a1, char *a2, int a3), signed int (__fastcall *a2)(int a1, char *a2, int a3), signed int (__fastcall *a3)(int a1, char *a2, int a3)))(int a1, char *a2, int a3);
 int __fastcall j_pb_decode(int a1, int a2, int a3);
 void __fastcall RilSapSocket::dispatchDisconnect(int a1, int a2);
 int __fastcall RilSapSocket::sendDisconnect(RilSapSocket *this);
 // void __cdecl operator delete(void *); idb
 void __fastcall RilSapSocket::sOnRequestComplete(_DWORD *a1, int a2, int a3, unsigned int a4);
-int __fastcall RilSapSocket::sOnUnsolicitedResponse(RilSapSocket *this, int a2, const void *a3, unsigned int a4);
+RilSapSocket *__fastcall RilSapSocket::sOnUnsolicitedResponse(RilSapSocket *this, int a2, const void *a3, unsigned int a4);
 int j_RIL_requestTimedCallback();
 int __fastcall RilSapSocket::pushRecord(RilSapSocket *this, void *a2, unsigned int a3);
 void __fastcall __noreturn RilSapSocket::processRequestsLoop(RilSapSocket *this);
 int __fastcall RilSapSocket::onCommandsSocketClosed(RilSapSocket *this);
 int __fastcall j_pb_read(int a1, int a2, int a3);
+// int __fastcall _aeabi_memmove(_DWORD, _DWORD); weak
 int __fastcall j_pb_skip_field(int a1, int a2);
 signed int __fastcall j_pb_make_string_substream(int a1, _QWORD *a2);
 // void *realloc(void *ptr, size_t size);
 int __fastcall j_pb_decode_noinit(int a1, unsigned __int8 *a2, int a3);
 int __fastcall j_pb_release(int a1, int a2);
 signed int __fastcall j_pb_decode_varint(int a1, _DWORD *a2);
-signed int __fastcall j_pb_encode_tag_for_field(int a1, unsigned __int8 *a2);
-signed int __fastcall j_pb_encode_varint(int a1, int a2, __int64 a3);
-signed int __fastcall j_pb_encode_submessage(int a1, unsigned __int8 *a2, int *a3);
-signed int __fastcall j_pb_encode_string(int a1, int a2, int a3);
+signed int __fastcall j_pb_encode_tag_for_field(_DWORD *a1, unsigned __int8 *a2);
+signed int __fastcall j_pb_encode_varint(_DWORD *a1, int a2, __int64 a3);
+signed int __fastcall j_pb_encode_submessage(_DWORD *a1, unsigned __int8 *a2, int *a3);
+signed int __fastcall j_pb_encode_string(_DWORD *a1, int a2, int a3);
 // int fprintf(FILE *stream, const char *format, ...);
 // int dladdr(void); weak
 // int __fastcall _gnu_Unwind_Find_exidx(_DWORD, _DWORD); weak
-int sub_3F70();
-int (*__fastcall sub_3F90(int (*result)(void)))(void);
+int j___aeabi_ldiv0();
+// int raise(int sig);
+void *sub_4200();
+signed int _ae_r();
+int sub_437C();
+int (*__fastcall sub_439C(int (*result)(void)))(void);
 char *__fastcall RIL_setRilSocketName(const char *a1);
 int RIL_startEventLoop();
-int sub_4134(); // weak
+int sub_4540(); // weak
 __int64 *__fastcall RIL_setcallbacks(__int64 *a1);
-int __fastcall RIL_register(_DWORD *a1);
-int __fastcall sub_4618(int a1, int a2, int *a3);
-int __fastcall sub_4860(int a1);
+int __fastcall RIL_register(double *a1);
+int __fastcall sub_4A2C(int a1, int a2, int *a3);
+int __fastcall sub_4C80(int a1);
 int (__fastcall *__fastcall RIL_register_socket(int (__fastcall *result)(void **, int, int), int a2, int a3, int a4))(void **, int, int);
 int __fastcall RIL_onRequestAck(int a1);
-signed int __fastcall sub_4D7C(int a1, int a2);
+signed int __fastcall sub_519C(int a1, int a2);
 int __fastcall RIL_onRequestComplete(int a1, int a2, int a3, int a4);
 const char *__fastcall requestToString(int a1);
-int sub_5870();
+int sub_5CE4();
 int __fastcall RIL_onUnsolicitedResponse(int a1, int a2, int a3);
 int __fastcall RIL_requestTimedCallback_0(int a1, int a2, __int64 *a3);
-int sub_5D18();
+int sub_6190();
 int RIL_requestTimedCallback(void); // weak
 const char *__fastcall failCauseToString(int a1);
 const char *__fastcall radioStateToString(unsigned int a1);
@@ -187,90 +197,93 @@ int __fastcall rilEventAddWakeup_helper(int a1);
 _DWORD __fastcall listenCallback_helper(int, __int16, void *); // idb
 int __fastcall listenCallback_helper(int a1, __int16 a2, void *a3);
 _DWORD __fastcall blockingWrite_helper(int, void *, unsigned int); // idb
-unsigned int __fastcall sub_6538(int a1, int a2, unsigned int a3);
-int sub_65CC();
-int sub_6624();
-int __fastcall sub_665C(int a1, int a2);
-int __fastcall sub_6678(android::Parcel *this, int *a2, unsigned int a3);
-int __fastcall sub_6790(android::Parcel *this, __int64 *a2);
-int __fastcall sub_6904(android::Parcel *this, int a2, unsigned int a3);
-int __fastcall sub_6994(android::Parcel *this, int a2, unsigned int a3);
-int __fastcall sub_6AC8(android::Parcel *a1, unsigned __int64 *a2);
-int sub_6C24();
-int __fastcall sub_6C28(int a1, int a2);
-int __fastcall sub_6C34(android::Parcel *this, __int64 *a2);
-int __fastcall sub_6D34(android::Parcel *this, int *a2, int a3);
-signed int __fastcall sub_6DA4(android::Parcel *a1, int *a2, unsigned int a3);
-int __fastcall sub_6EE4(android::Parcel *this, int a2, unsigned int a3);
-int __fastcall sub_6F7C(android::Parcel *a1, int a2);
-int __fastcall sub_6FE4(android::Parcel *this, int *a2, int a3);
-int __fastcall sub_704C(android::Parcel *this, __int64 *a2);
-int __fastcall sub_7134(android::Parcel *this, int a2, unsigned int a3);
-int __fastcall sub_7170(android::Parcel *this, unsigned __int64 *a2);
-int __fastcall sub_7304(android::Parcel *this, int *a2, int a3);
-int __fastcall sub_736C(android::Parcel *a1, unsigned __int64 *a2);
-int __fastcall sub_7498(android::Parcel *this, int a2, unsigned int a3);
-int __fastcall sub_754C(android::Parcel *this, int a2, unsigned int a3);
-int __fastcall sub_786C(android::Parcel *this, unsigned __int64 *a2);
-int __fastcall sub_78F8(android::Parcel *this, const void *a2, int a3);
-int __fastcall sub_7948(android::Parcel *a1, unsigned __int64 *a2);
-int __fastcall sub_7A30(android::Parcel *this, int a2, unsigned int a3);
-int __fastcall sub_7AC4(android::Parcel *a1, int *a2);
-int __fastcall sub_7B64(android::Parcel *a1, int *a2);
-int __fastcall sub_7C14(android::Parcel *a1, int a2, unsigned int a3);
-int __fastcall sub_7C88(android::Parcel *this, _QWORD *a2);
-int __fastcall sub_7E14(android::Parcel *a1, int a2, unsigned int a3);
-int __fastcall sub_7E70(android::Parcel *this, _QWORD *a2);
-int __fastcall sub_7FDC(android::Parcel *a1, int *a2);
-int __fastcall sub_81E8(int a1, int a2);
-int __fastcall sub_8298(int a1, int a2);
-int __fastcall sub_8348(android::Parcel *this, int a2, unsigned int a3);
-int __fastcall sub_8624(android::Parcel *this, unsigned __int64 *a2);
-int __fastcall sub_8774(android::Parcel *this, int **a2);
-int __fastcall sub_8A84(android::Parcel *this, unsigned __int64 *a2);
-int __fastcall sub_8B9C(android::Parcel *a1, int *a2);
-int __fastcall sub_8C1C(android::Parcel *this, unsigned __int64 *a2);
-int __fastcall sub_8CD8(android::Parcel *this, int a2);
-int __fastcall sub_8DBC(android::Parcel *this, int a2, unsigned int a3);
-int __fastcall sub_8EAC(android::Parcel *this, unsigned __int64 *a2);
-int __fastcall sub_8F94(android::Parcel *this, __int64 *a2, int a3);
-int __fastcall sub_8FE0(android::Parcel *this, int a2);
-int __fastcall sub_91F8(android::Parcel *this, int *a2, int a3);
-int __fastcall sub_927C(android::Parcel *a1, unsigned __int64 *a2);
-int __fastcall sub_937C(android::Parcel *this, void *a2, int a3);
-int __fastcall sub_93E0(android::Parcel *this, int *a2, int a3);
-int __fastcall sub_9454(android::Parcel *this, int *a2, int a3);
-int __fastcall sub_94E4(android::Parcel *this, int a2);
-int __fastcall sub_9748(android::Parcel *this, int *a2, int a3);
-int __fastcall sub_9838(android::Parcel *a1, int *a2);
-int __fastcall sub_9874(android::Parcel *a1, int a2, int a3);
-int __fastcall sub_98F0(int a1, int a2);
-int __fastcall sub_993C(android::Parcel *a1, int *a2);
-int __fastcall sub_997C(android::Parcel *this, _DWORD *a2);
-int __fastcall sub_99F8(android::Parcel *this, int a2, unsigned int a3);
-int __fastcall sub_9AF0(android::Parcel *a1, int a2);
-int __fastcall sub_9C88(android::Parcel *this, int a2, unsigned int a3);
-void __fastcall sub_9ECC(int a1, _DWORD *a2);
-int __fastcall sub_9F04(int a1, int a2, int a3);
-int sub_9FC0();
-int __fastcall sub_A004(int a1, unsigned int a2);
-int __fastcall sub_A0BC(android::Parcel *this, int *a2, int a3);
-int __fastcall sub_A134(android::Parcel *this, int *a2, unsigned int a3);
-signed int __fastcall sub_A220(android::Parcel *a1, unsigned __int8 *a2, int a3);
-signed int __fastcall sub_A264(android::Parcel *a1, int *a2, int a3);
-int __fastcall sub_A3F0(android::Parcel *a1, int a2, unsigned int a3);
-int __fastcall sub_A520(android::Parcel *this, unsigned __int8 *a2, unsigned int a3);
-signed int __fastcall sub_A810(android::Parcel *a1, int *a2, int a3);
-int __fastcall sub_A9EC(android::Parcel *this, int *a2, int a3);
-int __fastcall sub_AA68(android::Parcel *a1, int *a2);
-int __fastcall sub_AA88(android::Parcel *a1, unsigned __int8 *a2);
-void __fastcall sub_AAB0(int a1, int a2, _QWORD *a3);
-signed int ril_event_init(void);
+signed int __fastcall sub_69B4(int a1, int a2, unsigned int a3);
+int sub_6A54();
+int sub_6AAC();
+int __fastcall sub_6AE4(int a1, int a2);
+int __fastcall sub_6B00(android::Parcel *this, int *a2, unsigned int a3);
+int __fastcall sub_6C40(android::Parcel *this, int *a2);
+int __fastcall sub_6DB8(android::Parcel *this, int a2, unsigned int a3);
+int __fastcall sub_6E3C(android::Parcel *this, int a2, unsigned int a3);
+int __fastcall sub_6F70(android::Parcel *a1, int *a2);
+int sub_70E0();
+int __fastcall sub_70E4(int a1, int a2);
+int __fastcall sub_70F0(android::Parcel *this, int *a2);
+int __fastcall sub_71F4(android::Parcel *this, int *a2, int a3);
+signed int __fastcall sub_7264(android::Parcel *a1, int *a2, unsigned int a3);
+int __fastcall sub_73EC(android::Parcel *this, int a2, unsigned int a3);
+int __fastcall sub_7480(android::Parcel *a1, int a2);
+int __fastcall sub_74E8(android::Parcel *this, int *a2, int a3);
+int __fastcall sub_7550(android::Parcel *this, int *a2);
+int __fastcall sub_7638(android::Parcel *this, int a2, unsigned int a3);
+int __fastcall sub_7674(android::Parcel *this, int *a2);
+int __fastcall sub_7808(android::Parcel *this, int *a2, int a3);
+int __fastcall sub_7870(android::Parcel *a1, int *a2);
+int __fastcall sub_79A0(android::Parcel *this, int a2, unsigned int a3);
+int __fastcall sub_7A54(android::Parcel *this, int a2, unsigned int a3);
+int __fastcall sub_7D58(android::Parcel *this, int *a2);
+int __fastcall sub_7DE4(android::Parcel *this, const void *a2, int a3);
+int __fastcall sub_7E34(android::Parcel *a1, int *a2);
+int __fastcall sub_7F28(android::Parcel *this, int a2, unsigned int a3);
+int __fastcall sub_7FBC(android::Parcel *a1, int *a2);
+int __fastcall sub_805C(android::Parcel *a1, int *a2);
+int __fastcall sub_810C(android::Parcel *a1, int a2, unsigned int a3);
+int __fastcall sub_8178(android::Parcel *this, int a2);
+int __fastcall sub_8308(android::Parcel *a1, int a2, unsigned int a3);
+int __fastcall sub_835C(android::Parcel *this, int a2);
+int __fastcall sub_84CC(android::Parcel *a1, int *a2);
+int __fastcall sub_86C4(int a1, int a2);
+int __fastcall sub_8774(int a1, int a2);
+int __fastcall sub_8820(android::Parcel *this, int a2, unsigned int a3);
+int __fastcall sub_8AFC(android::Parcel *this, int *a2);
+int __fastcall sub_8C48(android::Parcel *this, android::Parcel *a2);
+int __fastcall sub_8F64(android::Parcel *this, int *a2);
+int __fastcall sub_9074(android::Parcel *a1, int *a2);
+int __fastcall sub_90F4(android::Parcel *this, int *a2);
+int __fastcall sub_91B0(android::Parcel *this, int **a2);
+int __fastcall sub_929C(android::Parcel *this, int a2, unsigned int a3);
+int __fastcall sub_938C(android::Parcel *this, int *a2);
+int __fastcall sub_9478(android::Parcel *this, __int64 *a2, int a3);
+int __fastcall sub_94C4(android::Parcel *this, int *a2);
+int __fastcall sub_96E0(android::Parcel *this, int *a2, int a3);
+int __fastcall sub_9764(android::Parcel *a1, int *a2);
+int __fastcall sub_9864(android::Parcel *this, void *a2, int a3);
+int __fastcall sub_98C8(android::Parcel *this, int *a2, int a3);
+int __fastcall sub_993C(android::Parcel *this, int *a2, int a3);
+int __fastcall sub_99D0(android::Parcel *this, int a2);
+int __fastcall sub_9C2C(android::Parcel *this, int *a2, int a3);
+int __fastcall sub_9D14(android::Parcel *this, int *a2);
+int __fastcall sub_9DD8(android::Parcel *this, int *a2);
+int __fastcall sub_9FD8(android::Parcel *a1, int *a2);
+int __fastcall sub_A040(android::Parcel *a1, int a2, int a3);
+int __fastcall sub_A0F8(int a1, int a2);
+int __fastcall sub_A144(android::Parcel *a1, int *a2);
+int __fastcall sub_A184(android::Parcel *this, _DWORD *a2);
+int __fastcall sub_A200(android::Parcel *this, int a2, unsigned int a3);
+int __fastcall sub_A2F4(android::Parcel *a1, int a2);
+int __fastcall sub_A47C(android::Parcel *this, int a2, unsigned int a3);
+void __fastcall sub_A6C4(int a1, _DWORD *a2);
+int __fastcall sub_A6F8(int a1, int a2, int a3);
+int sub_A7B4();
+signed int __fastcall sub_A7F8(int a1, unsigned int a2);
+int __fastcall sub_A8B4(android::Parcel *this, int *a2, int a3);
+int __fastcall sub_A92C(android::Parcel *this, int *a2, unsigned int a3);
+signed int __fastcall sub_AA18(android::Parcel *a1, unsigned __int8 *a2, int a3);
+signed int __fastcall sub_AA5C(android::Parcel *a1, int *a2, int a3);
+int __fastcall sub_ABE0(android::Parcel *a1, int a2, unsigned int a3);
+int __fastcall sub_AD10(android::Parcel *this, unsigned __int8 *a2, unsigned int a3);
+signed int __fastcall sub_B034(android::Parcel *a1, int *a2, int a3);
+int __fastcall sub_B210(android::Parcel *this, int *a2, int a3);
+int __fastcall sub_B28C(android::Parcel *this, int *a2, int a3);
+int __fastcall sub_B398(android::Parcel *a1, int *a2);
+int __fastcall sub_B3B8(android::Parcel *a1, unsigned __int8 *a2);
+void __fastcall sub_B3E0(int a1, int a2, void (__fastcall **a3)(_DWORD));
+void *ril_event_init(void);
 int __fastcall ril_event_set(int, int fd, int, int, int); // idb
 int __fastcall ril_event_add(int a1);
 int __fastcall ril_timer_add(int **a1, _DWORD *a2);
 int __fastcall ril_event_del(int a1);
-int *__fastcall sub_AD70(int a1, int a2);
+int __fastcall sub_B6BC(int a1, int a2);
 int ril_event_loop(void);
 int __fastcall RilSocket::socketInit(RilSocket *this);
 int __fastcall RilSocket::sSocketListener(RilSocket *this, int a2, int a3, void *a4);
@@ -286,12 +299,12 @@ int __fastcall RilSocket::setListenCb(int result, void (__cdecl *a2)(int, __int1
 int __fastcall RilSocket::setCommandCb(int result, void (__cdecl *a2)(int, __int16, void *));
 int __fastcall RilSocket::getListenCb(RilSocket *this);
 int __fastcall RilSocket::getCommandCb(RilSocket *this);
-int __fastcall RilSocket::setListenEvent(_DWORD *a1, int a2, int a3, int a4, int a5, int a6, int a7, int a8, int a9, int a10);
-int __fastcall RilSocket::setCallbackEvent(_DWORD *a1, int a2, int a3, int a4, int a5, int a6, int a7, int a8, int a9, int a10);
+_DWORD *__fastcall RilSocket::setListenEvent(_DWORD *result, int a2, int a3, int a4, int a5, int a6, int a7, int a8, int a9, int a10);
+_DWORD *__fastcall RilSocket::setCallbackEvent(_DWORD *result, int a2, int a3, int a4, int a5, int a6, int a7, int a8, int a9, int a10);
 char *__fastcall RilSocket::getListenEvent(RilSocket *this);
 char *__fastcall RilSocket::getCallbackEvent(RilSocket *this);
 void __fastcall RilSapSocket::sOnRequestComplete(_DWORD *a1, int a2, int a3, unsigned int a4);
-int __fastcall RilSapSocket::sOnUnsolicitedResponse(RilSapSocket *this, int a2, const void *a3, unsigned int a4);
+RilSapSocket *__fastcall RilSapSocket::sOnUnsolicitedResponse(RilSapSocket *this, int a2, const void *a3, unsigned int a4);
 int __fastcall RilSapSocket::getSocketById(int a1);
 int __fastcall RilSapSocket::onRequestComplete(int a1, int a2, int a3, int a4, unsigned int a5);
 int __fastcall RilSapSocket::onUnsolicitedResponse(RilSapSocket *this, int a2, void *a3, unsigned int a4);
@@ -312,105 +325,106 @@ int __fastcall RilSapSocket::sendDisconnect(RilSapSocket *this);
 void __fastcall RilSapSocket::dispatchDisconnect(int a1, int a2);
 int __fastcall RilSapSocket::onCommandsSocketClosed(RilSapSocket *this);
 signed int __fastcall pb_read(int a1, int a2, unsigned int a3);
-int sub_C054(); // weak
-_DWORD *__fastcall pb_istream_from_buffer(_DWORD *result, int a2, int a3);
+signed int __fastcall sub_C9A0(int a1, char *a2, int a3);
+signed int (__fastcall **__fastcall pb_istream_from_buffer(signed int (__fastcall **result)(int a1, char *a2, int a3), signed int (__fastcall *a2)(int a1, char *a2, int a3), signed int (__fastcall *a3)(int a1, char *a2, int a3)))(int a1, char *a2, int a3);
 signed int __fastcall pb_decode_varint(int a1, _DWORD *a2);
-signed int __fastcall sub_C120(int a1, int a2);
+signed int __fastcall sub_CAF0(int a1, int a2);
 signed int __fastcall pb_decode_tag(int a1, int *a2, unsigned int *a3, _BYTE *a4);
-signed int __fastcall sub_C1C0(int a1, int *a2);
+signed int __fastcall sub_CB90(int a1, int *a2);
 int __fastcall pb_skip_field(int a1, int a2);
 signed int __fastcall pb_make_string_substream(int a1, _QWORD *a2);
 int __fastcall pb_close_string_substream(int result, int a2);
 int __fastcall pb_decode_noinit(int a1, unsigned __int8 *a2, int a3);
-int __fastcall sub_C59C(int a1, int a2, _DWORD *a3);
-signed int __fastcall sub_C988(int *a1);
+int __fastcall sub_CF3C(int a1, int a2, _DWORD *a3);
+signed int __fastcall sub_D344(int *a1);
 int __fastcall pb_decode(int a1, int a2, int a3);
-int __fastcall sub_CA30(int a1, int a2);
+int __fastcall sub_D3EC(int a1, int a2);
 int __fastcall pb_release(int a1, int a2);
 int __fastcall pb_decode_delimited(int a1, int a2, int a3);
-signed int __fastcall pb_decode_svarint(int a1, _QWORD *a2);
+signed int __fastcall pb_decode_svarint(int a1, int *a2);
 int __fastcall pb_decode_fixed32(int a1, int a2);
 int __fastcall pb_decode_fixed64(int a1, int a2);
-signed int __fastcall sub_CC70(int a1, int a2, _BYTE *a3);
-signed int __fastcall sub_CCFC(int a1, int a2, _QWORD *a3);
-signed int __fastcall sub_CD68(int a1, int a2, _QWORD *a3);
-int __fastcall sub_CDE4(int a1, int a2, int a3);
-int __fastcall sub_CDEC(int a1, int a2, int a3);
-int __fastcall sub_CDF4(int a1, int a2, void **a3);
-int __fastcall sub_CE84(int a1, int a2, void **a3);
-int __fastcall sub_CF14(int a1, int a2, int a3);
-int __fastcall pb_ostream_from_buffer(int result, int a2, unsigned int a3);
-int sub_CFB0(); // weak
-signed int __fastcall pb_write(int a1, int a2, int a3);
+signed int __fastcall sub_D630(int a1, int a2, int a3);
+signed int __fastcall sub_D6B8(int a1, int a2, int *a3);
+signed int __fastcall sub_D720(int a1, int a2, int *a3);
+int __fastcall sub_D7A0(int a1, int a2, int a3);
+int __fastcall sub_D7A8(int a1, int a2, int a3);
+int __fastcall sub_D7B0(int a1, int a2, void **a3);
+int __fastcall sub_D840(int a1, int a2, void **a3);
+int __fastcall sub_D8D0(int a1, int a2, int a3);
+_DWORD *__fastcall pb_ostream_from_buffer(_DWORD *result, int a2, int a3);
+signed int __fastcall sub_D96C(int a1, char *a2, int a3);
+signed int __fastcall pb_write(_DWORD *a1, int a2, int a3);
 signed int __fastcall pb_encode(__int64 *a1, unsigned __int8 *a2, int *a3);
-signed int __fastcall sub_D0A8(__int64 *a1, unsigned __int8 *a2, int (__fastcall *a3)(__int64 *));
-signed int __fastcall pb_encode_submessage(int a1, unsigned __int8 *a2, int *a3);
+signed int __fastcall sub_DAE4(__int64 *a1, unsigned __int8 *a2, int (__fastcall *a3)(__int64 *));
+signed int __fastcall pb_encode_submessage(_DWORD *a1, unsigned __int8 *a2, int *a3);
 int __fastcall pb_get_encoded_size(_DWORD *a1, unsigned __int8 *a2, int *a3);
-signed int __fastcall pb_encode_varint(int a1, int a2, __int64 a3);
-signed int __fastcall pb_encode_svarint(int a1, int a2, int a3, int a4);
-signed int __fastcall pb_encode_fixed32(int a1, int a2);
-signed int __fastcall pb_encode_fixed64(int a1, int a2);
-signed int __fastcall pb_encode_tag(int a1, int a2, unsigned int a3);
-signed int __fastcall pb_encode_tag_for_field(int a1, unsigned __int8 *a2);
-signed int __fastcall pb_encode_string(int a1, int a2, int a3);
-signed int __fastcall sub_D504(int a1, int a2, _DWORD *a3);
-signed int __fastcall sub_D548(int a1, int a2, __int64 *a3);
-signed int __fastcall sub_D578(int a1, int a2, _QWORD *a3);
-signed int __fastcall sub_D5B4(int a1, int a2, int a3);
-signed int __fastcall sub_D5BC(int a1, int a2, int a3);
-int __fastcall sub_D5C4(int a1, int a2, int *a3);
-signed int __fastcall sub_D648(int a1, int a2, int a3);
-signed int __fastcall sub_D678(int a1, int a2, int *a3);
-unsigned int *__fastcall sub_D698(unsigned int *result, signed int *a2, int *a3);
-signed int __fastcall sub_D6EC(int a1, int a2, unsigned int a3, unsigned int a4);
-signed int __fastcall sub_DA30(int a1, int a2, unsigned int a3, int a4, int *a5);
-signed int __fastcall sub_DACC(int a1, int a2, unsigned int a3, int a4);
-signed int __fastcall sub_DC0C(int a1, int a2, int a3);
-signed int __fastcall sub_DC14(int a1, int a2);
-signed int __fastcall sub_DC70(int a1, int a2, int a3);
-signed int __fastcall sub_DC78(int a1, int a2, int a3);
-int __fastcall sub_DD2C(int a1, int *a2, char a3);
-void __fastcall __noreturn sub_DE4C(int a1, int a2, int a3);
-int __fastcall sub_DF18(_DWORD *a1, int a2, int a3, int a4, int a5);
-_QWORD *__fastcall sub_DF30(_QWORD *result);
-_QWORD *__fastcall sub_DF38(_QWORD *result);
-_QWORD *__fastcall sub_DF40(_QWORD *result);
-void sub_DF48();
-void sub_DF8C();
-int __fastcall sub_DFA0(int a1, int a2);
-signed int __fastcall sub_DFE4(int a1, int a2, _DWORD *a3);
-signed int __fastcall sub_E012(int a1, int a2, int a3);
-signed int __fastcall sub_E056(int a1, int a2, _QWORD *a3);
-signed int __fastcall sub_E086(int a1, int a2, int a3, int a4);
-int __fastcall sub_E0BE(int a1);
-signed int __fastcall sub_E0C4(int a1, int a2);
-signed int __fastcall sub_E0E2(int a1);
-int __fastcall sub_E0F4(int a1);
-int __fastcall sub_E0FA(int a1, int a2);
-int __fastcall sub_E11C(int a1, signed int a2);
-int __fastcall sub_E1A8(int result, signed int a2, int a3);
-int __fastcall sub_E234(int a1, int a2);
-__int64 __fastcall sub_E254(int a1, int a2);
-int __fastcall sub_E2F8(int a1, int a2, int a3, int a4);
-int __fastcall sub_E3C4(int a1);
-_DWORD *__fastcall sub_E414(int a1, _DWORD *a2);
-void __fastcall sub_E42C(int a1);
-int __fastcall sub_E442(int a1);
-signed int __fastcall sub_E448(int a1, int a2, int a3, _DWORD *a4);
-int __fastcall sub_E4B8(int a1, int a2);
-const char *__fastcall sub_E528(int a1, int a2);
-int __fastcall sub_E52E(int result);
-void __fastcall __noreturn sub_E538(int a1, int a2, int a3, int a4);
-int __fastcall sub_E564(int a1);
-int __fastcall sub_E5B8(int a1);
-signed int __fastcall sub_E610(_DWORD *a1, int a2, _DWORD *a3);
-int __fastcall sub_E7B4(int *a1, int a2, int a3, _DWORD *a4, int a5, int a6, int a7, _DWORD *a8);
-int sub_EC40(); // weak
-__int64 *__fastcall sub_EC54(__int64 *result);
-__int64 *__fastcall sub_EC5C(__int64 *result);
-__int64 *__fastcall sub_EC64(__int64 *result);
-int __fastcall sub_EC6C(int *a1);
-int __fastcall sub_ECB0(int *a1);
+signed int __fastcall pb_encode_varint(_DWORD *a1, int a2, __int64 a3);
+signed int __fastcall pb_encode_svarint(_DWORD *a1, int a2, int a3, int a4);
+signed int __fastcall pb_encode_fixed32(_DWORD *a1, int a2);
+signed int __fastcall pb_encode_fixed64(_DWORD *a1, int a2);
+signed int __fastcall pb_encode_tag(_DWORD *a1, int a2, unsigned int a3);
+signed int __fastcall pb_encode_tag_for_field(_DWORD *a1, unsigned __int8 *a2);
+signed int __fastcall pb_encode_string(_DWORD *a1, int a2, int a3);
+signed int __fastcall sub_DF40(_DWORD *a1, int a2, _DWORD *a3);
+signed int __fastcall sub_DF88(_DWORD *a1, int a2, _DWORD *a3);
+signed int __fastcall sub_DFB8(_DWORD *a1, int a2, int *a3);
+signed int __fastcall sub_DFF4(_DWORD *a1, int a2, int a3);
+signed int __fastcall sub_DFFC(_DWORD *a1, int a2, int a3);
+int __fastcall sub_E004(_DWORD *a1, int a2, int *a3);
+signed int __fastcall sub_E088(_DWORD *a1, int a2, int a3);
+signed int __fastcall sub_E0C4(_DWORD *a1, int a2, int *a3);
+unsigned int *__fastcall sub_E0E4(unsigned int *result, signed int *a2, _DWORD *a3);
+signed int __fastcall sub_E134(int a1, int a2, unsigned int a3, unsigned int a4);
+signed int __fastcall sub_E488(int a1, int a2, unsigned int a3, int a4, int *a5);
+signed int __fastcall sub_E524(int a1, int a2, unsigned int a3, int a4);
+signed int __fastcall sub_E658(int a1, int a2, int a3);
+signed int __fastcall sub_E660(int a1, int a2);
+signed int __fastcall sub_E6BC(int a1, int a2, int a3);
+signed int __fastcall sub_E6C4(int a1, int a2, int a3);
+int __fastcall sub_E778(int a1, int *a2, char a3);
+void __fastcall __noreturn sub_E894(int a1, int a2, int a3);
+int __fastcall sub_E960(_DWORD *a1, int a2, int a3, int a4, int a5);
+_QWORD *__fastcall sub_E978(_QWORD *result);
+_QWORD *__fastcall sub_E980(_QWORD *result);
+_QWORD *__fastcall sub_E988(_QWORD *result);
+void sub_E990();
+void sub_E9D4();
+int __fastcall sub_E9E8(int a1, int a2);
+signed int __fastcall sub_EA30(int a1, int a2, _DWORD *a3);
+signed int __fastcall sub_EA5E(int a1, int a2, int a3);
+signed int __fastcall sub_EAA2(int a1, int a2, int *a3);
+signed int __fastcall sub_EAD2(int a1, int a2, int a3, int a4);
+int __fastcall sub_EB0A(int a1);
+signed int __fastcall sub_EB10(int a1, int a2);
+signed int __fastcall sub_EB2E(int a1);
+int __fastcall sub_EB40(int a1);
+signed int __fastcall sub_EB46(int a1, int a2);
+int __fastcall sub_EB60(int a1, signed int a2);
+int __fastcall sub_EBEC(int result, signed int a2, int a3);
+int __fastcall sub_EC78(int a1, int a2);
+__int64 __fastcall sub_EC98(int a1, int a2);
+int __fastcall sub_ED3C(int a1, int a2, int a3, int a4);
+int __fastcall sub_EE08(int a1);
+_DWORD *__fastcall sub_EE58(int a1, _DWORD *a2);
+void __fastcall sub_EE70(int a1);
+int __fastcall sub_EE86(int a1);
+signed int __fastcall sub_EE8C(int a1, int a2, int a3, _DWORD *a4);
+int __fastcall sub_EEFC(int a1, int a2);
+const char *__fastcall sub_EF6C(int a1, int a2);
+int __fastcall sub_EF72(int result);
+void __fastcall __noreturn sub_EF7C(int a1, int a2, int a3, int a4);
+int __fastcall sub_EFA8(int a1);
+int __fastcall sub_EFFC(int a1);
+signed int __fastcall sub_F054(_DWORD *a1, int a2, _DWORD *a3);
+int *__fastcall sub_F200(int *result, int a2, int a3, _DWORD *a4, int a5, int a6, int a7, _DWORD *a8);
+int sub_F698(); // weak
+__int64 *__fastcall sub_F6AC(__int64 *result);
+__int64 *__fastcall sub_F6B4(__int64 *result);
+__int64 *__fastcall sub_F6BC(__int64 *result);
+int __fastcall sub_F6C4(int *a1);
+int __fastcall sub_F708(int *a1);
+int _aeabi_ldiv0();
 char *__fastcall j_strncpy(char *dest, const char *src, size_t n);
 int __fastcall j_RilSapSocket::initSapSocket(const char *a1, pthread_mutexattr_t a2);
 int __fastcall j_acquire_wake_lock(int a1, int a2);
@@ -425,29 +439,28 @@ signed int __fastcall j_RilSapSocket::addSocketToList(RilSapSocket *a1, const ch
 int __fastcall j_RilSocket::socketInit(RilSocket *this);
 void __fastcall operator delete(void *a1);
 int __fastcall j_j_pb_read(int a1, int a2, int a3);
-signed int __fastcall j_j_pb_encode_submessage(int a1, unsigned __int8 *a2, int *a3);
-signed int __fastcall j_j_pb_encode_varint(int a1, int a2, __int64 a3);
-signed int __fastcall j_j_pb_write(int a1, int a2, int a3);
-signed int __fastcall j_j_pb_encode_string(int a1, int a2, int a3);
-void sub_EDE4();
-int __fastcall sub_EDF4(int *a1);
+signed int __fastcall j_j_pb_encode_submessage(_DWORD *a1, unsigned __int8 *a2, int *a3);
+signed int __fastcall j_j_pb_encode_varint(_DWORD *a1, int a2, __int64 a3);
+signed int __fastcall j_j_pb_write(_DWORD *a1, int a2, int a3);
+signed int __fastcall j_j_pb_encode_string(_DWORD *a1, int a2, int a3);
+void sub_F914();
+int __fastcall sub_F924(int *a1);
 
 //-------------------------------------------------------------------------
 // Data declarations
 
 int dword_0 = 1179403647; // weak
-char byte_4 = '\x01'; // weak
-Elf32_Sym stru_320 = { 1660u, 0u, 0u, 18u, 0u, 0u }; // weak
-void *off_4BB0 = (void *)0x10000; // weak
-void *off_4BC0 = (void *)0x10000; // weak
-_UNKNOWN loc_5CC8; // weak
-_UNKNOWN unk_12BE4; // weak
-_DWORD dword_12BF0[8] = { 0, 0, 0, 0, 0, 0, 1, 1 }; // idb
-_DWORD dword_12C10[8] = { 3, 3, 3, 6, 6, 6, 6, 6 }; // idb
-_DWORD dword_12C30[8] = { 4294967295, 3, 4, 4294967295, 6, 7, 4294967295, 4294967295 }; // idb
-unsigned int dword_12C50[8] = { 0u, 0u, 0u, 5u, 1u, 2u, 2u, 2u }; // idb
-void *off_148D0 = (void *)0x3E8; // weak
-char *off_14B10[11] =
+Elf32_Sym stru_320 = { 1256u, 0u, 0u, 18u, 0u, 0u }; // weak
+void *off_4FD0 = &unk_10000; // weak
+void *off_4FE0 = &unk_10000; // weak
+_UNKNOWN loc_6140; // weak
+_UNKNOWN unk_13864; // weak
+_DWORD dword_13870[8] = { 0, 0, 0, 0, 0, 0, 1, 1 }; // idb
+_DWORD dword_13890[8] = { 3, 3, 3, 6, 6, 6, 6, 6 }; // idb
+_DWORD dword_138B0[8] = { 4294967295, 3, 4, 4294967295, 6, 7, 4294967295, 4294967295 }; // idb
+unsigned int dword_138D0[8] = { 0u, 0u, 0u, 5u, 1u, 2u, 2u, 2u }; // idb
+void *off_1589C = (void *)0x3E8; // weak
+char *off_15AE8[17] =
 {
   "RADIO_OFF",
   "RADIO_UNAVAILABLE",
@@ -459,534 +472,628 @@ char *off_14B10[11] =
   "RADIO_RUIM_LOCKED_OR_ABSENT",
   "RADIO_NV_NOT_READY",
   "RADIO_NV_READY",
-  "RADIO_ON"
+  "RADIO_ON",
+  "ACTIVE",
+  "HOLDING",
+  "DIALING",
+  "ALERTING",
+  "INCOMING",
+  "WAITING"
 }; // weak
-char *off_14B40[6] = { "ACTIVE", "HOLDING", "DIALING", "ALERTING", "INCOMING", "WAITING" }; // weak
-void *off_14B60 = (void *)0xBCCD; // weak
-void *off_14B74 = (void *)0xCC71; // weak
-void *off_14B98 = (void *)0xD505; // weak
-void *off_14BC4 = (void *)0x4065; // weak
-void *off_15000 = &off_15000; // weak
+char *off_15B14[6] = { "ACTIVE", "HOLDING", "DIALING", "ALERTING", "INCOMING", "WAITING" }; // weak
+void *off_15B34 = (void *)0xC619; // weak
+void *off_15B48 = (void *)0xD631; // weak
+void *off_15B6C = (void *)0xDF41; // weak
+void *off_15B98 = (void *)0x4471; // weak
+void *off_16000 = &off_16000; // weak
 char rild[5] = "rild"; // weak
 int android::voiceRadioTech = 4294967295; // weak
 int android::cdmaSubscriptionSource = 4294967295; // weak
 int android::simRuimStatus = 4294967295; // weak
-int dword_15018 = 4294967295; // weak
-_UNKNOWN unk_1501C; // weak
-void *RilSapSocket::uimRilEnv = (void *)0xB375; // weak
+int dword_16018 = 4294967295; // weak
+_UNKNOWN unk_1601C; // weak
+void *RilSapSocket::uimRilEnv = (void *)0xBCC5; // weak
 int android::s_callbacks; // weak
-int (__fastcall *dword_156AC)(_DWORD, _DWORD, _DWORD); // weak
-int (*dword_156B0)(void); // weak
-_UNKNOWN unk_156B8; // weak
-int (*dword_156BC)(void); // weak
+int (__fastcall *dword_166DC)(_DWORD, _DWORD, _DWORD); // weak
+int (*dword_166E0)(void); // weak
+_UNKNOWN unk_166E8; // weak
+int (*dword_166EC)(void); // weak
 int android::s_wakelock_count; // weak
-char byte_156C4; // weak
-_UNKNOWN unk_156C8; // weak
-int dword_156CC; // weak
-_UNKNOWN unk_156D0; // weak
-char byte_156D4; // weak
-int dword_156D8; // weak
-int dword_156DC; // weak
-int dword_156E0; // weak
-_UNKNOWN unk_156E4; // weak
-_UNKNOWN unk_156E8; // weak
-int dword_156EC; // weak
-_UNKNOWN unk_156F0; // weak
-_UNKNOWN unk_156F4; // weak
-_UNKNOWN unk_156F8; // weak
-_UNKNOWN unk_156FC; // weak
-_UNKNOWN unk_15720; // weak
-_UNKNOWN unk_15744; // weak
-int dword_15768; // weak
-int dword_1576C; // weak
-int dword_15770; // weak
-int dword_15774; // weak
-int dword_15778; // weak
-_UNKNOWN unk_1577C; // weak
-_UNKNOWN unk_157A0; // weak
-int dword_157A4; // weak
-_UNKNOWN unk_157A8; // weak
-_UNKNOWN unk_157AC; // weak
-_UNKNOWN unk_157B0; // weak
-_DWORD dword_157B8[32]; // idb
-int dword_15838; // weak
-char algn_1583C[4]; // weak
-int dword_15840; // weak
-_UNKNOWN unk_15848; // weak
-_UNKNOWN unk_15850; // weak
-int dword_15858; // weak
-int dword_15860; // weak
-int dword_15864; // weak
-int dword_15868; // weak
-char algn_1586C[20]; // weak
-int dword_15880; // weak
-_DWORD dword_15888[2]; // idb
-_UNKNOWN unk_15890; // weak
-_UNKNOWN unk_15898; // weak
-_UNKNOWN unk_158A0; // weak
-int dword_158A8; // weak
-int dword_158AC; // weak
-_UNKNOWN unk_158B0; // weak
+char byte_166F4; // weak
+_UNKNOWN unk_166F8; // weak
+int dword_166FC; // weak
+_UNKNOWN unk_16700; // weak
+char byte_16704; // weak
+int dword_16708; // weak
+int dword_1670C; // weak
+int dword_16710; // weak
+int dword_16714; // weak
+int dword_16718; // weak
+int dword_1671C; // weak
+int dword_16720; // weak
+int dword_16724; // weak
+int dword_16728; // weak
+_UNKNOWN unk_1672C; // weak
+_UNKNOWN unk_16750; // weak
+_UNKNOWN unk_16774; // weak
+int dword_16798; // weak
+int dword_1679C; // weak
+int dword_167A0; // weak
+__int64 qword_167A4; // weak
+_UNKNOWN unk_167AC; // weak
+_UNKNOWN unk_167D0; // weak
+int dword_167D4; // weak
+_UNKNOWN unk_167D8; // weak
+_UNKNOWN unk_167DC; // weak
+_UNKNOWN unk_167E0; // weak
+_DWORD dword_167E8[32]; // idb
+int dword_16868; // weak
+int dword_1686C; // weak
+int dword_16870; // weak
+_UNKNOWN unk_16878; // weak
+_UNKNOWN unk_16880; // weak
+int dword_16888; // weak
+int dword_16890; // weak
+int dword_16894; // weak
+int dword_16898; // weak
+_UNKNOWN unk_168A0; // weak
+_UNKNOWN unk_168A8; // weak
+int dword_168B0; // weak
+_DWORD dword_168B8[2]; // idb
+_UNKNOWN unk_168C0; // weak
+_UNKNOWN unk_168C8; // weak
+_UNKNOWN unk_168D0; // weak
+int dword_168D8; // weak
+int dword_168DC; // weak
+_UNKNOWN unk_168E0; // weak
 // extern _UNKNOWN _stack_chk_guard; weak
 // extern _UNKNOWN MsgHeader_fields; weak
 // extern _UNKNOWN RIL_SIM_SAP_DISCONNECT_REQ_fields; weak
 // extern struct _IO_FILE *stderr;
+// extern _UNKNOWN ae_p; weak
 
 
-//----- (000038D4) --------------------------------------------------------
-signed int ril_event_init(void)
+//----- (00003A5C) --------------------------------------------------------
+signed int j___ae_r()
+{
+  return _ae_r();
+}
+
+//----- (00003B4C) --------------------------------------------------------
+void *ril_event_init(void)
 {
   return ril_event_init();
 }
 
-//----- (00003904) --------------------------------------------------------
+//----- (00003B7C) --------------------------------------------------------
 int __fastcall ril_event_set(int a1, int fd, int a3, int a4, int a5)
 {
   return ril_event_set(a1, fd, a3, a4, a5);
 }
 
-//----- (00003910) --------------------------------------------------------
+//----- (00003B88) --------------------------------------------------------
 int __fastcall ril_event_add(int a1)
 {
   return ril_event_add(a1);
 }
 
-//----- (0000391C) --------------------------------------------------------
+//----- (00003B94) --------------------------------------------------------
 int ril_event_loop(void)
 {
   return ril_event_loop();
 }
 
-//----- (00003940) --------------------------------------------------------
+//----- (00003BB8) --------------------------------------------------------
 int j_RIL_startEventLoop()
 {
   return RIL_startEventLoop();
 }
 
-//----- (00003A24) --------------------------------------------------------
+//----- (00003C90) --------------------------------------------------------
 const char *__fastcall j_requestToString(int a1)
 {
   return requestToString(a1);
 }
 
-//----- (00003A3C) --------------------------------------------------------
+//----- (00003CA8) --------------------------------------------------------
 int __fastcall ril_event_del(int a1)
 {
   return ril_event_del(a1);
 }
 
-//----- (00003A78) --------------------------------------------------------
+//----- (00003CE4) --------------------------------------------------------
 int __fastcall j_RIL_onUnsolicitedResponse(int a1, int a2, int a3)
 {
   return RIL_onUnsolicitedResponse(a1, a2, a3);
 }
 
-//----- (00003A90) --------------------------------------------------------
+//----- (00003CFC) --------------------------------------------------------
 int __fastcall RilSapSocket::initSapSocket(const char *a1, pthread_mutexattr_t a2)
 {
   return RilSapSocket::initSapSocket(a1, a2);
 }
 
-//----- (00003AFC) --------------------------------------------------------
+//----- (00003D68) --------------------------------------------------------
 int __fastcall ril_timer_add(int **a1, _DWORD *a2)
 {
   return ril_timer_add(a1, a2);
 }
 
-//----- (00003B2C) --------------------------------------------------------
+//----- (00003D98) --------------------------------------------------------
 char *__fastcall RilSocket::getListenEvent(RilSocket *this)
 {
   return RilSocket::getListenEvent(this);
 }
 
-//----- (00003B38) --------------------------------------------------------
+//----- (00003DA4) --------------------------------------------------------
 int __fastcall RilSocket::setCommandFd(RilSocket *this, int a2)
 {
   return RilSocket::setCommandFd((int)this, a2);
 }
 
-//----- (00003B44) --------------------------------------------------------
+//----- (00003DB0) --------------------------------------------------------
 int __fastcall RilSocket::getCommandFd(RilSocket *this)
 {
   return RilSocket::getCommandFd(this);
 }
 
-//----- (00003B68) --------------------------------------------------------
+//----- (00003DD4) --------------------------------------------------------
 char *__fastcall RilSocket::getCallbackEvent(RilSocket *this)
 {
   return RilSocket::getCallbackEvent(this);
 }
 
-//----- (00003B74) --------------------------------------------------------
+//----- (00003DE0) --------------------------------------------------------
 int __fastcall RilSocket::getCommandCb(RilSocket *this)
 {
   return RilSocket::getCommandCb(this);
 }
 
-//----- (00003B80) --------------------------------------------------------
+//----- (00003DEC) --------------------------------------------------------
 int __fastcall RilSocket::onNewCommandConnect(RilSocket *this)
 {
   return RilSocket::onNewCommandConnect(this);
 }
 
-//----- (00003C58) --------------------------------------------------------
+//----- (00003EC4) --------------------------------------------------------
 int __fastcall j_RIL_onRequestComplete(int a1, int a2, int a3, int a4)
 {
   return RIL_onRequestComplete(a1, a2, a3, a4);
 }
 
-//----- (00003D0C) --------------------------------------------------------
+//----- (00003F78) --------------------------------------------------------
 int __fastcall rilEventAddWakeup_helper(int a1)
 {
   return rilEventAddWakeup_helper(a1);
 }
 
-//----- (00003D18) --------------------------------------------------------
+//----- (00003F84) --------------------------------------------------------
 int __fastcall listenCallback_helper(int a1, __int16 a2, void *a3)
 {
   return listenCallback_helper(a1, a2, a3);
 }
 
-//----- (00003D24) --------------------------------------------------------
+//----- (00003F90) --------------------------------------------------------
 int __fastcall RilSocket::socketRequestsHandler(int *a1, int a2, int a3, int a4)
 {
   return RilSocket::socketRequestsHandler(a1, a2, a3, a4);
 }
 
-//----- (00003D30) --------------------------------------------------------
+//----- (00003F9C) --------------------------------------------------------
 int __fastcall RilSapSocket::getSocketById(int a1)
 {
   return RilSapSocket::getSocketById(a1);
 }
 
-//----- (00003D3C) --------------------------------------------------------
+//----- (00003FA8) --------------------------------------------------------
 int __fastcall RilSapSocket::onRequestComplete(int a1, int a2, int a3, int a4, unsigned int a5)
 {
   return RilSapSocket::onRequestComplete(a1, a2, a3, a4, a5);
 }
 
-//----- (00003D48) --------------------------------------------------------
+//----- (00003FB4) --------------------------------------------------------
 int __fastcall RilSapSocket::onUnsolicitedResponse(RilSapSocket *this, int a2, void *a3, unsigned int a4)
 {
   return RilSapSocket::onUnsolicitedResponse(this, a2, a3, a4);
 }
 
-//----- (00003D54) --------------------------------------------------------
+//----- (00003FC0) --------------------------------------------------------
 int __fastcall RilSapSocket::printList(RilSapSocket *this)
 {
   return RilSapSocket::printList(this);
 }
 
-//----- (00003D60) --------------------------------------------------------
+//----- (00003FCC) --------------------------------------------------------
 int __fastcall RilSapSocket::sendResponse(int a1, int *a2)
 {
   return RilSapSocket::sendResponse(a1, a2);
 }
 
-//----- (00003D6C) --------------------------------------------------------
+//----- (00003FD8) --------------------------------------------------------
 signed int __fastcall Ril_queue<RilSapSocket::SapSocketRequest>::checkAndDequeue(int a1, int a2, int a3)
 {
   return Ril_queue<RilSapSocket::SapSocketRequest>::checkAndDequeue(a1, a2, a3);
 }
 
-//----- (00003D78) --------------------------------------------------------
+//----- (00003FE4) --------------------------------------------------------
 signed int __fastcall RilSapSocket::SocketExists(RilSapSocket *this, const char *a2)
 {
   return RilSapSocket::SocketExists(this, a2);
 }
 
-//----- (00003D84) --------------------------------------------------------
+//----- (00003FF0) --------------------------------------------------------
 signed int __fastcall RilSapSocket::addSocketToList(RilSapSocket *a1, const char *a2, pthread_mutexattr_t a3)
 {
   return RilSapSocket::addSocketToList(a1, a2, a3);
 }
 
-//----- (00003D90) --------------------------------------------------------
+//----- (00003FFC) --------------------------------------------------------
 pthread_mutexattr_t *__fastcall RilSapSocket::RilSapSocket(pthread_mutexattr_t *a1, pthread_mutexattr_t a2, pthread_mutexattr_t a3, pthread_mutexattr_t a4)
 {
   return RilSapSocket::RilSapSocket(a1, a2, a3, a4);
 }
 
-//----- (00003DA8) --------------------------------------------------------
+//----- (00004014) --------------------------------------------------------
 int __fastcall RilSocket::socketInit(RilSocket *this)
 {
   return RilSocket::socketInit(this);
 }
 
-//----- (00003DB4) --------------------------------------------------------
+//----- (00004020) --------------------------------------------------------
 void __fastcall RilSapSocket::dispatchRequest(int a1, _DWORD *a2)
 {
   RilSapSocket::dispatchRequest(a1, a2);
 }
 
-//----- (00003DC0) --------------------------------------------------------
+//----- (0000402C) --------------------------------------------------------
 int __fastcall Ril_queue<RilSapSocket::SapSocketRequest>::dequeue(int a1)
 {
   return Ril_queue<RilSapSocket::SapSocketRequest>::dequeue(a1);
 }
 
-//----- (00003DCC) --------------------------------------------------------
+//----- (00004038) --------------------------------------------------------
 int __fastcall Ril_queue<RilSapSocket::SapSocketRequest>::enqueue(int a1, int a2)
 {
   return Ril_queue<RilSapSocket::SapSocketRequest>::enqueue(a1, a2);
 }
 
-//----- (00003DF0) --------------------------------------------------------
+//----- (00004050) --------------------------------------------------------
 int __fastcall j_pb_get_encoded_size(_DWORD *a1, unsigned __int8 *a2, int *a3)
 {
   return pb_get_encoded_size(a1, a2, a3);
 }
 
-//----- (00003DFC) --------------------------------------------------------
-int __fastcall j_pb_ostream_from_buffer(int result, int a2, unsigned int a3)
+//----- (0000405C) --------------------------------------------------------
+_DWORD *__fastcall j_pb_ostream_from_buffer(_DWORD *result, int a2, int a3)
 {
   return pb_ostream_from_buffer(result, a2, a3);
 }
 
-//----- (00003E08) --------------------------------------------------------
-signed int __fastcall j_pb_write(int a1, int a2, int a3)
+//----- (00004068) --------------------------------------------------------
+signed int __fastcall j_pb_write(_DWORD *a1, int a2, int a3)
 {
   return pb_write(a1, a2, a3);
 }
 
-//----- (00003E14) --------------------------------------------------------
+//----- (00004074) --------------------------------------------------------
 signed int __fastcall j_pb_encode(__int64 *a1, unsigned __int8 *a2, int *a3)
 {
   return pb_encode(a1, a2, a3);
 }
 
-//----- (00003E20) --------------------------------------------------------
+//----- (00004080) --------------------------------------------------------
 int __fastcall log_hex(const char *a1, const unsigned __int8 *a2, int a3)
 {
   return log_hex(a1, a2, a3);
 }
 
-//----- (00003E2C) --------------------------------------------------------
+//----- (0000408C) --------------------------------------------------------
 int __fastcall blockingWrite_helper(int a1, void *a2, unsigned int a3)
 {
   return blockingWrite_helper(a1, a2, a3);
 }
 
-//----- (00003E38) --------------------------------------------------------
-_DWORD *__fastcall j_pb_istream_from_buffer(_DWORD *result, int a2, int a3)
+//----- (00004098) --------------------------------------------------------
+signed int (__fastcall **__fastcall j_pb_istream_from_buffer(signed int (__fastcall **result)(int a1, char *a2, int a3), signed int (__fastcall *a2)(int a1, char *a2, int a3), signed int (__fastcall *a3)(int a1, char *a2, int a3)))(int a1, char *a2, int a3)
 {
   return pb_istream_from_buffer(result, a2, a3);
 }
 
-//----- (00003E44) --------------------------------------------------------
+//----- (000040A4) --------------------------------------------------------
 int __fastcall j_pb_decode(int a1, int a2, int a3)
 {
   return pb_decode(a1, a2, a3);
 }
 
-//----- (00003E50) --------------------------------------------------------
+//----- (000040B0) --------------------------------------------------------
 void __fastcall RilSapSocket::dispatchDisconnect(int a1, int a2)
 {
   RilSapSocket::dispatchDisconnect(a1, a2);
 }
 
-//----- (00003E5C) --------------------------------------------------------
+//----- (000040BC) --------------------------------------------------------
 int __fastcall RilSapSocket::sendDisconnect(RilSapSocket *this)
 {
   return RilSapSocket::sendDisconnect(this);
 }
 
-//----- (00003E74) --------------------------------------------------------
+//----- (000040D4) --------------------------------------------------------
 void __fastcall RilSapSocket::sOnRequestComplete(_DWORD *a1, int a2, int a3, unsigned int a4)
 {
   RilSapSocket::sOnRequestComplete(a1, a2, a3, a4);
 }
 
-//----- (00003E80) --------------------------------------------------------
-int __fastcall RilSapSocket::sOnUnsolicitedResponse(RilSapSocket *this, int a2, const void *a3, unsigned int a4)
+//----- (000040E0) --------------------------------------------------------
+RilSapSocket *__fastcall RilSapSocket::sOnUnsolicitedResponse(RilSapSocket *this, int a2, const void *a3, unsigned int a4)
 {
   return RilSapSocket::sOnUnsolicitedResponse(this, a2, a3, a4);
 }
 
-//----- (00003E8C) --------------------------------------------------------
+//----- (000040EC) --------------------------------------------------------
 int j_RIL_requestTimedCallback()
 {
   return RIL_requestTimedCallback();
 }
-// 5DB0: using guessed type int RIL_requestTimedCallback(void);
+// 6228: using guessed type int RIL_requestTimedCallback(void);
 
-//----- (00003E98) --------------------------------------------------------
+//----- (000040F8) --------------------------------------------------------
 int __fastcall RilSapSocket::pushRecord(RilSapSocket *this, void *a2, unsigned int a3)
 {
   return RilSapSocket::pushRecord(this, a2, a3);
 }
 
-//----- (00003EA4) --------------------------------------------------------
+//----- (00004104) --------------------------------------------------------
 void __fastcall __noreturn RilSapSocket::processRequestsLoop(RilSapSocket *this)
 {
   RilSapSocket::processRequestsLoop(this);
 }
 
-//----- (00003EB0) --------------------------------------------------------
+//----- (00004110) --------------------------------------------------------
 int __fastcall RilSapSocket::onCommandsSocketClosed(RilSapSocket *this)
 {
   return RilSapSocket::onCommandsSocketClosed(this);
 }
 
-//----- (00003EBC) --------------------------------------------------------
+//----- (0000411C) --------------------------------------------------------
 int __fastcall j_pb_read(int a1, int a2, int a3)
 {
   return pb_read(a1, a2, a3);
 }
 
-//----- (00003EC8) --------------------------------------------------------
+//----- (00004134) --------------------------------------------------------
 int __fastcall j_pb_skip_field(int a1, int a2)
 {
   return pb_skip_field(a1, a2);
 }
 
-//----- (00003ED4) --------------------------------------------------------
+//----- (00004140) --------------------------------------------------------
 signed int __fastcall j_pb_make_string_substream(int a1, _QWORD *a2)
 {
   return pb_make_string_substream(a1, a2);
 }
 
-//----- (00003EEC) --------------------------------------------------------
+//----- (00004164) --------------------------------------------------------
 int __fastcall j_pb_decode_noinit(int a1, unsigned __int8 *a2, int a3)
 {
   return pb_decode_noinit(a1, a2, a3);
 }
 
-//----- (00003EF8) --------------------------------------------------------
+//----- (00004170) --------------------------------------------------------
 int __fastcall j_pb_release(int a1, int a2)
 {
   return pb_release(a1, a2);
 }
 
-//----- (00003F04) --------------------------------------------------------
+//----- (0000417C) --------------------------------------------------------
 signed int __fastcall j_pb_decode_varint(int a1, _DWORD *a2)
 {
   return pb_decode_varint(a1, a2);
 }
 
-//----- (00003F10) --------------------------------------------------------
-signed int __fastcall j_pb_encode_tag_for_field(int a1, unsigned __int8 *a2)
+//----- (00004188) --------------------------------------------------------
+signed int __fastcall j_pb_encode_tag_for_field(_DWORD *a1, unsigned __int8 *a2)
 {
   return pb_encode_tag_for_field(a1, a2);
 }
 
-//----- (00003F1C) --------------------------------------------------------
-signed int __fastcall j_pb_encode_varint(int a1, int a2, __int64 a3)
+//----- (00004194) --------------------------------------------------------
+signed int __fastcall j_pb_encode_varint(_DWORD *a1, int a2, __int64 a3)
 {
   return pb_encode_varint(a1, a2, a3);
 }
 
-//----- (00003F28) --------------------------------------------------------
-signed int __fastcall j_pb_encode_submessage(int a1, unsigned __int8 *a2, int *a3)
+//----- (000041A0) --------------------------------------------------------
+signed int __fastcall j_pb_encode_submessage(_DWORD *a1, unsigned __int8 *a2, int *a3)
 {
   return pb_encode_submessage(a1, a2, a3);
 }
 
-//----- (00003F34) --------------------------------------------------------
-signed int __fastcall j_pb_encode_string(int a1, int a2, int a3)
+//----- (000041AC) --------------------------------------------------------
+signed int __fastcall j_pb_encode_string(_DWORD *a1, int a2, int a3)
 {
   return pb_encode_string(a1, a2, a3);
 }
 
-//----- (00003F70) --------------------------------------------------------
-int sub_3F70()
+//----- (000041DC) --------------------------------------------------------
+int j___aeabi_ldiv0()
 {
-  return _cxa_finalize(&off_15000);
+  return _aeabi_ldiv0();
 }
-// 3838: using guessed type int __fastcall _cxa_finalize(_DWORD);
-// 15000: using guessed type void *off_15000;
 
-//----- (00003F90) --------------------------------------------------------
-int (*__fastcall sub_3F90(int (*result)(void)))(void)
+//----- (00004200) --------------------------------------------------------
+void *sub_4200()
+{
+  void *result; // r0
+
+  result = &ae_p;
+  if ( &ae_p )
+  {
+    result = (void *)j___ae_r();
+    ae_p = result;
+  }
+  return result;
+}
+
+//----- (0000423C) --------------------------------------------------------
+signed int _ae_r()
+{
+  signed int v0; // r5
+  int v1; // r6
+  FILE *v2; // r4
+  const char *v3; // r5
+  int v4; // r0
+  int v5; // t1
+  size_t v6; // r5
+  int v7; // r0
+  int ptr; // [sp+4h] [bp-1Ch]
+
+  v0 = 0;
+  v1 = *(_DWORD *)((int (*)(void))_errno)();
+  ptr = 0;
+  v2 = fopen("/system/build.prop", "r");
+  if ( v2 )
+  {
+    v3 = "ro.board.platform=";
+    do
+    {
+      v4 = fgetc(v2);
+      if ( v4 == -1 )
+      {
+        v7 = fclose(v2);
+        goto LABEL_14;
+      }
+      v5 = *(unsigned __int8 *)v3;
+      v3 = (char *)&dword_0 + (_DWORD)v3 + 1;
+      if ( v4 != v5 )
+        v3 = "ro.board.platform=";
+    }
+    while ( *v3 );
+    v6 = fread(&ptr, 3u, 1u, v2);
+    v7 = fclose(v2);
+    if ( v6 == 1 )
+    {
+      v7 = strncmp((const char *)&ptr, "msm", 3u);
+      if ( !v7
+        || (v7 = strncmp((const char *)&ptr, "qsd", 3u)) == 0
+        || (v7 = strncmp((const char *)&ptr, "apq", 3u)) == 0 )
+      {
+        v0 = 1;
+        *(_DWORD *)_errno(v7) = v1;
+        return v0;
+      }
+    }
+LABEL_14:
+    *(_DWORD *)_errno(v7) = v1;
+    v0 = 0;
+  }
+  else
+  {
+    *(_DWORD *)((int (*)(void))_errno)() = v1;
+  }
+  return v0;
+}
+// 0: using guessed type int dword_0;
+// 3A68: using guessed type int __fastcall _errno(_DWORD);
+
+//----- (0000437C) --------------------------------------------------------
+int sub_437C()
+{
+  return _cxa_finalize(&off_16000);
+}
+// 3AB0: using guessed type int __fastcall _cxa_finalize(_DWORD);
+// 16000: using guessed type void *off_16000;
+
+//----- (0000439C) --------------------------------------------------------
+int (*__fastcall sub_439C(int (*result)(void)))(void)
 {
   if ( result )
     result = (int (*)(void))result();
   return result;
 }
 
-//----- (00004050) --------------------------------------------------------
+//----- (0000445C) --------------------------------------------------------
 char *__fastcall RIL_setRilSocketName(const char *a1)
 {
   return j_strncpy(rild, a1, 6u);
 }
 
-//----- (00004068) --------------------------------------------------------
+//----- (00004474) --------------------------------------------------------
 int RIL_startEventLoop()
 {
   int v0; // r0
   char *v1; // r0
   pthread_attr_t attr; // [sp+4h] [bp-2Ch]
 
-  byte_156C4 = 0;
-  pthread_mutex_lock((pthread_mutex_t *)&unk_156C8);
+  byte_166F4 = 0;
+  pthread_mutex_lock((pthread_mutex_t *)&unk_166F8);
   pthread_attr_init(&attr);
   pthread_attr_setdetachstate(&attr, 1);
-  v0 = pthread_create((pthread_t *)&dword_156CC, &attr, (void *(*)(void *))sub_4134, 0);
+  v0 = pthread_create((pthread_t *)&dword_166FC, &attr, (void *(*)(void *))sub_4540, 0);
   if ( v0 )
   {
     v1 = strerror(v0);
     _android_log_buf_print(1, 6, "RILC", "Failed to create dispatch thread: %s", v1);
   }
-  else if ( !byte_156C4 )
+  else if ( !byte_166F4 )
   {
     do
-      pthread_cond_wait((pthread_cond_t *)&unk_156D0, (pthread_mutex_t *)&unk_156C8);
-    while ( byte_156C4 != 1 );
+      pthread_cond_wait((pthread_cond_t *)&unk_16700, (pthread_mutex_t *)&unk_166F8);
+    while ( byte_166F4 != 1 );
   }
-  pthread_mutex_unlock((pthread_mutex_t *)&unk_156C8);
+  pthread_mutex_unlock((pthread_mutex_t *)&unk_166F8);
   return _stack_chk_guard - *(&attr.__align + 6);
 }
-// 38A4: using guessed type int _android_log_buf_print(_DWORD, _DWORD, _DWORD, const char *, ...);
-// 4134: using guessed type int sub_4134();
-// 156C4: using guessed type char byte_156C4;
-// 156CC: using guessed type int dword_156CC;
+// 3B1C: using guessed type int _android_log_buf_print(_DWORD, _DWORD, _DWORD, const char *, ...);
+// 4540: using guessed type int sub_4540();
+// 166F4: using guessed type char byte_166F4;
+// 166FC: using guessed type int dword_166FC;
 
-//----- (00004134) --------------------------------------------------------
-int sub_4134()
+//----- (00004540) --------------------------------------------------------
+int sub_4540()
 {
   int v0; // r0
-  _DWORD *v1; // r0
+  int v1; // r0
   _DWORD *v2; // r0
+  _DWORD *v3; // r0
   int result; // r0
   int pipedes[2]; // [sp+4h] [bp-1Ch]
-  int v5; // [sp+Ch] [bp-14h]
+  int v6; // [sp+Ch] [bp-14h]
 
   ril_event_init();
-  pthread_mutex_lock((pthread_mutex_t *)&unk_156C8);
-  byte_156C4 = 1;
-  pthread_cond_broadcast((pthread_cond_t *)&unk_156D0);
-  pthread_mutex_unlock((pthread_mutex_t *)&unk_156C8);
-  if ( pipe(pipedes) <= -1 )
+  pthread_mutex_lock((pthread_mutex_t *)&unk_166F8);
+  byte_166F4 = 1;
+  pthread_cond_broadcast((pthread_cond_t *)&unk_16700);
+  pthread_mutex_unlock((pthread_mutex_t *)&unk_166F8);
+  v0 = pipe(pipedes);
+  if ( v0 <= -1 )
   {
-    v2 = (_DWORD *)((int (*)(void))_errno)();
-    _android_log_buf_print(1, 6, "RILC", "Error in pipe() errno:%d", *v2);
+    v3 = (_DWORD *)_errno(v0);
+    _android_log_buf_print(1, 6, "RILC", "Error in pipe() errno:%d", *v3);
   }
   else
   {
-    dword_15778 = pipedes[1];
-    dword_15774 = pipedes[0];
+    qword_167A4 = *(_QWORD *)pipedes;
     fcntl(pipedes[0], 4, 2048);
-    ril_event_set((int)&unk_1577C, dword_15774, 1, (int)sub_65CC, 0);
-    ril_event_add((int)&unk_1577C);
-    sub_9FC0();
-    v0 = ril_event_loop();
-    v1 = (_DWORD *)_errno(v0);
-    _android_log_buf_print(1, 6, "RILC", "error in event_loop_base errno:%d", *v1);
+    ril_event_set((int)&unk_167AC, qword_167A4, 1, (int)sub_6A54, 0);
+    ril_event_add((int)&unk_167AC);
+    sub_A7B4();
+    v1 = ril_event_loop();
+    v2 = (_DWORD *)_errno(v1);
+    _android_log_buf_print(1, 6, "RILC", "error in event_loop_base errno:%d", *v2);
     kill(0, 9);
   }
-  result = _stack_chk_guard - v5;
-  if ( _stack_chk_guard == v5 )
+  result = _stack_chk_guard - v6;
+  if ( _stack_chk_guard == v6 )
     result = 0;
   return result;
 }
-// 38A4: using guessed type int _android_log_buf_print(_DWORD, _DWORD, _DWORD, const char *, ...);
-// 3928: using guessed type int __fastcall _errno(_DWORD);
-// 4134: using guessed type int sub_4134();
-// 156C4: using guessed type char byte_156C4;
-// 15774: using guessed type int dword_15774;
-// 15778: using guessed type int dword_15778;
+// 3A68: using guessed type int __fastcall _errno(_DWORD);
+// 3B1C: using guessed type int _android_log_buf_print(_DWORD, _DWORD, _DWORD, const char *, ...);
+// 4540: using guessed type int sub_4540();
+// 166F4: using guessed type char byte_166F4;
+// 167A4: using guessed type __int64 qword_167A4;
 
-//----- (00004238) --------------------------------------------------------
+//----- (00004644) --------------------------------------------------------
 __int64 *__fastcall RIL_setcallbacks(__int64 *a1)
 {
   __int64 *result; // r0
@@ -999,192 +1106,199 @@ __int64 *__fastcall RIL_setcallbacks(__int64 *a1)
   result = a1 + 2;
   v4 = *result;
   *(_QWORD *)&android::s_callbacks = v2;
-  *(_QWORD *)&dword_156B0 = v3;
-  unk_156B8 = v4;
+  *(_QWORD *)&dword_166E0 = v3;
+  unk_166E8 = v4;
   return result;
 }
-// 156A8: using guessed type int android::s_callbacks;
-// 156B0: using guessed type int (*dword_156B0)(void);
+// 166D8: using guessed type int android::s_callbacks;
+// 166E0: using guessed type int (*dword_166E0)(void);
 
-//----- (00004254) --------------------------------------------------------
-int __fastcall RIL_register(_DWORD *a1)
+//----- (00004660) --------------------------------------------------------
+int __fastcall RIL_register(double *a1)
 {
-  _DWORD *v1; // r4
+  double *v1; // r4
   __int64 v2; // d16
   __int64 v3; // d17
   __int64 v4; // d18
   int v5; // r4
-  int v6; // r0
-  signed int v7; // r1
+  signed int v6; // r1
+  int v7; // r0
   int v8; // r1
-  int v9; // r0
-  bool v10; // vf
-  signed int v11; // r1
-  double *v12; // r4
-  char *v13; // r0
-  const char *v14; // r6
-  int *v15; // r5
-  signed int v16; // r6
-  unsigned int v17; // r0
-  char *v18; // r0
-  signed int v19; // r0
-  int v20; // r0
+  bool v9; // vf
+  signed int v10; // r0
+  bool v11; // zf
+  char *v12; // r0
+  const char *v13; // r6
+  int *v14; // r5
+  signed int v15; // r6
+  unsigned int v16; // r0
+  char *v17; // r0
+  signed int v18; // r0
+  int v19; // r0
   int result; // r0
+  const char *v21; // r3
   char *v22; // r0
-  const char *v23; // r3
-  int v24; // [sp+0h] [bp-70h]
-  int v25; // [sp+4h] [bp-6Ch]
-  double v26; // [sp+8h] [bp-68h]
-  int v27; // [sp+10h] [bp-60h]
-  char v28; // [sp+14h] [bp-5Ch]
-  int v29; // [sp+54h] [bp-1Ch]
+  char *v23; // r0
+  char *v24; // [sp+4h] [bp-74h]
+  double v25; // [sp+8h] [bp-70h]
+  int v26; // [sp+10h] [bp-68h]
+  char v27; // [sp+18h] [bp-60h]
+  int v28; // [sp+58h] [bp-20h]
 
   v1 = a1;
   _android_log_buf_print(1, 4, "RILC", "SIM_COUNT: %d", 1);
   if ( !v1 )
   {
     _android_log_buf_print(1, 6, "RILC", "RIL_register: RIL_RadioFunctions * null");
-    goto LABEL_30;
+    goto LABEL_32;
   }
-  if ( *v1 <= 5 )
+  if ( *(_DWORD *)v1 <= 5 )
   {
-    _android_log_buf_print(1, 6, "RILC", "RIL_register: version %d is to old, min version is %d", *v1, 6);
-    goto LABEL_30;
+    _android_log_buf_print(1, 6, "RILC", "RIL_register: version %d is to old, min version is %d", *(_DWORD *)v1, 6);
+    goto LABEL_32;
   }
-  _android_log_buf_print(1, 6, "RILC", "RIL_register: RIL version %d", *v1);
-  if ( byte_156D4 == 1 )
+  _android_log_buf_print(1, 6, "RILC", "RIL_register: RIL version %d", *(_DWORD *)v1);
+  if ( byte_16704 == 1 )
   {
     _android_log_buf_print(1, 6, "RILC", "RIL_register has been called more than once. Subsequent call ignored");
-    goto LABEL_30;
+    goto LABEL_32;
   }
   v2 = *(_QWORD *)v1;
   v3 = *((_QWORD *)v1 + 1);
   v4 = *((_QWORD *)v1 + 2);
   v5 = 0;
   *(_QWORD *)&android::s_callbacks = v2;
-  *(_QWORD *)&dword_156B0 = v3;
-  unk_156B8 = v4;
-  dword_156D8 = 0;
-  dword_156DC = -1;
-  dword_156E0 = -1;
-  unk_156E4 = "radio";
-  unk_156E8 = &unk_156FC;
-  dword_156EC = (int)&unk_15720;
-  unk_156F0 = sub_4618;
-  unk_156F4 = 0;
-  unk_156F8 = 0;
-  byte_156D4 = 1;
-  _android_log_buf_print(1, 4, "RILC", "s_registerCalled flag set, %d", (unsigned __int8)byte_156C4);
-  do
+  *(_QWORD *)&dword_166E0 = v3;
+  unk_166E8 = v4;
+  dword_1670C = -1;
+  dword_16710 = -1;
+  dword_16714 = (int)"radio";
+  dword_16708 = 0;
+  dword_16718 = (int)&unk_1672C;
+  dword_1671C = (int)&unk_16750;
+  dword_16720 = (int)sub_4A2C;
+  dword_16724 = 0;
+  dword_16728 = 0;
+  byte_16704 = 1;
+  _android_log_buf_print(1, 4, "RILC", "s_registerCalled flag set, %d", (unsigned __int8)byte_166F4);
+  while ( v5 <= 141 )
   {
-    v6 = v5 + 1;
-    v7 = 1;
+    v6 = 1;
     if ( v5 + 1 > v5 )
-      v7 = 0;
-    if ( v7 )
-      goto LABEL_31;
+      v6 = 0;
     ++v5;
+    if ( v6 )
+LABEL_18:
+      abort();
   }
-  while ( v6 < 138 );
-  v8 = 0;
-  do
+  v7 = 0;
+  while ( v7 < 49 )
   {
-    v9 = v8 + 1;
-    v10 = v8 + 1 <= v8;
-    v11 = 1;
-    if ( !v10 )
-      v11 = 0;
-    if ( v11 )
-      goto LABEL_31;
-    v8 = v9;
+    v8 = v7 + 1;
+    v9 = v7 + 1 <= v7;
+    v10 = 1;
+    if ( !v9 )
+      v10 = 0;
+    v11 = v10 == 0;
+    v7 = v8;
+    if ( !v11 )
+      goto LABEL_18;
   }
-  while ( v9 < 47 );
-  if ( !byte_156C4 )
+  if ( !byte_166F4 )
     j_RIL_startEventLoop();
-  v26 = 0.0;
-  v12 = &v26;
-  LOWORD(v27) = 0;
-  _strncpy_chk2(&v26, rild, 9, 10, 6);
+  v1 = &v25;
+  v25 = 0.0;
+  LOWORD(v26) = 0;
+  _strncpy_chk2(&v25, rild, 9, 10, 6);
   _android_log_buf_print(1, 4, "RILC", "Start to listen %s", "RIL_SOCKET_1");
-  _snprintf_chk(&v28, 64, 0, 64, "ANDROID_SOCKET_%s", &v26);
-  v13 = getenv(&v28);
-  v14 = v13;
-  if ( !v13 || (v15 = (int *)_errno(v13), *v15 = 0, v16 = strtol(v14, 0, 10), *v15) || v16 <= -1 )
+  _snprintf_chk(&v27, 64, 0, 64, "ANDROID_SOCKET_%s", &v25);
+  v12 = getenv(&v27);
+  v13 = v12;
+  if ( !v12 )
+    goto LABEL_33;
+  v14 = (int *)_errno(v12);
+  *v14 = 0;
+  v15 = strtol(v13, 0, 10);
+  if ( *v14 || v15 <= -1 )
+    goto LABEL_33;
+  if ( listen(v15, 4) <= -1 )
   {
-    _android_log_buf_print(1, 6, "RILC", "Failed to get socket %s", &v26, v25);
+    v23 = strerror(*v14);
+    _android_log_buf_print(1, 6, "RILC", "Failed to listen on control socket '%d': %s", v15, v23);
+    goto LABEL_40;
+  }
+  dword_1670C = v15;
+  ril_event_set(dword_1671C, v15, 0, (int)listenCallback_helper, (int)&dword_16708);
+  ril_event_add(dword_1671C);
+  sub_A7B4();
+  v16 = _strlen_chk(rild, 6);
+  v26 = 26485;
+  v25 = *(double *)"rild-debug";
+  if ( v16 >= 4 )
+    _strlcat_chk(&v25, &rild[4], 12, 12);
+  _snprintf_chk(&v27, 64, 0, 64, "ANDROID_SOCKET_%s", &v25, v25, v26);
+  v17 = getenv(&v27);
+  if ( !v17 || (*v14 = 0, v18 = strtol(v17, 0, 10), *v14) )
+  {
+    dword_16018 = -1;
+    goto LABEL_35;
+  }
+  dword_16018 = v18;
+  if ( v18 <= -1 )
+  {
+LABEL_35:
+    v22 = (char *)*v14;
+    v21 = "Failed to get socket : %s errno:%d";
+LABEL_38:
+    v24 = v22;
     goto LABEL_39;
   }
-  if ( listen(v16, 4) <= -1 )
-  {
-    v22 = strerror(*v15);
-    v24 = v16;
-    v23 = "Failed to listen on control socket '%d': %s";
-LABEL_38:
-    _android_log_buf_print(1, 6, "RILC", v23, v24, v22);
-LABEL_39:
-    exit(-1);
-  }
-  dword_156DC = v16;
-  ril_event_set(dword_156EC, v16, 0, (int)listenCallback_helper, (int)&dword_156D8);
-  ril_event_add(dword_156EC);
-  sub_9FC0();
-  v17 = _strlen_chk(rild, 6);
-  v27 = 26485;
-  v26 = *(double *)"rild-debug";
-  if ( v17 >= 4 )
-    _strlcat_chk(&v26, &rild[4], 12, 12);
-  _snprintf_chk(&v28, 64, 0, 64, "ANDROID_SOCKET_%s", &v26, v26, v27);
-  v18 = getenv(&v28);
-  if ( !v18 || (*v15 = 0, v19 = strtol(v18, 0, 10), *v15) )
-  {
-    dword_15018 = -1;
-    goto LABEL_34;
-  }
-  dword_15018 = v19;
+  v19 = listen(v18, 4);
+  v1 = (double *)dword_16018;
   if ( v19 <= -1 )
   {
-LABEL_34:
-    v22 = (char *)*v15;
-    v23 = "Failed to get socket : %s errno:%d";
-LABEL_37:
-    v24 = (int)v12;
+    v22 = strerror(*v14);
+    v21 = "Failed to listen on ril debug socket '%d': %s";
     goto LABEL_38;
   }
-  v20 = listen(v19, 4);
-  v12 = (double *)dword_15018;
-  if ( v20 <= -1 )
+  ril_event_set((int)&unk_16774, dword_16018, 1, (int)sub_4C80, 0);
+  ril_event_add((int)&unk_16774);
+  sub_A7B4();
+LABEL_32:
+  result = _stack_chk_guard - v28;
+  if ( _stack_chk_guard != v28 )
   {
-    v22 = strerror(*v15);
-    v23 = "Failed to listen on ril debug socket '%d': %s";
-    goto LABEL_37;
+LABEL_33:
+    v21 = "Failed to get socket %s";
+LABEL_39:
+    _android_log_buf_print(1, 6, "RILC", v21, v1, v24);
+LABEL_40:
+    exit(-1);
   }
-  ril_event_set((int)&unk_15744, dword_15018, 1, (int)sub_4860, 0);
-  ril_event_add((int)&unk_15744);
-  sub_9FC0();
-LABEL_30:
-  result = _stack_chk_guard - v29;
-  if ( _stack_chk_guard != v29 )
-LABEL_31:
-    abort();
   return result;
 }
-// 38A4: using guessed type int _android_log_buf_print(_DWORD, _DWORD, _DWORD, const char *, ...);
-// 3928: using guessed type int __fastcall _errno(_DWORD);
-// 3958: using guessed type int _snprintf_chk(_DWORD, _DWORD, _DWORD, _DWORD, const char *, ...);
-// 3988: using guessed type int __fastcall _strlen_chk(_DWORD, _DWORD);
-// 3994: using guessed type int __fastcall _strlcat_chk(_DWORD, _DWORD, _DWORD, _DWORD);
-// 15018: using guessed type int dword_15018;
-// 156A8: using guessed type int android::s_callbacks;
-// 156B0: using guessed type int (*dword_156B0)(void);
-// 156C4: using guessed type char byte_156C4;
-// 156D4: using guessed type char byte_156D4;
-// 156D8: using guessed type int dword_156D8;
-// 156DC: using guessed type int dword_156DC;
-// 156E0: using guessed type int dword_156E0;
-// 156EC: using guessed type int dword_156EC;
+// 3A68: using guessed type int __fastcall _errno(_DWORD);
+// 3B1C: using guessed type int _android_log_buf_print(_DWORD, _DWORD, _DWORD, const char *, ...);
+// 3BD0: using guessed type int _snprintf_chk(_DWORD, _DWORD, _DWORD, _DWORD, const char *, ...);
+// 3C00: using guessed type int __fastcall _strlen_chk(_DWORD, _DWORD);
+// 3C0C: using guessed type int __fastcall _strlcat_chk(_DWORD, _DWORD, _DWORD, _DWORD);
+// 16018: using guessed type int dword_16018;
+// 166D8: using guessed type int android::s_callbacks;
+// 166E0: using guessed type int (*dword_166E0)(void);
+// 166F4: using guessed type char byte_166F4;
+// 16704: using guessed type char byte_16704;
+// 16708: using guessed type int dword_16708;
+// 1670C: using guessed type int dword_1670C;
+// 16710: using guessed type int dword_16710;
+// 16714: using guessed type int dword_16714;
+// 16718: using guessed type int dword_16718;
+// 1671C: using guessed type int dword_1671C;
+// 16720: using guessed type int dword_16720;
+// 16724: using guessed type int dword_16724;
+// 16728: using guessed type int dword_16728;
 
-//----- (00004618) --------------------------------------------------------
-int __fastcall sub_4618(int a1, int a2, int *a3)
+//----- (00004A2C) --------------------------------------------------------
+int __fastcall sub_4A2C(int a1, int a2, int *a3)
 {
   int v3; // r10
   int v4; // r0
@@ -1198,35 +1312,36 @@ int __fastcall sub_4618(int a1, int a2, int *a3)
   const char *v12; // r11
   int v13; // r5
   unsigned int v14; // r0
-  _DWORD *v15; // r6
-  __int64 v16; // r0
+  _DWORD *v15; // r0
+  int v16; // r6
   const char *v17; // r0
   signed int v18; // r2
   signed int v19; // r1
   const char *v20; // r3
   int *v21; // r0
   bool v22; // zf
-  int v24; // [sp+0h] [bp-C0h]
+  int v23; // r0
+  int v25; // [sp+0h] [bp-C0h]
   int fd; // [sp+18h] [bp-A8h]
-  int *v26; // [sp+1Ch] [bp-A4h]
-  char v27; // [sp+20h] [bp-A0h]
-  const unsigned __int8 *v28; // [sp+24h] [bp-9Ch]
-  char v29; // [sp+28h] [bp-98h]
-  int v30; // [sp+5Ch] [bp-64h]
-  int v31; // [sp+60h] [bp-60h]
-  char v32; // [sp+64h] [bp-5Ch]
-  int v33; // [sp+98h] [bp-28h]
+  int *v27; // [sp+1Ch] [bp-A4h]
+  char v28; // [sp+20h] [bp-A0h]
+  const unsigned __int8 *v29; // [sp+24h] [bp-9Ch]
+  char v30; // [sp+28h] [bp-98h]
+  int v31; // [sp+5Ch] [bp-64h]
+  int v32; // [sp+60h] [bp-60h]
+  char v33; // [sp+64h] [bp-5Ch]
+  int v34; // [sp+98h] [bp-28h]
 
   fd = a1;
-  v26 = a3;
+  v27 = a3;
   v3 = a3[7];
-  v4 = record_stream_get_next(v3, &v28, &v27);
-  v5 = v28;
+  v4 = record_stream_get_next(v3, &v29, &v28);
+  v5 = v29;
   v6 = 0;
   v7 = 0;
   if ( !v4 )
     v7 = 1;
-  if ( !(v4 | (unsigned int)v28) )
+  if ( !(v4 | (unsigned int)v29) )
     v6 = 1;
   if ( v4 >= 0 && !v6 )
   {
@@ -1235,39 +1350,39 @@ int __fastcall sub_4618(int a1, int a2, int *a3)
     {
       if ( v7 & 1 )
       {
-        v9 = *(_DWORD *)&v27;
-        v10 = *v26;
-        android::Parcel::Parcel((android::Parcel *)&v32);
-        android::Parcel::setData((android::Parcel *)&v32, v5, v9);
-        android::Parcel::readInt32((android::Parcel *)&v32, &v31);
-        if ( android::Parcel::readInt32((android::Parcel *)&v32, &v30) )
+        v9 = *(_DWORD *)&v28;
+        v10 = *v27;
+        android::Parcel::Parcel((android::Parcel *)&v33);
+        android::Parcel::setData((android::Parcel *)&v33, v5, v9);
+        android::Parcel::readInt32((android::Parcel *)&v33, &v32);
+        if ( android::Parcel::readInt32((android::Parcel *)&v33, &v31) )
         {
           _android_log_buf_print(1, 6, v8, "invalid request block");
         }
         else
         {
-          v11 = v31;
-          if ( v31 == 800 )
+          v11 = v32;
+          if ( v32 == 800 )
           {
-            sub_5D18();
+            sub_6190();
           }
           else
           {
             v12 = v8;
-            if ( (unsigned int)(v31 - 1) < 0x89 )
+            if ( (unsigned int)(v32 - 1) < 0x8D )
             {
               v15 = calloc(1u, 0x18u);
+              v16 = (int)v15;
               if ( v15 )
               {
-                LODWORD(v16) = v30;
-                HIDWORD(v16) = (char *)&unk_1501C + 12 * v11;
+                *v15 = v31;
                 v15[4] = v10;
-                *(_QWORD *)v15 = v16;
-                pthread_mutex_lock((pthread_mutex_t *)&unk_157A0);
-                v15[2] = dword_157A4;
-                dword_157A4 = (int)v15;
-                pthread_mutex_unlock((pthread_mutex_t *)&unk_157A0);
-                (*(void (__fastcall **)(char *, _DWORD *))(v15[1] + 4))(&v32, v15);
+                v15[1] = (char *)&unk_1601C + 12 * v11;
+                pthread_mutex_lock((pthread_mutex_t *)&unk_167D0);
+                *(_DWORD *)(v16 + 8) = dword_167D4;
+                dword_167D4 = v16;
+                pthread_mutex_unlock((pthread_mutex_t *)&unk_167D0);
+                (*(void (__fastcall **)(char *, int))(*(_DWORD *)(v16 + 4) + 4))(&v33, v16);
                 v8 = v12;
               }
               else
@@ -1279,27 +1394,27 @@ int __fastcall sub_4618(int a1, int a2, int *a3)
             }
             else
             {
-              android::Parcel::Parcel((android::Parcel *)&v29);
-              _android_log_buf_print(1, 6, v8, "unsupported request code %d token %d", v31, v30);
-              android::Parcel::writeInt32((android::Parcel *)&v29, 0);
-              android::Parcel::writeInt32((android::Parcel *)&v29, v30);
-              android::Parcel::writeInt32((android::Parcel *)&v29, 2);
-              v13 = android::Parcel::data((android::Parcel *)&v29);
-              v14 = android::Parcel::dataSize((android::Parcel *)&v29);
-              sub_A004(v13, v14);
-              android::Parcel::~Parcel((android::Parcel *)&v29);
+              android::Parcel::Parcel((android::Parcel *)&v30);
+              _android_log_buf_print(1, 6, v8, "unsupported request code %d token %d", v32, v31);
+              android::Parcel::writeInt32((android::Parcel *)&v30, 0);
+              android::Parcel::writeInt32((android::Parcel *)&v30, v31);
+              android::Parcel::writeInt32((android::Parcel *)&v30, 2);
+              v13 = android::Parcel::data((android::Parcel *)&v30);
+              v14 = android::Parcel::dataSize((android::Parcel *)&v30);
+              sub_A7F8(v13, v14);
+              android::Parcel::~Parcel((android::Parcel *)&v30);
             }
           }
         }
-        android::Parcel::~Parcel((android::Parcel *)&v32);
+        android::Parcel::~Parcel((android::Parcel *)&v33);
       }
-      v4 = record_stream_get_next(v3, &v28, &v27);
-      v5 = v28;
+      v4 = record_stream_get_next(v3, &v29, &v28);
+      v5 = v29;
       v7 = 0;
       if ( !v4 )
         v7 = 1;
       v18 = 0;
-      if ( !(v4 | (unsigned int)v28) )
+      if ( !(v4 | (unsigned int)v29) )
         v18 = 1;
     }
     while ( v4 >= 0 && v18 != 1 );
@@ -1309,15 +1424,16 @@ int __fastcall sub_4618(int a1, int a2, int *a3)
     v19 = 5;
     v20 = "EOS.  Closing command socket.";
 LABEL_31:
-    _android_log_buf_print(1, v19, "RILC", v20, v24);
+    _android_log_buf_print(1, v19, "RILC", v20, v25);
     close(fd);
-    v26[2] = -1;
-    ril_event_del(v26[4]);
+    v23 = v27[4];
+    v27[2] = -1;
+    ril_event_del(v23);
     record_stream_free(v3);
-    ril_event_add((int)&unk_15720);
-    sub_9FC0();
-    sub_6624();
-    return _stack_chk_guard - v33;
+    ril_event_add((int)&unk_16750);
+    sub_A7B4();
+    sub_6AAC();
+    return _stack_chk_guard - v34;
   }
   v21 = (int *)_errno(v4);
   v22 = *v21 == 11;
@@ -1326,20 +1442,20 @@ LABEL_31:
   if ( !v22 )
   {
     v19 = 6;
-    v24 = *v21;
+    v25 = *v21;
     v20 = "error on reading command socket errno:%d\n";
     goto LABEL_31;
   }
-  return _stack_chk_guard - v33;
+  return _stack_chk_guard - v34;
 }
-// 38A4: using guessed type int _android_log_buf_print(_DWORD, _DWORD, _DWORD, const char *, ...);
-// 3928: using guessed type int __fastcall _errno(_DWORD);
-// 39B8: using guessed type int __fastcall record_stream_get_next(_DWORD, _DWORD, _DWORD);
-// 3A48: using guessed type int __fastcall record_stream_free(_DWORD);
-// 157A4: using guessed type int dword_157A4;
+// 3A68: using guessed type int __fastcall _errno(_DWORD);
+// 3B1C: using guessed type int _android_log_buf_print(_DWORD, _DWORD, _DWORD, const char *, ...);
+// 3C24: using guessed type int __fastcall record_stream_get_next(_DWORD, _DWORD, _DWORD);
+// 3CB4: using guessed type int __fastcall record_stream_free(_DWORD);
+// 167D4: using guessed type int dword_167D4;
 
-//----- (00004860) --------------------------------------------------------
-int __fastcall sub_4860(int a1)
+//----- (00004C80) --------------------------------------------------------
+int __fastcall sub_4C80(int a1)
 {
   int v1; // r4
   int v2; // r0
@@ -1361,30 +1477,30 @@ int __fastcall sub_4860(int a1)
   int v18; // r0
   void **v19; // r0
   __int64 v20; // d17
-  int v21; // r4
-  int *v22; // r1
+  const char *v21; // r3
+  const char **v22; // r1
   int v23; // r0
+  int v24; // r4
   int result; // r0
-  int v25; // [sp+10h] [bp-D8h]
-  size_t nmemb; // [sp+14h] [bp-D4h]
-  const char *v27; // [sp+18h] [bp-D0h]
-  int v28; // [sp+1Ch] [bp-CCh]
-  int v29; // [sp+24h] [bp-C4h]
-  socklen_t addr_len; // [sp+28h] [bp-C0h]
-  int v31; // [sp+2Ch] [bp-BCh]
-  int v32; // [sp+30h] [bp-B8h]
-  const char *v33; // [sp+34h] [bp-B4h]
-  __int64 v34; // [sp+38h] [bp-B0h]
-  __int64 v35; // [sp+40h] [bp-A8h]
-  int v36; // [sp+48h] [bp-A0h]
-  int v37; // [sp+4Ch] [bp-9Ch]
-  struct sockaddr addr; // [sp+50h] [bp-98h]
-  int v39; // [sp+C0h] [bp-28h]
+  int v26; // [sp+Ch] [bp-D4h]
+  size_t nmemb; // [sp+10h] [bp-D0h]
+  int v28; // [sp+14h] [bp-CCh]
+  int v29; // [sp+18h] [bp-C8h]
+  int v30; // [sp+20h] [bp-C0h]
+  socklen_t addr_len; // [sp+24h] [bp-BCh]
+  int v32; // [sp+28h] [bp-B8h]
+  const char *v33; // [sp+2Ch] [bp-B4h]
+  __int64 v34; // [sp+30h] [bp-B0h]
+  __int64 v35; // [sp+38h] [bp-A8h]
+  int v36; // [sp+40h] [bp-A0h]
+  int v37; // [sp+44h] [bp-9Ch]
+  struct sockaddr addr; // [sp+48h] [bp-98h]
+  int v39; // [sp+B8h] [bp-28h]
 
   v1 = a1;
   addr_len = 110;
   v33 = "1";
-  v31 = 1;
+  v32 = 1;
   _android_log_buf_print(1, 4, "RILC", "debugCallback for socket %s", "RIL_SOCKET_1");
   v2 = accept(v1, &addr, &addr_len);
   v3 = v2;
@@ -1392,7 +1508,7 @@ int __fastcall sub_4860(int a1)
   {
     v15 = (_DWORD *)_errno(v2);
     _android_log_buf_print(1, 6, "RILC", "error accepting on debug port: %d\n", *v15);
-    goto LABEL_50;
+    goto LABEL_52;
   }
   if ( _recvfrom_chk(v2, &nmemb, 4) == 4 )
   {
@@ -1415,102 +1531,106 @@ LABEL_20:
             case 0:
               _android_log_buf_print(1, 4, "RILC", "Connection on debug port: issuing reset.");
               v14 = 58;
-              goto LABEL_44;
+              goto LABEL_45;
             case 1:
               _android_log_buf_print(1, 4, "RILC", "Connection on debug port: issuing radio power off.");
-              v29 = 0;
-              sub_9F04(23, (int)&v29, 4);
-              if ( dword_156E0 >= 1 )
+              v30 = 0;
+              sub_A6F8(23, (int)&v30, 4);
+              if ( dword_16710 >= 1 )
               {
-                close(dword_156E0);
-                dword_156E0 = -1;
+                close(dword_16710);
+                dword_16710 = -1;
               }
-              break;
+              goto LABEL_49;
             case 2:
               _android_log_buf_print(1, 4, "RILC", "Debug port: issuing unsolicited voice network change.");
               j_RIL_onUnsolicitedResponse(1002, 0, 0);
-              break;
+              goto LABEL_49;
             case 3:
               _android_log_buf_print(1, 4, "RILC", "Debug port: QXDM log enable.");
-              v19 = &off_4BC0;
-              goto LABEL_38;
+              v19 = &off_4FE0;
+              goto LABEL_37;
             case 4:
               _android_log_buf_print(1, 4, "RILC", "Debug port: QXDM log disable.");
-              v19 = &off_4BB0;
-LABEL_38:
+              v19 = &off_4FD0;
+LABEL_37:
               v20 = *((_QWORD *)v19 + 1);
               v34 = *(_QWORD *)v19;
               v35 = v20;
               v36 = 0;
               v37 = 8;
-              sub_9F04(59, (int)&v34, 24);
-              break;
+              sub_A6F8(59, (int)&v34, 24);
+              goto LABEL_49;
             case 5:
               _android_log_buf_print(1, 4, "RILC", "Debug port: Radio On");
-              v29 = 1;
-              sub_9F04(23, (int)&v29, 4);
+              v30 = 1;
+              sub_A6F8(23, (int)&v30, 4);
               sleep(2u);
               v14 = 46;
-              goto LABEL_44;
-            case 6:
-              v21 = (int)v5[1];
-              _android_log_buf_print(1, 4, "RILC", "Debug port: Setup Data Call, Apn :%s\n", v5[1]);
-              v32 = v21;
-              v22 = &v32;
-              v23 = 27;
-              goto LABEL_46;
+              goto LABEL_45;
             case 7:
               _android_log_buf_print(1, 4, "RILC", "Debug port: Deactivate Data Call");
-              v22 = (int *)&v33;
+              v22 = &v33;
               v23 = 41;
-              goto LABEL_46;
+              goto LABEL_47;
             case 8:
               _android_log_buf_print(1, 4, "RILC", "Debug port: Dial Call");
-              v28 = 0;
-              v27 = v5[1];
-              sub_9F04(10, (int)&v27, 12);
+              v24 = (int)v5[1];
+              v29 = 0;
+              if ( (unsigned int)_strlen_chk(v24, -1) < 0x81 )
+              {
+                v28 = v24;
+                sub_A6F8(10, (int)&v28, 12);
+              }
+              else
+              {
+                v21 = "Debug port: Error calling Dial";
+LABEL_43:
+                _android_log_buf_print(1, 6, "RILC", v21);
+              }
+LABEL_49:
+              v18 = nmemb;
               break;
             case 9:
               _android_log_buf_print(1, 4, "RILC", "Debug port: Answer Call");
               v14 = 40;
-LABEL_44:
-              sub_9F04(v14, 0, 0);
-              break;
+LABEL_45:
+              sub_A6F8(v14, 0, 0);
+              goto LABEL_49;
             case 10:
               _android_log_buf_print(1, 4, "RILC", "Debug port: End Call");
-              v22 = &v31;
+              v22 = (const char **)&v32;
               v23 = 12;
-LABEL_46:
-              sub_9F04(v23, (int)v22, 4);
-              break;
+LABEL_47:
+              sub_A6F8(v23, (int)v22, 4);
+              goto LABEL_49;
             default:
-              _android_log_buf_print(1, 6, "RILC", "Invalid request");
-              break;
+              v21 = "Invalid request";
+              goto LABEL_43;
           }
-          v18 = nmemb;
         }
         else
         {
           v7 = 0;
           while ( 1 )
           {
-            if ( _recvfrom_chk(v3, &v25, 4) != 4 )
+            if ( _recvfrom_chk(v3, &v26, 4) != 4 )
             {
               v17 = "error reading on socket: Len of Args: \n";
               goto LABEL_31;
             }
-            v8 = v25;
-            if ( v25 == 0x7FFFFFFF || v25 <= -1 )
+            v8 = v26;
+            if ( v26 == 0x7FFFFFFF || v26 <= -1 )
             {
               v17 = "Invalid value of len: \n";
               goto LABEL_31;
             }
             v9 = 1;
-            if ( v25 + 1 > v25 )
+            if ( v26 + 1 > v26 )
               v9 = 0;
             if ( v9 )
-              goto LABEL_51;
-            v10 = (const char *)calloc(v25 + 1, 1u);
+              goto LABEL_53;
+            v10 = (const char *)calloc(v26 + 1, 1u);
             v5[v7] = v10;
             if ( !v10 )
             {
@@ -1518,7 +1638,7 @@ LABEL_46:
               goto LABEL_31;
             }
             v11 = _recvfrom_chk(v3, v10, v8);
-            if ( v11 != v25 )
+            if ( v11 != v26 )
               break;
             v10[v11] = 0;
             v12 = v7 + 1;
@@ -1526,7 +1646,7 @@ LABEL_46:
             if ( v7 + 1 > v7 )
               v13 = 0;
             if ( v13 )
-              goto LABEL_51;
+              goto LABEL_53;
             ++v7;
             if ( v12 >= (signed int)nmemb )
             {
@@ -1539,8 +1659,8 @@ LABEL_31:
           _android_log_buf_print(1, 6, "RILC", v17);
           v18 = v7;
         }
-        sub_9ECC(v18, v5);
-        goto LABEL_49;
+        sub_A6C4(v18, v5);
+        goto LABEL_51;
       }
       v16 = "Memory allocation failed for debug args";
     }
@@ -1550,23 +1670,24 @@ LABEL_31:
     v16 = "error reading on socket: number of Args: \n";
   }
   _android_log_buf_print(1, 6, "RILC", v16);
-LABEL_49:
+LABEL_51:
   close(v3);
-LABEL_50:
+LABEL_52:
   result = _stack_chk_guard - v39;
   if ( _stack_chk_guard != v39 )
-LABEL_51:
+LABEL_53:
     abort();
   return result;
 }
-// 38A4: using guessed type int _android_log_buf_print(_DWORD, _DWORD, _DWORD, const char *, ...);
-// 3928: using guessed type int __fastcall _errno(_DWORD);
-// 3A60: using guessed type int __cdecl _recvfrom_chk(_DWORD, _DWORD, _DWORD);
-// 4BB0: using guessed type void *off_4BB0;
-// 4BC0: using guessed type void *off_4BC0;
-// 156E0: using guessed type int dword_156E0;
+// 3A68: using guessed type int __fastcall _errno(_DWORD);
+// 3B1C: using guessed type int _android_log_buf_print(_DWORD, _DWORD, _DWORD, const char *, ...);
+// 3C00: using guessed type int __fastcall _strlen_chk(_DWORD, _DWORD);
+// 3CCC: using guessed type int __cdecl _recvfrom_chk(_DWORD, _DWORD, _DWORD);
+// 4FD0: using guessed type void *off_4FD0;
+// 4FE0: using guessed type void *off_4FE0;
+// 16710: using guessed type int dword_16710;
 
-//----- (00004C90) --------------------------------------------------------
+//----- (000050B0) --------------------------------------------------------
 int (__fastcall *__fastcall RIL_register_socket(int (__fastcall *result)(void **, int, int), int a2, int a3, int a4))(void **, int, int)
 {
   int v4; // r5
@@ -1582,9 +1703,9 @@ int (__fastcall *__fastcall RIL_register_socket(int (__fastcall *result)(void **
   }
   return result;
 }
-// 15694: using guessed type void *RilSapSocket::uimRilEnv;
+// 166C4: using guessed type void *RilSapSocket::uimRilEnv;
 
-//----- (00004CC0) --------------------------------------------------------
+//----- (000050E0) --------------------------------------------------------
 int __fastcall RIL_onRequestAck(int a1)
 {
   int v1; // r4
@@ -1595,11 +1716,11 @@ int __fastcall RIL_onRequestAck(int a1)
   int v7; // [sp+34h] [bp-14h]
 
   v1 = a1;
-  if ( sub_4D7C(a1, 1) )
+  if ( sub_519C(a1, 1) )
   {
     if ( !*(_BYTE *)(v1 + 12) )
     {
-      v2 = dword_156E0;
+      v2 = dword_16710;
       android::Parcel::Parcel((android::Parcel *)&v6);
       android::Parcel::writeInt32((android::Parcel *)&v6, 2);
       android::Parcel::writeInt32((android::Parcel *)&v6, *(_DWORD *)v1);
@@ -1607,7 +1728,7 @@ int __fastcall RIL_onRequestAck(int a1)
         _android_log_buf_print(1, 3, "RILC", "RIL onRequestComplete: Command channel closed");
       v3 = android::Parcel::data((android::Parcel *)&v6);
       v4 = android::Parcel::dataSize((android::Parcel *)&v6);
-      sub_A004(v3, v4);
+      sub_A7F8(v3, v4);
       android::Parcel::~Parcel((android::Parcel *)&v6);
     }
   }
@@ -1617,11 +1738,11 @@ int __fastcall RIL_onRequestAck(int a1)
   }
   return _stack_chk_guard - v7;
 }
-// 38A4: using guessed type int _android_log_buf_print(_DWORD, _DWORD, _DWORD, const char *, ...);
-// 156E0: using guessed type int dword_156E0;
+// 3B1C: using guessed type int _android_log_buf_print(_DWORD, _DWORD, _DWORD, const char *, ...);
+// 16710: using guessed type int dword_16710;
 
-//----- (00004D7C) --------------------------------------------------------
-signed int __fastcall sub_4D7C(int a1, int a2)
+//----- (0000519C) --------------------------------------------------------
+signed int __fastcall sub_519C(int a1, int a2)
 {
   int v2; // r4
   int v3; // r5
@@ -1634,9 +1755,9 @@ signed int __fastcall sub_4D7C(int a1, int a2)
   v3 = a2;
   if ( !a1 )
     return 0;
-  pthread_mutex_lock((pthread_mutex_t *)&unk_157A0);
-  v4 = &dword_157A4;
-  for ( i = dword_157A4; ; i = *(_DWORD *)(i + 8) )
+  pthread_mutex_lock((pthread_mutex_t *)&unk_167D0);
+  v4 = &dword_167D4;
+  for ( i = dword_167D4; ; i = *(_DWORD *)(i + 8) )
   {
     if ( !i )
     {
@@ -1667,13 +1788,13 @@ signed int __fastcall sub_4D7C(int a1, int a2)
     *v4 = *(_DWORD *)(v2 + 8);
   }
 LABEL_13:
-  pthread_mutex_unlock((pthread_mutex_t *)&unk_157A0);
+  pthread_mutex_unlock((pthread_mutex_t *)&unk_167D0);
   return v7;
 }
-// 38A4: using guessed type int _android_log_buf_print(_DWORD, _DWORD, _DWORD, const char *, ...);
-// 157A4: using guessed type int dword_157A4;
+// 3B1C: using guessed type int _android_log_buf_print(_DWORD, _DWORD, _DWORD, const char *, ...);
+// 167D4: using guessed type int dword_167D4;
 
-//----- (00004E04) --------------------------------------------------------
+//----- (00005224) --------------------------------------------------------
 int __fastcall RIL_onRequestComplete(int a1, int a2, int a3, int a4)
 {
   int v4; // r4
@@ -1693,7 +1814,7 @@ int __fastcall RIL_onRequestComplete(int a1, int a2, int a3, int a4)
   v5 = a2;
   v6 = a4;
   v7 = a3;
-  if ( sub_4D7C(a1, 0) )
+  if ( sub_519C(a1, 0) )
   {
     if ( *(_BYTE *)(v4 + 13) )
     {
@@ -1702,7 +1823,7 @@ int __fastcall RIL_onRequestComplete(int a1, int a2, int a3, int a4)
     }
     else if ( !*(_BYTE *)(v4 + 12) )
     {
-      v9 = dword_156E0;
+      v9 = dword_16710;
       android::Parcel::Parcel((android::Parcel *)&v15);
       if ( android::s_callbacks < 13 || *(_DWORD *)(v4 + 20) != 1 )
       {
@@ -1711,7 +1832,7 @@ int __fastcall RIL_onRequestComplete(int a1, int a2, int a3, int a4)
       else
       {
         android::Parcel::writeInt32((android::Parcel *)&v15, 3);
-        sub_5870();
+        sub_5CE4();
       }
       android::Parcel::writeInt32((android::Parcel *)&v15, *(_DWORD *)v4);
       v10 = android::Parcel::dataPosition((android::Parcel *)&v15);
@@ -1730,7 +1851,7 @@ int __fastcall RIL_onRequestComplete(int a1, int a2, int a3, int a4)
         _android_log_buf_print(1, 3, "RILC", "RIL onRequestComplete: Command channel closed");
       v12 = android::Parcel::data((android::Parcel *)&v15);
       v13 = android::Parcel::dataSize((android::Parcel *)&v15);
-      sub_A004(v12, v13);
+      sub_A7F8(v12, v13);
       android::Parcel::~Parcel((android::Parcel *)&v15);
     }
     free((void *)v4);
@@ -1741,11 +1862,11 @@ int __fastcall RIL_onRequestComplete(int a1, int a2, int a3, int a4)
   }
   return _stack_chk_guard - v16;
 }
-// 38A4: using guessed type int _android_log_buf_print(_DWORD, _DWORD, _DWORD, const char *, ...);
-// 156A8: using guessed type int android::s_callbacks;
-// 156E0: using guessed type int dword_156E0;
+// 3B1C: using guessed type int _android_log_buf_print(_DWORD, _DWORD, _DWORD, const char *, ...);
+// 166D8: using guessed type int android::s_callbacks;
+// 16710: using guessed type int dword_16710;
 
-//----- (00004F70) --------------------------------------------------------
+//----- (00005390) --------------------------------------------------------
 const char *__fastcall requestToString(int a1)
 {
   int v1; // r1
@@ -2148,6 +2269,18 @@ LABEL_7:
     case 136:
       result = "GET_CARRIER_RESTRICTIONS";
       break;
+    case 137:
+      result = "SIM_GET_ATR";
+      break;
+    case 138:
+      result = "CAF_SIM_OPEN_CHANNEL_WITH_P2";
+      break;
+    case 139:
+      result = "RIL_REQUEST_GET_ADN_RECORD";
+      break;
+    case 140:
+      result = "RIL_REQUEST_UPDATE_ADN_RECORD";
+      break;
     default:
       switch ( (unsigned int)"GET_SIM_STATUS" )
       {
@@ -2243,6 +2376,10 @@ LABEL_7:
           goto LABEL_7;
         case 0x416u:
           return "RIL_UNSOL_PCO_DATA";
+        case 0x417u:
+          return "RIL_UNSOL_RESPONSE_ADN_INIT_DONE";
+        case 0x418u:
+          return "RIL_UNSOL_RESPONSE_ADN_RECORDS";
         default:
           if ( "GET_SIM_STATUS" != (char *)&stru_320 )
             goto LABEL_7;
@@ -2255,18 +2392,18 @@ LABEL_7:
 }
 // 320: using guessed type Elf32_Sym;
 
-//----- (00005870) --------------------------------------------------------
-int sub_5870()
+//----- (00005CE4) --------------------------------------------------------
+int sub_5CE4()
 {
   signed int v0; // r4
   int v1; // r0
 
   if ( android::s_callbacks < 13 )
     return j_acquire_wake_lock(1, (int)"radio-interface");
-  pthread_mutex_lock((pthread_mutex_t *)&unk_157AC);
+  pthread_mutex_lock((pthread_mutex_t *)&unk_167DC);
   v0 = 1;
   acquire_wake_lock(1, "radio-interface");
-  v1 = RIL_requestTimedCallback_0((int)&loc_5CC8 + 1, 0, (__int64 *)&unk_12BE4);
+  v1 = RIL_requestTimedCallback_0((int)&loc_6140 + 1, 0, (__int64 *)&unk_13864);
   if ( v1 )
   {
     if ( android::s_wakelock_count + 1 > android::s_wakelock_count )
@@ -2274,23 +2411,23 @@ int sub_5870()
     if ( v0 )
       abort();
     ++android::s_wakelock_count;
-    if ( dword_15768 )
-      *(_DWORD *)(dword_15768 + 4) = 1;
-    dword_15768 = v1;
+    if ( dword_16798 )
+      *(_DWORD *)(dword_16798 + 4) = 1;
+    dword_16798 = v1;
   }
   else
   {
     release_wake_lock("radio-interface");
   }
-  return j_pthread_mutex_unlock((pthread_mutex_t *)&unk_157AC);
+  return j_pthread_mutex_unlock((pthread_mutex_t *)&unk_167DC);
 }
-// 3AC0: using guessed type int __fastcall acquire_wake_lock(_DWORD, _DWORD);
-// 3ACC: using guessed type int __fastcall release_wake_lock(_DWORD);
-// 156A8: using guessed type int android::s_callbacks;
-// 156C0: using guessed type int android::s_wakelock_count;
-// 15768: using guessed type int dword_15768;
+// 3D2C: using guessed type int __fastcall acquire_wake_lock(_DWORD, _DWORD);
+// 3D38: using guessed type int __fastcall release_wake_lock(_DWORD);
+// 166D8: using guessed type int android::s_callbacks;
+// 166F0: using guessed type int android::s_wakelock_count;
+// 16798: using guessed type int dword_16798;
 
-//----- (00005928) --------------------------------------------------------
+//----- (00005D9C) --------------------------------------------------------
 int __fastcall RIL_onUnsolicitedResponse(int a1, int a2, int a3)
 {
   int v3; // r4
@@ -2310,7 +2447,7 @@ int __fastcall RIL_onUnsolicitedResponse(int a1, int a2, int a3)
   int v17; // r0
   int v18; // r6
   unsigned int v19; // r0
-  int v20; // r0
+  signed int v20; // r0
   size_t v21; // r0
   int v22; // r5
   int v23; // r6
@@ -2322,7 +2459,7 @@ int __fastcall RIL_onUnsolicitedResponse(int a1, int a2, int a3)
   v3 = a1;
   v4 = a2;
   v5 = a3;
-  if ( !byte_156D4 )
+  if ( !byte_16704 )
   {
     _android_log_buf_print(1, 5, "RILC", "RIL_onUnsolicitedResponse called before RIL_register");
     goto LABEL_52;
@@ -2334,7 +2471,7 @@ int __fastcall RIL_onUnsolicitedResponse(int a1, int a2, int a3)
 LABEL_53:
     abort();
   v7 = v3 - 1000;
-  if ( (unsigned int)(v3 - 1000) >= 0x2F )
+  if ( (unsigned int)(v3 - 1000) >= 0x31 )
   {
     _android_log_buf_print(1, 6, "RILC", "unsupported unsolicited response code %d", v3);
     goto LABEL_52;
@@ -2345,7 +2482,7 @@ LABEL_53:
     v8 = v7 == 9;
   if ( !v8 )
   {
-    v6 = (android *)sub_5870();
+    v6 = (android *)sub_5CE4();
     v9 = 1;
   }
   if ( v3 == 1008 )
@@ -2370,7 +2507,7 @@ LABEL_56:
     v13 = 4;
   android::Parcel::writeInt32((android::Parcel *)&v26, v13);
   android::Parcel::writeInt32((android::Parcel *)&v26, v3);
-  if ( ((int (__fastcall *)(char *, int, int))*(&off_148D0 + 3 * v7 + 1))(&v26, v4, v5) )
+  if ( ((int (__fastcall *)(char *, int, int))*(&off_1589C + 3 * v7 + 1))(&v26, v4, v5) )
     goto LABEL_49;
   if ( v3 == 1008 )
   {
@@ -2378,26 +2515,26 @@ LABEL_56:
   }
   else if ( v3 == 1000 )
   {
-    v14 = dword_156B0();
+    v14 = dword_166E0();
     v15 = v14 - 2;
     if ( (unsigned int)(v14 - 2) <= 7 )
     {
-      v16 = dword_12C10[v15];
+      v16 = dword_13890[v15];
       if ( v16 != android::voiceRadioTech )
       {
-        android::voiceRadioTech = dword_12C10[v15];
+        android::voiceRadioTech = dword_13890[v15];
         j_RIL_onUnsolicitedResponse(1035, (int)&android::voiceRadioTech, 4);
       }
       if ( (unsigned int)(v16 - 4) <= 9
         && (0x31Fu >> (v16 - 4)) & 1
-        && dword_12BF0[v15] != android::cdmaSubscriptionSource )
+        && dword_13870[v15] != android::cdmaSubscriptionSource )
       {
-        android::cdmaSubscriptionSource = dword_12BF0[v15];
+        android::cdmaSubscriptionSource = dword_13870[v15];
         j_RIL_onUnsolicitedResponse(1031, (int)&android::cdmaSubscriptionSource, 4);
       }
-      if ( dword_12C30[v15] != android::simRuimStatus )
+      if ( dword_138B0[v15] != android::simRuimStatus )
       {
-        android::simRuimStatus = dword_12C30[v15];
+        android::simRuimStatus = dword_138B0[v15];
         j_RIL_onUnsolicitedResponse(1019, 0, 0);
       }
       v14 = 10;
@@ -2406,35 +2543,35 @@ LABEL_56:
   }
   if ( android::s_callbacks <= 12 && v9 == 1 )
   {
-    v17 = RIL_requestTimedCallback_0((int)&loc_5CC8 + 1, 0, (__int64 *)&unk_12BE4);
+    v17 = RIL_requestTimedCallback_0((int)&loc_6140 + 1, 0, (__int64 *)&unk_13864);
     if ( !v17 )
       goto LABEL_49;
-    if ( dword_15768 )
-      *(_DWORD *)(dword_15768 + 4) = 1;
-    dword_15768 = v17;
+    if ( dword_16798 )
+      *(_DWORD *)(dword_16798 + 4) = 1;
+    dword_16798 = v17;
   }
   v18 = android::Parcel::data((android::Parcel *)&v26);
   v19 = android::Parcel::dataSize((android::Parcel *)&v26);
-  v20 = sub_A004(v18, v19);
+  v20 = sub_A7F8(v18, v19);
   if ( v3 != 1008 || !v20 )
     goto LABEL_51;
-  if ( dword_1576C )
+  if ( dword_1679C )
   {
-    free((void *)dword_1576C);
-    dword_1576C = 0;
+    free((void *)dword_1679C);
+    dword_1679C = 0;
   }
   v21 = android::Parcel::dataSize((android::Parcel *)&v26);
-  dword_1576C = (int)calloc(v21, 1u);
-  if ( !dword_1576C )
+  dword_1679C = (int)calloc(v21, 1u);
+  if ( !dword_1679C )
   {
     _android_log_buf_print(1, 6, "RILC", "Memory allocation failed in RIL_onUnsolicitedResponse");
 LABEL_49:
     if ( v9 == 1 )
-      sub_5D18();
+      sub_6190();
     goto LABEL_51;
   }
-  dword_15770 = android::Parcel::dataSize((android::Parcel *)&v26);
-  v22 = dword_1576C;
+  dword_167A0 = android::Parcel::dataSize((android::Parcel *)&v26);
+  v22 = dword_1679C;
   v23 = android::Parcel::data((android::Parcel *)&v26);
   v24 = android::Parcel::dataSize((android::Parcel *)&v26);
   _aeabi_memcpy(v22, v23, v24);
@@ -2447,20 +2584,20 @@ LABEL_52:
   return result;
 }
 // 0: using guessed type int dword_0;
-// 38A4: using guessed type int _android_log_buf_print(_DWORD, _DWORD, _DWORD, const char *, ...);
-// 3AF0: using guessed type int __fastcall _aeabi_memcpy(_DWORD, _DWORD, _DWORD);
-// 148D0: using guessed type void *off_148D0;
-// 1500C: using guessed type int android::voiceRadioTech;
-// 15010: using guessed type int android::cdmaSubscriptionSource;
-// 15014: using guessed type int android::simRuimStatus;
-// 156A8: using guessed type int android::s_callbacks;
-// 156B0: using guessed type int (*dword_156B0)(void);
-// 156D4: using guessed type char byte_156D4;
-// 15768: using guessed type int dword_15768;
-// 1576C: using guessed type int dword_1576C;
-// 15770: using guessed type int dword_15770;
+// 3B1C: using guessed type int _android_log_buf_print(_DWORD, _DWORD, _DWORD, const char *, ...);
+// 3D5C: using guessed type int __fastcall _aeabi_memcpy(_DWORD, _DWORD, _DWORD);
+// 1589C: using guessed type void *off_1589C;
+// 1600C: using guessed type int android::voiceRadioTech;
+// 16010: using guessed type int android::cdmaSubscriptionSource;
+// 16014: using guessed type int android::simRuimStatus;
+// 166D8: using guessed type int android::s_callbacks;
+// 166E0: using guessed type int (*dword_166E0)(void);
+// 16704: using guessed type char byte_16704;
+// 16798: using guessed type int dword_16798;
+// 1679C: using guessed type int dword_1679C;
+// 167A0: using guessed type int dword_167A0;
 
-//----- (00005C34) --------------------------------------------------------
+//----- (000060A8) --------------------------------------------------------
 int __fastcall RIL_requestTimedCallback_0(int a1, int a2, __int64 *a3)
 {
   int v3; // r7
@@ -2487,9 +2624,9 @@ int __fastcall RIL_requestTimedCallback_0(int a1, int a2, __int64 *a3)
     else
       v8 = 0LL;
     v10 = v8;
-    ril_event_set(v7 + 8, -1, 0, (int)sub_AAB0, v7);
+    ril_event_set(v7 + 8, -1, 0, (int)sub_B3E0, v7);
     ril_timer_add((int **)(v7 + 8), &v10);
-    sub_9FC0();
+    sub_A7B4();
   }
   else
   {
@@ -2500,22 +2637,22 @@ int __fastcall RIL_requestTimedCallback_0(int a1, int a2, __int64 *a3)
     result = v7;
   return result;
 }
-// 38A4: using guessed type int _android_log_buf_print(_DWORD, _DWORD, _DWORD, const char *, ...);
+// 3B1C: using guessed type int _android_log_buf_print(_DWORD, _DWORD, _DWORD, const char *, ...);
 
-//----- (00005D18) --------------------------------------------------------
-int sub_5D18()
+//----- (00006190) --------------------------------------------------------
+int sub_6190()
 {
   signed int v0; // r1
 
   if ( android::s_callbacks < 13 )
     return j_release_wake_lock((int)"radio-interface");
-  pthread_mutex_lock((pthread_mutex_t *)&unk_157AC);
+  pthread_mutex_lock((pthread_mutex_t *)&unk_167DC);
   if ( android::s_wakelock_count < 2 )
   {
     android::s_wakelock_count = 0;
     release_wake_lock("radio-interface");
-    if ( dword_15768 )
-      *(_DWORD *)(dword_15768 + 4) = 1;
+    if ( dword_16798 )
+      *(_DWORD *)(dword_16798 + 4) = 1;
   }
   else
   {
@@ -2526,14 +2663,14 @@ int sub_5D18()
       abort();
     --android::s_wakelock_count;
   }
-  return j_pthread_mutex_unlock((pthread_mutex_t *)&unk_157AC);
+  return j_pthread_mutex_unlock((pthread_mutex_t *)&unk_167DC);
 }
-// 3ACC: using guessed type int __fastcall release_wake_lock(_DWORD);
-// 156A8: using guessed type int android::s_callbacks;
-// 156C0: using guessed type int android::s_wakelock_count;
-// 15768: using guessed type int dword_15768;
+// 3D38: using guessed type int __fastcall release_wake_lock(_DWORD);
+// 166D8: using guessed type int android::s_callbacks;
+// 166F0: using guessed type int android::s_wakelock_count;
+// 16798: using guessed type int dword_16798;
 
-//----- (00005DB4) --------------------------------------------------------
+//----- (0000622C) --------------------------------------------------------
 const char *__fastcall failCauseToString(int a1)
 {
   int v1; // r1
@@ -2588,7 +2725,7 @@ const char *__fastcall failCauseToString(int a1)
     case 33:
     case 34:
     case 35:
-def_5E58:
+def_62D0:
       result = "<unknown error>";
       break;
     case 14:
@@ -2800,14 +2937,14 @@ def_5E58:
           result = "E_OEM_ERROR_25";
           break;
         default:
-          goto def_5E58;
+          goto def_62D0;
       }
       break;
   }
   return result;
 }
 
-//----- (000061AC) --------------------------------------------------------
+//----- (00006624) --------------------------------------------------------
 const char *__fastcall radioStateToString(unsigned int a1)
 {
   const char *result; // r0
@@ -2815,12 +2952,12 @@ const char *__fastcall radioStateToString(unsigned int a1)
   if ( a1 > 0xA )
     result = "<unknown state>";
   else
-    result = off_14B10[a1];
+    result = off_15AE8[a1];
   return result;
 }
-// 14B10: using guessed type char *off_14B10[11];
+// 15AE8: using guessed type char *off_15AE8[17];
 
-//----- (000061C8) --------------------------------------------------------
+//----- (00006640) --------------------------------------------------------
 const char *__fastcall callStateToString(unsigned int a1)
 {
   const char *result; // r0
@@ -2828,12 +2965,12 @@ const char *__fastcall callStateToString(unsigned int a1)
   if ( a1 > 5 )
     result = "<unknown state>";
   else
-    result = off_14B40[a1];
+    result = off_15B14[a1];
   return result;
 }
-// 14B40: using guessed type char *off_14B40[6];
+// 15B14: using guessed type char *off_15B14[6];
 
-//----- (000061E4) --------------------------------------------------------
+//----- (0000665C) --------------------------------------------------------
 const char *__fastcall rilSocketIdToString(int a1)
 {
   const char *v1; // r1
@@ -2844,21 +2981,21 @@ const char *__fastcall rilSocketIdToString(int a1)
   return v1;
 }
 
-//----- (00006200) --------------------------------------------------------
+//----- (00006678) --------------------------------------------------------
 int __fastcall rilEventAddWakeup_helper(int a1)
 {
   ril_event_add(a1);
-  return sub_9FC0();
+  return sub_A7B4();
 }
 
-//----- (00006214) --------------------------------------------------------
+//----- (0000668C) --------------------------------------------------------
 int __fastcall listenCallback_helper(int a1, __int16 a2, void *a3)
 {
   _DWORD *v3; // r8
   const char *v4; // r7
-  __int64 v5; // r4
+  RilSocket *v5; // r4
   int v6; // r0
-  _QWORD *v7; // r6
+  RilSocket **v7; // r6
   char *v8; // r0
   char *v9; // r5
   struct passwd *v10; // r0
@@ -2867,38 +3004,43 @@ int __fastcall listenCallback_helper(int a1, __int16 a2, void *a3)
   char *v13; // r0
   int result; // r0
   int v15; // r0
-  int v16; // r7
-  int v17; // r0
-  char *v18; // r0
-  const char *v19; // r1
+  int v16; // r5
+  int v17; // r7
+  int v18; // r0
+  char *v19; // r0
   const char *v20; // r1
+  int v21; // r0
+  int v22; // r2
+  int v23; // r1
+  int v24; // r3
+  const char *v25; // r1
   socklen_t *optlen; // [sp+0h] [bp-B0h]
-  socklen_t v22; // [sp+8h] [bp-A8h]
+  socklen_t v27; // [sp+8h] [bp-A8h]
   char optval; // [sp+Ch] [bp-A4h]
   __uid_t uid; // [sp+10h] [bp-A0h]
   socklen_t addr_len; // [sp+18h] [bp-98h]
-  int v26; // [sp+1Ch] [bp-94h]
+  int v31; // [sp+1Ch] [bp-94h]
   struct sockaddr addr; // [sp+20h] [bp-90h]
-  int v28; // [sp+90h] [bp-20h]
+  int v33; // [sp+90h] [bp-20h]
 
   v3 = a3;
   v4 = "bluetooth";
   if ( *((_DWORD *)a3 + 8) == 1 )
-    LODWORD(v5) = *((_DWORD *)a3 + 9);
+    v5 = (RilSocket *)*((_DWORD *)a3 + 9);
   else
-    LODWORD(v5) = 0;
+    v5 = 0;
   addr_len = 110;
-  v22 = 12;
-  if ( !(_DWORD)v5 )
+  v27 = 12;
+  if ( !v5 )
     v4 = "radio";
   v6 = accept(a1, &addr, &addr_len);
-  v7 = (_QWORD *)v6;
+  v7 = (RilSocket **)v6;
   v8 = (char *)_errno(v6);
   v9 = v8;
   if ( (signed int)v7 > -1 )
   {
     *(_DWORD *)v8 = 0;
-    if ( getsockopt((int)v7, 1, 17, &optval, &v22) || (signed int)v22 < 1 )
+    if ( getsockopt((int)v7, 1, 17, &optval, &v27) || (signed int)v27 < 1 )
     {
       _android_log_buf_print(1, 3, "RILC", "Error on getsockopt() errno: %d", *(_DWORD *)v9);
     }
@@ -2923,106 +3065,111 @@ int __fastcall listenCallback_helper(int a1, __int16 a2, void *a3)
     }
     _android_log_buf_print(1, 6, "RILC", "RILD must accept socket from %s", v4);
     close((int)v7);
-    if ( (_DWORD)v5 )
+    if ( v5 )
     {
-      (*(void (__fastcall **)(_DWORD))(*(_DWORD *)v5 + 8))(v5);
+      (*(void (__fastcall **)(RilSocket *))(*(_DWORD *)v5 + 8))(v5);
       goto LABEL_19;
     }
-    sub_6624();
+    sub_6AAC();
 LABEL_21:
     v13 = (char *)v3[5];
     goto LABEL_22;
   }
   _android_log_buf_print(1, 6, "RILC", "Error on accept() errno:%d", *(_DWORD *)v8);
-  if ( !(_DWORD)v5 )
+  if ( !v5 )
     goto LABEL_21;
 LABEL_19:
-  v13 = RilSocket::getListenEvent((RilSocket *)v5);
+  v13 = RilSocket::getListenEvent(v5);
 LABEL_22:
   ril_event_add((int)v13);
-  sub_9FC0();
+  sub_A7B4();
   while ( 1 )
   {
-    result = _stack_chk_guard - v28;
-    if ( _stack_chk_guard == v28 )
+    result = _stack_chk_guard - v33;
+    if ( _stack_chk_guard == v33 )
       break;
 LABEL_24:
     if ( fcntl((int)v7, 4, 2048) <= -1 )
       _android_log_buf_print(1, 6, "RILC", "Error setting O_NONBLOCK errno:%d", *(_DWORD *)v9);
-    if ( (_DWORD)v5 )
+    if ( v5 )
     {
       _android_log_buf_print(1, 4, "RILC", "libril: new connection");
-      RilSocket::setCommandFd((RilSocket *)v5, (int)v7);
-      v15 = RilSocket::getCommandFd((RilSocket *)v5);
-      HIDWORD(v5) = record_stream_new(v15, 0x2000);
-      v7 = (_QWORD *)operator new(8u);
+      RilSocket::setCommandFd(v5, (int)v7);
+      v15 = RilSocket::getCommandFd(v5);
+      v16 = record_stream_new(v15, 0x2000);
+      v7 = (RilSocket **)operator new(8u);
+      v7[1] = (RilSocket *)v16;
       *v7 = v5;
-      v9 = RilSocket::getCallbackEvent((RilSocket *)v5);
-      v16 = RilSocket::getCommandFd((RilSocket *)v5);
-      v17 = RilSocket::getCommandCb((RilSocket *)v5);
-      ril_event_set((int)v9, v16, 1, v17, (int)v7);
-      v18 = RilSocket::getCallbackEvent((RilSocket *)v5);
-      ril_event_add((int)v18);
-      sub_9FC0();
-      RilSocket::onNewCommandConnect((RilSocket *)v5);
+      v9 = RilSocket::getCallbackEvent(v5);
+      v17 = RilSocket::getCommandFd(v5);
+      v18 = RilSocket::getCommandCb(v5);
+      ril_event_set((int)v9, v17, 1, v18, (int)v7);
+      v19 = RilSocket::getCallbackEvent(v5);
+      ril_event_add((int)v19);
+      sub_A7B4();
+      RilSocket::onNewCommandConnect(v5);
     }
     else
     {
-      v19 = "not a valid RIL";
+      v20 = "not a valid RIL";
       if ( !*v3 )
-        v19 = "RIL_SOCKET_1";
-      _android_log_buf_print(1, 4, "RILC", "libril: new connection to %s", v19);
+        v20 = "RIL_SOCKET_1";
+      _android_log_buf_print(1, 4, "RILC", "libril: new connection to %s", v20);
       v3[2] = v7;
-      v3[7] = record_stream_new(v7, 0x2000);
-      ril_event_set(v3[4], v3[2], 1, v3[6], (int)v3);
+      v21 = record_stream_new(v7, 0x2000);
+      v22 = v3[4];
+      v23 = v3[2];
+      v24 = v3[6];
+      v3[7] = v21;
+      ril_event_set(v22, v23, 1, v24, (int)v3);
       ril_event_add(v3[4]);
-      sub_9FC0();
-      v26 = android::s_callbacks;
-      j_RIL_onUnsolicitedResponse(1034, (int)&v26, 4);
-      LODWORD(v5) = 0;
+      sub_A7B4();
+      v31 = android::s_callbacks;
+      j_RIL_onUnsolicitedResponse(1034, (int)&v31, 4);
+      v5 = 0;
       j_RIL_onUnsolicitedResponse(1000, 0, 0);
-      if ( dword_1576C )
+      if ( dword_1679C )
       {
-        sub_A004(dword_1576C, dword_15770);
-        v9 = (char *)&dword_1576C;
-        free((void *)dword_1576C);
-        dword_1576C = 0;
+        sub_A7F8(dword_1679C, dword_167A0);
+        v9 = (char *)&dword_1679C;
+        free((void *)dword_1679C);
+        dword_1679C = 0;
       }
-      if ( dword_156BC )
+      if ( dword_166EC )
       {
-        LODWORD(v5) = dword_156BC();
-        _android_log_buf_print(1, 4, "RILC", "RIL Daemon version: %s\n", (_DWORD)v5);
-        v20 = (const char *)v5;
+        v5 = (RilSocket *)dword_166EC();
+        _android_log_buf_print(1, 4, "RILC", "RIL Daemon version: %s\n", v5);
+        v25 = (const char *)v5;
       }
       else
       {
         _android_log_buf_print(1, 4, "RILC", "RIL Daemon version: unavailable\n");
-        v20 = "unavailable";
+        v25 = "unavailable";
       }
-      property_set("gsm.version.ril-impl", v20);
+      property_set("gsm.version.ril-impl", v25);
     }
   }
   return result;
 }
-// 38A4: using guessed type int _android_log_buf_print(_DWORD, _DWORD, _DWORD, const char *, ...);
-// 3928: using guessed type int __fastcall _errno(_DWORD);
-// 3B50: using guessed type int __fastcall record_stream_new(_DWORD, _DWORD);
-// 3B8C: using guessed type int __fastcall property_set(_DWORD, _DWORD);
-// 156A8: using guessed type int android::s_callbacks;
-// 156BC: using guessed type int (*dword_156BC)(void);
-// 1576C: using guessed type int dword_1576C;
-// 15770: using guessed type int dword_15770;
+// 3A68: using guessed type int __fastcall _errno(_DWORD);
+// 3B1C: using guessed type int _android_log_buf_print(_DWORD, _DWORD, _DWORD, const char *, ...);
+// 3DBC: using guessed type int __fastcall record_stream_new(_DWORD, _DWORD);
+// 3DF8: using guessed type int __fastcall property_set(_DWORD, _DWORD);
+// 166D8: using guessed type int android::s_callbacks;
+// 166EC: using guessed type int (*dword_166EC)(void);
+// 1679C: using guessed type int dword_1679C;
+// 167A0: using guessed type int dword_167A0;
 
-//----- (00006538) --------------------------------------------------------
-unsigned int __fastcall sub_6538(int a1, int a2, unsigned int a3)
+//----- (000069B4) --------------------------------------------------------
+signed int __fastcall sub_69B4(int a1, int a2, unsigned int a3)
 {
   unsigned int v3; // r9
   int v4; // r8
-  int v5; // r4
-  unsigned int v6; // r7
+  int v5; // r10
+  unsigned int v6; // r4
   signed int v7; // r0
   int v8; // r0
-  _DWORD *v9; // r0
+  _DWORD *v9; // r5
   bool v10; // zf
   unsigned int v11; // r0
   signed int v12; // r1
@@ -3031,51 +3178,50 @@ unsigned int __fastcall sub_6538(int a1, int a2, unsigned int a3)
   v4 = a2;
   v5 = a1;
   v6 = 0;
-  if ( a3 )
+  while ( 1 )
   {
-    while ( 1 )
-    {
-      v7 = 1;
-      if ( v3 >= v6 )
-        v7 = 0;
-      if ( v7 )
-        break;
-      while ( 1 )
-      {
-        v8 = _write_chk(v5, v4 + v6, v3 - v6, -1);
-        if ( v8 >= 0 )
-          break;
-        v9 = (_DWORD *)_errno(v8);
-        v10 = *v9 == 4;
-        if ( *v9 != 4 )
-          v10 = *v9 == 11;
-        if ( !v10 )
-        {
-          _android_log_buf_print(1, 6, "RILC", "RIL Response: unexpected error on write errno:%d", *v9);
-          close(v5);
-          return -1;
-        }
-      }
-      v11 = v8 + v6;
-      v12 = 1;
-      if ( v11 >= v6 )
-        v12 = 0;
-      if ( v12 )
-        break;
-      v6 = v11;
-      if ( v11 >= v3 )
-        return 0;
-    }
-    abort();
+    if ( v6 >= v3 )
+      return 0;
+    v7 = 1;
+    if ( v3 >= v6 )
+      v7 = 0;
+    if ( v7 )
+LABEL_16:
+      abort();
+    v8 = _write_chk(v5, v4 + v6, v3 - v6, -1);
+    if ( v8 <= -1 )
+      break;
+LABEL_13:
+    v11 = v8 + v6;
+    v12 = 1;
+    if ( v11 >= v6 )
+      v12 = 0;
+    v6 = v11;
+    if ( v12 )
+      goto LABEL_16;
   }
-  return v6;
+  v9 = (_DWORD *)_errno(v8);
+  while ( 1 )
+  {
+    v10 = *v9 == 4;
+    if ( *v9 != 4 )
+      v10 = *v9 == 11;
+    if ( !v10 )
+      break;
+    v8 = _write_chk(v5, v4 + v6, v3 - v6, -1);
+    if ( v8 >= 0 )
+      goto LABEL_13;
+  }
+  _android_log_buf_print(1, 6, "RILC", "RIL Response: unexpected error on write errno:%d", *v9);
+  close(v5);
+  return -1;
 }
-// 38A4: using guessed type int _android_log_buf_print(_DWORD, _DWORD, _DWORD, const char *, ...);
-// 3928: using guessed type int __fastcall _errno(_DWORD);
-// 3B98: using guessed type int __fastcall _write_chk(_DWORD, _DWORD, _DWORD, _DWORD);
+// 3A68: using guessed type int __fastcall _errno(_DWORD);
+// 3B1C: using guessed type int _android_log_buf_print(_DWORD, _DWORD, _DWORD, const char *, ...);
+// 3E04: using guessed type int __fastcall _write_chk(_DWORD, _DWORD, _DWORD, _DWORD);
 
-//----- (000065CC) --------------------------------------------------------
-int sub_65CC()
+//----- (00006A54) --------------------------------------------------------
+int sub_6A54()
 {
   int v0; // r0
   char v2; // [sp+4h] [bp-24h]
@@ -3084,42 +3230,52 @@ int sub_65CC()
   do
   {
     do
-      v0 = _read_chk(dword_15774, &v2, 16, 16);
+      v0 = _read_chk(dword_167A4, &v2, 16, 16);
     while ( v0 > 0 );
   }
   while ( v0 <= -1 && *(_DWORD *)_errno(v0) == 4 );
   return _stack_chk_guard - v3;
 }
-// 3928: using guessed type int __fastcall _errno(_DWORD);
-// 3BA4: using guessed type int __fastcall _read_chk(_DWORD, _DWORD, _DWORD, _DWORD);
-// 15774: using guessed type int dword_15774;
+// 3A68: using guessed type int __fastcall _errno(_DWORD);
+// 3E10: using guessed type int __fastcall _read_chk(_DWORD, _DWORD, _DWORD, _DWORD);
+// 167A4: using guessed type int dword_167A4;
 
-//----- (00006624) --------------------------------------------------------
-int sub_6624()
+//----- (00006AAC) --------------------------------------------------------
+int sub_6AAC()
 {
-  int i; // r0
+  int v0; // r0
+  int v1; // r2
 
-  pthread_mutex_lock((pthread_mutex_t *)&unk_157A0);
-  for ( i = dword_157A4; i; i = *(_DWORD *)(i + 8) )
-    *(_BYTE *)(i + 12) = 1;
-  return j_pthread_mutex_unlock((pthread_mutex_t *)&unk_157A0);
+  pthread_mutex_lock((pthread_mutex_t *)&unk_167D0);
+  v0 = dword_167D4;
+  if ( dword_167D4 )
+  {
+    do
+    {
+      v1 = *(_DWORD *)(v0 + 8);
+      *(_BYTE *)(v0 + 12) = 1;
+      v0 = v1;
+    }
+    while ( v1 );
+  }
+  return j_pthread_mutex_unlock((pthread_mutex_t *)&unk_167D0);
 }
-// 157A4: using guessed type int dword_157A4;
+// 167D4: using guessed type int dword_167D4;
 
-//----- (0000665C) --------------------------------------------------------
-int __fastcall sub_665C(int a1, int a2)
+//----- (00006AE4) --------------------------------------------------------
+int __fastcall sub_6AE4(int a1, int a2)
 {
-  return dword_156AC(**(_DWORD **)(a2 + 4), 0, 0);
+  return dword_166DC(**(_DWORD **)(a2 + 4), 0, 0);
 }
-// 156AC: using guessed type int (__fastcall *dword_156AC)(_DWORD, _DWORD, _DWORD);
+// 166DC: using guessed type int (__fastcall *dword_166DC)(_DWORD, _DWORD, _DWORD);
 
-//----- (00006678) --------------------------------------------------------
-int __fastcall sub_6678(android::Parcel *this, int *a2, unsigned int a3)
+//----- (00006B00) --------------------------------------------------------
+int __fastcall sub_6B00(android::Parcel *this, int *a2, unsigned int a3)
 {
   android::Parcel *v3; // r5
   int *v4; // r4
   const char *v5; // r3
-  int v7; // [sp+0h] [bp-70h]
+  char v7; // [sp+8h] [bp-70h]
 
   v3 = this;
   v4 = a2;
@@ -3132,346 +3288,317 @@ LABEL_4:
   }
   if ( android::s_callbacks > 12 )
   {
-    if ( a3 != 280 * (a3 / 0x118) )
+    if ( a3 != 412 * (a3 / 0x19C) )
     {
       _android_log_buf_print(1, 6, "RILC", "Data structure expected is RIL_CardStatus_v6");
       property_get("ro.debuggable", &v7, "0");
-      if ( strcmp((const char *)&v7, "1") )
+      if ( strcmp(&v7, "1") )
         return -1;
     }
   }
   else
   {
-    if ( a3 == 276 )
+    if ( a3 == 408 )
     {
       android::Parcel::writeInt32(this, *a2);
       android::Parcel::writeInt32(v3, v4[1]);
       android::Parcel::writeInt32(v3, v4[2]);
       android::Parcel::writeInt32(v3, v4[3]);
-      sub_9874(v3, v4[4], (int)(v4 + 5));
+      sub_A040(v3, v4[4], (int)(v4 + 5));
+      android::Parcel::writeInt32(v3, v4[101]);
+      _android_log_buf_print(1, 3, "RILC", "FIH_QCRIL_UIM_HOTSWAP_PUK, SIM hotswap state: %d", v4[101]);
       return 0;
     }
-    if ( a3 != 280 )
+    if ( a3 != 412 )
     {
       v5 = "responseSimStatus: A RilCardStatus_v6 or _v5 expected\n";
       goto LABEL_4;
     }
   }
-  sub_9838(v3, v4);
+  sub_9FD8(v3, v4);
   return 0;
 }
-// 38A4: using guessed type int _android_log_buf_print(_DWORD, _DWORD, _DWORD, const char *, ...);
-// 3BB0: using guessed type int __fastcall property_get(_DWORD, _DWORD, _DWORD);
-// 156A8: using guessed type int android::s_callbacks;
+// 3B1C: using guessed type int _android_log_buf_print(_DWORD, _DWORD, _DWORD, const char *, ...);
+// 3E1C: using guessed type int __fastcall property_get(_DWORD, _DWORD, _DWORD);
+// 166D8: using guessed type int android::s_callbacks;
 
-//----- (00006790) --------------------------------------------------------
-int __fastcall sub_6790(android::Parcel *this, __int64 *a2)
+//----- (00006C40) --------------------------------------------------------
+int __fastcall sub_6C40(android::Parcel *this, int *a2)
 {
-  android::Parcel *v2; // r6
-  __int64 *v3; // r9
-  __int64 v4; // kr00_8
+  android::Parcel *v2; // r7
+  int *v3; // r9
+  int v4; // r4
   const char *v5; // r0
-  signed int v6; // r1
-  size_t v7; // r8
-  _DWORD *v8; // r4
-  int v9; // r5
-  int v10; // r0
+  signed int v6; // r6
+  signed int v7; // r0
+  size_t v8; // r8
+  _DWORD *v9; // r4
+  int i; // r5
   int v11; // r0
   signed int v12; // r1
   int v13; // r6
   int v14; // r5
   int v15; // r0
   void *v16; // r0
-  int v17; // r0
-  signed int v18; // r1
+  signed int v17; // r1
   int result; // r0
-  const char *v20; // r0
-  int v21; // [sp+4h] [bp-2Ch]
-  size_t nmemb; // [sp+8h] [bp-28h]
-  unsigned int v23; // [sp+Ch] [bp-24h]
-  int v24; // [sp+10h] [bp-20h]
+  const char *v19; // r0
+  int v20; // [sp+4h] [bp-34h]
+  size_t nmemb; // [sp+Ch] [bp-2Ch]
+  unsigned int v22; // [sp+10h] [bp-28h]
+  int v23; // [sp+14h] [bp-24h]
 
   v2 = this;
   v3 = a2;
-  if ( !android::Parcel::readInt32(this, (int *)&nmemb) )
+  if ( android::Parcel::readInt32(this, (int *)&nmemb) )
   {
+    v4 = *v3;
+    v5 = j_requestToString(*(_DWORD *)v3[1]);
+    _android_log_buf_print(1, 6, "RILC", "invalid command block for token %d request %s", v4, v5);
+  }
+  else
+  {
+    v6 = nmemb;
     if ( nmemb )
     {
-      if ( (nmemb & 0x80000000) == 0 )
+      if ( (nmemb & 0x80000000) != 0 )
       {
-        v6 = (unsigned __int64)nmemb >> 30;
-        v7 = 4 * nmemb;
-        if ( !is_mul_ok(4u, nmemb) )
-          v6 = 1;
-        if ( !v6 )
-        {
-          v8 = calloc(nmemb, 4u);
-          if ( !v8 )
-            goto LABEL_31;
-          v9 = 0;
-          while ( 1 )
-          {
-            v10 = android::Parcel::readString16Inplace(v2, &v23);
-            v8[v9] = strndup16to8(v10, v23);
-            v11 = v9 + 1;
-            v12 = 1;
-            if ( v9 + 1 > v9 )
-              v12 = 0;
-            if ( v12 )
-              break;
-            ++v9;
-            if ( v11 >= (signed int)nmemb )
-              goto LABEL_19;
-          }
-        }
-        goto LABEL_34;
-      }
-      v7 = 0;
-      v8 = 0;
-    }
-    else
-    {
-      v8 = calloc(1u, 4u);
-      if ( !v8 )
-      {
-        v20 = j_requestToString(**((_DWORD **)v3 + 1));
-        goto LABEL_33;
-      }
-      v7 = 0;
-    }
-LABEL_19:
-    dword_156AC(**((_DWORD **)v3 + 1), v8, v7);
-    if ( !v8 )
-      goto LABEL_30;
-    if ( (signed int)nmemb <= 0 )
-    {
-LABEL_29:
-      free(v8);
-      goto LABEL_30;
-    }
-    v13 = 0;
-    while ( 1 )
-    {
-      v14 = v8[v13];
-      if ( v14 )
-      {
-        v15 = _strlen_chk(v8[v13], -1);
-        _aeabi_memclr(v14, v15);
-        v16 = (void *)v8[v13];
+        v8 = 0;
+        v9 = 0;
       }
       else
       {
-        v16 = 0;
+        v7 = (unsigned __int64)nmemb >> 30;
+        v8 = 4 * nmemb;
+        if ( !is_mul_ok(4u, nmemb) )
+          v7 = 1;
+        if ( v7 )
+LABEL_29:
+          abort();
+        v9 = calloc(nmemb, 4u);
+        if ( !v9 )
+          goto LABEL_32;
+        for ( i = 0; i < v6; ++i )
+        {
+          v11 = android::Parcel::readString16Inplace(v2, &v22);
+          v9[i] = strndup16to8(v11, v22);
+          v12 = 1;
+          if ( i + 1 > i )
+            v12 = 0;
+          if ( v12 )
+            goto LABEL_29;
+          v6 = nmemb;
+        }
       }
-      free(v16);
-      v17 = v13 + 1;
-      v18 = 1;
-      if ( v13 + 1 > v13 )
-        v18 = 0;
-      if ( v18 )
-        break;
-      ++v13;
-      if ( v17 >= (signed int)nmemb )
-        goto LABEL_29;
     }
-LABEL_34:
-    abort();
+    else
+    {
+      v9 = calloc(1u, 4u);
+      if ( !v9 )
+      {
+        v19 = j_requestToString(*(_DWORD *)v3[1]);
+        goto LABEL_34;
+      }
+      v8 = 0;
+    }
+    dword_166DC(*(_DWORD *)v3[1], v9, v8);
+    if ( v9 )
+    {
+      v13 = 0;
+      while ( v13 < (signed int)nmemb )
+      {
+        v14 = v9[v13];
+        if ( v14 )
+        {
+          v15 = _strlen_chk(v9[v13], -1);
+          _aeabi_memclr(v14, v15);
+          v16 = (void *)v9[v13];
+        }
+        else
+        {
+          v16 = 0;
+        }
+        free(v16);
+        v17 = 1;
+        if ( v13 + 1 > v13 )
+          v17 = 0;
+        ++v13;
+        if ( v17 )
+          goto LABEL_29;
+      }
+      free(v9);
+    }
   }
-  v4 = *v3;
-  v5 = j_requestToString(*(_DWORD *)((unsigned __int64)*v3 >> 32));
-  _android_log_buf_print(1, 6, "RILC", "invalid command block for token %d request %s", (_DWORD)v4, v5);
-LABEL_30:
   while ( 1 )
   {
-    result = _stack_chk_guard - v24;
-    if ( _stack_chk_guard == v24 )
+    result = _stack_chk_guard - v23;
+    if ( _stack_chk_guard == v23 )
       break;
-LABEL_31:
-    v20 = j_requestToString(**((_DWORD **)v3 + 1));
-LABEL_33:
-    _android_log_buf_print(1, 6, "RILC", "Memory allocation failed for request %s", v20, v21);
+LABEL_32:
+    v19 = j_requestToString(*(_DWORD *)v3[1]);
+LABEL_34:
+    _android_log_buf_print(1, 6, "RILC", "Memory allocation failed for request %s", v19, v20);
   }
   return result;
 }
-// 38A4: using guessed type int _android_log_buf_print(_DWORD, _DWORD, _DWORD, const char *, ...);
-// 3988: using guessed type int __fastcall _strlen_chk(_DWORD, _DWORD);
-// 3BC8: using guessed type int __fastcall strndup16to8(_DWORD, _DWORD);
-// 3BD4: using guessed type int __fastcall _aeabi_memclr(_DWORD, _DWORD);
-// 156AC: using guessed type int (__fastcall *dword_156AC)(_DWORD, _DWORD, _DWORD);
+// 3B1C: using guessed type int _android_log_buf_print(_DWORD, _DWORD, _DWORD, const char *, ...);
+// 3C00: using guessed type int __fastcall _strlen_chk(_DWORD, _DWORD);
+// 3E34: using guessed type int __fastcall strndup16to8(_DWORD, _DWORD);
+// 3E40: using guessed type int __fastcall _aeabi_memclr(_DWORD, _DWORD);
+// 166DC: using guessed type int (__fastcall *dword_166DC)(_DWORD, _DWORD, _DWORD);
 
-//----- (00006904) --------------------------------------------------------
-int __fastcall sub_6904(android::Parcel *this, int a2, unsigned int a3)
+//----- (00006DB8) --------------------------------------------------------
+int __fastcall sub_6DB8(android::Parcel *this, int a2, unsigned int a3)
 {
   int v3; // r4
-  unsigned int v4; // r8
-  android::Parcel *v5; // r5
-  const char *v6; // r3
+  android::Parcel *v4; // r5
+  const char *v5; // r3
   int v7; // r6
-  int v9; // r7
-  int v10; // r0
-  signed int v11; // r1
-  int v12; // [sp+0h] [bp-20h]
-  signed int v13; // [sp+4h] [bp-1Ch]
+  int v8; // r7
+  signed int v9; // r1
+  int v10; // [sp+0h] [bp-20h]
+  signed int v11; // [sp+4h] [bp-1Ch]
 
   v3 = a2;
-  v4 = a3;
-  v5 = this;
+  v4 = this;
   if ( !a2 && a3 )
   {
-    v6 = "invalid response: NULL";
+    v5 = "invalid response: NULL";
 LABEL_6:
-    _android_log_buf_print(1, 6, "RILC", v6, v12, v13);
+    _android_log_buf_print(1, 6, "RILC", v5, v10, v11);
+    return -1;
+  }
+  if ( a3 & 3 )
+  {
+    v10 = a3;
+    v11 = 4;
+    v5 = "responseInts: invalid response length %d expected multiple of %d\n";
+    goto LABEL_6;
+  }
+  v7 = a3 >> 2;
+  android::Parcel::writeInt32(this, a3 >> 2);
+  v8 = 0;
+  while ( v8 < v7 )
+  {
+    android::Parcel::writeInt32(v4, *(_DWORD *)(v3 + 4 * v8));
+    v9 = 1;
+    if ( v8 + 1 > v8 )
+      v9 = 0;
+    ++v8;
+    if ( v9 )
+      abort();
+  }
+  return 0;
+}
+// 3B1C: using guessed type int _android_log_buf_print(_DWORD, _DWORD, _DWORD, const char *, ...);
+
+//----- (00006E3C) --------------------------------------------------------
+int __fastcall sub_6E3C(android::Parcel *this, int a2, unsigned int a3)
+{
+  int v3; // r4
+  android::Parcel *v4; // r5
+  const char *v5; // r3
+  int v7; // r9
+  int v8; // r7
+  int v9; // r6
+  int v10; // r6
+  signed int v11; // r1
+  int v12; // [sp+0h] [bp-28h]
+  signed int v13; // [sp+4h] [bp-24h]
+
+  v3 = a2;
+  v4 = this;
+  if ( !a2 && a3 )
+  {
+    v5 = "invalid response: NULL";
+LABEL_6:
+    _android_log_buf_print(1, 6, "RILC", v5, v12, v13);
     return -1;
   }
   if ( a3 & 3 )
   {
     v12 = a3;
     v13 = 4;
-    v6 = "responseInts: invalid response length %d expected multiple of %d\n";
+    v5 = "responseCallList: invalid response length %d expected multiple of %d\n";
     goto LABEL_6;
   }
-  v9 = a3 >> 2;
+  v7 = a3 >> 2;
   android::Parcel::writeInt32(this, a3 >> 2);
-  v7 = 0;
-  if ( v4 >> 2 )
+  v8 = 0;
+  while ( v8 < v7 )
   {
-    do
+    v9 = *(_DWORD *)(v3 + 4 * v8);
+    android::Parcel::writeInt32(v4, *(_DWORD *)v9);
+    android::Parcel::writeInt32(v4, *(_DWORD *)(v9 + 4));
+    android::Parcel::writeInt32(v4, *(_DWORD *)(v9 + 8));
+    android::Parcel::writeInt32(v4, *(unsigned __int8 *)(v9 + 12));
+    android::Parcel::writeInt32(v4, *(unsigned __int8 *)(v9 + 13));
+    android::Parcel::writeInt32(v4, *(unsigned __int8 *)(v9 + 14));
+    android::Parcel::writeInt32(v4, *(unsigned __int8 *)(v9 + 15));
+    android::Parcel::writeInt32(v4, *(unsigned __int8 *)(v9 + 16));
+    sub_A0F8((int)v4, *(_DWORD *)(v9 + 20));
+    android::Parcel::writeInt32(v4, *(_DWORD *)(v9 + 24));
+    sub_A0F8((int)v4, *(_DWORD *)(v9 + 28));
+    android::Parcel::writeInt32(v4, *(_DWORD *)(v9 + 32));
+    if ( android::s_callbacks >= 3 && (v10 = *(_DWORD *)(v9 + 36)) != 0 && *(_DWORD *)(v10 + 12) )
     {
-      android::Parcel::writeInt32(v5, *(_DWORD *)(v3 + 4 * v7));
-      v10 = v7 + 1;
-      v11 = 1;
-      if ( v7 + 1 > v7 )
-        v11 = 0;
-      if ( v11 )
-        abort();
-      ++v7;
+      android::Parcel::writeInt32(v4, 1);
+      android::Parcel::writeInt32(v4, *(_DWORD *)v10);
+      android::Parcel::writeInt32(v4, *(_DWORD *)(v10 + 4));
+      android::Parcel::writeInt32(v4, *(_DWORD *)(v10 + 8));
+      android::Parcel::write(v4, *(const void **)(v10 + 12), *(_DWORD *)(v10 + 8));
     }
-    while ( v10 < v9 );
-    v7 = 0;
-  }
-  return v7;
-}
-// 38A4: using guessed type int _android_log_buf_print(_DWORD, _DWORD, _DWORD, const char *, ...);
-
-//----- (00006994) --------------------------------------------------------
-int __fastcall sub_6994(android::Parcel *this, int a2, unsigned int a3)
-{
-  int v3; // r4
-  unsigned int v4; // r7
-  android::Parcel *v5; // r5
-  const char *v6; // r3
-  int result; // r0
-  int v8; // r8
-  int v9; // r6
-  int v10; // r7
-  int *v11; // r7
-  int v12; // r0
-  signed int v13; // r1
-  int v14; // [sp+0h] [bp-28h]
-  signed int v15; // [sp+4h] [bp-24h]
-
-  v3 = a2;
-  v4 = a3;
-  v5 = this;
-  if ( !a2 && a3 )
-  {
-    v6 = "invalid response: NULL";
-LABEL_6:
-    _android_log_buf_print(1, 6, "RILC", v6, v14, v15);
-    return -1;
-  }
-  if ( a3 & 3 )
-  {
-    v14 = a3;
-    v15 = 4;
-    v6 = "responseCallList: invalid response length %d expected multiple of %d\n";
-    goto LABEL_6;
-  }
-  v8 = a3 >> 2;
-  android::Parcel::writeInt32(this, a3 >> 2);
-  result = 0;
-  if ( v4 >> 2 )
-  {
-    v9 = 0;
-    do
+    else
     {
-      v10 = *(_DWORD *)(v3 + 4 * v9);
-      android::Parcel::writeInt32(v5, *(_DWORD *)v10);
-      android::Parcel::writeInt32(v5, *(_DWORD *)(v10 + 4));
-      android::Parcel::writeInt32(v5, *(_DWORD *)(v10 + 8));
-      android::Parcel::writeInt32(v5, *(unsigned __int8 *)(v10 + 12));
-      android::Parcel::writeInt32(v5, *(unsigned __int8 *)(v10 + 13));
-      android::Parcel::writeInt32(v5, *(unsigned __int8 *)(v10 + 14));
-      android::Parcel::writeInt32(v5, *(unsigned __int8 *)(v10 + 15));
-      android::Parcel::writeInt32(v5, *(unsigned __int8 *)(v10 + 16));
-      sub_98F0((int)v5, *(_DWORD *)(v10 + 20));
-      android::Parcel::writeInt32(v5, *(_DWORD *)(v10 + 24));
-      sub_98F0((int)v5, *(_DWORD *)(v10 + 28));
-      android::Parcel::writeInt32(v5, *(_DWORD *)(v10 + 32));
-      if ( android::s_callbacks >= 3 && (v11 = *(int **)(v10 + 36)) != 0 && v11[3] )
-      {
-        android::Parcel::writeInt32(v5, 1);
-        android::Parcel::writeInt32(v5, *v11);
-        android::Parcel::writeInt32(v5, v11[1]);
-        android::Parcel::writeInt32(v5, v11[2]);
-        android::Parcel::write(v5, (const void *)(*((_QWORD *)v11 + 1) >> 32), *((_QWORD *)v11 + 1));
-      }
-      else
-      {
-        android::Parcel::writeInt32(v5, 0);
-      }
-      v12 = v9 + 1;
-      v13 = 1;
-      if ( v9 + 1 > v9 )
-        v13 = 0;
-      if ( v13 )
-        abort();
-      ++v9;
+      android::Parcel::writeInt32(v4, 0);
     }
-    while ( v12 < v8 );
-    result = 0;
+    v11 = 1;
+    if ( v8 + 1 > v8 )
+      v11 = 0;
+    ++v8;
+    if ( v11 )
+      abort();
   }
-  return result;
+  return 0;
 }
-// 38A4: using guessed type int _android_log_buf_print(_DWORD, _DWORD, _DWORD, const char *, ...);
-// 156A8: using guessed type int android::s_callbacks;
+// 3B1C: using guessed type int _android_log_buf_print(_DWORD, _DWORD, _DWORD, const char *, ...);
+// 166D8: using guessed type int android::s_callbacks;
 
-//----- (00006AC8) --------------------------------------------------------
-int __fastcall sub_6AC8(android::Parcel *a1, unsigned __int64 *a2)
+//----- (00006F70) --------------------------------------------------------
+int __fastcall sub_6F70(android::Parcel *a1, int *a2)
 {
   android::Parcel *v2; // r5
-  unsigned __int64 *v3; // r4
+  int *v3; // r4
   int v4; // r0
-  void *v5; // r6
+  int v5; // r6
   int v6; // r0
   signed int v7; // r2
-  unsigned __int64 v8; // kr00_8
+  int v8; // r5
   const char *v9; // r0
   unsigned int v10; // r0
   unsigned int v11; // r1
-  void *v12; // r4
+  int v12; // r4
   void *v13; // r0
   int v14; // r0
   int v16; // [sp+8h] [bp-40h]
   int v17; // [sp+Ch] [bp-3Ch]
   __int64 v18; // [sp+10h] [bp-38h]
   unsigned __int64 v19; // [sp+18h] [bp-30h]
-  void *ptr; // [sp+20h] [bp-28h]
-  int v21; // [sp+24h] [bp-24h]
-  __int64 *v22; // [sp+28h] [bp-20h]
-  unsigned int v23; // [sp+2Ch] [bp-1Ch]
-  int v24; // [sp+30h] [bp-18h]
+  __int64 ptr; // [sp+20h] [bp-28h]
+  __int64 *v21; // [sp+28h] [bp-20h]
+  unsigned int v22; // [sp+2Ch] [bp-1Ch]
+  int v23; // [sp+30h] [bp-18h]
 
   v2 = a1;
   v3 = a2;
   _android_log_buf_print(1, 3, "RILC", "dispatchDial");
+  ptr = 0LL;
   v21 = 0;
-  v22 = 0;
-  v4 = android::Parcel::readString16Inplace(v2, &v23);
-  v5 = (void *)strndup16to8(v4, v23);
-  ptr = v5;
+  v4 = android::Parcel::readString16Inplace(v2, &v22);
+  v5 = strndup16to8(v4, v22);
+  LODWORD(ptr) = v5;
   v6 = android::Parcel::readInt32(v2, &v17);
-  v21 = v17;
+  HIDWORD(ptr) = v17;
   if ( v6 || !v5 )
     goto LABEL_8;
   if ( android::s_callbacks > 2 )
@@ -3486,158 +3613,144 @@ int __fastcall sub_6AC8(android::Parcel *a1, unsigned __int64 *a2)
         LODWORD(v18) = v17;
         android::Parcel::readInt32(v2, &v17);
         HIDWORD(v18) = v17;
-        if ( android::Parcel::readInt32(v2, (int *)&v23) )
+        if ( android::Parcel::readInt32(v2, (int *)&v22) )
           goto LABEL_8;
-        if ( v23 == -1 )
+        if ( v22 == -1 )
         {
           v11 = 0;
           v10 = 0;
-          v23 = 0;
+          v22 = 0;
         }
         else
         {
-          v10 = android::Parcel::readInplace(v2, v23);
-          v11 = v23;
+          v10 = android::Parcel::readInplace(v2, v22);
+          v11 = v22;
         }
+        v21 = &v18;
         v19 = __PAIR__(v10, v11);
-        v22 = &v18;
       }
       else
       {
-        v22 = 0;
+        v21 = 0;
       }
       v7 = 12;
       goto LABEL_15;
     }
 LABEL_8:
     v8 = *v3;
-    v9 = j_requestToString(*(_DWORD *)(*v3 >> 32));
-    _android_log_buf_print(1, 6, "RILC", "invalid command block for token %d request %s", (_DWORD)v8, v9);
-    return _stack_chk_guard - v24;
+    v9 = j_requestToString(*(_DWORD *)v3[1]);
+    _android_log_buf_print(1, 6, "RILC", "invalid command block for token %d request %s", v8, v9);
+    return _stack_chk_guard - v23;
   }
   v7 = 8;
   v16 = 0;
 LABEL_15:
-  dword_156AC(**((_DWORD **)v3 + 1), &ptr, v7);
+  dword_166DC(*(_DWORD *)v3[1], &ptr, v7);
   v12 = ptr;
   v13 = 0;
-  if ( ptr )
+  if ( (_DWORD)ptr )
   {
     v14 = _strlen_chk(ptr, -1);
     _aeabi_memclr(v12, v14);
-    v13 = ptr;
+    v13 = (void *)ptr;
   }
   free(v13);
   v18 = 0LL;
+  ptr = 0LL;
   v19 = 0LL;
-  ptr = 0;
   v21 = 0;
-  v22 = 0;
-  return _stack_chk_guard - v24;
+  return _stack_chk_guard - v23;
 }
-// 38A4: using guessed type int _android_log_buf_print(_DWORD, _DWORD, _DWORD, const char *, ...);
-// 3988: using guessed type int __fastcall _strlen_chk(_DWORD, _DWORD);
-// 3BC8: using guessed type int __fastcall strndup16to8(_DWORD, _DWORD);
-// 3BD4: using guessed type int __fastcall _aeabi_memclr(_DWORD, _DWORD);
-// 156A8: using guessed type int android::s_callbacks;
-// 156AC: using guessed type int (__fastcall *dword_156AC)(_DWORD, _DWORD, _DWORD);
+// 3B1C: using guessed type int _android_log_buf_print(_DWORD, _DWORD, _DWORD, const char *, ...);
+// 3C00: using guessed type int __fastcall _strlen_chk(_DWORD, _DWORD);
+// 3E34: using guessed type int __fastcall strndup16to8(_DWORD, _DWORD);
+// 3E40: using guessed type int __fastcall _aeabi_memclr(_DWORD, _DWORD);
+// 166D8: using guessed type int android::s_callbacks;
+// 166DC: using guessed type int (__fastcall *dword_166DC)(_DWORD, _DWORD, _DWORD);
 
-//----- (00006C24) --------------------------------------------------------
-int sub_6C24()
+//----- (000070E0) --------------------------------------------------------
+int sub_70E0()
 {
   return 0;
 }
 
-//----- (00006C28) --------------------------------------------------------
-int __fastcall sub_6C28(int a1, int a2)
+//----- (000070E4) --------------------------------------------------------
+int __fastcall sub_70E4(int a1, int a2)
 {
-  sub_98F0(a1, a2);
+  sub_A0F8(a1, a2);
   return 0;
 }
 
-//----- (00006C34) --------------------------------------------------------
-int __fastcall sub_6C34(android::Parcel *this, __int64 *a2)
+//----- (000070F0) --------------------------------------------------------
+int __fastcall sub_70F0(android::Parcel *this, int *a2)
 {
   android::Parcel *v2; // r5
-  __int64 *v3; // r9
+  int *v3; // r9
   signed int v4; // r6
   signed int v5; // r0
   size_t v6; // r8
   void *v7; // r7
-  int v8; // r4
+  int i; // r4
   int v9; // r0
-  int v10; // r0
-  signed int v11; // r1
-  const char *v12; // r0
-  __int64 v13; // kr08_8
-  const char *v14; // r0
-  int result; // r0
-  int v16; // [sp+8h] [bp-28h]
-  size_t nmemb; // [sp+Ch] [bp-24h]
-  int v18; // [sp+10h] [bp-20h]
+  signed int v10; // r1
+  const char *v11; // r0
+  int v12; // r4
+  const char *v13; // r0
+  int v15; // [sp+Ch] [bp-2Ch]
+  size_t nmemb; // [sp+10h] [bp-28h]
+  int v17; // [sp+14h] [bp-24h]
 
   v2 = this;
   v3 = a2;
-  if ( !android::Parcel::readInt32(this, (int *)&nmemb) )
+  if ( android::Parcel::readInt32(this, (int *)&nmemb) || (v4 = nmemb, (signed int)nmemb < 1) )
   {
-    v4 = nmemb;
-    if ( (signed int)nmemb >= 1 )
-    {
-      v5 = (unsigned __int64)nmemb >> 30;
-      v6 = 4 * nmemb;
-      if ( !is_mul_ok(4u, nmemb) )
-        v5 = 1;
-      if ( v5 )
-LABEL_19:
-        abort();
-      v7 = calloc(nmemb, 4u);
-      if ( !v7 )
-      {
-        v12 = j_requestToString(**((_DWORD **)v3 + 1));
-        _android_log_buf_print(1, 6, "RILC", "Memory allocation failed for request %s", v12);
-        goto LABEL_18;
-      }
-      if ( v4 < 1 )
-      {
-LABEL_14:
-        dword_156AC(**((_DWORD **)v3 + 1), v7, v6);
-        free(v7);
-        goto LABEL_18;
-      }
-      v8 = 0;
-      while ( 1 )
-      {
-        v9 = android::Parcel::readInt32(v2, &v16);
-        *((_DWORD *)v7 + v8) = v16;
-        if ( v9 )
-          break;
-        v10 = v8 + 1;
-        v11 = 1;
-        if ( v8 + 1 > v8 )
-          v11 = 0;
-        if ( v11 )
-          goto LABEL_19;
-        ++v8;
-        if ( v10 >= (signed int)nmemb )
-          goto LABEL_14;
-      }
-      free(v7);
-    }
-  }
-  v13 = *v3;
-  v14 = j_requestToString(*(_DWORD *)((unsigned __int64)*v3 >> 32));
-  _android_log_buf_print(1, 6, "RILC", "invalid command block for token %d request %s", (_DWORD)v13, v14);
 LABEL_18:
-  result = _stack_chk_guard - v18;
-  if ( _stack_chk_guard != v18 )
-    goto LABEL_19;
-  return result;
+    v12 = *v3;
+    v13 = j_requestToString(*(_DWORD *)v3[1]);
+    _android_log_buf_print(1, 6, "RILC", "invalid command block for token %d request %s", v12, v13);
+    return _stack_chk_guard - v17;
+  }
+  v5 = (unsigned __int64)nmemb >> 30;
+  v6 = 4 * nmemb;
+  if ( !is_mul_ok(4u, nmemb) )
+    v5 = 1;
+  if ( v5 )
+LABEL_14:
+    abort();
+  v7 = calloc(nmemb, 4u);
+  if ( v7 )
+  {
+    for ( i = 0; ; ++i )
+    {
+      if ( i >= v4 )
+      {
+        dword_166DC(*(_DWORD *)v3[1], v7, v6);
+        free(v7);
+        return _stack_chk_guard - v17;
+      }
+      v9 = android::Parcel::readInt32(v2, &v15);
+      *((_DWORD *)v7 + i) = v15;
+      if ( v9 )
+        break;
+      v10 = 1;
+      if ( i + 1 > i )
+        v10 = 0;
+      if ( v10 )
+        goto LABEL_14;
+      v4 = nmemb;
+    }
+    free(v7);
+    goto LABEL_18;
+  }
+  v11 = j_requestToString(*(_DWORD *)v3[1]);
+  _android_log_buf_print(1, 6, "RILC", "Memory allocation failed for request %s", v11);
+  return _stack_chk_guard - v17;
 }
-// 38A4: using guessed type int _android_log_buf_print(_DWORD, _DWORD, _DWORD, const char *, ...);
-// 156AC: using guessed type int (__fastcall *dword_156AC)(_DWORD, _DWORD, _DWORD);
+// 3B1C: using guessed type int _android_log_buf_print(_DWORD, _DWORD, _DWORD, const char *, ...);
+// 166DC: using guessed type int (__fastcall *dword_166DC)(_DWORD, _DWORD, _DWORD);
 
-//----- (00006D34) --------------------------------------------------------
-int __fastcall sub_6D34(android::Parcel *this, int *a2, int a3)
+//----- (000071F4) --------------------------------------------------------
+int __fastcall sub_71F4(android::Parcel *this, int *a2, int a3)
 {
   int *v3; // r5
   android::Parcel *v4; // r4
@@ -3651,7 +3764,7 @@ int __fastcall sub_6D34(android::Parcel *this, int *a2, int a3)
     if ( a3 == 8 )
     {
       android::Parcel::writeInt32(this, *a2);
-      sub_98F0((int)v4, v3[1]);
+      sub_A0F8((int)v4, v3[1]);
       return 0;
     }
     if ( a3 == 4 )
@@ -3669,10 +3782,10 @@ int __fastcall sub_6D34(android::Parcel *this, int *a2, int a3)
   _android_log_buf_print(1, 6, "RILC", v5, v7);
   return -1;
 }
-// 38A4: using guessed type int _android_log_buf_print(_DWORD, _DWORD, _DWORD, const char *, ...);
+// 3B1C: using guessed type int _android_log_buf_print(_DWORD, _DWORD, _DWORD, const char *, ...);
 
-//----- (00006DA4) --------------------------------------------------------
-signed int __fastcall sub_6DA4(android::Parcel *a1, int *a2, unsigned int a3)
+//----- (00007264) --------------------------------------------------------
+signed int __fastcall sub_7264(android::Parcel *a1, int *a2, unsigned int a3)
 {
   android::Parcel *v3; // r4
   int *v4; // r5
@@ -3680,7 +3793,7 @@ signed int __fastcall sub_6DA4(android::Parcel *a1, int *a2, unsigned int a3)
   const char *v6; // r3
   int v7; // r1
   android::Parcel *v8; // r0
-  int v10; // [sp+0h] [bp-70h]
+  char v10; // [sp+8h] [bp-70h]
 
   v3 = a1;
   v4 = a2;
@@ -3688,120 +3801,121 @@ signed int __fastcall sub_6DA4(android::Parcel *a1, int *a2, unsigned int a3)
   if ( !a2 && a3 )
   {
     v6 = "invalid response: NULL";
-LABEL_14:
+LABEL_13:
     _android_log_buf_print(1, 6, "RILC", v6);
     return -1;
   }
   if ( android::s_callbacks > 12 )
   {
-    if ( a3 != 56 * (a3 / 0x38) )
+    if ( a3 & 0x3F )
     {
       _android_log_buf_print(1, 6, "RILC", "Data structure expected is RIL_SignalStrength_v10");
       property_get("ro.debuggable", &v10, "0");
-      if ( strcmp((const char *)&v10, "1") )
+      if ( strcmp(&v10, "1") )
         return -1;
     }
-    sub_993C(v3, v4);
-    sub_997C(v3, v4);
+    sub_A144(v3, v4);
+    sub_A184(v3, v4);
+    android::Parcel::writeInt32(v3, v4[15]);
+    android::Parcel::writeInt32(v3, v4[2]);
+    v7 = v4[3];
+    v8 = v3;
+    goto LABEL_17;
   }
-  else
+  if ( a3 < 0x24 )
   {
-    if ( a3 < 0x1C )
-    {
-      v6 = "invalid response length";
-      goto LABEL_14;
-    }
-    sub_993C(a1, a2);
-    if ( v5 < 0x30 )
-    {
-      android::Parcel::writeInt32(v3, 99);
-      android::Parcel::writeInt32(v3, 0x7FFFFFFF);
-      android::Parcel::writeInt32(v3, 0x7FFFFFFF);
-      android::Parcel::writeInt32(v3, 0x7FFFFFFF);
-      android::Parcel::writeInt32(v3, 0x7FFFFFFF);
-LABEL_17:
-      v8 = v3;
-      v7 = 0x7FFFFFFF;
-      goto LABEL_18;
-    }
-    sub_997C(v3, v4);
-    if ( v5 < 0x38 )
-      goto LABEL_17;
+    v6 = "invalid response length";
+    goto LABEL_13;
   }
-  v7 = v4[13];
-  v8 = v3;
-LABEL_18:
-  android::Parcel::writeInt32(v8, v7);
+  sub_A144(a1, a2);
+  if ( v5 < 0x38 )
+  {
+    android::Parcel::writeInt32(v3, 99);
+    android::Parcel::writeInt32(v3, 0x7FFFFFFF);
+    android::Parcel::writeInt32(v3, 0x7FFFFFFF);
+    goto LABEL_16;
+  }
+  sub_A184(v3, v4);
+  android::Parcel::writeInt32(v3, 0x7FFFFFFF);
+  if ( v5 < 0x40 )
+  {
+LABEL_16:
+    android::Parcel::writeInt32(v3, 0x7FFFFFFF);
+    android::Parcel::writeInt32(v3, 0x7FFFFFFF);
+    v8 = v3;
+    v7 = 0x7FFFFFFF;
+LABEL_17:
+    android::Parcel::writeInt32(v8, v7);
+    return 0;
+  }
+  android::Parcel::writeInt32(v3, v4[15]);
+  android::Parcel::writeInt32(v3, 0x7FFFFFFF);
+  android::Parcel::writeInt32(v3, v4[2]);
+  android::Parcel::writeInt32(v3, v4[3]);
+  _android_log_buf_print(1, 6, "RILC", "FIH_QCRIL_3RP_GMON_PATCH, rssi = %d/ecio = %d", v4[2], v4[3]);
   return 0;
 }
-// 38A4: using guessed type int _android_log_buf_print(_DWORD, _DWORD, _DWORD, const char *, ...);
-// 3BB0: using guessed type int __fastcall property_get(_DWORD, _DWORD, _DWORD);
-// 156A8: using guessed type int android::s_callbacks;
+// 3B1C: using guessed type int _android_log_buf_print(_DWORD, _DWORD, _DWORD, const char *, ...);
+// 3E1C: using guessed type int __fastcall property_get(_DWORD, _DWORD, _DWORD);
+// 166D8: using guessed type int android::s_callbacks;
 
-//----- (00006EE4) --------------------------------------------------------
-int __fastcall sub_6EE4(android::Parcel *this, int a2, unsigned int a3)
+//----- (000073EC) --------------------------------------------------------
+int __fastcall sub_73EC(android::Parcel *this, int a2, unsigned int a3)
 {
   int v3; // r5
-  unsigned int v4; // r7
-  android::Parcel *v5; // r4
-  const char *v6; // r3
-  int v7; // r6
-  int v9; // r8
-  int v10; // r0
-  signed int v11; // r1
-  int v12; // [sp+0h] [bp-20h]
-  signed int v13; // [sp+4h] [bp-1Ch]
+  android::Parcel *v4; // r4
+  const char *v5; // r3
+  int v6; // r5
+  int v8; // r6
+  int v9; // r7
+  signed int v10; // r1
+  int v11; // [sp+0h] [bp-20h]
+  signed int v12; // [sp+4h] [bp-1Ch]
 
   v3 = a2;
-  v4 = a3;
-  v5 = this;
+  v4 = this;
   if ( !a2 && a3 )
   {
-    v6 = "invalid response: NULL";
+    v5 = "invalid response: NULL";
 LABEL_6:
-    _android_log_buf_print(1, 6, "RILC", v6, v12, v13);
+    _android_log_buf_print(1, 6, "RILC", v5, v11, v12);
     return -1;
   }
   if ( a3 & 3 )
   {
-    v12 = a3;
-    v13 = 4;
-    v6 = "responseStrings: invalid response length %d expected multiple of %d\n";
+    v11 = a3;
+    v12 = 4;
+    v5 = "responseStrings: invalid response length %d expected multiple of %d\n";
     goto LABEL_6;
   }
   if ( a2 )
   {
-    v9 = a3 >> 2;
+    v8 = a3 >> 2;
     android::Parcel::writeInt32(this, a3 >> 2);
-    v7 = 0;
-    if ( v4 >> 2 )
+    v9 = 0;
+    while ( v9 < v8 )
     {
-      do
-      {
-        sub_98F0((int)v5, *(_DWORD *)(v3 + 4 * v7));
-        v10 = v7 + 1;
-        v11 = 1;
-        if ( v7 + 1 > v7 )
-          v11 = 0;
-        if ( v11 )
-          abort();
-        ++v7;
-      }
-      while ( v10 < v9 );
-      v7 = 0;
+      sub_A0F8((int)v4, *(_DWORD *)(v3 + 4 * v9));
+      v10 = 1;
+      if ( v9 + 1 > v9 )
+        v10 = 0;
+      ++v9;
+      if ( v10 )
+        abort();
     }
+    v6 = 0;
   }
   else
   {
-    v7 = 0;
+    v6 = 0;
     android::Parcel::writeInt32(this, 0);
   }
-  return v7;
+  return v6;
 }
-// 38A4: using guessed type int _android_log_buf_print(_DWORD, _DWORD, _DWORD, const char *, ...);
+// 3B1C: using guessed type int _android_log_buf_print(_DWORD, _DWORD, _DWORD, const char *, ...);
 
-//----- (00006F7C) --------------------------------------------------------
-int __fastcall sub_6F7C(android::Parcel *a1, int a2)
+//----- (00007480) --------------------------------------------------------
+int __fastcall sub_7480(android::Parcel *a1, int a2)
 {
   int v2; // r6
   int v3; // r0
@@ -3812,18 +3926,18 @@ int __fastcall sub_6F7C(android::Parcel *a1, int a2)
   v2 = a2;
   v3 = android::Parcel::readString16Inplace(a1, (unsigned int *)&v6);
   v4 = (void *)strndup16to8(v3, v6);
-  dword_156AC(**(_DWORD **)(v2 + 4), v4, 4);
+  dword_166DC(**(_DWORD **)(v2 + 4), v4, 4);
   if ( v4 )
     _strlen_chk(v4, -1);
   free(v4);
   return _stack_chk_guard - v7;
 }
-// 3988: using guessed type int __fastcall _strlen_chk(_DWORD, _DWORD);
-// 3BC8: using guessed type int __fastcall strndup16to8(_DWORD, _DWORD);
-// 156AC: using guessed type int (__fastcall *dword_156AC)(_DWORD, _DWORD, _DWORD);
+// 3C00: using guessed type int __fastcall _strlen_chk(_DWORD, _DWORD);
+// 3E34: using guessed type int __fastcall strndup16to8(_DWORD, _DWORD);
+// 166DC: using guessed type int (__fastcall *dword_166DC)(_DWORD, _DWORD, _DWORD);
 
-//----- (00006FE4) --------------------------------------------------------
-int __fastcall sub_6FE4(android::Parcel *this, int *a2, int a3)
+//----- (000074E8) --------------------------------------------------------
+int __fastcall sub_74E8(android::Parcel *this, int *a2, int a3)
 {
   int *v3; // r5
   android::Parcel *v4; // r4
@@ -3838,7 +3952,7 @@ int __fastcall sub_6FE4(android::Parcel *this, int *a2, int a3)
     if ( a3 == 12 )
     {
       android::Parcel::writeInt32(this, *a2);
-      sub_98F0((int)v4, v3[1]);
+      sub_A0F8((int)v4, v3[1]);
       android::Parcel::writeInt32(v4, v3[2]);
       return 0;
     }
@@ -3853,21 +3967,20 @@ int __fastcall sub_6FE4(android::Parcel *this, int *a2, int a3)
   _android_log_buf_print(1, 6, "RILC", v6, v7, v8);
   return -1;
 }
-// 38A4: using guessed type int _android_log_buf_print(_DWORD, _DWORD, _DWORD, const char *, ...);
+// 3B1C: using guessed type int _android_log_buf_print(_DWORD, _DWORD, _DWORD, const char *, ...);
 
-//----- (0000704C) --------------------------------------------------------
-int __fastcall sub_704C(android::Parcel *this, __int64 *a2)
+//----- (00007550) --------------------------------------------------------
+int __fastcall sub_7550(android::Parcel *this, int *a2)
 {
   android::Parcel *v2; // r5
-  __int64 *v3; // r8
+  int *v3; // r8
   unsigned int v4; // r9
   int v5; // r6
-  int v6; // r0
-  signed int v7; // r1
+  signed int v6; // r1
   int result; // r0
-  int v9; // [sp+0h] [bp-58h]
-  char v10; // [sp+4h] [bp-54h]
-  int v11; // [sp+38h] [bp-20h]
+  int v8; // [sp+0h] [bp-58h]
+  char v9; // [sp+4h] [bp-54h]
+  int v10; // [sp+38h] [bp-20h]
 
   v2 = this;
   v3 = a2;
@@ -3875,44 +3988,39 @@ int __fastcall sub_704C(android::Parcel *this, __int64 *a2)
   if ( android::Parcel::readInt32(v2) < 7 || android::s_callbacks > 3 )
   {
     android::Parcel::setDataPosition(v2, v4);
-    if ( _stack_chk_guard != v11 )
-      goto LABEL_12;
-    result = sub_6790(v2, v3);
+    result = _stack_chk_guard - v10;
+    if ( _stack_chk_guard == v10 )
+      result = sub_6C40(v2, v3);
   }
   else
   {
-    android::Parcel::Parcel((android::Parcel *)&v10);
+    android::Parcel::Parcel((android::Parcel *)&v9);
     v5 = 0;
-    android::Parcel::appendFrom((android::Parcel *)&v10, v2, 0, v4);
-    android::Parcel::writeInt32((android::Parcel *)&v10, 6);
-    do
+    android::Parcel::appendFrom((android::Parcel *)&v9, v2, 0, v4);
+    android::Parcel::writeInt32((android::Parcel *)&v9, 6);
+    while ( v5 <= 5 )
     {
-      android::Parcel::readString16((android::Parcel *)&v9);
-      android::Parcel::writeString16((android::Parcel *)&v10, (const android::String16 *)&v9);
-      android::String16::~String16((android::String16 *)&v9);
-      v6 = v5 + 1;
-      v7 = 1;
+      android::Parcel::readString16((android::Parcel *)&v8);
+      android::Parcel::writeString16((android::Parcel *)&v9, (const android::String16 *)&v8);
+      android::String16::~String16((android::String16 *)&v8);
+      v6 = 1;
       if ( v5 + 1 > v5 )
-        v7 = 0;
-      if ( v7 )
-        goto LABEL_12;
+        v6 = 0;
       ++v5;
+      if ( v6 )
+        abort();
     }
-    while ( v6 < 6 );
-    android::Parcel::setDataPosition((android::Parcel *)&v10, v4);
-    sub_6790((android::Parcel *)&v10, v3);
-    android::Parcel::~Parcel((android::Parcel *)&v10);
-    result = _stack_chk_guard - v11;
-    if ( _stack_chk_guard != v11 )
-LABEL_12:
-      abort();
+    android::Parcel::setDataPosition((android::Parcel *)&v9, v4);
+    sub_6C40((android::Parcel *)&v9, v3);
+    android::Parcel::~Parcel((android::Parcel *)&v9);
+    result = _stack_chk_guard - v10;
   }
   return result;
 }
-// 156A8: using guessed type int android::s_callbacks;
+// 166D8: using guessed type int android::s_callbacks;
 
-//----- (00007134) --------------------------------------------------------
-int __fastcall sub_7134(android::Parcel *this, int a2, unsigned int a3)
+//----- (00007638) --------------------------------------------------------
+int __fastcall sub_7638(android::Parcel *this, int a2, unsigned int a3)
 {
   android::Parcel *v3; // r6
   int v4; // r5
@@ -3922,48 +4030,48 @@ int __fastcall sub_7134(android::Parcel *this, int a2, unsigned int a3)
   v4 = a2;
   v5 = a3;
   if ( android::s_callbacks > 4 )
-    return sub_754C(this, a2, a3);
+    return sub_7A54(this, a2, a3);
   android::Parcel::writeInt32(this, android::s_callbacks);
-  return sub_6EE4(v3, v4, v5);
+  return sub_73EC(v3, v4, v5);
 }
-// 156A8: using guessed type int android::s_callbacks;
+// 166D8: using guessed type int android::s_callbacks;
 
-//----- (00007170) --------------------------------------------------------
-int __fastcall sub_7170(android::Parcel *this, unsigned __int64 *a2)
+//----- (00007674) --------------------------------------------------------
+int __fastcall sub_7674(android::Parcel *this, int *a2)
 {
   android::Parcel *v2; // r5
-  unsigned __int64 *v3; // r4
+  int *v3; // r4
   int v4; // r0
   int v5; // r6
   int v6; // r0
   int v7; // r0
   int v8; // r0
-  unsigned __int64 v9; // kr00_8
+  int v9; // r5
   const char *v10; // r0
   signed int v11; // r2
   int v12; // r4
   int v13; // r0
-  int v14; // r4
+  void *v14; // r4
   int v15; // r0
-  int v16; // r4
+  void *v16; // r4
   int v17; // r0
   void *v18; // r4
   int v19; // r0
   int v21; // [sp+Ch] [bp-4h]
-  __int64 v22; // [sp+10h] [bp+0h]
+  double v22; // [sp+10h] [bp+0h]
   __int64 ptr; // [sp+18h] [bp+8h]
-  __int64 v24; // [sp+20h] [bp+10h]
-  __int64 v25; // [sp+28h] [bp+18h]
+  double v24; // [sp+20h] [bp+10h]
+  void *v25[2]; // [sp+28h] [bp+18h]
   void *v26; // [sp+30h] [bp+20h]
-  unsigned int v27; // [sp+38h] [bp+28h]
-  int v28; // [sp+3Ch] [bp+2Ch]
+  unsigned int v27; // [sp+34h] [bp+24h]
+  int v28; // [sp+38h] [bp+28h]
 
   v2 = this;
   v3 = a2;
-  v22 = 0LL;
+  v22 = 0.0;
   ptr = 0LL;
-  v24 = 0LL;
-  v25 = 0LL;
+  *(_QWORD *)v25 = 0LL;
+  v24 = 0.0;
   android::Parcel::readInt32(this, &v21);
   LODWORD(v22) = v21;
   android::Parcel::readInt32(v2, &v21);
@@ -3977,39 +4085,39 @@ int __fastcall sub_7170(android::Parcel *this, unsigned __int64 *a2)
   v5 = android::Parcel::readInt32(v2, &v21);
   HIDWORD(v24) = v21;
   v6 = android::Parcel::readString16Inplace(v2, &v27);
-  LODWORD(v25) = strndup16to8(v6, v27);
+  v25[0] = (void *)strndup16to8(v6, v27);
   v7 = android::Parcel::readString16Inplace(v2, &v27);
-  HIDWORD(v25) = strndup16to8(v7, v27);
+  v25[1] = (void *)strndup16to8(v7, v27);
   v8 = android::Parcel::readString16Inplace(v2, &v27);
   v26 = (void *)strndup16to8(v8, v27);
   if ( v5 )
   {
     v9 = *v3;
-    v10 = j_requestToString(*(_DWORD *)(*v3 >> 32));
-    _android_log_buf_print(1, 6, "RILC", "invalid command block for token %d request %s", (_DWORD)v9, v10);
+    v10 = j_requestToString(*(_DWORD *)v3[1]);
+    _android_log_buf_print(1, 6, "RILC", "invalid command block for token %d request %s", v9, v10);
   }
   else
   {
     v11 = 36;
     if ( android::s_callbacks < 6 )
       v11 = 32;
-    dword_156AC(**((_DWORD **)v3 + 1), &v22, v11);
+    dword_166DC(*(_DWORD *)v3[1], &v22, v11);
     v12 = ptr;
     if ( (_DWORD)ptr )
     {
       v13 = _strlen_chk(ptr, -1);
       _aeabi_memclr(v12, v13);
     }
-    v14 = v25;
-    if ( (_DWORD)v25 )
+    v14 = v25[0];
+    if ( v25[0] )
     {
-      v15 = _strlen_chk(v25, -1);
+      v15 = _strlen_chk(v25[0], -1);
       _aeabi_memclr(v14, v15);
     }
-    v16 = HIDWORD(v25);
-    if ( HIDWORD(v25) )
+    v16 = v25[1];
+    if ( v25[1] )
     {
-      v17 = _strlen_chk(HIDWORD(v25), -1);
+      v17 = _strlen_chk(v25[1], -1);
       _aeabi_memclr(v16, v17);
     }
     v18 = v26;
@@ -4019,26 +4127,26 @@ int __fastcall sub_7170(android::Parcel *this, unsigned __int64 *a2)
       _aeabi_memclr(v18, v19);
     }
     free((void *)ptr);
-    free((void *)v25);
-    free((void *)HIDWORD(v25));
+    free(v25[0]);
+    free(v25[1]);
     free(v26);
-    v22 = 0LL;
+    v22 = 0.0;
     ptr = 0LL;
-    v24 = 0LL;
-    v25 = 0LL;
+    v24 = 0.0;
+    *(_QWORD *)v25 = 0LL;
     v26 = 0;
   }
   return _stack_chk_guard - v28;
 }
-// 38A4: using guessed type int _android_log_buf_print(_DWORD, _DWORD, _DWORD, const char *, ...);
-// 3988: using guessed type int __fastcall _strlen_chk(_DWORD, _DWORD);
-// 3BC8: using guessed type int __fastcall strndup16to8(_DWORD, _DWORD);
-// 3BD4: using guessed type int __fastcall _aeabi_memclr(_DWORD, _DWORD);
-// 156A8: using guessed type int android::s_callbacks;
-// 156AC: using guessed type int (__fastcall *dword_156AC)(_DWORD, _DWORD, _DWORD);
+// 3B1C: using guessed type int _android_log_buf_print(_DWORD, _DWORD, _DWORD, const char *, ...);
+// 3C00: using guessed type int __fastcall _strlen_chk(_DWORD, _DWORD);
+// 3E34: using guessed type int __fastcall strndup16to8(_DWORD, _DWORD);
+// 3E40: using guessed type int __fastcall _aeabi_memclr(_DWORD, _DWORD);
+// 166D8: using guessed type int android::s_callbacks;
+// 166DC: using guessed type int (__fastcall *dword_166DC)(_DWORD, _DWORD, _DWORD);
 
-//----- (00007304) --------------------------------------------------------
-int __fastcall sub_7304(android::Parcel *this, int *a2, int a3)
+//----- (00007808) --------------------------------------------------------
+int __fastcall sub_7808(android::Parcel *this, int *a2, int a3)
 {
   int *v3; // r5
   android::Parcel *v4; // r4
@@ -4054,7 +4162,7 @@ int __fastcall sub_7304(android::Parcel *this, int *a2, int a3)
     {
       android::Parcel::writeInt32(this, *a2);
       android::Parcel::writeInt32(v4, v3[1]);
-      sub_98F0((int)v4, v3[2]);
+      sub_A0F8((int)v4, v3[2]);
       return 0;
     }
     v7 = a3;
@@ -4068,35 +4176,34 @@ int __fastcall sub_7304(android::Parcel *this, int *a2, int a3)
   _android_log_buf_print(1, 6, "RILC", v6, v7, v8);
   return -1;
 }
-// 38A4: using guessed type int _android_log_buf_print(_DWORD, _DWORD, _DWORD, const char *, ...);
+// 3B1C: using guessed type int _android_log_buf_print(_DWORD, _DWORD, _DWORD, const char *, ...);
 
-//----- (0000736C) --------------------------------------------------------
-int __fastcall sub_736C(android::Parcel *a1, unsigned __int64 *a2)
+//----- (00007870) --------------------------------------------------------
+int __fastcall sub_7870(android::Parcel *a1, int *a2)
 {
   android::Parcel *v2; // r5
-  unsigned __int64 *v3; // r8
+  int *v3; // r8
   int v4; // r0
   _BYTE *v5; // r7
   int v6; // r0
-  unsigned __int64 v7; // kr00_8
+  int v7; // r4
   const char *v8; // r0
-  void *v9; // r4
-  void *v10; // r0
-  int v11; // r0
-  int v13; // [sp+Ch] [bp-4Ch]
-  __int64 v14; // [sp+10h] [bp-48h]
-  __int64 v15; // [sp+18h] [bp-40h]
-  void *ptr; // [sp+20h] [bp-38h]
-  int v17; // [sp+24h] [bp-34h]
-  unsigned int v18; // [sp+28h] [bp-30h]
-  int v19; // [sp+2Ch] [bp-2Ch]
+  int v9; // r4
+  int v10; // r0
+  void *v11; // r0
+  int v13; // [sp+Ch] [bp-3Ch]
+  __int64 v14; // [sp+10h] [bp-38h]
+  __int64 v15; // [sp+18h] [bp-30h]
+  double v16; // [sp+20h] [bp-28h]
+  unsigned int v17; // [sp+28h] [bp-20h]
+  int v18; // [sp+2Ch] [bp-1Ch]
 
   v2 = a1;
   v3 = a2;
   _android_log_buf_print(1, 3, "RILC", "dispatchCallForward");
   v14 = 0LL;
   v15 = 0LL;
-  ptr = 0;
+  LODWORD(v16) = 0;
   android::Parcel::readInt32(v2, &v13);
   LODWORD(v14) = v13;
   android::Parcel::readInt32(v2, &v13);
@@ -4105,283 +4212,247 @@ int __fastcall sub_736C(android::Parcel *a1, unsigned __int64 *a2)
   LODWORD(v15) = v13;
   android::Parcel::readInt32(v2, &v13);
   HIDWORD(v15) = v13;
-  v4 = android::Parcel::readString16Inplace(v2, &v18);
-  v5 = (_BYTE *)strndup16to8(v4, v18);
-  ptr = v5;
+  v4 = android::Parcel::readString16Inplace(v2, &v17);
+  v5 = (_BYTE *)strndup16to8(v4, v17);
+  LODWORD(v16) = v5;
   v6 = android::Parcel::readInt32(v2, &v13);
-  v17 = v13;
+  HIDWORD(v16) = v13;
   if ( v6 )
   {
     v7 = *v3;
-    v8 = j_requestToString(*(_DWORD *)(*v3 >> 32));
-    _android_log_buf_print(1, 6, "RILC", "invalid command block for token %d request %s", (_DWORD)v7, v8);
+    v8 = j_requestToString(*(_DWORD *)v3[1]);
+    _android_log_buf_print(1, 6, "RILC", "invalid command block for token %d request %s", v7, v8);
   }
   else
   {
     if ( v5 && !*v5 )
-      ptr = 0;
-    dword_156AC(**((_DWORD **)v3 + 1), &v14, 24);
-    v9 = ptr;
-    v10 = 0;
-    if ( ptr )
+      LODWORD(v16) = 0;
+    dword_166DC(*(_DWORD *)v3[1], &v14, 24);
+    v9 = LODWORD(v16);
+    if ( LODWORD(v16) )
     {
-      v11 = _strlen_chk(ptr, -1);
-      _aeabi_memclr(v9, v11);
-      v10 = ptr;
+      v10 = _strlen_chk(LODWORD(v16), -1);
+      _aeabi_memclr(v9, v10);
+      v11 = (void *)LODWORD(v16);
     }
-    free(v10);
+    else
+    {
+      v11 = 0;
+    }
+    free(v11);
     v14 = 0LL;
     v15 = 0LL;
-    ptr = 0;
-    v17 = 0;
+    v16 = 0.0;
   }
-  return _stack_chk_guard - v19;
+  return _stack_chk_guard - v18;
 }
-// 38A4: using guessed type int _android_log_buf_print(_DWORD, _DWORD, _DWORD, const char *, ...);
-// 3988: using guessed type int __fastcall _strlen_chk(_DWORD, _DWORD);
-// 3BC8: using guessed type int __fastcall strndup16to8(_DWORD, _DWORD);
-// 3BD4: using guessed type int __fastcall _aeabi_memclr(_DWORD, _DWORD);
-// 156AC: using guessed type int (__fastcall *dword_156AC)(_DWORD, _DWORD, _DWORD);
+// 3B1C: using guessed type int _android_log_buf_print(_DWORD, _DWORD, _DWORD, const char *, ...);
+// 3C00: using guessed type int __fastcall _strlen_chk(_DWORD, _DWORD);
+// 3E34: using guessed type int __fastcall strndup16to8(_DWORD, _DWORD);
+// 3E40: using guessed type int __fastcall _aeabi_memclr(_DWORD, _DWORD);
+// 166DC: using guessed type int (__fastcall *dword_166DC)(_DWORD, _DWORD, _DWORD);
 
-//----- (00007498) --------------------------------------------------------
-int __fastcall sub_7498(android::Parcel *this, int a2, unsigned int a3)
+//----- (000079A0) --------------------------------------------------------
+int __fastcall sub_79A0(android::Parcel *this, int a2, unsigned int a3)
 {
   int v3; // r4
-  unsigned int v4; // r7
-  android::Parcel *v5; // r5
-  const char *v6; // r3
-  int result; // r0
-  int v8; // r8
-  int v9; // r7
-  int *v10; // r6
-  int v11; // r0
-  signed int v12; // r1
-  int v13; // [sp+0h] [bp-20h]
-  signed int v14; // [sp+4h] [bp-1Ch]
+  android::Parcel *v4; // r5
+  const char *v5; // r3
+  int v7; // r8
+  int v8; // r7
+  int *v9; // r6
+  signed int v10; // r1
+  int v11; // [sp+0h] [bp-20h]
+  signed int v12; // [sp+4h] [bp-1Ch]
 
   v3 = a2;
-  v4 = a3;
-  v5 = this;
+  v4 = this;
   if ( !a2 && a3 )
   {
-    v6 = "invalid response: NULL";
+    v5 = "invalid response: NULL";
 LABEL_6:
-    _android_log_buf_print(1, 6, "RILC", v6, v13, v14);
+    _android_log_buf_print(1, 6, "RILC", v5, v11, v12);
     return -1;
   }
   if ( a3 & 3 )
   {
-    v13 = a3;
-    v14 = 4;
-    v6 = "responseCallForwards: invalid response length %d expected multiple of %d";
+    v11 = a3;
+    v12 = 4;
+    v5 = "responseCallForwards: invalid response length %d expected multiple of %d";
     goto LABEL_6;
   }
-  v8 = a3 >> 2;
+  v7 = a3 >> 2;
   android::Parcel::writeInt32(this, a3 >> 2);
-  result = 0;
-  if ( v4 >> 2 )
+  v8 = 0;
+  while ( v8 < v7 )
   {
-    v9 = 0;
-    do
-    {
-      v10 = *(int **)(v3 + 4 * v9);
-      android::Parcel::writeInt32(v5, *v10);
-      android::Parcel::writeInt32(v5, v10[1]);
-      android::Parcel::writeInt32(v5, v10[2]);
-      android::Parcel::writeInt32(v5, v10[3]);
-      sub_98F0((int)v5, v10[4]);
-      android::Parcel::writeInt32(v5, v10[5]);
-      v11 = v9 + 1;
-      v12 = 1;
-      if ( v9 + 1 > v9 )
-        v12 = 0;
-      if ( v12 )
-        abort();
-      ++v9;
-    }
-    while ( v11 < v8 );
-    result = 0;
+    v9 = *(int **)(v3 + 4 * v8);
+    android::Parcel::writeInt32(v4, *v9);
+    android::Parcel::writeInt32(v4, v9[1]);
+    android::Parcel::writeInt32(v4, v9[2]);
+    android::Parcel::writeInt32(v4, v9[3]);
+    sub_A0F8((int)v4, v9[4]);
+    android::Parcel::writeInt32(v4, v9[5]);
+    v10 = 1;
+    if ( v8 + 1 > v8 )
+      v10 = 0;
+    ++v8;
+    if ( v10 )
+      abort();
   }
-  return result;
+  return 0;
 }
-// 38A4: using guessed type int _android_log_buf_print(_DWORD, _DWORD, _DWORD, const char *, ...);
+// 3B1C: using guessed type int _android_log_buf_print(_DWORD, _DWORD, _DWORD, const char *, ...);
 
-//----- (0000754C) --------------------------------------------------------
-int __fastcall sub_754C(android::Parcel *this, int a2, unsigned int a3)
+//----- (00007A54) --------------------------------------------------------
+int __fastcall sub_7A54(android::Parcel *this, int a2, unsigned int a3)
 {
-  int v3; // r8
-  android::Parcel *v4; // r5
-  int v5; // r4
-  unsigned int v6; // r6
+  android::Parcel *v3; // r5
+  int v4; // r4
+  unsigned int v5; // r6
   int result; // r0
-  int v8; // r7
-  int v9; // r1
-  signed int v10; // r0
-  int v11; // r7
-  int v12; // r1
-  signed int v13; // r0
-  int v14; // r7
-  int v15; // r1
-  signed int v16; // r0
-  char v17; // [sp+8h] [bp-78h]
-  int v18; // [sp+64h] [bp-1Ch]
+  signed int v7; // r8
+  signed int v8; // r8
+  signed int v9; // r8
+  int v10; // r6
+  int *v11; // r7
+  signed int v12; // r1
+  int v13; // r6
+  int *v14; // r7
+  signed int v15; // r1
+  int v16; // r6
+  int *v17; // r7
+  signed int v18; // r1
+  char v19; // [sp+8h] [bp-78h]
+  int v20; // [sp+64h] [bp-1Ch]
 
-  v4 = this;
-  v5 = a2;
-  v6 = a3;
+  v3 = this;
+  v4 = a2;
+  v5 = a3;
   if ( android::s_callbacks > 12 )
   {
-    if ( !(a3 % 0x2C)
-      || (_android_log_buf_print(1, 6, "RILC", "Data structure expected is RIL_Data_Call_Response_v11"),
-          property_get("ro.debuggable", &v17, "0"),
-          !strcmp(&v17, "1")) )
-    {
-      result = sub_99F8(v4, v5, v6);
-      goto LABEL_23;
-    }
-    goto LABEL_22;
+    if ( !(a3 % 0x2C) )
+      return sub_A200(v3, v4, v5);
+    _android_log_buf_print(1, 6, "RILC", "Data structure expected is RIL_Data_Call_Response_v11");
+    property_get("ro.debuggable", &v19, "0");
+    if ( !strcmp(&v19, "1") )
+      return sub_A200(v3, v4, v5);
+    return -1;
   }
   if ( android::s_callbacks <= 4 )
   {
     _android_log_buf_print(1, 3, "RILC", "responseDataCallList: v4");
-    if ( v5 || !v6 )
+    if ( !v4 && v5 )
     {
-      v3 = v6 / 0x14;
-      if ( !(v6 % 0x14) )
-        goto LABEL_24;
+LABEL_21:
+      _android_log_buf_print(1, 6, "RILC", "invalid response: NULL");
+      return -1;
+    }
+    v9 = v5 / 0x14;
+    if ( v5 % 0x14 )
+    {
       _android_log_buf_print(
         1,
         6,
         "RILC",
         "responseDataCallListV4: invalid response length %d expected multiple of %d",
-        v6,
+        v5,
         20);
-      goto LABEL_22;
+      return -1;
     }
-LABEL_21:
-    _android_log_buf_print(1, 6, "RILC", "invalid response: NULL");
-LABEL_22:
-    result = -1;
-    goto LABEL_23;
-  }
-  v3 = a3 / 0x24;
-  if ( a3 % 0x24 )
-  {
-    v3 = a3 / 0x28;
-    if ( a3 % 0x28 )
+    android::Parcel::writeInt32(v3, 4);
+    android::Parcel::writeInt32(v3, v5 / 0x14);
+    v10 = 0;
+    while ( v10 < v9 )
     {
-      if ( _stack_chk_guard != v18 )
-        goto LABEL_24;
-      return sub_99F8(this, a2, a3);
-    }
-    if ( !a2 && a3 )
-      goto LABEL_21;
-    android::Parcel::writeInt32(this, 10);
-    android::Parcel::writeInt32(v4, v6 / 0x28);
-    v14 = 0;
-    if ( v6 < 0x28 )
-      goto LABEL_42;
-    do
-    {
-      android::Parcel::writeInt32(v4, *(_DWORD *)(v5 + 40 * v14));
-      v6 = v5 + 40 * v14;
-      android::Parcel::writeInt32(v4, *(_DWORD *)(v6 + 4));
-      android::Parcel::writeInt32(v4, *(_DWORD *)(v6 + 8));
-      android::Parcel::writeInt32(v4, *(_DWORD *)(v6 + 12));
-      sub_98F0((int)v4, *(_DWORD *)(v6 + 16));
-      sub_98F0((int)v4, *(_DWORD *)(v6 + 20));
-      sub_98F0((int)v4, *(_DWORD *)(v6 + 24));
-      sub_98F0((int)v4, *(_DWORD *)(v6 + 28));
-      sub_98F0((int)v4, *(_DWORD *)(v6 + 32));
-      sub_98F0((int)v4, *(_DWORD *)(v6 + 36));
-      v15 = v14 + 1;
-      v16 = 1;
-      if ( v14 + 1 > v14 )
-        v16 = 0;
-      if ( v16 )
+      android::Parcel::writeInt32(v3, *(_DWORD *)(v4 + 20 * v10));
+      v11 = (int *)(v4 + 20 * v10);
+      android::Parcel::writeInt32(v3, v11[1]);
+      sub_A0F8((int)v3, v11[2]);
+      sub_A0F8((int)v3, v11[4]);
+      v12 = 1;
+      if ( v10 + 1 > v10 )
+        v12 = 0;
+      ++v10;
+      if ( v12 )
         abort();
-      result = 0;
-      ++v14;
     }
-    while ( v15 < v3 );
+    return 0;
   }
-  else
+  v7 = a3 / 0x24;
+  if ( !(a3 % 0x24) )
   {
     if ( !a2 && a3 )
       goto LABEL_21;
     android::Parcel::writeInt32(this, 6);
-    android::Parcel::writeInt32(v4, v6 / 0x24);
-    v11 = 0;
-    if ( v6 < 0x24 )
-      goto LABEL_42;
-    do
+    android::Parcel::writeInt32(v3, v5 / 0x24);
+    v13 = 0;
+    while ( v13 < v7 )
     {
-      android::Parcel::writeInt32(v4, *(_DWORD *)(v5 + 36 * v11));
-      v6 = v5 + 36 * v11;
-      android::Parcel::writeInt32(v4, *(_DWORD *)(v6 + 4));
-      android::Parcel::writeInt32(v4, *(_DWORD *)(v6 + 8));
-      android::Parcel::writeInt32(v4, *(_DWORD *)(v6 + 12));
-      sub_98F0((int)v4, *(_DWORD *)(v6 + 16));
-      sub_98F0((int)v4, *(_DWORD *)(v6 + 20));
-      sub_98F0((int)v4, *(_DWORD *)(v6 + 24));
-      sub_98F0((int)v4, *(_DWORD *)(v6 + 28));
-      sub_98F0((int)v4, *(_DWORD *)(v6 + 32));
-      v12 = v11 + 1;
-      v13 = 1;
-      if ( v11 + 1 > v11 )
-        v13 = 0;
-      if ( v13 )
+      android::Parcel::writeInt32(v3, *(_DWORD *)(v4 + 36 * v13));
+      v14 = (int *)(v4 + 36 * v13);
+      android::Parcel::writeInt32(v3, v14[1]);
+      android::Parcel::writeInt32(v3, v14[2]);
+      android::Parcel::writeInt32(v3, v14[3]);
+      sub_A0F8((int)v3, v14[4]);
+      sub_A0F8((int)v3, v14[5]);
+      sub_A0F8((int)v3, v14[6]);
+      sub_A0F8((int)v3, v14[7]);
+      sub_A0F8((int)v3, v14[8]);
+      v15 = 1;
+      if ( v13 + 1 > v13 )
+        v15 = 0;
+      ++v13;
+      if ( v15 )
         abort();
-      result = 0;
-      ++v11;
     }
-    while ( v12 < v3 );
+    return 0;
   }
-LABEL_23:
-  while ( _stack_chk_guard != v18 )
+  v8 = a3 / 0x28;
+  if ( !(a3 % 0x28) )
   {
-LABEL_24:
-    android::Parcel::writeInt32(v4, 4);
-    android::Parcel::writeInt32(v4, v3);
-    v8 = 0;
-    if ( v6 < 0x14 )
+    if ( !a2 && a3 )
+      goto LABEL_21;
+    android::Parcel::writeInt32(this, 10);
+    android::Parcel::writeInt32(v3, v5 / 0x28);
+    v16 = 0;
+    while ( v16 < v8 )
     {
-LABEL_42:
-      result = 0;
+      android::Parcel::writeInt32(v3, *(_DWORD *)(v4 + 40 * v16));
+      v17 = (int *)(v4 + 40 * v16);
+      android::Parcel::writeInt32(v3, v17[1]);
+      android::Parcel::writeInt32(v3, v17[2]);
+      android::Parcel::writeInt32(v3, v17[3]);
+      sub_A0F8((int)v3, v17[4]);
+      sub_A0F8((int)v3, v17[5]);
+      sub_A0F8((int)v3, v17[6]);
+      sub_A0F8((int)v3, v17[7]);
+      sub_A0F8((int)v3, v17[8]);
+      sub_A0F8((int)v3, v17[9]);
+      v18 = 1;
+      if ( v16 + 1 > v16 )
+        v18 = 0;
+      ++v16;
+      if ( v18 )
+        abort();
     }
-    else
-    {
-      do
-      {
-        android::Parcel::writeInt32(v4, *(_DWORD *)(v5 + 20 * v8));
-        v6 = v5 + 20 * v8;
-        android::Parcel::writeInt32(v4, *(_DWORD *)(v6 + 4));
-        sub_98F0((int)v4, *(_DWORD *)(v6 + 8));
-        sub_98F0((int)v4, *(_DWORD *)(v6 + 16));
-        v9 = v8 + 1;
-        v10 = 1;
-        if ( v8 + 1 > v8 )
-          v10 = 0;
-        if ( v10 )
-          abort();
-        result = 0;
-        ++v8;
-      }
-      while ( v9 < v3 );
-    }
+    return 0;
   }
+  result = _stack_chk_guard - v20;
+  if ( _stack_chk_guard == v20 )
+    result = sub_A200(v3, a2, a3);
   return result;
 }
-// 38A4: using guessed type int _android_log_buf_print(_DWORD, _DWORD, _DWORD, const char *, ...);
-// 3BB0: using guessed type int __fastcall property_get(_DWORD, _DWORD, _DWORD);
-// 156A8: using guessed type int android::s_callbacks;
+// 3B1C: using guessed type int _android_log_buf_print(_DWORD, _DWORD, _DWORD, const char *, ...);
+// 3E1C: using guessed type int __fastcall property_get(_DWORD, _DWORD, _DWORD);
+// 166D8: using guessed type int android::s_callbacks;
 
-//----- (0000786C) --------------------------------------------------------
-int __fastcall sub_786C(android::Parcel *this, unsigned __int64 *a2)
+//----- (00007D58) --------------------------------------------------------
+int __fastcall sub_7D58(android::Parcel *this, int *a2)
 {
   android::Parcel *v2; // r5
-  unsigned __int64 *v3; // r4
-  unsigned __int64 v4; // kr00_8
+  int *v3; // r4
+  int v4; // r5
   const char *v5; // r0
   int v6; // r1
   int v7; // r0
@@ -4393,8 +4464,8 @@ int __fastcall sub_786C(android::Parcel *this, unsigned __int64 *a2)
   if ( android::Parcel::readInt32(this, &v9) )
   {
     v4 = *v3;
-    v5 = j_requestToString(*(_DWORD *)(*v3 >> 32));
-    _android_log_buf_print(1, 6, "RILC", "invalid command block for token %d request %s", (_DWORD)v4, v5);
+    v5 = j_requestToString(*(_DWORD *)v3[1]);
+    _android_log_buf_print(1, 6, "RILC", "invalid command block for token %d request %s", v4, v5);
   }
   else
   {
@@ -4405,15 +4476,15 @@ int __fastcall sub_786C(android::Parcel *this, unsigned __int64 *a2)
       v9 = 0;
     }
     v7 = android::Parcel::readInplace(v2, v6);
-    dword_156AC(**((_DWORD **)v3 + 1), v7, v9);
+    dword_166DC(*(_DWORD *)v3[1], v7, v9);
   }
   return _stack_chk_guard - v10;
 }
-// 38A4: using guessed type int _android_log_buf_print(_DWORD, _DWORD, _DWORD, const char *, ...);
-// 156AC: using guessed type int (__fastcall *dword_156AC)(_DWORD, _DWORD, _DWORD);
+// 3B1C: using guessed type int _android_log_buf_print(_DWORD, _DWORD, _DWORD, const char *, ...);
+// 166DC: using guessed type int (__fastcall *dword_166DC)(_DWORD, _DWORD, _DWORD);
 
-//----- (000078F8) --------------------------------------------------------
-int __fastcall sub_78F8(android::Parcel *this, const void *a2, int a3)
+//----- (00007DE4) --------------------------------------------------------
+int __fastcall sub_7DE4(android::Parcel *this, const void *a2, int a3)
 {
   const void *v3; // r6
   unsigned int v4; // r4
@@ -4443,133 +4514,123 @@ int __fastcall sub_78F8(android::Parcel *this, const void *a2, int a3)
   }
   return result;
 }
-// 38A4: using guessed type int _android_log_buf_print(_DWORD, _DWORD, _DWORD, const char *, ...);
+// 3B1C: using guessed type int _android_log_buf_print(_DWORD, _DWORD, _DWORD, const char *, ...);
 
-//----- (00007948) --------------------------------------------------------
-int __fastcall sub_7948(android::Parcel *a1, unsigned __int64 *a2)
+//----- (00007E34) --------------------------------------------------------
+int __fastcall sub_7E34(android::Parcel *a1, int *a2)
 {
   android::Parcel *v2; // r5
-  unsigned __int64 *v3; // r4
+  int *v3; // r4
   int v4; // r6
   int v5; // r0
-  void *v6; // r0
+  int v6; // r0
   int v7; // r0
-  void *v8; // r4
-  void *v9; // r0
-  int v10; // r0
-  unsigned __int64 v11; // kr00_8
-  const char *v12; // r0
-  int v14; // [sp+Ch] [bp-2Ch]
-  int v15; // [sp+10h] [bp-28h]
-  void *ptr; // [sp+14h] [bp-24h]
-  int v17; // [sp+18h] [bp-20h]
-  unsigned int v18; // [sp+20h] [bp-18h]
-  int v19; // [sp+24h] [bp-14h]
+  int v8; // r0
+  _DWORD *v9; // r2
+  int v10; // r4
+  void *v11; // r0
+  int v12; // r0
+  int v13; // r5
+  const char *v14; // r0
+  int v16; // [sp+Ch] [bp-2Ch]
+  __int64 v17; // [sp+10h] [bp-28h]
+  int v18; // [sp+18h] [bp-20h]
+  unsigned int v19; // [sp+20h] [bp-18h]
+  int v20; // [sp+24h] [bp-14h]
 
   v2 = a1;
   v3 = a2;
   _android_log_buf_print(1, 3, "RILC", "dispatchSmsWrite");
-  v15 = 0;
-  ptr = 0;
-  v17 = 0;
-  v4 = android::Parcel::readInt32(v2, &v14);
-  v15 = v14;
-  v5 = android::Parcel::readString16Inplace(v2, &v18);
-  v6 = (void *)strndup16to8(v5, v18);
-  ptr = v6;
+  v17 = 0LL;
+  v18 = 0;
+  v4 = android::Parcel::readInt32(v2, &v16);
+  LODWORD(v17) = v16;
+  v5 = android::Parcel::readString16Inplace(v2, &v19);
+  v6 = strndup16to8(v5, v19);
+  HIDWORD(v17) = v6;
   if ( v4 || !v6 )
   {
-    v11 = *v3;
-    v12 = j_requestToString(*(_DWORD *)(*v3 >> 32));
-    _android_log_buf_print(1, 6, "RILC", "invalid command block for token %d request %s", (_DWORD)v11, v12);
+    v13 = *v3;
+    v14 = j_requestToString(*(_DWORD *)v3[1]);
+    _android_log_buf_print(1, 6, "RILC", "invalid command block for token %d request %s", v13, v14);
   }
   else
   {
-    v7 = android::Parcel::readString16Inplace(v2, &v18);
-    v17 = strndup16to8(v7, v18);
-    dword_156AC(**((_DWORD **)v3 + 1), &v15, 12);
-    v8 = ptr;
-    v9 = 0;
-    if ( ptr )
+    v7 = android::Parcel::readString16Inplace(v2, &v19);
+    v8 = strndup16to8(v7, v19);
+    v9 = (_DWORD *)v3[1];
+    v18 = v8;
+    dword_166DC(*v9, &v17, 12);
+    v10 = HIDWORD(v17);
+    v11 = 0;
+    if ( HIDWORD(v17) )
     {
-      v10 = _strlen_chk(ptr, -1);
-      _aeabi_memclr(v8, v10);
-      v9 = ptr;
+      v12 = _strlen_chk(HIDWORD(v17), -1);
+      _aeabi_memclr(v10, v12);
+      v11 = (void *)HIDWORD(v17);
     }
-    free(v9);
-    v15 = 0;
-    ptr = 0;
-    v17 = 0;
+    free(v11);
+    v17 = 0LL;
+    v18 = 0;
   }
-  return _stack_chk_guard - v19;
+  return _stack_chk_guard - v20;
 }
-// 38A4: using guessed type int _android_log_buf_print(_DWORD, _DWORD, _DWORD, const char *, ...);
-// 3988: using guessed type int __fastcall _strlen_chk(_DWORD, _DWORD);
-// 3BC8: using guessed type int __fastcall strndup16to8(_DWORD, _DWORD);
-// 3BD4: using guessed type int __fastcall _aeabi_memclr(_DWORD, _DWORD);
-// 156AC: using guessed type int (__fastcall *dword_156AC)(_DWORD, _DWORD, _DWORD);
+// 3B1C: using guessed type int _android_log_buf_print(_DWORD, _DWORD, _DWORD, const char *, ...);
+// 3C00: using guessed type int __fastcall _strlen_chk(_DWORD, _DWORD);
+// 3E34: using guessed type int __fastcall strndup16to8(_DWORD, _DWORD);
+// 3E40: using guessed type int __fastcall _aeabi_memclr(_DWORD, _DWORD);
+// 166DC: using guessed type int (__fastcall *dword_166DC)(_DWORD, _DWORD, _DWORD);
 
-//----- (00007A30) --------------------------------------------------------
-int __fastcall sub_7A30(android::Parcel *this, int a2, unsigned int a3)
+//----- (00007F28) --------------------------------------------------------
+int __fastcall sub_7F28(android::Parcel *this, int a2, unsigned int a3)
 {
-  int v3; // r4
-  unsigned int v4; // r7
-  android::Parcel *v5; // r5
-  const char *v6; // r3
-  int result; // r0
-  int v8; // r8
-  int v9; // r7
-  int *v10; // r6
-  int v11; // r0
-  signed int v12; // r1
-  int v13; // [sp+0h] [bp-20h]
-  signed int v14; // [sp+4h] [bp-1Ch]
+  int v3; // r8
+  android::Parcel *v4; // r5
+  const char *v5; // r3
+  int v7; // r6
+  int v8; // r7
+  int *v9; // r4
+  signed int v10; // r1
+  int v11; // [sp+0h] [bp-20h]
+  signed int v12; // [sp+4h] [bp-1Ch]
 
   v3 = a2;
-  v4 = a3;
-  v5 = this;
+  v4 = this;
   if ( !a2 && a3 )
   {
-    v6 = "invalid response: NULL";
+    v5 = "invalid response: NULL";
 LABEL_6:
-    _android_log_buf_print(1, 6, "RILC", v6, v13, v14);
+    _android_log_buf_print(1, 6, "RILC", v5, v11, v12);
     return -1;
   }
   if ( a3 & 3 )
   {
-    v13 = a3;
-    v14 = 4;
-    v6 = "responseCellList: invalid response length %d expected multiple of %d\n";
+    v11 = a3;
+    v12 = 4;
+    v5 = "responseCellList: invalid response length %d expected multiple of %d\n";
     goto LABEL_6;
   }
-  v8 = a3 >> 2;
+  v7 = a3 >> 2;
   android::Parcel::writeInt32(this, a3 >> 2);
-  result = 0;
-  if ( v4 >> 2 )
+  v8 = 0;
+  while ( v8 < v7 )
   {
-    v9 = 0;
-    do
-    {
-      v10 = *(int **)(v3 + 4 * v9);
-      android::Parcel::writeInt32(v5, v10[1]);
-      sub_98F0((int)v5, *v10);
-      v11 = v9 + 1;
-      v12 = 1;
-      if ( v9 + 1 > v9 )
-        v12 = 0;
-      if ( v12 )
-        abort();
-      ++v9;
-    }
-    while ( v11 < v8 );
-    result = 0;
+    v9 = *(int **)(v3 + 4 * v8);
+    android::Parcel::writeInt32(v4, v9[1]);
+    sub_A0F8((int)v4, *v9);
+    v10 = 1;
+    if ( v8 + 1 > v8 )
+      v10 = 0;
+    ++v8;
+    if ( v10 )
+      abort();
   }
-  return result;
+  return 0;
 }
-// 38A4: using guessed type int _android_log_buf_print(_DWORD, _DWORD, _DWORD, const char *, ...);
+// 3B1C: using guessed type int _android_log_buf_print(_DWORD, _DWORD, _DWORD, const char *, ...);
 
-//----- (00007AC4) --------------------------------------------------------
-int __fastcall sub_7AC4(android::Parcel *a1, int *a2)
+//----- (00007FBC) --------------------------------------------------------
+int __fastcall sub_7FBC(android::Parcel *a1, int *a2)
 {
   android::Parcel *v2; // r5
   int *v3; // r4
@@ -4583,7 +4644,7 @@ int __fastcall sub_7AC4(android::Parcel *a1, int *a2)
   v2 = a1;
   v3 = a2;
   _android_log_buf_print(1, 3, "RILC", "dispatchCdmaSms");
-  v4 = sub_9AF0(v2, (int)&v9);
+  v4 = sub_A2F4(v2, (int)&v9);
   v5 = *(_DWORD *)v3[1];
   if ( v4 )
   {
@@ -4593,22 +4654,22 @@ int __fastcall sub_7AC4(android::Parcel *a1, int *a2)
   }
   else
   {
-    dword_156AC(v5, &v9, 372);
+    dword_166DC(v5, &v9, 372);
     _aeabi_memclr8(&v9, 372);
   }
   return _stack_chk_guard - v10;
 }
-// 38A4: using guessed type int _android_log_buf_print(_DWORD, _DWORD, _DWORD, const char *, ...);
-// 3C34: using guessed type int __fastcall _aeabi_memclr8(_DWORD, _DWORD);
-// 156AC: using guessed type int (__fastcall *dword_156AC)(_DWORD, _DWORD, _DWORD);
+// 3B1C: using guessed type int _android_log_buf_print(_DWORD, _DWORD, _DWORD, const char *, ...);
+// 3EA0: using guessed type int __fastcall _aeabi_memclr8(_DWORD, _DWORD);
+// 166DC: using guessed type int (__fastcall *dword_166DC)(_DWORD, _DWORD, _DWORD);
 
-//----- (00007B64) --------------------------------------------------------
-int __fastcall sub_7B64(android::Parcel *a1, int *a2)
+//----- (0000805C) --------------------------------------------------------
+int __fastcall sub_805C(android::Parcel *a1, int *a2)
 {
   android::Parcel *v2; // r5
   int *v3; // r4
-  int v4; // r0
-  bool v5; // zf
+  int v4; // r1
+  int *v5; // r0
   int v6; // r0
   int v7; // r4
   const char *v8; // r0
@@ -4625,470 +4686,417 @@ int __fastcall sub_7B64(android::Parcel *a1, int *a2)
   android::Parcel::readInt32(v2, &v10);
   v11 = v10;
   v4 = android::Parcel::readInt32(v2, &v10);
+  v5 = (int *)v3[1];
   v12 = v10;
-  v5 = v4 == 0;
-  v6 = *(_DWORD *)v3[1];
-  if ( v5 )
-  {
-    dword_156AC(v6, &v11, 8);
-    v11 = 0;
-    v12 = 0;
-  }
-  else
+  v6 = *v5;
+  if ( v4 )
   {
     v7 = *v3;
     v8 = j_requestToString(v6);
     _android_log_buf_print(1, 6, "RILC", "invalid command block for token %d request %s", v7, v8);
   }
+  else
+  {
+    dword_166DC(v6, &v11, 8);
+    v11 = 0;
+    v12 = 0;
+  }
   return _stack_chk_guard - v13;
 }
-// 38A4: using guessed type int _android_log_buf_print(_DWORD, _DWORD, _DWORD, const char *, ...);
-// 156AC: using guessed type int (__fastcall *dword_156AC)(_DWORD, _DWORD, _DWORD);
+// 3B1C: using guessed type int _android_log_buf_print(_DWORD, _DWORD, _DWORD, const char *, ...);
+// 166DC: using guessed type int (__fastcall *dword_166DC)(_DWORD, _DWORD, _DWORD);
 
-//----- (00007C14) --------------------------------------------------------
-int __fastcall sub_7C14(android::Parcel *a1, int a2, unsigned int a3)
+//----- (0000810C) --------------------------------------------------------
+int __fastcall sub_810C(android::Parcel *a1, int a2, unsigned int a3)
 {
-  unsigned int v3; // r8
+  int v3; // r6
   int v4; // r4
-  int v5; // r6
-  android::Parcel *v6; // r5
-  int v7; // r7
-  int v8; // r0
-  signed int v9; // r1
+  android::Parcel *v5; // r5
+  int v6; // r7
+  signed int v7; // r1
 
-  v3 = a3;
+  v3 = a3 >> 2;
   v4 = a2;
-  v5 = a3 >> 2;
-  v6 = a1;
+  v5 = a1;
   android::Parcel::writeInt32(a1, a3 >> 2);
-  v7 = 0;
-  if ( v3 >> 2 )
+  v6 = 0;
+  while ( v6 < v3 )
   {
-    do
-    {
-      android::Parcel::writeInt32(v6, **(_DWORD **)(v4 + 4 * v7));
-      android::Parcel::writeInt32(v6, *(_DWORD *)(*(_DWORD *)(v4 + 4 * v7) + 4));
-      android::Parcel::writeInt32(v6, *(_DWORD *)(*(_DWORD *)(v4 + 4 * v7) + 8));
-      android::Parcel::writeInt32(v6, *(_DWORD *)(*(_DWORD *)(v4 + 4 * v7) + 12));
-      android::Parcel::writeInt32(v6, *(unsigned __int8 *)(*(_DWORD *)(v4 + 4 * v7) + 16));
-      v8 = v7 + 1;
-      v9 = 1;
-      if ( v7 + 1 > v7 )
-        v9 = 0;
-      if ( v9 )
-        abort();
-      ++v7;
-    }
-    while ( v8 < v5 );
+    android::Parcel::writeInt32(v5, **(_DWORD **)(v4 + 4 * v6));
+    android::Parcel::writeInt32(v5, *(_DWORD *)(*(_DWORD *)(v4 + 4 * v6) + 4));
+    android::Parcel::writeInt32(v5, *(_DWORD *)(*(_DWORD *)(v4 + 4 * v6) + 8));
+    android::Parcel::writeInt32(v5, *(_DWORD *)(*(_DWORD *)(v4 + 4 * v6) + 12));
+    android::Parcel::writeInt32(v5, *(unsigned __int8 *)(*(_DWORD *)(v4 + 4 * v6) + 16));
+    v7 = 1;
+    if ( v6 + 1 > v6 )
+      v7 = 0;
+    ++v6;
+    if ( v7 )
+      abort();
   }
   return 0;
 }
 
-//----- (00007C88) --------------------------------------------------------
-int __fastcall sub_7C88(android::Parcel *this, _QWORD *a2)
+//----- (00008178) --------------------------------------------------------
+int __fastcall sub_8178(android::Parcel *this, int a2)
 {
-  android::Parcel *v2; // r4
-  _QWORD *v3; // r5
-  char *v4; // r11
-  int v5; // r1
-  char *v6; // r9
-  int v7; // r6
-  int v8; // r10
-  int v9; // r0
-  int v10; // r2
-  signed int v11; // r1
-  __int64 v12; // kr00_8
-  const char *v13; // r0
+  char *v2; // r9
+  char *v3; // r11
+  android::Parcel *v4; // r4
+  int v5; // r5
+  int v6; // r1
+  int v7; // r0
+  int i; // r6
+  int v9; // r10
+  signed int v10; // r1
+  int v11; // r4
+  const char *v12; // r0
+  int result; // r0
   signed int v14; // r0
   int v15; // r4
   signed int v16; // r0
   signed int v17; // r0
-  int result; // r0
-  int v19; // [sp+0h] [bp-28h]
-  int *v20; // [sp+4h] [bp-24h]
-  _QWORD *v21; // [sp+8h] [bp-20h]
-  int v22; // [sp+Ch] [bp-1Ch]
-  int v23; // [sp+10h] [bp-18h]
-  int v24; // [sp+14h] [bp-14h]
+  int v18; // [sp+0h] [bp-28h]
+  int *v19; // [sp+4h] [bp-24h]
+  int v20; // [sp+8h] [bp-20h]
+  int v21; // [sp+Ch] [bp-1Ch]
+  int v22; // [sp+10h] [bp-18h]
+  int v23; // [sp+14h] [bp-14h]
 
-  v2 = this;
-  v3 = a2;
-  if ( android::Parcel::readInt32(this, &v22) )
-    goto LABEL_10;
-  v21 = v3;
-  v20 = &v19;
-  v4 = (char *)&v19 - ((20 * v22 + 7) & 0xFFFFFFF8);
-  v5 = v22;
-  v6 = (char *)&v19 - ((4 * v22 + 7) & 0xFFFFFFF8);
-  if ( v22 > 0 )
+  v4 = this;
+  v5 = a2;
+  if ( !android::Parcel::readInt32(this, &v21) )
   {
+    v20 = v5;
+    v19 = &v18;
+    v3 = (char *)&v18 - ((20 * v21 + 7) & 0xFFFFFFF8);
+    v6 = v21;
+    v2 = (char *)&v18 - ((4 * v21 + 7) & 0xFFFFFFF8);
     v7 = 0;
-    do
+    for ( i = 0; i < v6; ++i )
     {
-      v8 = (int)&v4[20 * v7];
-      *(_DWORD *)&v6[4 * v7] = v8;
-      android::Parcel::readInt32(v2, &v23);
-      *(_DWORD *)&v4[20 * v7] = v23;
-      android::Parcel::readInt32(v2, &v23);
-      *(_DWORD *)(v8 + 4) = v23;
-      android::Parcel::readInt32(v2, &v23);
-      *(_DWORD *)(v8 + 8) = v23;
-      android::Parcel::readInt32(v2, &v23);
-      *(_DWORD *)(v8 + 12) = v23;
-      v9 = android::Parcel::readInt32(v2, &v23);
-      v10 = v7 + 1;
-      *(_BYTE *)(v8 + 16) = v23;
-      v11 = 1;
-      if ( v7 + 1 > v7 )
-        v11 = 0;
-      if ( v11 )
-        goto LABEL_22;
-      v5 = v22;
-      ++v7;
-    }
-    while ( v10 < v22 );
-    if ( v9 )
-    {
-      v3 = v21;
-LABEL_10:
-      v12 = *v3;
-      v13 = j_requestToString(*(_DWORD *)(*v3 >> 32));
-      _android_log_buf_print(1, 6, "RILC", "invalid command block for token %d request %s", (_DWORD)v12, v13);
-      goto LABEL_21;
-    }
-  }
-  v14 = (unsigned __int64)(unsigned int)v5 >> 30;
-  if ( !is_mul_ok(4u, v5) )
-    v14 = 1;
-  if ( v14 )
-    goto LABEL_22;
-  dword_156AC(**((_DWORD **)v21 + 1), v6, 4 * v5);
-  v15 = v22;
-  v16 = 20 * (unsigned __int64)(unsigned int)v22 >> 32;
-  if ( !is_mul_ok(0x14u, v22) )
-    v16 = 1;
-  if ( v16 )
-    goto LABEL_22;
-  _aeabi_memclr8(v4, 20 * v22);
-  v17 = (unsigned __int64)(unsigned int)v15 >> 30;
-  if ( !is_mul_ok(4u, v15) )
-    v17 = 1;
-  if ( v17 )
-LABEL_22:
-    abort();
-  _aeabi_memclr4(v6, 4 * v15);
-LABEL_21:
-  result = _stack_chk_guard - v24;
-  if ( _stack_chk_guard != v24 )
-    goto LABEL_22;
-  return result;
-}
-// 38A4: using guessed type int _android_log_buf_print(_DWORD, _DWORD, _DWORD, const char *, ...);
-// 3C34: using guessed type int __fastcall _aeabi_memclr8(_DWORD, _DWORD);
-// 3C40: using guessed type int __fastcall _aeabi_memclr4(_DWORD, _DWORD);
-// 156AC: using guessed type int (__fastcall *dword_156AC)(_DWORD, _DWORD, _DWORD);
-
-//----- (00007E14) --------------------------------------------------------
-int __fastcall sub_7E14(android::Parcel *a1, int a2, unsigned int a3)
-{
-  unsigned int v3; // r8
-  int v4; // r4
-  int v5; // r6
-  android::Parcel *v6; // r5
-  int v7; // r7
-  int v8; // r0
-  signed int v9; // r1
-
-  v3 = a3;
-  v4 = a2;
-  v5 = a3 >> 2;
-  v6 = a1;
-  android::Parcel::writeInt32(a1, a3 >> 2);
-  v7 = 0;
-  if ( v3 >> 2 )
-  {
-    do
-    {
-      android::Parcel::writeInt32(v6, **(_DWORD **)(v4 + 4 * v7));
-      android::Parcel::writeInt32(v6, *(_DWORD *)(*(_DWORD *)(v4 + 4 * v7) + 4));
-      android::Parcel::writeInt32(v6, *(unsigned __int8 *)(*(_DWORD *)(v4 + 4 * v7) + 8));
-      v8 = v7 + 1;
-      v9 = 1;
-      if ( v7 + 1 > v7 )
-        v9 = 0;
-      if ( v9 )
+      v9 = (int)&v3[20 * i];
+      *(_DWORD *)&v2[4 * i] = v9;
+      android::Parcel::readInt32(v4, &v22);
+      *(_DWORD *)&v3[20 * i] = v22;
+      android::Parcel::readInt32(v4, &v22);
+      *(_DWORD *)(v9 + 4) = v22;
+      android::Parcel::readInt32(v4, &v22);
+      *(_DWORD *)(v9 + 8) = v22;
+      android::Parcel::readInt32(v4, &v22);
+      *(_DWORD *)(v9 + 12) = v22;
+      v7 = android::Parcel::readInt32(v4, &v22);
+      *(_BYTE *)(v9 + 16) = v22;
+      v10 = 1;
+      if ( i + 1 > i )
+        v10 = 0;
+      if ( v10 )
+LABEL_8:
         abort();
-      ++v7;
+      v6 = v21;
     }
-    while ( v8 < v5 );
+    if ( !v7 )
+      goto LABEL_13;
+    v5 = v20;
+  }
+  v11 = *(_DWORD *)v5;
+  v12 = j_requestToString(**(_DWORD **)(v5 + 4));
+  _android_log_buf_print(1, 6, "RILC", "invalid command block for token %d request %s", v11, v12);
+  while ( 1 )
+  {
+    v6 = v23;
+    result = _stack_chk_guard - v23;
+    if ( _stack_chk_guard == v23 )
+      return result;
+LABEL_13:
+    v14 = (unsigned __int64)(unsigned int)v6 >> 30;
+    if ( !is_mul_ok(4u, v6) )
+      v14 = 1;
+    if ( v14 )
+      goto LABEL_8;
+    dword_166DC(**(_DWORD **)(v20 + 4), v2, 4 * v6);
+    v15 = v21;
+    v16 = 20 * (unsigned __int64)(unsigned int)v21 >> 32;
+    if ( !is_mul_ok(0x14u, v21) )
+      v16 = 1;
+    if ( v16 )
+      goto LABEL_8;
+    _aeabi_memclr8(v3, 20 * v21);
+    v17 = (unsigned __int64)(unsigned int)v15 >> 30;
+    if ( !is_mul_ok(4u, v15) )
+      v17 = 1;
+    if ( v17 )
+      goto LABEL_8;
+    _aeabi_memclr4(v2, 4 * v15);
+  }
+}
+// 3B1C: using guessed type int _android_log_buf_print(_DWORD, _DWORD, _DWORD, const char *, ...);
+// 3EA0: using guessed type int __fastcall _aeabi_memclr8(_DWORD, _DWORD);
+// 3EAC: using guessed type int __fastcall _aeabi_memclr4(_DWORD, _DWORD);
+// 166DC: using guessed type int (__fastcall *dword_166DC)(_DWORD, _DWORD, _DWORD);
+
+//----- (00008308) --------------------------------------------------------
+int __fastcall sub_8308(android::Parcel *a1, int a2, unsigned int a3)
+{
+  int v3; // r6
+  int v4; // r4
+  android::Parcel *v5; // r5
+  int v6; // r7
+  signed int v7; // r1
+
+  v3 = a3 >> 2;
+  v4 = a2;
+  v5 = a1;
+  android::Parcel::writeInt32(a1, a3 >> 2);
+  v6 = 0;
+  while ( v6 < v3 )
+  {
+    android::Parcel::writeInt32(v5, **(_DWORD **)(v4 + 4 * v6));
+    android::Parcel::writeInt32(v5, *(_DWORD *)(*(_DWORD *)(v4 + 4 * v6) + 4));
+    android::Parcel::writeInt32(v5, *(unsigned __int8 *)(*(_DWORD *)(v4 + 4 * v6) + 8));
+    v7 = 1;
+    if ( v6 + 1 > v6 )
+      v7 = 0;
+    ++v6;
+    if ( v7 )
+      abort();
   }
   return 0;
 }
 
-//----- (00007E70) --------------------------------------------------------
-int __fastcall sub_7E70(android::Parcel *this, _QWORD *a2)
+//----- (0000835C) --------------------------------------------------------
+int __fastcall sub_835C(android::Parcel *this, int a2)
 {
-  android::Parcel *v2; // r4
-  _QWORD *v3; // r5
-  char *v4; // r11
-  int v5; // r1
-  char *v6; // r9
-  int v7; // r6
-  int v8; // r8
-  int v9; // r0
-  int v10; // r2
-  signed int v11; // r1
-  __int64 v12; // kr00_8
-  const char *v13; // r0
+  char *v2; // r9
+  char *v3; // r11
+  android::Parcel *v4; // r4
+  int v5; // r5
+  int v6; // r1
+  int v7; // r0
+  int i; // r6
+  int v9; // r8
+  signed int v10; // r1
+  int v11; // r4
+  const char *v12; // r0
+  int result; // r0
   signed int v14; // r0
   int v15; // r4
   signed int v16; // r0
   signed int v17; // r0
-  int result; // r0
-  int v19; // [sp+0h] [bp-28h]
-  int *v20; // [sp+4h] [bp-24h]
-  _QWORD *v21; // [sp+8h] [bp-20h]
-  int v22; // [sp+Ch] [bp-1Ch]
-  int v23; // [sp+10h] [bp-18h]
-  int v24; // [sp+14h] [bp-14h]
+  int v18; // [sp+0h] [bp-28h]
+  int *v19; // [sp+4h] [bp-24h]
+  int v20; // [sp+8h] [bp-20h]
+  int v21; // [sp+Ch] [bp-1Ch]
+  int v22; // [sp+10h] [bp-18h]
+  int v23; // [sp+14h] [bp-14h]
 
-  v2 = this;
-  v3 = a2;
-  if ( android::Parcel::readInt32(this, &v22) )
-    goto LABEL_10;
-  v21 = v3;
-  v20 = &v19;
-  v4 = (char *)&v19 - ((12 * v22 + 7) & 0xFFFFFFF8);
-  v5 = v22;
-  v6 = (char *)&v19 - ((4 * v22 + 7) & 0xFFFFFFF8);
-  if ( v22 > 0 )
+  v4 = this;
+  v5 = a2;
+  if ( !android::Parcel::readInt32(this, &v21) )
   {
+    v20 = v5;
+    v19 = &v18;
+    v3 = (char *)&v18 - ((12 * v21 + 7) & 0xFFFFFFF8);
+    v6 = v21;
+    v2 = (char *)&v18 - ((4 * v21 + 7) & 0xFFFFFFF8);
     v7 = 0;
-    do
+    for ( i = 0; i < v6; ++i )
     {
-      v8 = (int)&v4[12 * v7];
-      *(_DWORD *)&v6[4 * v7] = v8;
-      android::Parcel::readInt32(v2, &v23);
-      *(_DWORD *)&v4[12 * v7] = v23;
-      android::Parcel::readInt32(v2, &v23);
-      *(_DWORD *)(v8 + 4) = v23;
-      v9 = android::Parcel::readInt32(v2, &v23);
-      v10 = v7 + 1;
-      *(_BYTE *)(v8 + 8) = v23;
-      v11 = 1;
-      if ( v7 + 1 > v7 )
-        v11 = 0;
-      if ( v11 )
-        goto LABEL_22;
-      v5 = v22;
-      ++v7;
+      v9 = (int)&v3[12 * i];
+      *(_DWORD *)&v2[4 * i] = v9;
+      android::Parcel::readInt32(v4, &v22);
+      *(_DWORD *)&v3[12 * i] = v22;
+      android::Parcel::readInt32(v4, &v22);
+      *(_DWORD *)(v9 + 4) = v22;
+      v7 = android::Parcel::readInt32(v4, &v22);
+      *(_BYTE *)(v9 + 8) = v22;
+      v10 = 1;
+      if ( i + 1 > i )
+        v10 = 0;
+      if ( v10 )
+LABEL_8:
+        abort();
+      v6 = v21;
     }
-    while ( v10 < v22 );
-    if ( v9 )
-    {
-      v3 = v21;
-LABEL_10:
-      v12 = *v3;
-      v13 = j_requestToString(*(_DWORD *)(*v3 >> 32));
-      _android_log_buf_print(1, 6, "RILC", "invalid command block for token %d request %s", (_DWORD)v12, v13);
-      goto LABEL_21;
-    }
+    if ( !v7 )
+      goto LABEL_13;
+    v5 = v20;
   }
-  v14 = (unsigned __int64)(unsigned int)v5 >> 30;
-  if ( !is_mul_ok(4u, v5) )
-    v14 = 1;
-  if ( v14 )
-    goto LABEL_22;
-  dword_156AC(**((_DWORD **)v21 + 1), v6, 4 * v5);
-  v15 = v22;
-  v16 = 12 * (unsigned __int64)(unsigned int)v22 >> 32;
-  if ( !is_mul_ok(0xCu, v22) )
-    v16 = 1;
-  if ( v16 )
-    goto LABEL_22;
-  _aeabi_memclr8(v4, 12 * v22);
-  v17 = (unsigned __int64)(unsigned int)v15 >> 30;
-  if ( !is_mul_ok(4u, v15) )
-    v17 = 1;
-  if ( v17 )
-LABEL_22:
-    abort();
-  _aeabi_memclr4(v6, 4 * v15);
-LABEL_21:
-  result = _stack_chk_guard - v24;
-  if ( _stack_chk_guard != v24 )
-    goto LABEL_22;
-  return result;
+  v11 = *(_DWORD *)v5;
+  v12 = j_requestToString(**(_DWORD **)(v5 + 4));
+  _android_log_buf_print(1, 6, "RILC", "invalid command block for token %d request %s", v11, v12);
+  while ( 1 )
+  {
+    v6 = v23;
+    result = _stack_chk_guard - v23;
+    if ( _stack_chk_guard == v23 )
+      return result;
+LABEL_13:
+    v14 = (unsigned __int64)(unsigned int)v6 >> 30;
+    if ( !is_mul_ok(4u, v6) )
+      v14 = 1;
+    if ( v14 )
+      goto LABEL_8;
+    dword_166DC(**(_DWORD **)(v20 + 4), v2, 4 * v6);
+    v15 = v21;
+    v16 = 12 * (unsigned __int64)(unsigned int)v21 >> 32;
+    if ( !is_mul_ok(0xCu, v21) )
+      v16 = 1;
+    if ( v16 )
+      goto LABEL_8;
+    _aeabi_memclr8(v3, 12 * v21);
+    v17 = (unsigned __int64)(unsigned int)v15 >> 30;
+    if ( !is_mul_ok(4u, v15) )
+      v17 = 1;
+    if ( v17 )
+      goto LABEL_8;
+    _aeabi_memclr4(v2, 4 * v15);
+  }
 }
-// 38A4: using guessed type int _android_log_buf_print(_DWORD, _DWORD, _DWORD, const char *, ...);
-// 3C34: using guessed type int __fastcall _aeabi_memclr8(_DWORD, _DWORD);
-// 3C40: using guessed type int __fastcall _aeabi_memclr4(_DWORD, _DWORD);
-// 156AC: using guessed type int (__fastcall *dword_156AC)(_DWORD, _DWORD, _DWORD);
+// 3B1C: using guessed type int _android_log_buf_print(_DWORD, _DWORD, _DWORD, const char *, ...);
+// 3EA0: using guessed type int __fastcall _aeabi_memclr8(_DWORD, _DWORD);
+// 3EAC: using guessed type int __fastcall _aeabi_memclr4(_DWORD, _DWORD);
+// 166DC: using guessed type int (__fastcall *dword_166DC)(_DWORD, _DWORD, _DWORD);
 
-//----- (00007FDC) --------------------------------------------------------
-int __fastcall sub_7FDC(android::Parcel *a1, int *a2)
+//----- (000084CC) --------------------------------------------------------
+int __fastcall sub_84CC(android::Parcel *a1, int *a2)
 {
   android::Parcel *v2; // r5
   int *v3; // r8
-  signed int v4; // r6
-  signed int v5; // r7
-  int v6; // r4
-  int v7; // r0
-  signed int v8; // r1
-  int v9; // r6
+  signed int v4; // r4
+  int v5; // r6
+  signed int v6; // r1
+  signed int v7; // r7
+  int v8; // r6
+  signed int v9; // r1
   int v10; // r0
-  signed int v11; // r1
-  int v12; // r0
-  int v13; // r7
-  int v14; // r6
-  int v15; // r1
-  signed int v16; // r2
-  int v17; // r4
-  const char *v18; // r0
-  int result; // r0
-  unsigned __int8 v20; // [sp+Bh] [bp-1A5h]
-  int v21; // [sp+Ch] [bp-1A4h]
-  int v22; // [sp+10h] [bp-1A0h]
-  int v23; // [sp+14h] [bp-19Ch]
-  unsigned __int8 v24; // [sp+18h] [bp-198h]
-  int v25; // [sp+1Ch] [bp-194h]
-  int v26; // [sp+20h] [bp-190h]
-  int v27; // [sp+24h] [bp-18Ch]
-  int v28; // [sp+28h] [bp-188h]
-  int v29; // [sp+2Ch] [bp-184h]
-  unsigned __int8 v30; // [sp+30h] [bp-180h]
-  int v31; // [sp+58h] [bp-158h]
-  unsigned __int8 v32; // [sp+5Ch] [bp-154h]
-  unsigned __int8 v33; // [sp+5Dh] [bp-153h]
-  int v34; // [sp+84h] [bp-12Ch]
-  int v35; // [sp+18Ch] [bp-24h]
+  int v11; // r7
+  int v12; // r6
+  signed int v13; // r2
+  int v14; // r4
+  const char *v15; // r0
+  unsigned __int8 v17; // [sp+Bh] [bp-19Dh]
+  int v18; // [sp+Ch] [bp-19Ch]
+  int v19; // [sp+10h] [bp-198h]
+  int v20; // [sp+14h] [bp-194h]
+  unsigned __int8 v21; // [sp+18h] [bp-190h]
+  int v22; // [sp+1Ch] [bp-18Ch]
+  int v23; // [sp+20h] [bp-188h]
+  int v24; // [sp+24h] [bp-184h]
+  int v25; // [sp+28h] [bp-180h]
+  int v26; // [sp+2Ch] [bp-17Ch]
+  unsigned __int8 v27; // [sp+30h] [bp-178h]
+  int v28; // [sp+58h] [bp-150h]
+  unsigned __int8 v29; // [sp+5Ch] [bp-14Ch]
+  unsigned __int8 v30; // [sp+5Dh] [bp-14Bh]
+  int v31; // [sp+84h] [bp-124h]
+  int v32; // [sp+188h] [bp-20h]
 
   v2 = a1;
   v3 = a2;
-  _aeabi_memclr8(&v22, 376);
-  android::Parcel::readInt32(v2, &v21);
-  v22 = v21;
-  android::Parcel::readInt32(v2, &v21);
-  v23 = v21;
-  android::Parcel::read(v2, &v20, 1u);
-  v24 = v20;
-  android::Parcel::readInt32(v2, &v21);
-  v25 = v21;
-  android::Parcel::readInt32(v2, &v21);
-  v26 = v21;
-  android::Parcel::readInt32(v2, &v21);
-  v27 = v21;
-  android::Parcel::readInt32(v2, &v21);
-  v28 = v21;
-  android::Parcel::readInt32(v2, &v21);
-  v29 = v21;
-  android::Parcel::read(v2, &v20, 1u);
-  v4 = v20;
-  v5 = 36;
-  v30 = v20;
-  if ( v20 >= 0x24u )
+  _aeabi_memclr8(&v19, 376);
+  android::Parcel::readInt32(v2, &v18);
+  v19 = v18;
+  android::Parcel::readInt32(v2, &v18);
+  v20 = v18;
+  android::Parcel::read(v2, &v17, 1u);
+  v21 = v17;
+  android::Parcel::readInt32(v2, &v18);
+  v22 = v18;
+  android::Parcel::readInt32(v2, &v18);
+  v23 = v18;
+  android::Parcel::readInt32(v2, &v18);
+  v24 = v18;
+  android::Parcel::readInt32(v2, &v18);
+  v25 = v18;
+  android::Parcel::readInt32(v2, &v18);
+  v26 = v18;
+  android::Parcel::read(v2, &v17, 1u);
+  v4 = v17;
+  v5 = 0;
+  v27 = v17;
+  if ( v17 >= 0x24u )
     v4 = 36;
-  if ( v4 >= 1 )
+  while ( v5 < v4 )
   {
-    v6 = 0;
-    while ( 1 )
-    {
-      android::Parcel::read(v2, &v20, 1u);
-      *((_BYTE *)&v22 + v6 + 33) = v20;
-      v7 = v6 + 1;
-      v8 = 1;
-      if ( v6 + 1 > v6 )
-        v8 = 0;
-      if ( v8 )
-        break;
-      ++v6;
-      if ( v7 >= v4 )
-        goto LABEL_9;
-    }
-LABEL_29:
-    abort();
+    android::Parcel::read(v2, &v17, 1u);
+    *((_BYTE *)&v19 + v5 + 33) = v17;
+    v6 = 1;
+    if ( v5 + 1 > v5 )
+      v6 = 0;
+    ++v5;
+    if ( v6 )
+LABEL_21:
+      abort();
   }
-LABEL_9:
-  android::Parcel::readInt32(v2, &v21);
-  v31 = v21;
-  android::Parcel::read(v2, &v20, 1u);
-  v32 = v20;
-  android::Parcel::read(v2, &v20, 1u);
-  v33 = v20;
-  if ( v20 < 0x24u )
-    v5 = v20;
-  if ( v5 >= 1 )
+  android::Parcel::readInt32(v2, &v18);
+  v28 = v18;
+  android::Parcel::read(v2, &v17, 1u);
+  v29 = v17;
+  android::Parcel::read(v2, &v17, 1u);
+  v7 = v17;
+  v8 = 0;
+  v30 = v17;
+  if ( v17 >= 0x24u )
+    v7 = 36;
+  while ( v8 < v7 )
   {
-    v9 = 0;
-    do
-    {
-      android::Parcel::read(v2, &v20, 1u);
-      *((_BYTE *)&v22 + v9 + 78) = v20;
-      v10 = v9 + 1;
-      v11 = 1;
-      if ( v9 + 1 > v9 )
-        v11 = 0;
-      if ( v11 )
-        goto LABEL_29;
-      ++v9;
-    }
-    while ( v10 < v5 );
+    android::Parcel::read(v2, &v17, 1u);
+    *((_BYTE *)&v19 + v8 + 78) = v17;
+    v9 = 1;
+    if ( v8 + 1 > v8 )
+      v9 = 0;
+    ++v8;
+    if ( v9 )
+      goto LABEL_21;
   }
-  v12 = android::Parcel::readInt32(v2, &v21);
-  v13 = v21;
-  v34 = v21;
-  if ( v21 >= 255 )
-    v13 = 255;
-  if ( v13 >= 1 )
+  v10 = android::Parcel::readInt32(v2, &v18);
+  v11 = v18;
+  v31 = v18;
+  v12 = 0;
+  if ( v18 >= 255 )
+    v11 = 255;
+  while ( v12 < v11 )
   {
-    v14 = 0;
-    do
-    {
-      v12 = android::Parcel::read(v2, &v20, 1u);
-      *((_BYTE *)&v22 + v14 + 120) = v20;
-      v15 = v14 + 1;
-      v16 = 1;
-      if ( v14 + 1 > v14 )
-        v16 = 0;
-      if ( v16 )
-        goto LABEL_29;
-      ++v14;
-    }
-    while ( v15 < v13 );
+    v10 = android::Parcel::read(v2, &v17, 1u);
+    *((_BYTE *)&v19 + v12 + 120) = v17;
+    v13 = 1;
+    if ( v12 + 1 > v12 )
+      v13 = 0;
+    ++v12;
+    if ( v13 )
+      goto LABEL_21;
   }
-  if ( v12 )
+  if ( v10 )
   {
-    v17 = *v3;
-    v18 = j_requestToString(*(_DWORD *)v3[1]);
-    _android_log_buf_print(1, 6, "RILC", "invalid command block for token %d request %s", v17, v18);
+    v14 = *v3;
+    v15 = j_requestToString(*(_DWORD *)v3[1]);
+    _android_log_buf_print(1, 6, "RILC", "invalid command block for token %d request %s", v14, v15);
   }
   else
   {
-    dword_156AC(*(_DWORD *)v3[1], &v22, 376);
-    _aeabi_memclr8(&v22, 376);
+    dword_166DC(*(_DWORD *)v3[1], &v19, 376);
+    _aeabi_memclr8(&v19, 376);
   }
-  result = _stack_chk_guard - v35;
-  if ( _stack_chk_guard != v35 )
-    goto LABEL_29;
-  return result;
+  return _stack_chk_guard - v32;
 }
-// 38A4: using guessed type int _android_log_buf_print(_DWORD, _DWORD, _DWORD, const char *, ...);
-// 3C34: using guessed type int __fastcall _aeabi_memclr8(_DWORD, _DWORD);
-// 156AC: using guessed type int (__fastcall *dword_156AC)(_DWORD, _DWORD, _DWORD);
+// 3B1C: using guessed type int _android_log_buf_print(_DWORD, _DWORD, _DWORD, const char *, ...);
+// 3EA0: using guessed type int __fastcall _aeabi_memclr8(_DWORD, _DWORD);
+// 166DC: using guessed type int (__fastcall *dword_166DC)(_DWORD, _DWORD, _DWORD);
 
-//----- (000081E8) --------------------------------------------------------
-int __fastcall sub_81E8(int a1, int a2)
+//----- (000086C4) --------------------------------------------------------
+int __fastcall sub_86C4(int a1, int a2)
 {
   int v2; // r4
   int v3; // r5
   int result; // r0
 
   v2 = a2;
-  v3 = dword_156B0();
+  v3 = dword_166E0();
   if ( (v3 | 1) == 1 )
     j_RIL_onRequestComplete(v2, 1, 0, 0);
   if ( v3 == 10 )
-    return dword_156AC(**(_DWORD **)(v2 + 4), 0, 0);
+    return dword_166DC(**(_DWORD **)(v2 + 4), 0, 0);
   if ( (unsigned int)(v3 - 2) >= 8 )
   {
     _android_log_buf_print(1, 3, "RILC", "decodeCdmaSubscriptionSource: Invoked with incorrect RadioState");
@@ -5097,49 +5105,51 @@ int __fastcall sub_81E8(int a1, int a2)
   }
   else
   {
-    android::cdmaSubscriptionSource = dword_12BF0[v3 - 2];
+    android::cdmaSubscriptionSource = dword_13870[v3 - 2];
     result = j_j_RIL_onRequestComplete(v2, 0, (int)&android::cdmaSubscriptionSource, 4);
   }
   return result;
 }
-// 38A4: using guessed type int _android_log_buf_print(_DWORD, _DWORD, _DWORD, const char *, ...);
-// 15010: using guessed type int android::cdmaSubscriptionSource;
-// 156AC: using guessed type int (__fastcall *dword_156AC)(_DWORD, _DWORD, _DWORD);
-// 156B0: using guessed type int (*dword_156B0)(void);
+// 3B1C: using guessed type int _android_log_buf_print(_DWORD, _DWORD, _DWORD, const char *, ...);
+// 16010: using guessed type int android::cdmaSubscriptionSource;
+// 166DC: using guessed type int (__fastcall *dword_166DC)(_DWORD, _DWORD, _DWORD);
+// 166E0: using guessed type int (*dword_166E0)(void);
 
-//----- (00008298) --------------------------------------------------------
-int __fastcall sub_8298(int a1, int a2)
+//----- (00008774) --------------------------------------------------------
+int __fastcall sub_8774(int a1, int a2)
 {
   int v2; // r4
-  int v3; // r5
-  int result; // r0
+  int v3; // r0
+  unsigned int v5; // r0
 
   v2 = a2;
-  v3 = dword_156B0();
-  if ( (v3 | 1) == 1 )
-    j_RIL_onRequestComplete(v2, 1, 0, 0);
-  if ( v3 == 10 )
-    return dword_156AC(**(_DWORD **)(v2 + 4), 0, 0);
-  if ( (unsigned int)(v3 - 2) >= 8 )
+  v3 = dword_166E0();
+  if ( !v3 || v3 == 10 )
+    return dword_166DC(**(_DWORD **)(v2 + 4), 0, 0);
+  if ( v3 == 1 )
   {
-    _android_log_buf_print(1, 3, "RILC", "decodeVoiceRadioTechnology: Invoked with incorrect RadioState");
-    android::voiceRadioTech = -1;
-    result = j_j_RIL_onRequestComplete(v2, 2, 0, 0);
+    j_RIL_onRequestComplete(v2, 1, 0, 0);
   }
   else
   {
-    android::voiceRadioTech = dword_12C10[v3 - 2];
-    result = j_j_RIL_onRequestComplete(v2, 0, (int)&android::voiceRadioTech, 4);
+    v5 = v3 - 2;
+    if ( v5 < 8 )
+    {
+      android::voiceRadioTech = dword_13890[v5];
+      return j_j_RIL_onRequestComplete(v2, 0, (int)&android::voiceRadioTech, 4);
+    }
   }
-  return result;
+  _android_log_buf_print(1, 3, "RILC", "decodeVoiceRadioTechnology: Invoked with incorrect RadioState");
+  android::voiceRadioTech = -1;
+  return j_j_RIL_onRequestComplete(v2, 2, 0, 0);
 }
-// 38A4: using guessed type int _android_log_buf_print(_DWORD, _DWORD, _DWORD, const char *, ...);
-// 1500C: using guessed type int android::voiceRadioTech;
-// 156AC: using guessed type int (__fastcall *dword_156AC)(_DWORD, _DWORD, _DWORD);
-// 156B0: using guessed type int (*dword_156B0)(void);
+// 3B1C: using guessed type int _android_log_buf_print(_DWORD, _DWORD, _DWORD, const char *, ...);
+// 1600C: using guessed type int android::voiceRadioTech;
+// 166DC: using guessed type int (__fastcall *dword_166DC)(_DWORD, _DWORD, _DWORD);
+// 166E0: using guessed type int (*dword_166E0)(void);
 
-//----- (00008348) --------------------------------------------------------
-int __fastcall sub_8348(android::Parcel *this, int a2, unsigned int a3)
+//----- (00008820) --------------------------------------------------------
+int __fastcall sub_8820(android::Parcel *this, int a2, unsigned int a3)
 {
   int v3; // r5
   android::Parcel *v4; // r4
@@ -5147,13 +5157,14 @@ int __fastcall sub_8348(android::Parcel *this, int a2, unsigned int a3)
   unsigned int v6; // r6
   const char *v7; // r3
   int result; // r0
-  int v9; // r1
-  int v10; // r1
-  signed int v11; // r0
-  unsigned int v12; // [sp+0h] [bp-80h]
-  signed int v13; // [sp+4h] [bp-7Ch]
-  char v14; // [sp+Ch] [bp-74h]
-  int v15; // [sp+68h] [bp-18h]
+  int *v9; // r6
+  int v10; // r0
+  int v11; // r1
+  signed int v12; // r1
+  unsigned int v13; // [sp+0h] [bp-80h]
+  signed int v14; // [sp+4h] [bp-7Ch]
+  char v15; // [sp+Ch] [bp-74h]
+  int v16; // [sp+68h] [bp-18h]
 
   v4 = this;
   v5 = a2;
@@ -5162,11 +5173,11 @@ int __fastcall sub_8348(android::Parcel *this, int a2, unsigned int a3)
   {
     if ( !(a3 % 0x48)
       || (_android_log_buf_print(1, 6, "RILC", "Data structure expected is RIL_CellInfo_v12"),
-          v3 = (int)&v14,
-          property_get("ro.debuggable", &v14, "0"),
-          !strcmp(&v14, "1")) )
+          v3 = (int)&v15,
+          property_get("ro.debuggable", &v15, "0"),
+          !strcmp(&v15, "1")) )
     {
-      result = sub_9C88(v4, v5, v6);
+      result = sub_A47C(v4, v5, v6);
       goto LABEL_16;
     }
   }
@@ -5175,9 +5186,9 @@ int __fastcall sub_8348(android::Parcel *this, int a2, unsigned int a3)
     if ( android::s_callbacks > 11 )
     {
       _android_log_buf_print(1, 3, "RILC", "responseCellInfoList: v12");
-      if ( _stack_chk_guard != v15 )
+      if ( _stack_chk_guard != v16 )
         goto LABEL_17;
-      return sub_9C88(v4, v5, v6);
+      return sub_A47C(v4, v5, v6);
     }
     _android_log_buf_print(1, 3, "RILC", "responseCellInfoList: v6");
     if ( v5 || !v6 )
@@ -5185,116 +5196,110 @@ int __fastcall sub_8348(android::Parcel *this, int a2, unsigned int a3)
       v3 = v6 / 0x48;
       if ( !(v6 % 0x48) )
         goto LABEL_17;
-      v12 = v6;
-      v13 = 72;
+      v13 = v6;
+      v14 = 72;
       v7 = "responseCellInfoList: invalid response length %d expected multiple of %d";
     }
     else
     {
       v7 = "invalid response: NULL";
     }
-    _android_log_buf_print(1, 6, "RILC", v7, v12, v13);
+    _android_log_buf_print(1, 6, "RILC", v7, v13, v14);
   }
   result = -1;
 LABEL_16:
-  while ( _stack_chk_guard != v15 )
+  while ( _stack_chk_guard != v16 )
   {
 LABEL_17:
     android::Parcel::writeInt32(v4, v3);
-    if ( v6 < 0x48 )
+    v9 = (int *)(v5 + 32);
+    v10 = 0;
+    while ( 1 )
     {
-      result = 0;
-    }
-    else
-    {
-      v6 = v5 + 32;
-      v5 = 0;
-      do
+      v5 = v10;
+      if ( v10 >= v3 )
+        break;
+      android::Parcel::writeInt32(v4, *(v9 - 8));
+      android::Parcel::writeInt32(v4, *(v9 - 7));
+      android::Parcel::writeInt32(v4, *(v9 - 6));
+      android::Parcel::writeInt64(v4, *((_QWORD *)v9 - 2));
+      switch ( *(v9 - 8) )
       {
-        android::Parcel::writeInt32(v4, *(_DWORD *)(v6 - 32));
-        android::Parcel::writeInt32(v4, *(_DWORD *)(v6 - 28));
-        android::Parcel::writeInt32(v4, *(_DWORD *)(v6 - 24));
-        android::Parcel::writeInt64(v4, *(_QWORD *)(v6 - 16));
-        switch ( *(_DWORD *)(v6 - 32) )
-        {
-          case 1:
-          case 5:
-            android::Parcel::writeInt32(v4, *(_DWORD *)(v6 - 8));
-            android::Parcel::writeInt32(v4, *(_DWORD *)(v6 - 4));
-            android::Parcel::writeInt32(v4, *(_DWORD *)v6);
-            android::Parcel::writeInt32(v4, *(_DWORD *)(v6 + 4));
-            android::Parcel::writeInt32(v4, *(_DWORD *)(v6 + 8));
-            v9 = *(_DWORD *)(v6 + 12);
-            goto LABEL_24;
-          case 2:
-            android::Parcel::writeInt32(v4, *(_DWORD *)(v6 - 8));
-            android::Parcel::writeInt32(v4, *(_DWORD *)(v6 - 4));
-            android::Parcel::writeInt32(v4, *(_DWORD *)v6);
-            android::Parcel::writeInt32(v4, *(_DWORD *)(v6 + 4));
-            android::Parcel::writeInt32(v4, *(_DWORD *)(v6 + 8));
-            android::Parcel::writeInt32(v4, *(_DWORD *)(v6 + 12));
-            android::Parcel::writeInt32(v4, *(_DWORD *)(v6 + 16));
-            android::Parcel::writeInt32(v4, *(_DWORD *)(v6 + 20));
-            android::Parcel::writeInt32(v4, *(_DWORD *)(v6 + 24));
-            v9 = *(_DWORD *)(v6 + 28);
-            goto LABEL_24;
-          case 3:
-            android::Parcel::writeInt32(v4, *(_DWORD *)(v6 - 8));
-            android::Parcel::writeInt32(v4, *(_DWORD *)(v6 - 4));
-            android::Parcel::writeInt32(v4, *(_DWORD *)v6);
-            android::Parcel::writeInt32(v4, *(_DWORD *)(v6 + 4));
-            android::Parcel::writeInt32(v4, *(_DWORD *)(v6 + 8));
-            android::Parcel::writeInt32(v4, *(_DWORD *)(v6 + 12));
-            android::Parcel::writeInt32(v4, *(_DWORD *)(v6 + 16));
-            android::Parcel::writeInt32(v4, *(_DWORD *)(v6 + 20));
-            android::Parcel::writeInt32(v4, *(_DWORD *)(v6 + 24));
-            android::Parcel::writeInt32(v4, *(_DWORD *)(v6 + 28));
-            v9 = *(_DWORD *)(v6 + 32);
-            goto LABEL_24;
-          case 4:
-            android::Parcel::writeInt32(v4, *(_DWORD *)(v6 - 8));
-            android::Parcel::writeInt32(v4, *(_DWORD *)(v6 - 4));
-            android::Parcel::writeInt32(v4, *(_DWORD *)v6);
-            android::Parcel::writeInt32(v4, *(_DWORD *)(v6 + 4));
-            android::Parcel::writeInt32(v4, *(_DWORD *)(v6 + 8));
-            android::Parcel::writeInt32(v4, *(_DWORD *)(v6 + 12));
-            v9 = *(_DWORD *)(v6 + 16);
+        case 1:
+        case 5:
+          android::Parcel::writeInt32(v4, *(v9 - 2));
+          android::Parcel::writeInt32(v4, *(v9 - 1));
+          android::Parcel::writeInt32(v4, *v9);
+          android::Parcel::writeInt32(v4, v9[1]);
+          android::Parcel::writeInt32(v4, v9[2]);
+          v11 = v9[3];
+          goto LABEL_24;
+        case 2:
+          android::Parcel::writeInt32(v4, *(v9 - 2));
+          android::Parcel::writeInt32(v4, *(v9 - 1));
+          android::Parcel::writeInt32(v4, *v9);
+          android::Parcel::writeInt32(v4, v9[1]);
+          android::Parcel::writeInt32(v4, v9[2]);
+          android::Parcel::writeInt32(v4, v9[3]);
+          android::Parcel::writeInt32(v4, v9[4]);
+          android::Parcel::writeInt32(v4, v9[5]);
+          android::Parcel::writeInt32(v4, v9[6]);
+          v11 = v9[7];
+          goto LABEL_24;
+        case 3:
+          android::Parcel::writeInt32(v4, *(v9 - 2));
+          android::Parcel::writeInt32(v4, *(v9 - 1));
+          android::Parcel::writeInt32(v4, *v9);
+          android::Parcel::writeInt32(v4, v9[1]);
+          android::Parcel::writeInt32(v4, v9[2]);
+          android::Parcel::writeInt32(v4, v9[3]);
+          android::Parcel::writeInt32(v4, v9[4]);
+          android::Parcel::writeInt32(v4, v9[5]);
+          android::Parcel::writeInt32(v4, v9[6]);
+          android::Parcel::writeInt32(v4, v9[7]);
+          v11 = v9[8];
+          goto LABEL_24;
+        case 4:
+          android::Parcel::writeInt32(v4, *(v9 - 2));
+          android::Parcel::writeInt32(v4, *(v9 - 1));
+          android::Parcel::writeInt32(v4, *v9);
+          android::Parcel::writeInt32(v4, v9[1]);
+          android::Parcel::writeInt32(v4, v9[2]);
+          android::Parcel::writeInt32(v4, v9[3]);
+          v11 = v9[4];
 LABEL_24:
-            android::Parcel::writeInt32(v4, v9);
-            break;
-          default:
-            break;
-        }
-        v10 = v5 + 1;
-        v11 = 1;
-        if ( v5 + 1 > v5 )
-          v11 = 0;
-        if ( v11 )
-          abort();
-        v6 += 72;
-        result = 0;
-        ++v5;
+          android::Parcel::writeInt32(v4, v11);
+          break;
+        default:
+          break;
       }
-      while ( v10 < v3 );
+      v10 = v5 + 1;
+      v9 += 18;
+      v12 = 1;
+      if ( v5 + 1 > v5 )
+        v12 = 0;
+      if ( v12 )
+        abort();
     }
+    result = 0;
   }
   return result;
 }
-// 38A4: using guessed type int _android_log_buf_print(_DWORD, _DWORD, _DWORD, const char *, ...);
-// 3BB0: using guessed type int __fastcall property_get(_DWORD, _DWORD, _DWORD);
-// 156A8: using guessed type int android::s_callbacks;
+// 3B1C: using guessed type int _android_log_buf_print(_DWORD, _DWORD, _DWORD, const char *, ...);
+// 3E1C: using guessed type int __fastcall property_get(_DWORD, _DWORD, _DWORD);
+// 166D8: using guessed type int android::s_callbacks;
 
-//----- (00008624) --------------------------------------------------------
-int __fastcall sub_8624(android::Parcel *this, unsigned __int64 *a2)
+//----- (00008AFC) --------------------------------------------------------
+int __fastcall sub_8AFC(android::Parcel *this, int *a2)
 {
   android::Parcel *v2; // r4
-  unsigned __int64 *v3; // r5
+  int *v3; // r5
   int v4; // r0
   int v5; // r0
   int v6; // r6
   int v7; // r0
   int v8; // r0
-  unsigned __int64 v9; // kr00_8
+  int v9; // r4
   const char *v10; // r0
   void *v11; // r5
   int v12; // r0
@@ -5305,285 +5310,269 @@ int __fastcall sub_8624(android::Parcel *this, unsigned __int64 *a2)
   void *v17; // r5
   int v18; // r0
   int v20; // [sp+Ch] [bp-4h]
-  void *ptr; // [sp+10h] [bp+0h]
-  void *v22; // [sp+14h] [bp+4h]
-  __int64 v23; // [sp+18h] [bp+8h]
-  void *v24; // [sp+20h] [bp+10h]
-  unsigned int v25; // [sp+28h] [bp+18h]
-  int v26; // [sp+2Ch] [bp+1Ch]
+  void *ptr[2]; // [sp+10h] [bp+0h]
+  __int64 v22; // [sp+18h] [bp+8h]
+  void *v23; // [sp+20h] [bp+10h]
+  unsigned int v24; // [sp+24h] [bp+14h]
+  int v25; // [sp+28h] [bp+18h]
 
   v2 = this;
   v3 = a2;
-  v23 = 0LL;
-  v4 = android::Parcel::readString16Inplace(this, &v25);
-  ptr = (void *)strndup16to8(v4, v25);
-  v5 = android::Parcel::readString16Inplace(v2, &v25);
-  v22 = (void *)strndup16to8(v5, v25);
+  v22 = 0LL;
+  v4 = android::Parcel::readString16Inplace(this, &v24);
+  ptr[0] = (void *)strndup16to8(v4, v24);
+  v5 = android::Parcel::readString16Inplace(v2, &v24);
+  ptr[1] = (void *)strndup16to8(v5, v24);
   v6 = android::Parcel::readInt32(v2, &v20);
-  LODWORD(v23) = v20;
-  v7 = android::Parcel::readString16Inplace(v2, &v25);
-  HIDWORD(v23) = strndup16to8(v7, v25);
-  v8 = android::Parcel::readString16Inplace(v2, &v25);
-  v24 = (void *)strndup16to8(v8, v25);
+  LODWORD(v22) = v20;
+  v7 = android::Parcel::readString16Inplace(v2, &v24);
+  HIDWORD(v22) = strndup16to8(v7, v24);
+  v8 = android::Parcel::readString16Inplace(v2, &v24);
+  v23 = (void *)strndup16to8(v8, v24);
   if ( v6 )
   {
     v9 = *v3;
-    v10 = j_requestToString(*(_DWORD *)(*v3 >> 32));
-    _android_log_buf_print(1, 6, "RILC", "invalid command block for token %d request %s", (_DWORD)v9, v10);
+    v10 = j_requestToString(*(_DWORD *)v3[1]);
+    _android_log_buf_print(1, 6, "RILC", "invalid command block for token %d request %s", v9, v10);
   }
   else
   {
-    dword_156AC(**((_DWORD **)v3 + 1), &ptr, 20);
-    v11 = ptr;
-    if ( ptr )
+    dword_166DC(*(_DWORD *)v3[1], ptr, 20);
+    v11 = ptr[0];
+    if ( ptr[0] )
     {
-      v12 = _strlen_chk(ptr, -1);
+      v12 = _strlen_chk(ptr[0], -1);
       _aeabi_memclr(v11, v12);
     }
-    v13 = v22;
-    if ( v22 )
+    v13 = ptr[1];
+    if ( ptr[1] )
     {
-      v14 = _strlen_chk(v22, -1);
+      v14 = _strlen_chk(ptr[1], -1);
       _aeabi_memclr(v13, v14);
     }
-    v15 = HIDWORD(v23);
-    if ( HIDWORD(v23) )
+    v15 = HIDWORD(v22);
+    if ( HIDWORD(v22) )
     {
-      v16 = _strlen_chk(HIDWORD(v23), -1);
+      v16 = _strlen_chk(HIDWORD(v22), -1);
       _aeabi_memclr(v15, v16);
     }
-    v17 = v24;
-    if ( v24 )
+    v17 = v23;
+    if ( v23 )
     {
-      v18 = _strlen_chk(v24, -1);
+      v18 = _strlen_chk(v23, -1);
       _aeabi_memclr(v17, v18);
     }
-    free(ptr);
-    free(v22);
-    free((void *)HIDWORD(v23));
-    free(v24);
-    *(_QWORD *)&ptr = 0LL;
-    v23 = 0LL;
-    v24 = 0;
+    free(ptr[0]);
+    free(ptr[1]);
+    free((void *)HIDWORD(v22));
+    free(v23);
+    *(_QWORD *)ptr = 0LL;
+    v22 = 0LL;
+    v23 = 0;
   }
-  return _stack_chk_guard - v26;
+  return _stack_chk_guard - v25;
 }
-// 38A4: using guessed type int _android_log_buf_print(_DWORD, _DWORD, _DWORD, const char *, ...);
-// 3988: using guessed type int __fastcall _strlen_chk(_DWORD, _DWORD);
-// 3BC8: using guessed type int __fastcall strndup16to8(_DWORD, _DWORD);
-// 3BD4: using guessed type int __fastcall _aeabi_memclr(_DWORD, _DWORD);
-// 156AC: using guessed type int (__fastcall *dword_156AC)(_DWORD, _DWORD, _DWORD);
+// 3B1C: using guessed type int _android_log_buf_print(_DWORD, _DWORD, _DWORD, const char *, ...);
+// 3C00: using guessed type int __fastcall _strlen_chk(_DWORD, _DWORD);
+// 3E34: using guessed type int __fastcall strndup16to8(_DWORD, _DWORD);
+// 3E40: using guessed type int __fastcall _aeabi_memclr(_DWORD, _DWORD);
+// 166DC: using guessed type int (__fastcall *dword_166DC)(_DWORD, _DWORD, _DWORD);
 
-//----- (00008774) --------------------------------------------------------
-int __fastcall sub_8774(android::Parcel *this, int **a2)
+//----- (00008C48) --------------------------------------------------------
+int __fastcall sub_8C48(android::Parcel *this, android::Parcel *a2)
 {
   android::Parcel *v2; // r5
-  int **v3; // r4
+  android::Parcel *v3; // r4
   int v4; // r6
-  const char *v5; // r0
-  const char *v6; // r3
+  const char *v5; // r3
   int result; // r0
-  int v8; // r7
-  const char *v9; // r0
-  unsigned __int8 v10; // r7
-  int v11; // r0
-  int *v12; // r1
-  size_t v13; // r8
-  signed int v14; // r1
-  int v15; // r7
+  int v7; // r7
+  const char *v8; // r0
+  unsigned __int8 v9; // r7
+  int v10; // r0
+  int *v11; // r1
+  signed int v12; // r10
+  size_t v13; // r9
+  signed int v14; // r0
+  int i; // r7
   int v16; // r0
-  int v17; // r0
-  signed int v18; // r1
-  signed int v19; // r0
-  int v20; // r7
-  int v21; // r0
-  void *v22; // r0
-  int v23; // r0
-  signed int v24; // r1
-  const char *v25; // r0
-  void *v26; // [sp+0h] [bp-1D0h]
-  const char *v27; // [sp+4h] [bp-1CCh]
-  int v28; // [sp+8h] [bp-1C8h]
-  unsigned __int8 v29; // [sp+Fh] [bp-1C1h]
-  int v30; // [sp+10h] [bp-1C0h]
-  size_t nmemb; // [sp+14h] [bp-1BCh]
-  unsigned int v32; // [sp+18h] [bp-1B8h]
-  int v33; // [sp+1Ch] [bp-1B4h]
-  int v34; // [sp+20h] [bp-1B0h]
-  int *v35; // [sp+24h] [bp-1ACh]
-  int v36; // [sp+28h] [bp-1A8h]
-  char v37; // [sp+2Ch] [bp-1A4h]
-  __int64 v38; // [sp+30h] [bp-1A0h]
-  int v39; // [sp+19Ch] [bp-34h]
+  signed int v17; // r1
+  signed int v18; // r0
+  int v19; // r7
+  int v20; // r0
+  void *v21; // r0
+  signed int v22; // r1
+  const char *v23; // r0
+  void *v24; // [sp+0h] [bp-1C0h]
+  const char *v25; // [sp+4h] [bp-1BCh]
+  int v26; // [sp+8h] [bp-1B8h]
+  unsigned __int8 v27; // [sp+Fh] [bp-1B1h]
+  int v28; // [sp+10h] [bp-1B0h]
+  size_t nmemb; // [sp+14h] [bp-1ACh]
+  unsigned int v30[2]; // [sp+18h] [bp-1A8h]
+  double v31; // [sp+20h] [bp-1A0h]
+  int v32; // [sp+28h] [bp-198h]
+  char v33; // [sp+2Ch] [bp-194h]
+  __int64 v34; // [sp+30h] [bp-190h]
+  int v35; // [sp+19Ch] [bp-24h]
 
   v2 = this;
   v3 = a2;
-  v4 = android::Parcel::readInt32(this, &v30);
+  v4 = android::Parcel::readInt32(this, &v28);
   _android_log_buf_print(1, 3, "RILC", "dispatchImsSms");
   if ( !v4 )
   {
-    v4 = v30;
-    if ( !android::Parcel::read(v2, &v29, 1u) && !android::Parcel::read(v2, &v28, 4u) )
-      goto LABEL_8;
+    v4 = v28;
+    if ( !android::Parcel::read(v2, &v27, 1u) && !android::Parcel::read(v2, &v26, 4u) )
+      goto LABEL_7;
   }
-  v2 = (android::Parcel *)*(_QWORD *)v3;
-  v5 = j_requestToString(*(_DWORD *)(*(_QWORD *)v3 >> 32));
-  v26 = (void *)v2;
-  v6 = "invalid command block for token %d request %s";
+  v2 = *(android::Parcel **)v3;
+  v24 = *(void **)v3;
+  v25 = j_requestToString(**((_DWORD **)v3 + 1));
+  v5 = "invalid command block for token %d request %s";
 LABEL_5:
-  v27 = v5;
-LABEL_6:
-  _android_log_buf_print(1, 6, "RILC", v6, v26, v27);
+  _android_log_buf_print(1, 6, "RILC", v5, v24, v25);
   while ( 1 )
   {
-    result = _stack_chk_guard - v39;
-    if ( _stack_chk_guard == v39 )
+    result = _stack_chk_guard - v35;
+    if ( _stack_chk_guard == v35 )
       return result;
-LABEL_8:
+LABEL_7:
     if ( v4 == 2 )
     {
-      v4 = v28;
-      v10 = v29;
-      _android_log_buf_print(1, 3, "RILC", "dispatchImsCdmaSms: retry=%d, messageRef=%d", v29, v28);
-      v11 = sub_9AF0(v2, (int)&v36);
-      v12 = v3[1];
-      if ( v11 )
+      v4 = v26;
+      v9 = v27;
+      _android_log_buf_print(1, 3, "RILC", "dispatchImsCdmaSms: retry=%d, messageRef=%d", v27, v26);
+      v10 = sub_A2F4(v2, (int)&v32);
+      v11 = (int *)*((_DWORD *)v3 + 1);
+      if ( v10 )
       {
-        v3 = (int **)*v3;
-        v5 = j_requestToString(*v12);
-        v26 = v3;
-        v6 = "invalid command block for token %d request %s";
+        v3 = *(android::Parcel **)v3;
+        v24 = (void *)v3;
+        v25 = j_requestToString(*v11);
+        v5 = "invalid command block for token %d request %s";
         goto LABEL_5;
       }
-      v33 = 0;
-      v32 = 2;
-      LOBYTE(v33) = v10;
-      v2 = (android::Parcel *)&v32;
-      v34 = v4;
-      v35 = &v36;
-      dword_156AC(*v12, &v32, 381);
-      _aeabi_memclr8(&v36, 372);
-      *(_QWORD *)&v32 = 0LL;
-      *(_QWORD *)&v34 = 0LL;
+      v30[1] = 0;
+      v30[0] = 2;
+      LOBYTE(v30[1]) = v9;
+      v31 = COERCE_DOUBLE(__PAIR__(&v32, v4));
+      dword_166DC(*v11, v30, 381);
+      _aeabi_memclr8(&v32, 372);
+      v31 = 0.0;
+      *(_QWORD *)v30 = 0LL;
     }
     else if ( v4 == 1 )
     {
-      v8 = v28;
-      v4 = v29;
-      _android_log_buf_print(1, 3, "RILC", "dispatchImsGsmSms: retry=%d, messageRef=%d", v29, v28);
+      v7 = v26;
+      v4 = v27;
+      _android_log_buf_print(1, 3, "RILC", "dispatchImsGsmSms: retry=%d, messageRef=%d", v27, v26);
       if ( android::Parcel::readInt32(v2, (int *)&nmemb) )
       {
         v2 = (android::Parcel *)"RILC";
         _android_log_print(6, "RILC", "dispatchImsGsmSms invalid block");
-        v4 = *(_QWORD *)v3;
-        v9 = j_requestToString(*(_DWORD *)(*(_QWORD *)v3 >> 32));
-        _android_log_buf_print(1, 6, "RILC", "invalid command block for token %d request %s", v4, v9);
+        v4 = *(_DWORD *)v3;
+        v8 = j_requestToString(**((_DWORD **)v3 + 1));
+        _android_log_buf_print(1, 6, "RILC", "invalid command block for token %d request %s", v4, v8);
       }
       else
       {
-        *(_QWORD *)&v36 = 0LL;
-        v38 = 0LL;
-        v36 = 1;
-        v37 = v4;
-        LODWORD(v38) = v8;
+        v12 = nmemb;
+        *(_QWORD *)&v32 = 0LL;
+        v34 = 0LL;
+        LODWORD(v34) = v7;
+        v32 = 1;
+        v33 = v4;
         if ( nmemb )
         {
           v13 = 0;
-          if ( (nmemb & 0x80000000) == 0 )
+          if ( (nmemb & 0x80000000) != 0 )
+          {
+            v4 = 0;
+          }
+          else
           {
             if ( 0 != nmemb >> 29 )
             {
-              v6 = "Invalid value of countStrings: \n";
-              goto LABEL_6;
+              v5 = "Invalid value of countStrings: \n";
+              goto LABEL_5;
             }
             v14 = (unsigned __int64)nmemb >> 30;
             v13 = 4 * nmemb;
             if ( !is_mul_ok(4u, nmemb) )
               v14 = 1;
             if ( v14 )
-              goto LABEL_50;
-            v4 = (int)calloc(nmemb, 4u);
-            if ( v4 )
-            {
-              v15 = 0;
-              while ( 1 )
-              {
-                v16 = android::Parcel::readString16Inplace(v2, &v32);
-                *(_DWORD *)(v4 + 4 * v15) = strndup16to8(v16, v32);
-                v17 = v15 + 1;
-                v18 = 1;
-                if ( v15 + 1 > v15 )
-                  v18 = 0;
-                if ( v18 )
-                  break;
-                ++v15;
-                if ( v17 >= (signed int)nmemb )
-                  goto LABEL_32;
-              }
-LABEL_50:
+LABEL_45:
               abort();
+            v4 = (int)calloc(nmemb, 4u);
+            if ( !v4 )
+            {
+              v23 = j_requestToString(**((_DWORD **)v3 + 1));
+              v5 = "Memory allocation failed for request %s";
+              goto LABEL_50;
             }
-            v25 = j_requestToString(*v3[1]);
-            v6 = "Memory allocation failed for request %s";
-            goto LABEL_49;
+            for ( i = 0; i < v12; ++i )
+            {
+              v16 = android::Parcel::readString16Inplace(v2, v30);
+              *(_DWORD *)(v4 + 4 * i) = strndup16to8(v16, v30[0]);
+              v17 = 1;
+              if ( i + 1 > i )
+                v17 = 0;
+              if ( v17 )
+                goto LABEL_45;
+              v12 = nmemb;
+            }
           }
-          v4 = 0;
         }
         else
         {
           v4 = (int)calloc(1u, 4u);
           if ( !v4 )
           {
-            v25 = j_requestToString(*v3[1]);
-            v6 = "Memory allocation failed for request %s";
-LABEL_49:
-            v26 = (void *)v25;
-            goto LABEL_6;
+            v23 = j_requestToString(**((_DWORD **)v3 + 1));
+            v5 = "Memory allocation failed for request %s";
+LABEL_50:
+            v24 = (void *)v23;
+            goto LABEL_5;
           }
           v13 = 0;
         }
-LABEL_32:
-        v19 = 1;
-        HIDWORD(v38) = v4;
+        v18 = 1;
+        HIDWORD(v34) = v4;
         if ( v13 + 9 >= v13 )
-          v19 = 0;
-        if ( v19 )
-          goto LABEL_50;
-        v2 = (android::Parcel *)&v36;
-        dword_156AC(*v3[1], &v36, v13 + 9);
+          v18 = 0;
+        if ( v18 )
+          goto LABEL_45;
+        dword_166DC(**((_DWORD **)v3 + 1), &v32, v13 + 9);
         if ( v4 )
         {
-          if ( (signed int)nmemb > 0 )
+          v19 = 0;
+          while ( v19 < (signed int)nmemb )
           {
-            v20 = 0;
-            do
+            v3 = *(android::Parcel **)(v4 + 4 * v19);
+            if ( v3 )
             {
-              v3 = *(int ***)(v4 + 4 * v20);
-              if ( v3 )
-              {
-                v21 = _strlen_chk(*(_DWORD *)(v4 + 4 * v20), -1);
-                _aeabi_memclr(v3, v21);
-                v22 = *(void **)(v4 + 4 * v20);
-              }
-              else
-              {
-                v22 = 0;
-              }
-              free(v22);
-              v23 = v20 + 1;
-              v24 = 1;
-              if ( v20 + 1 > v20 )
-                v24 = 0;
-              if ( v24 )
-                goto LABEL_50;
-              ++v20;
+              v20 = _strlen_chk(*(_DWORD *)(v4 + 4 * v19), -1);
+              _aeabi_memclr(v3, v20);
+              v21 = *(void **)(v4 + 4 * v19);
             }
-            while ( v23 < (signed int)nmemb );
+            else
+            {
+              v21 = 0;
+            }
+            free(v21);
+            v22 = 1;
+            if ( v19 + 1 > v19 )
+              v22 = 0;
+            ++v19;
+            if ( v22 )
+              goto LABEL_45;
           }
           free((void *)v4);
         }
-        *(_QWORD *)&v36 = 0LL;
-        v38 = 0LL;
+        *(_QWORD *)&v32 = 0LL;
+        v2 = (android::Parcel *)&v34;
+        v34 = 0LL;
       }
     }
     else
@@ -5592,105 +5581,88 @@ LABEL_32:
     }
   }
 }
-// 38A4: using guessed type int _android_log_buf_print(_DWORD, _DWORD, _DWORD, const char *, ...);
-// 3988: using guessed type int __fastcall _strlen_chk(_DWORD, _DWORD);
-// 3BC8: using guessed type int __fastcall strndup16to8(_DWORD, _DWORD);
-// 3BD4: using guessed type int __fastcall _aeabi_memclr(_DWORD, _DWORD);
-// 3C34: using guessed type int __fastcall _aeabi_memclr8(_DWORD, _DWORD);
-// 3C64: using guessed type int _android_log_print(_DWORD, _DWORD, const char *, ...);
-// 156AC: using guessed type int (__fastcall *dword_156AC)(_DWORD, _DWORD, _DWORD);
+// 3B1C: using guessed type int _android_log_buf_print(_DWORD, _DWORD, _DWORD, const char *, ...);
+// 3C00: using guessed type int __fastcall _strlen_chk(_DWORD, _DWORD);
+// 3E34: using guessed type int __fastcall strndup16to8(_DWORD, _DWORD);
+// 3E40: using guessed type int __fastcall _aeabi_memclr(_DWORD, _DWORD);
+// 3EA0: using guessed type int __fastcall _aeabi_memclr8(_DWORD, _DWORD);
+// 3ED0: using guessed type int _android_log_print(_DWORD, _DWORD, const char *, ...);
+// 166DC: using guessed type int (__fastcall *dword_166DC)(_DWORD, _DWORD, _DWORD);
 
-//----- (00008A84) --------------------------------------------------------
-int __fastcall sub_8A84(android::Parcel *this, unsigned __int64 *a2)
+//----- (00008F64) --------------------------------------------------------
+int __fastcall sub_8F64(android::Parcel *this, int *a2)
 {
   android::Parcel *v2; // r5
-  unsigned __int64 *v3; // r4
+  int *v3; // r4
   int v4; // r6
   int v5; // r0
-  unsigned __int64 v6; // kr00_8
+  int v6; // r5
   const char *v7; // r0
-  int v8; // r4
-  int v9; // r0
-  void *v10; // r0
-  int v12; // [sp+8h] [bp+0h]
-  int v13; // [sp+Ch] [bp+4h]
-  int v14; // [sp+10h] [bp+8h]
-  int v15; // [sp+14h] [bp+Ch]
-  int v16; // [sp+18h] [bp+10h]
-  int v17; // [sp+1Ch] [bp+14h]
-  void *v18; // [sp+20h] [bp+18h]
-  int v19; // [sp+24h] [bp+1Ch]
-  unsigned int v20; // [sp+28h] [bp+20h]
-  int v21; // [sp+2Ch] [bp+24h]
+  void *v8; // r4
+  void *v9; // r0
+  int v10; // r0
+  double v12; // [sp+8h] [bp+0h]
+  int v13; // [sp+10h] [bp+8h]
+  int v14; // [sp+14h] [bp+Ch]
+  double v15; // [sp+18h] [bp+10h]
+  void *ptr; // [sp+20h] [bp+18h]
+  int v17; // [sp+28h] [bp+20h]
+  unsigned int v18; // [sp+2Ch] [bp+24h]
+  int v19; // [sp+30h] [bp+28h]
 
   v2 = this;
   v3 = a2;
-  android::Parcel::readInt32(this, &v19);
-  v12 = v19;
-  android::Parcel::readInt32(v2, &v19);
-  v13 = v19;
-  android::Parcel::readInt32(v2, &v19);
-  v14 = v19;
-  android::Parcel::readInt32(v2, &v19);
-  v15 = v19;
-  android::Parcel::readInt32(v2, &v19);
-  v16 = v19;
-  v4 = android::Parcel::readInt32(v2, &v19);
-  v17 = v19;
-  v5 = android::Parcel::readString16Inplace(v2, &v20);
-  v18 = (void *)strndup16to8(v5, v20);
+  android::Parcel::readInt32(this, &v17);
+  LODWORD(v12) = v17;
+  android::Parcel::readInt32(v2, &v17);
+  HIDWORD(v12) = v17;
+  android::Parcel::readInt32(v2, &v17);
+  v13 = v17;
+  android::Parcel::readInt32(v2, &v17);
+  v14 = v17;
+  android::Parcel::readInt32(v2, &v17);
+  LODWORD(v15) = v17;
+  v4 = android::Parcel::readInt32(v2, &v17);
+  HIDWORD(v15) = v17;
+  v5 = android::Parcel::readString16Inplace(v2, &v18);
+  ptr = (void *)strndup16to8(v5, v18);
   if ( v4 )
   {
     v6 = *v3;
-    v7 = j_requestToString(*(_DWORD *)(*v3 >> 32));
-    _android_log_buf_print(
-      1,
-      6,
-      "RILC",
-      "invalid command block for token %d request %s",
-      (_DWORD)v6,
-      v7,
-      v12,
-      v13,
-      v14,
-      v15,
-      v16,
-      v17);
+    v7 = j_requestToString(*(_DWORD *)v3[1]);
+    _android_log_buf_print(1, 6, "RILC", "invalid command block for token %d request %s", v6, v7, v12, v13, v14, v15);
   }
   else
   {
-    dword_156AC(**((_DWORD **)v3 + 1), &v12, 28);
-    v8 = (int)v18;
-    if ( v18 )
+    dword_166DC(*(_DWORD *)v3[1], &v12, 28);
+    v8 = ptr;
+    v9 = 0;
+    if ( ptr )
     {
-      v9 = _strlen_chk(v18, -1);
-      _aeabi_memclr(v8, v9);
-      v10 = v18;
+      v10 = _strlen_chk(ptr, -1);
+      _aeabi_memclr(v8, v10);
+      v9 = ptr;
     }
-    else
-    {
-      v10 = 0;
-    }
-    free(v10);
-    *(_QWORD *)&v15 = 0LL;
-    *(_QWORD *)&v17 = 0LL;
-    *(_QWORD *)&v12 = 0LL;
-    *(_QWORD *)&v14 = 0LL;
+    free(v9);
+    v12 = 0.0;
+    *(_QWORD *)&v13 = 0LL;
+    v15 = 0.0;
+    ptr = 0;
   }
-  return _stack_chk_guard - v21;
+  return _stack_chk_guard - v19;
 }
-// 38A4: using guessed type int _android_log_buf_print(_DWORD, _DWORD, _DWORD, const char *, ...);
-// 3988: using guessed type int __fastcall _strlen_chk(_DWORD, _DWORD);
-// 3BC8: using guessed type int __fastcall strndup16to8(_DWORD, _DWORD);
-// 3BD4: using guessed type int __fastcall _aeabi_memclr(_DWORD, _DWORD);
-// 156AC: using guessed type int (__fastcall *dword_156AC)(_DWORD, _DWORD, _DWORD);
+// 3B1C: using guessed type int _android_log_buf_print(_DWORD, _DWORD, _DWORD, const char *, ...);
+// 3C00: using guessed type int __fastcall _strlen_chk(_DWORD, _DWORD);
+// 3E34: using guessed type int __fastcall strndup16to8(_DWORD, _DWORD);
+// 3E40: using guessed type int __fastcall _aeabi_memclr(_DWORD, _DWORD);
+// 166DC: using guessed type int (__fastcall *dword_166DC)(_DWORD, _DWORD, _DWORD);
 
-//----- (00008B9C) --------------------------------------------------------
-int __fastcall sub_8B9C(android::Parcel *a1, int *a2)
+//----- (00009074) --------------------------------------------------------
+int __fastcall sub_9074(android::Parcel *a1, int *a2)
 {
   int *v2; // r4
-  int v3; // r0
-  bool v4; // zf
+  int v3; // r1
+  int *v4; // r0
   int v5; // r0
   int v6; // r4
   const char *v7; // r0
@@ -5700,37 +5672,37 @@ int __fastcall sub_8B9C(android::Parcel *a1, int *a2)
 
   v2 = a2;
   v3 = android::Parcel::readInt32(a1, &v9);
+  v4 = (int *)v2[1];
   v10 = v9;
-  v4 = v3 == 0;
-  v5 = *(_DWORD *)v2[1];
-  if ( v4 )
-  {
-    dword_156AC(v5, &v10, 4);
-    v10 = 0;
-  }
-  else
+  v5 = *v4;
+  if ( v3 )
   {
     v6 = *v2;
     v7 = j_requestToString(v5);
     _android_log_buf_print(1, 6, "RILC", "invalid command block for token %d request %s", v6, v7);
   }
+  else
+  {
+    dword_166DC(v5, &v10, 4);
+    v10 = 0;
+  }
   return _stack_chk_guard - v11;
 }
-// 38A4: using guessed type int _android_log_buf_print(_DWORD, _DWORD, _DWORD, const char *, ...);
-// 156AC: using guessed type int (__fastcall *dword_156AC)(_DWORD, _DWORD, _DWORD);
+// 3B1C: using guessed type int _android_log_buf_print(_DWORD, _DWORD, _DWORD, const char *, ...);
+// 166DC: using guessed type int (__fastcall *dword_166DC)(_DWORD, _DWORD, _DWORD);
 
-//----- (00008C1C) --------------------------------------------------------
-int __fastcall sub_8C1C(android::Parcel *this, unsigned __int64 *a2)
+//----- (000090F4) --------------------------------------------------------
+int __fastcall sub_90F4(android::Parcel *this, int *a2)
 {
   android::Parcel *v2; // r5
-  unsigned __int64 *v3; // r4
+  int *v3; // r4
   int v4; // r6
   int v5; // r0
   void *v6; // r0
   void *v7; // r4
   void *v8; // r0
   int v9; // r0
-  unsigned __int64 v10; // kr00_8
+  int v10; // r5
   const char *v11; // r0
   int v13; // [sp+Ch] [bp-24h]
   int v14; // [sp+10h] [bp-20h]
@@ -5750,12 +5722,12 @@ int __fastcall sub_8C1C(android::Parcel *this, unsigned __int64 *a2)
   if ( v4 || !v6 )
   {
     v10 = *v3;
-    v11 = j_requestToString(*(_DWORD *)(*v3 >> 32));
-    _android_log_buf_print(1, 6, "RILC", "invalid command block for token %d request %s", (_DWORD)v10, v11);
+    v11 = j_requestToString(*(_DWORD *)v3[1]);
+    _android_log_buf_print(1, 6, "RILC", "invalid command block for token %d request %s", v10, v11);
   }
   else
   {
-    dword_156AC(**((_DWORD **)v3 + 1), &v14, 8);
+    dword_166DC(*(_DWORD *)v3[1], &v14, 8);
     v7 = ptr;
     v8 = 0;
     if ( ptr )
@@ -5770,31 +5742,31 @@ int __fastcall sub_8C1C(android::Parcel *this, unsigned __int64 *a2)
   }
   return _stack_chk_guard - v17;
 }
-// 38A4: using guessed type int _android_log_buf_print(_DWORD, _DWORD, _DWORD, const char *, ...);
-// 3988: using guessed type int __fastcall _strlen_chk(_DWORD, _DWORD);
-// 3BC8: using guessed type int __fastcall strndup16to8(_DWORD, _DWORD);
-// 3BD4: using guessed type int __fastcall _aeabi_memclr(_DWORD, _DWORD);
-// 156AC: using guessed type int (__fastcall *dword_156AC)(_DWORD, _DWORD, _DWORD);
+// 3B1C: using guessed type int _android_log_buf_print(_DWORD, _DWORD, _DWORD, const char *, ...);
+// 3C00: using guessed type int __fastcall _strlen_chk(_DWORD, _DWORD);
+// 3E34: using guessed type int __fastcall strndup16to8(_DWORD, _DWORD);
+// 3E40: using guessed type int __fastcall _aeabi_memclr(_DWORD, _DWORD);
+// 166DC: using guessed type int (__fastcall *dword_166DC)(_DWORD, _DWORD, _DWORD);
 
-//----- (00008CD8) --------------------------------------------------------
-int __fastcall sub_8CD8(android::Parcel *this, int a2)
+//----- (000091B0) --------------------------------------------------------
+int __fastcall sub_91B0(android::Parcel *this, int **a2)
 {
   int (__fastcall *v2)(_DWORD, _DWORD, _DWORD); // r7
   int v3; // r8
   android::Parcel *v4; // r6
-  int v5; // r4
-  int *v6; // r5
+  int *v5; // r5
+  int **v6; // r4
   const char *v7; // r0
   int result; // r0
-  int v9; // [sp+Ch] [bp-44h]
-  int v10; // [sp+10h] [bp-40h]
-  int v11; // [sp+14h] [bp-3Ch]
-  __int64 v12; // [sp+18h] [bp-38h]
-  int v13; // [sp+24h] [bp-2Ch]
+  int v9; // [sp+Ch] [bp-34h]
+  int v10; // [sp+10h] [bp-30h]
+  int v11; // [sp+14h] [bp-2Ch]
+  __int64 v12; // [sp+18h] [bp-28h]
+  int v13; // [sp+24h] [bp-1Ch]
 
   v4 = this;
-  v5 = a2;
-  v6 = &v10;
+  v5 = &v10;
+  v6 = a2;
   *(_QWORD *)&v10 = 0LL;
   v12 = 0LL;
   if ( !android::Parcel::readInt32(this, &v9) )
@@ -5813,9 +5785,9 @@ int __fastcall sub_8CD8(android::Parcel *this, int a2)
       }
     }
   }
-  v6 = (int *)*(_QWORD *)v5;
-  v7 = j_requestToString(*(_DWORD *)(*(_QWORD *)v5 >> 32));
-  _android_log_buf_print(1, 6, "RILC", "invalid command block for token %d request %s", v6, v7);
+  v5 = *v6;
+  v7 = j_requestToString(*v6[1]);
+  _android_log_buf_print(1, 6, "RILC", "invalid command block for token %d request %s", v5, v7);
   while ( 1 )
   {
     result = _stack_chk_guard - v13;
@@ -5824,158 +5796,152 @@ int __fastcall sub_8CD8(android::Parcel *this, int a2)
 LABEL_7:
     HIDWORD(v12) = v9;
     _android_log_buf_print(1, 3, "RILC", "dispatchUiccSubscription, slot=%d, app_index=%d, act_status = %d", v2, v3, v9);
-    v2 = dword_156AC;
-    dword_156AC(**(_DWORD **)(v5 + 4), v6, 16);
-    *(_QWORD *)v6 = 0LL;
-    *((_QWORD *)v6 + 1) = 0LL;
+    v2 = dword_166DC;
+    dword_166DC(*v6[1], v5, 16);
+    *(_QWORD *)v5 = 0LL;
+    v5 += 2;
+    *(_QWORD *)v5 = 0LL;
   }
   return result;
 }
-// 38A4: using guessed type int _android_log_buf_print(_DWORD, _DWORD, _DWORD, const char *, ...);
-// 156AC: using guessed type int (__fastcall *dword_156AC)(_DWORD, _DWORD, _DWORD);
+// 3B1C: using guessed type int _android_log_buf_print(_DWORD, _DWORD, _DWORD, const char *, ...);
+// 166DC: using guessed type int (__fastcall *dword_166DC)(_DWORD, _DWORD, _DWORD);
 
-//----- (00008DBC) --------------------------------------------------------
-int __fastcall sub_8DBC(android::Parcel *this, int a2, unsigned int a3)
+//----- (0000929C) --------------------------------------------------------
+int __fastcall sub_929C(android::Parcel *this, int a2, unsigned int a3)
 {
   int v3; // r4
-  unsigned int v4; // r6
-  android::Parcel *v5; // r5
-  const char *v6; // r3
-  signed int v7; // r8
-  int v8; // r7
+  android::Parcel *v4; // r5
+  const char *v5; // r3
+  signed int v6; // r8
+  int v8; // r0
+  int v9; // r7
   int v10; // r1
   int *v11; // r6
   int v12; // r6
-  int v13; // r0
-  signed int v14; // r1
-  unsigned int v15; // [sp+0h] [bp-20h]
-  signed int v16; // [sp+4h] [bp-1Ch]
+  signed int v13; // r1
+  int v14; // [sp+0h] [bp-20h]
+  signed int v15; // [sp+4h] [bp-1Ch]
 
   v3 = a2;
-  v4 = a3;
-  v5 = this;
+  v4 = this;
   if ( !a2 && a3 )
   {
-    v6 = "invalid response: NULL";
+    v5 = "invalid response: NULL";
 LABEL_6:
-    _android_log_buf_print(1, 6, "RILC", v6, v15, v16);
+    _android_log_buf_print(1, 6, "RILC", v5, v14, v15);
     return -1;
   }
-  v7 = a3 / 0x88;
+  v6 = a3 / 0x88;
   if ( a3 % 0x88 )
   {
-    v15 = a3;
-    v16 = 136;
-    v6 = "responseHardwareConfig: invalid response length %d expected multiple of %d";
+    v14 = a3;
+    v15 = 136;
+    v5 = "responseHardwareConfig: invalid response length %d expected multiple of %d";
     goto LABEL_6;
   }
   android::Parcel::writeInt32(this, a3 / 0x88);
   v8 = 0;
-  if ( v4 >= 0x88 )
+  while ( 1 )
   {
-    do
+    v9 = v8;
+    if ( v8 >= v6 )
+      break;
+    v10 = *(_DWORD *)(v3 + 136 * v8);
+    if ( v10 == 1 )
     {
-      v10 = *(_DWORD *)(v3 + 136 * v8);
-      if ( v10 == 1 )
-      {
-        v12 = v3 + 136 * v8;
-        sub_98F0((int)v5, v12 + 4);
-        android::Parcel::writeInt32(v5, *(_DWORD *)(v12 + 68));
-        sub_98F0((int)v5, v12 + 72);
-      }
-      else if ( !v10 )
-      {
-        v11 = (int *)(v3 + 136 * v8);
-        sub_98F0((int)v5, (int)(v11 + 1));
-        android::Parcel::writeInt32(v5, v11[17]);
-        android::Parcel::writeInt32(v5, v11[19]);
-        android::Parcel::writeInt32(v5, v11[20]);
-        android::Parcel::writeInt32(v5, v11[21]);
-        android::Parcel::writeInt32(v5, v11[22]);
-      }
-      v13 = v8 + 1;
-      v14 = 1;
-      if ( v8 + 1 > v8 )
-        v14 = 0;
-      if ( v14 )
-        abort();
-      ++v8;
+      v12 = v3 + 136 * v8;
+      sub_A0F8((int)v4, v12 + 4);
+      android::Parcel::writeInt32(v4, *(_DWORD *)(v12 + 68));
+      sub_A0F8((int)v4, v12 + 72);
     }
-    while ( v13 < v7 );
-    v8 = 0;
+    else if ( !v10 )
+    {
+      v11 = (int *)(v3 + 136 * v8);
+      sub_A0F8((int)v4, (int)(v11 + 1));
+      android::Parcel::writeInt32(v4, v11[17]);
+      android::Parcel::writeInt32(v4, v11[19]);
+      android::Parcel::writeInt32(v4, v11[20]);
+      android::Parcel::writeInt32(v4, v11[21]);
+      android::Parcel::writeInt32(v4, v11[22]);
+    }
+    v8 = v9 + 1;
+    v13 = 1;
+    if ( v9 + 1 > v9 )
+      v13 = 0;
+    if ( v13 )
+      abort();
   }
-  return v8;
+  return 0;
 }
-// 38A4: using guessed type int _android_log_buf_print(_DWORD, _DWORD, _DWORD, const char *, ...);
+// 3B1C: using guessed type int _android_log_buf_print(_DWORD, _DWORD, _DWORD, const char *, ...);
 
-//----- (00008EAC) --------------------------------------------------------
-int __fastcall sub_8EAC(android::Parcel *this, unsigned __int64 *a2)
+//----- (0000938C) --------------------------------------------------------
+int __fastcall sub_938C(android::Parcel *this, int *a2)
 {
   android::Parcel *v2; // r5
-  unsigned __int64 *v3; // r4
+  int *v3; // r4
   int v4; // r6
   int v5; // r0
   int v6; // r0
-  unsigned __int64 v7; // kr00_8
+  int v7; // r5
   const char *v8; // r0
   void *v9; // r4
   int v10; // r0
   void *v11; // r4
   int v12; // r0
   int v14; // [sp+Ch] [bp-2Ch]
-  int v15; // [sp+10h] [bp-28h]
-  void *ptr; // [sp+14h] [bp-24h]
-  void *v17; // [sp+18h] [bp-20h]
-  unsigned int v18; // [sp+20h] [bp-18h]
-  int v19; // [sp+24h] [bp-14h]
+  void *ptr[2]; // [sp+10h] [bp-28h]
+  void *v16; // [sp+18h] [bp-20h]
+  unsigned int v17; // [sp+20h] [bp-18h]
+  int v18; // [sp+24h] [bp-14h]
 
   v2 = this;
   v3 = a2;
-  v15 = 0;
-  ptr = 0;
+  ptr[0] = 0;
+  ptr[1] = 0;
   v4 = android::Parcel::readInt32(this, &v14);
-  v15 = v14;
-  v5 = android::Parcel::readString16Inplace(v2, &v18);
-  ptr = (void *)strndup16to8(v5, v18);
-  v6 = android::Parcel::readString16Inplace(v2, &v18);
-  v17 = (void *)strndup16to8(v6, v18);
+  ptr[0] = (void *)v14;
+  v5 = android::Parcel::readString16Inplace(v2, &v17);
+  ptr[1] = (void *)strndup16to8(v5, v17);
+  v6 = android::Parcel::readString16Inplace(v2, &v17);
+  v16 = (void *)strndup16to8(v6, v17);
   if ( v4 )
   {
     v7 = *v3;
-    v8 = j_requestToString(*(_DWORD *)(*v3 >> 32));
-    _android_log_buf_print(1, 6, "RILC", "invalid command block for token %d request %s", (_DWORD)v7, v8);
+    v8 = j_requestToString(*(_DWORD *)v3[1]);
+    _android_log_buf_print(1, 6, "RILC", "invalid command block for token %d request %s", v7, v8);
   }
   else
   {
-    dword_156AC(**((_DWORD **)v3 + 1), &v15, 12);
-    v9 = ptr;
-    if ( ptr )
+    dword_166DC(*(_DWORD *)v3[1], ptr, 12);
+    v9 = ptr[1];
+    if ( ptr[1] )
     {
-      v10 = _strlen_chk(ptr, -1);
+      v10 = _strlen_chk(ptr[1], -1);
       _aeabi_memclr(v9, v10);
     }
-    v11 = v17;
-    if ( v17 )
+    v11 = v16;
+    if ( v16 )
     {
-      v12 = _strlen_chk(v17, -1);
+      v12 = _strlen_chk(v16, -1);
       _aeabi_memclr(v11, v12);
     }
-    free(ptr);
-    free(v17);
-    v15 = 0;
-    ptr = 0;
-    v17 = 0;
+    free(ptr[1]);
+    free(v16);
+    v16 = 0;
+    *(_QWORD *)ptr = 0LL;
   }
-  return _stack_chk_guard - v19;
+  return _stack_chk_guard - v18;
 }
-// 38A4: using guessed type int _android_log_buf_print(_DWORD, _DWORD, _DWORD, const char *, ...);
-// 3988: using guessed type int __fastcall _strlen_chk(_DWORD, _DWORD);
-// 3BC8: using guessed type int __fastcall strndup16to8(_DWORD, _DWORD);
-// 3BD4: using guessed type int __fastcall _aeabi_memclr(_DWORD, _DWORD);
-// 156AC: using guessed type int (__fastcall *dword_156AC)(_DWORD, _DWORD, _DWORD);
+// 3B1C: using guessed type int _android_log_buf_print(_DWORD, _DWORD, _DWORD, const char *, ...);
+// 3C00: using guessed type int __fastcall _strlen_chk(_DWORD, _DWORD);
+// 3E34: using guessed type int __fastcall strndup16to8(_DWORD, _DWORD);
+// 3E40: using guessed type int __fastcall _aeabi_memclr(_DWORD, _DWORD);
+// 166DC: using guessed type int (__fastcall *dword_166DC)(_DWORD, _DWORD, _DWORD);
 
-//----- (00008F94) --------------------------------------------------------
-int __fastcall sub_8F94(android::Parcel *this, __int64 *a2, int a3)
+//----- (00009478) --------------------------------------------------------
+int __fastcall sub_9478(android::Parcel *this, __int64 *a2, int a3)
 {
   __int64 *v3; // r5
   android::Parcel *v4; // r4
@@ -5996,146 +5962,143 @@ int __fastcall sub_8F94(android::Parcel *this, __int64 *a2, int a3)
   }
   return result;
 }
-// 38A4: using guessed type int _android_log_buf_print(_DWORD, _DWORD, _DWORD, const char *, ...);
+// 3B1C: using guessed type int _android_log_buf_print(_DWORD, _DWORD, _DWORD, const char *, ...);
 
-//----- (00008FE0) --------------------------------------------------------
-int __fastcall sub_8FE0(android::Parcel *this, int a2)
+//----- (000094C4) --------------------------------------------------------
+int __fastcall sub_94C4(android::Parcel *this, int *a2)
 {
-  _DWORD *v2; // r9
-  _DWORD *v3; // r10
-  android::Parcel *v4; // r7
-  int v5; // r5
-  signed int v6; // r4
-  int v7; // r8
-  _DWORD *v8; // r4
-  int v9; // r0
+  _DWORD *v2; // r10
+  android::Parcel *v3; // r7
+  int *v4; // r5
+  signed int v5; // r4
+  _DWORD *v6; // r9
+  int v7; // r0
+  int i; // r8
+  _DWORD *v9; // r4
   int v10; // r0
   int v11; // r0
   int v12; // r0
   int v13; // r0
   signed int v14; // r2
-  int v15; // r1
+  int v15; // r4
   const char *v16; // r0
   const char *v17; // r0
   int result; // r0
-  signed int v19; // r0
+  const char *v19; // r0
   signed int v20; // r0
-  signed int v21; // r0
-  const char *v22; // r0
+  unsigned int v21; // r4
+  signed int v22; // r0
+  signed int v23; // r0
   size_t nmemb; // [sp+Ch] [bp-34h]
-  int v24; // [sp+10h] [bp-30h]
-  int v25; // [sp+14h] [bp-2Ch]
-  int v26; // [sp+18h] [bp-28h]
+  int v25; // [sp+10h] [bp-30h]
+  int v26; // [sp+14h] [bp-2Ch]
+  int v27; // [sp+18h] [bp-28h]
 
-  v4 = this;
-  v5 = a2;
+  v3 = this;
+  v4 = a2;
   if ( android::Parcel::readInt32(this, (int *)&nmemb) )
-    goto LABEL_13;
-  v6 = nmemb;
+    goto LABEL_14;
+  v5 = nmemb;
   if ( (nmemb & 0x80000000) != 0 )
-    goto LABEL_13;
-  v3 = calloc(nmemb, 0x2Cu);
-  if ( v3 )
+    goto LABEL_14;
+  v2 = calloc(nmemb, 0x2Cu);
+  if ( v2 )
   {
-    v2 = calloc(v6, 4u);
-    if ( v2 )
+    v6 = calloc(v5, 4u);
+    if ( !v6 )
+      goto LABEL_17;
+    v7 = 0;
+    for ( i = 0; i < v5; ++i )
     {
-      if ( v6 < 1 )
-        goto LABEL_16;
-      v7 = 0;
-      do
-      {
-        v8 = &v3[11 * v7];
-        v2[v7] = v8;
-        android::Parcel::readInt32(v4, &v24);
-        v3[11 * v7] = v24;
-        v9 = android::Parcel::readString16Inplace(v4, (unsigned int *)&v25);
-        v8[1] = strndup16to8(v9, v25);
-        v10 = android::Parcel::readString16Inplace(v4, (unsigned int *)&v25);
-        v8[2] = strndup16to8(v10, v25);
-        android::Parcel::readInt32(v4, &v24);
-        v8[3] = v24;
-        v11 = android::Parcel::readString16Inplace(v4, (unsigned int *)&v25);
-        v8[4] = strndup16to8(v11, v25);
-        v12 = android::Parcel::readString16Inplace(v4, (unsigned int *)&v25);
-        v8[5] = strndup16to8(v12, v25);
-        android::Parcel::readInt32(v4, &v24);
-        v8[6] = v24;
-        android::Parcel::readInt32(v4, &v24);
-        v8[7] = v24;
-        android::Parcel::readInt32(v4, &v24);
-        v8[8] = v24;
-        android::Parcel::readInt32(v4, &v24);
-        v8[9] = v24;
-        v13 = android::Parcel::readInt32(v4, &v24);
-        v14 = 1;
-        v8[10] = v24;
-        v15 = v7 + 1;
-        if ( v7 + 1 > v7 )
-          v14 = 0;
-        if ( v14 )
-          goto LABEL_27;
-        v6 = nmemb;
-        ++v7;
-      }
-      while ( v15 < (signed int)nmemb );
-      if ( !v13 )
-        goto LABEL_16;
-      free(v3);
-      free(v2);
-LABEL_13:
-      v6 = *(_QWORD *)v5;
-      v16 = j_requestToString(*(_DWORD *)(*(_QWORD *)v5 >> 32));
-      _android_log_buf_print(1, 6, "RILC", "invalid command block for token %d request %s", v6, v16);
-      goto LABEL_15;
+      v9 = &v2[11 * i];
+      v6[i] = v9;
+      android::Parcel::readInt32(v3, &v25);
+      v2[11 * i] = v25;
+      v10 = android::Parcel::readString16Inplace(v3, (unsigned int *)&v26);
+      v9[1] = strndup16to8(v10, v26);
+      v11 = android::Parcel::readString16Inplace(v3, (unsigned int *)&v26);
+      v9[2] = strndup16to8(v11, v26);
+      android::Parcel::readInt32(v3, &v25);
+      v9[3] = v25;
+      v12 = android::Parcel::readString16Inplace(v3, (unsigned int *)&v26);
+      v9[4] = strndup16to8(v12, v26);
+      v13 = android::Parcel::readString16Inplace(v3, (unsigned int *)&v26);
+      v9[5] = strndup16to8(v13, v26);
+      android::Parcel::readInt32(v3, &v25);
+      v9[6] = v25;
+      android::Parcel::readInt32(v3, &v25);
+      v9[7] = v25;
+      android::Parcel::readInt32(v3, &v25);
+      v9[8] = v25;
+      android::Parcel::readInt32(v3, &v25);
+      v9[9] = v25;
+      v7 = android::Parcel::readInt32(v3, &v25);
+      v14 = 1;
+      v9[10] = v25;
+      if ( i + 1 > i )
+        v14 = 0;
+      if ( v14 )
+        goto LABEL_11;
+      v5 = nmemb;
     }
-    v22 = j_requestToString(**(_DWORD **)(v5 + 4));
-    _android_log_buf_print(1, 6, "RILC", "Memory allocation failed for request %s", v22);
-    free(v3);
+    if ( v7 )
+    {
+      free(v2);
+      free(v6);
+LABEL_14:
+      v15 = *v4;
+      v16 = j_requestToString(*(_DWORD *)v4[1]);
+      _android_log_buf_print(1, 6, "RILC", "invalid command block for token %d request %s", v15, v16);
+      goto LABEL_16;
+    }
+    v20 = (unsigned __int64)(unsigned int)v5 >> 30;
+    if ( !is_mul_ok(4u, v5) )
+      v20 = 1;
+    if ( v20 )
+      goto LABEL_11;
+    dword_166DC(*(_DWORD *)v4[1], v6, 4 * v5);
+    v21 = nmemb;
+    v22 = 44 * (unsigned __int64)nmemb >> 32;
+    if ( !is_mul_ok(0x2Cu, nmemb) )
+      v22 = 1;
+    if ( v22 )
+      goto LABEL_11;
+    _aeabi_memclr4(v2, 44 * nmemb);
+    v23 = (unsigned __int64)v21 >> 30;
+    if ( !is_mul_ok(4u, v21) )
+      v23 = 1;
+    if ( v23 )
+LABEL_11:
+      abort();
+    _aeabi_memclr4(v6, 4 * v21);
+    free(v2);
+    free(v6);
   }
   else
   {
-    v17 = j_requestToString(**(_DWORD **)(v5 + 4));
+    v17 = j_requestToString(*(_DWORD *)v4[1]);
     _android_log_buf_print(1, 6, "RILC", "Memory allocation failed for request %s", v17);
   }
-LABEL_15:
+LABEL_16:
   while ( 1 )
   {
-    result = _stack_chk_guard - v26;
-    if ( _stack_chk_guard == v26 )
-      return result;
-LABEL_16:
-    v19 = (unsigned __int64)(unsigned int)v6 >> 30;
-    if ( !is_mul_ok(4u, v6) )
-      v19 = 1;
-    if ( v19 )
-      goto LABEL_27;
-    dword_156AC(**(_DWORD **)(v5 + 4), v2, 4 * v6);
-    v6 = nmemb;
-    v20 = 44 * (unsigned __int64)nmemb >> 32;
-    if ( !is_mul_ok(0x2Cu, nmemb) )
-      v20 = 1;
-    if ( v20 )
-      goto LABEL_27;
-    _aeabi_memclr4(v3, 44 * nmemb);
-    v21 = (unsigned __int64)(unsigned int)v6 >> 30;
-    if ( !is_mul_ok(4u, v6) )
-      v21 = 1;
-    if ( v21 )
-LABEL_27:
-      abort();
-    _aeabi_memclr4(v2, 4 * v6);
-    free(v3);
+    result = _stack_chk_guard - v27;
+    if ( _stack_chk_guard == v27 )
+      break;
+LABEL_17:
+    v19 = j_requestToString(*(_DWORD *)v4[1]);
+    _android_log_buf_print(1, 6, "RILC", "Memory allocation failed for request %s", v19);
     free(v2);
   }
+  return result;
 }
-// 38A4: using guessed type int _android_log_buf_print(_DWORD, _DWORD, _DWORD, const char *, ...);
-// 3BC8: using guessed type int __fastcall strndup16to8(_DWORD, _DWORD);
-// 3C40: using guessed type int __fastcall _aeabi_memclr4(_DWORD, _DWORD);
-// 156AC: using guessed type int (__fastcall *dword_156AC)(_DWORD, _DWORD, _DWORD);
+// 3B1C: using guessed type int _android_log_buf_print(_DWORD, _DWORD, _DWORD, const char *, ...);
+// 3E34: using guessed type int __fastcall strndup16to8(_DWORD, _DWORD);
+// 3EAC: using guessed type int __fastcall _aeabi_memclr4(_DWORD, _DWORD);
+// 166DC: using guessed type int (__fastcall *dword_166DC)(_DWORD, _DWORD, _DWORD);
 
-//----- (000091F8) --------------------------------------------------------
-int __fastcall sub_91F8(android::Parcel *this, int *a2, int a3)
+//----- (000096E0) --------------------------------------------------------
+int __fastcall sub_96E0(android::Parcel *this, int *a2, int a3)
 {
   int *v3; // r5
   android::Parcel *v4; // r4
@@ -6153,7 +6116,7 @@ int __fastcall sub_91F8(android::Parcel *this, int *a2, int a3)
       android::Parcel::writeInt32(v4, v3[1]);
       android::Parcel::writeInt32(v4, v3[2]);
       android::Parcel::writeInt32(v4, v3[3]);
-      sub_98F0((int)v4, (int)(v3 + 4));
+      sub_A0F8((int)v4, (int)(v3 + 4));
       android::Parcel::writeInt32(v4, v3[20]);
       return 0;
     }
@@ -6168,13 +6131,13 @@ int __fastcall sub_91F8(android::Parcel *this, int *a2, int a3)
   _android_log_buf_print(1, 6, "RILC", v6, v7, v8);
   return -1;
 }
-// 38A4: using guessed type int _android_log_buf_print(_DWORD, _DWORD, _DWORD, const char *, ...);
+// 3B1C: using guessed type int _android_log_buf_print(_DWORD, _DWORD, _DWORD, const char *, ...);
 
-//----- (0000927C) --------------------------------------------------------
-int __fastcall sub_927C(android::Parcel *a1, unsigned __int64 *a2)
+//----- (00009764) --------------------------------------------------------
+int __fastcall sub_9764(android::Parcel *a1, int *a2)
 {
   android::Parcel *v2; // r5
-  unsigned __int64 *v3; // r4
+  int *v3; // r4
   int v4; // r0
   int v5; // r0
   int v6; // r0
@@ -6185,7 +6148,7 @@ int __fastcall sub_927C(android::Parcel *a1, unsigned __int64 *a2)
   unsigned int v11; // r0
   signed int v12; // r1
   int v13; // r0
-  unsigned __int64 v14; // kr00_8
+  int v14; // r5
   const char *v15; // r0
   int result; // r0
   int v17; // [sp+8h] [bp-78h]
@@ -6244,26 +6207,26 @@ int __fastcall sub_927C(android::Parcel *a1, unsigned __int64 *a2)
     }
   }
   v14 = *v3;
-  v15 = j_requestToString(*(_DWORD *)(*v3 >> 32));
-  _android_log_buf_print(1, 6, "RILC", "invalid command block for token %d request %s", (_DWORD)v14, v15);
+  v15 = j_requestToString(*(_DWORD *)v3[1]);
+  _android_log_buf_print(1, 6, "RILC", "invalid command block for token %d request %s", v14, v15);
   while ( 1 )
   {
     result = _stack_chk_guard - v25;
     if ( _stack_chk_guard == v25 )
       break;
 LABEL_14:
-    dword_156AC(**((_DWORD **)v3 + 1), &v19, 84);
+    dword_166DC(*(_DWORD *)v3[1], &v19, 84);
   }
   return result;
 }
-// 38A4: using guessed type int _android_log_buf_print(_DWORD, _DWORD, _DWORD, const char *, ...);
-// 3C34: using guessed type int __fastcall _aeabi_memclr8(_DWORD, _DWORD);
-// 3C70: using guessed type int strnlen16to8(void);
-// 3C7C: using guessed type int __fastcall strncpy16to8(_DWORD, _DWORD);
-// 156AC: using guessed type int (__fastcall *dword_156AC)(_DWORD, _DWORD, _DWORD);
+// 3B1C: using guessed type int _android_log_buf_print(_DWORD, _DWORD, _DWORD, const char *, ...);
+// 3EA0: using guessed type int __fastcall _aeabi_memclr8(_DWORD, _DWORD);
+// 3EDC: using guessed type int strnlen16to8(void);
+// 3EE8: using guessed type int __fastcall strncpy16to8(_DWORD, _DWORD);
+// 166DC: using guessed type int (__fastcall *dword_166DC)(_DWORD, _DWORD, _DWORD);
 
-//----- (0000937C) --------------------------------------------------------
-int __fastcall sub_937C(android::Parcel *this, void *a2, int a3)
+//----- (00009864) --------------------------------------------------------
+int __fastcall sub_9864(android::Parcel *this, void *a2, int a3)
 {
   _DWORD *v3; // r4
   android::Parcel *v4; // r5
@@ -6287,10 +6250,10 @@ int __fastcall sub_937C(android::Parcel *this, void *a2, int a3)
   }
   return result;
 }
-// 38A4: using guessed type int _android_log_buf_print(_DWORD, _DWORD, _DWORD, const char *, ...);
+// 3B1C: using guessed type int _android_log_buf_print(_DWORD, _DWORD, _DWORD, const char *, ...);
 
-//----- (000093E0) --------------------------------------------------------
-int __fastcall sub_93E0(android::Parcel *this, int *a2, int a3)
+//----- (000098C8) --------------------------------------------------------
+int __fastcall sub_98C8(android::Parcel *this, int *a2, int a3)
 {
   int *v3; // r5
   android::Parcel *v4; // r4
@@ -6315,16 +6278,15 @@ int __fastcall sub_93E0(android::Parcel *this, int *a2, int a3)
   }
   return result;
 }
-// 38A4: using guessed type int _android_log_buf_print(_DWORD, _DWORD, _DWORD, const char *, ...);
+// 3B1C: using guessed type int _android_log_buf_print(_DWORD, _DWORD, _DWORD, const char *, ...);
 
-//----- (00009454) --------------------------------------------------------
-int __fastcall sub_9454(android::Parcel *this, int *a2, int a3)
+//----- (0000993C) --------------------------------------------------------
+int __fastcall sub_993C(android::Parcel *this, int *a2, int a3)
 {
   int *v3; // r4
   android::Parcel *v4; // r5
   int v5; // r7
-  int v6; // r0
-  signed int v7; // r1
+  signed int v6; // r1
   int result; // r0
 
   v3 = a2;
@@ -6334,18 +6296,16 @@ int __fastcall sub_9454(android::Parcel *this, int *a2, int a3)
     android::Parcel::writeInt32(this, *a2);
     android::Parcel::writeInt32(v4, v3[1]);
     v5 = 0;
-    do
+    while ( v5 < 5 )
     {
       android::Parcel::writeInt32(v4, v3[v5 + 2]);
-      v6 = v5 + 1;
-      v7 = 1;
+      v6 = 1;
       if ( v5 + 1 > v5 )
-        v7 = 0;
-      if ( v7 )
-        abort();
+        v6 = 0;
       ++v5;
+      if ( v6 )
+        abort();
     }
-    while ( v6 < 5 );
     android::Parcel::writeInt32(v4, v3[7]);
     result = 0;
   }
@@ -6359,266 +6319,480 @@ int __fastcall sub_9454(android::Parcel *this, int *a2, int a3)
   }
   return result;
 }
-// 38A4: using guessed type int _android_log_buf_print(_DWORD, _DWORD, _DWORD, const char *, ...);
+// 3B1C: using guessed type int _android_log_buf_print(_DWORD, _DWORD, _DWORD, const char *, ...);
 
-//----- (000094E4) --------------------------------------------------------
-int __fastcall sub_94E4(android::Parcel *this, int a2)
+//----- (000099D0) --------------------------------------------------------
+int __fastcall sub_99D0(android::Parcel *this, int a2)
 {
-  _DWORD *v2; // r11
-  android::Parcel *v3; // r7
-  int v4; // r5
-  _DWORD *v5; // r10
+  android::Parcel *v2; // r7
+  int v3; // r4
+  _DWORD *v4; // r8
+  _DWORD *v5; // r11
   signed int v6; // r6
-  __int64 v7; // kr00_8
+  int v7; // r5
   const char *v8; // r0
   int result; // r0
   const char *v10; // r0
-  signed int v11; // r8
+  size_t v11; // r9
   _DWORD *v12; // r0
-  int v13; // r6
+  int v13; // r5
   int v14; // r0
   int v15; // r0
-  _DWORD *v16; // r4
+  _DWORD *v16; // r6
   int v17; // r0
   int v18; // r0
-  int v19; // r0
-  signed int v20; // r1
+  signed int v19; // r1
+  const char *v20; // r0
   int v21; // r6
   int v22; // r0
   int v23; // r0
-  _DWORD *v24; // r4
+  _DWORD *v24; // r5
   int v25; // r0
   int v26; // r0
-  int v27; // r0
-  signed int v28; // r1
-  const char *v29; // r0
+  signed int v27; // r1
   size_t nmemb; // [sp+Ch] [bp-44h]
-  __int64 v31; // [sp+10h] [bp-40h]
-  __int64 v32; // [sp+18h] [bp-38h]
-  unsigned int v33; // [sp+24h] [bp-2Ch]
-  int v34; // [sp+28h] [bp-28h]
+  __int64 v29; // [sp+10h] [bp-40h]
+  __int64 v30; // [sp+18h] [bp-38h]
+  unsigned int v31; // [sp+24h] [bp-2Ch]
+  int v32; // [sp+28h] [bp-28h]
 
-  v3 = this;
-  v4 = a2;
-  v31 = 0LL;
-  v32 = 0LL;
-  if ( android::s_callbacks > 13 )
+  v2 = this;
+  v3 = a2;
+  v29 = 0LL;
+  v30 = 0LL;
+  if ( android::s_callbacks <= 13 )
   {
-    if ( android::Parcel::readInt32(this, (int *)&nmemb) )
+    _android_log_buf_print(1, 6, "RILC", "Unsuppoted RIL version %d, min version expected %d", android::s_callbacks, 14);
+    j_RIL_onRequestComplete(v3, 6, 0, 0);
+    goto LABEL_13;
+  }
+  if ( android::Parcel::readInt32(this, (int *)&nmemb) )
+  {
+    v4 = 0;
+    v5 = 0;
+  }
+  else
+  {
+    v6 = nmemb;
+    v5 = calloc(nmemb, 0x10u);
+    if ( !v5 )
+      goto LABEL_14;
+    LODWORD(v29) = v6;
+    LODWORD(v30) = v5;
+    if ( !android::Parcel::readInt32(v2, (int *)&nmemb) )
     {
-      v5 = 0;
-      v2 = 0;
-    }
-    else
-    {
-      v6 = nmemb;
-      v2 = calloc(nmemb, 0x10u);
-      if ( !v2 )
-        goto LABEL_14;
-      LODWORD(v31) = v6;
-      LODWORD(v32) = v2;
-      if ( android::Parcel::readInt32(v3, (int *)&nmemb) )
+      v11 = nmemb;
+      v12 = calloc(nmemb, 0x10u);
+      v4 = v12;
+      if ( v12 )
       {
-        v5 = 0;
+        HIDWORD(v29) = v11;
+        v13 = 0;
+        HIDWORD(v30) = v12;
+        while ( v13 < v6 )
+        {
+          v14 = android::Parcel::readString16Inplace(v2, &v31);
+          v5[4 * v13] = strndup16to8(v14, v31);
+          v15 = android::Parcel::readString16Inplace(v2, &v31);
+          v16 = &v5[4 * v13];
+          v16[1] = strndup16to8(v15, v31);
+          v17 = android::Parcel::readInt32(v2, (int *)&nmemb);
+          v16[2] = nmemb;
+          if ( v17 )
+            goto LABEL_8;
+          v18 = android::Parcel::readString16Inplace(v2, &v31);
+          v16[3] = strndup16to8(v18, v31);
+          v19 = 1;
+          if ( v13 + 1 > v13 )
+            v19 = 0;
+          if ( v19 )
+LABEL_31:
+            abort();
+          v6 = v29;
+          ++v13;
+        }
+        v21 = 0;
+        while ( v21 < SHIDWORD(v29) )
+        {
+          v22 = android::Parcel::readString16Inplace(v2, &v31);
+          v4[4 * v21] = strndup16to8(v22, v31);
+          v23 = android::Parcel::readString16Inplace(v2, &v31);
+          v24 = &v4[4 * v21];
+          v24[1] = strndup16to8(v23, v31);
+          v25 = android::Parcel::readInt32(v2, (int *)&nmemb);
+          v24[2] = nmemb;
+          if ( v25 )
+            goto LABEL_8;
+          v26 = android::Parcel::readString16Inplace(v2, &v31);
+          v24[3] = strndup16to8(v26, v31);
+          v27 = 1;
+          if ( v21 + 1 > v21 )
+            v27 = 0;
+          ++v21;
+          if ( v27 )
+            goto LABEL_31;
+        }
+        dword_166DC(**(_DWORD **)(v3 + 4), &v29, 16);
       }
       else
       {
-        v11 = nmemb;
-        v12 = calloc(nmemb, 0x10u);
-        v5 = v12;
-        if ( !v12 )
-        {
-          v29 = j_requestToString(**(_DWORD **)(v4 + 4));
-          _android_log_buf_print(1, 6, "RILC", "Memory allocation failed for request %s", v29);
-          goto LABEL_9;
-        }
-        HIDWORD(v31) = v11;
-        HIDWORD(v32) = v12;
-        if ( v6 >= 1 )
-        {
-          v13 = 0;
-          do
-          {
-            v14 = android::Parcel::readString16Inplace(v3, &v33);
-            v2[4 * v13] = strndup16to8(v14, v33);
-            v15 = android::Parcel::readString16Inplace(v3, &v33);
-            v16 = &v2[4 * v13];
-            v16[1] = strndup16to8(v15, v33);
-            v17 = android::Parcel::readInt32(v3, (int *)&nmemb);
-            v16[2] = nmemb;
-            if ( v17 )
-              goto LABEL_8;
-            v18 = android::Parcel::readString16Inplace(v3, &v33);
-            v16[3] = strndup16to8(v18, v33);
-            v19 = v13 + 1;
-            v20 = 1;
-            if ( v13 + 1 > v13 )
-              v20 = 0;
-            if ( v20 )
-LABEL_33:
-              abort();
-            ++v13;
-          }
-          while ( v19 < (signed int)v31 );
-          v11 = HIDWORD(v31);
-        }
-        if ( v11 < 1 )
-        {
-LABEL_31:
-          dword_156AC(**(_DWORD **)(v4 + 4), &v31, 16);
-          goto LABEL_9;
-        }
-        v21 = 0;
-        while ( 1 )
-        {
-          v22 = android::Parcel::readString16Inplace(v3, &v33);
-          v5[4 * v21] = strndup16to8(v22, v33);
-          v23 = android::Parcel::readString16Inplace(v3, &v33);
-          v24 = &v5[4 * v21];
-          v24[1] = strndup16to8(v23, v33);
-          v25 = android::Parcel::readInt32(v3, (int *)&nmemb);
-          v24[2] = nmemb;
-          if ( v25 )
-            break;
-          v26 = android::Parcel::readString16Inplace(v3, &v33);
-          v24[3] = strndup16to8(v26, v33);
-          v27 = v21 + 1;
-          v28 = 1;
-          if ( v21 + 1 > v21 )
-            v28 = 0;
-          if ( v28 )
-            goto LABEL_33;
-          ++v21;
-          if ( v27 >= SHIDWORD(v31) )
-            goto LABEL_31;
-        }
+        v20 = j_requestToString(**(_DWORD **)(v3 + 4));
+        _android_log_buf_print(1, 6, "RILC", "Memory allocation failed for request %s", v20);
       }
+      goto LABEL_9;
     }
-LABEL_8:
-    v7 = *(_QWORD *)v4;
-    v8 = j_requestToString(*(_DWORD *)(*(_QWORD *)v4 >> 32));
-    _android_log_buf_print(1, 6, "RILC", "invalid command block for token %d request %s", (_DWORD)v7, v8);
-    j_RIL_onRequestComplete(v4, 44, 0, 0);
-    goto LABEL_9;
+    v4 = 0;
   }
-  _android_log_buf_print(1, 6, "RILC", "Unsuppoted RIL version %d, min version expected %d", android::s_callbacks, 14);
-  j_RIL_onRequestComplete(v4, 6, 0, 0);
+LABEL_8:
+  v7 = *(_DWORD *)v3;
+  v8 = j_requestToString(**(_DWORD **)(v3 + 4));
+  _android_log_buf_print(1, 6, "RILC", "invalid command block for token %d request %s", v7, v8);
+  j_RIL_onRequestComplete(v3, 44, 0, 0);
+LABEL_9:
+  if ( v5 )
+    free(v5);
+  if ( v4 )
+    free(v4);
+LABEL_13:
   while ( 1 )
   {
-    result = _stack_chk_guard - v34;
-    if ( _stack_chk_guard == v34 )
+    result = _stack_chk_guard - v32;
+    if ( _stack_chk_guard == v32 )
       break;
 LABEL_14:
-    v10 = j_requestToString(**(_DWORD **)(v4 + 4));
+    v10 = j_requestToString(**(_DWORD **)(v3 + 4));
     _android_log_buf_print(1, 6, "RILC", "Memory allocation failed for request %s", v10);
-    v5 = 0;
-LABEL_9:
-    if ( v2 )
-      free(v2);
-    if ( v5 )
-      free(v5);
   }
   return result;
 }
-// 38A4: using guessed type int _android_log_buf_print(_DWORD, _DWORD, _DWORD, const char *, ...);
-// 3BC8: using guessed type int __fastcall strndup16to8(_DWORD, _DWORD);
-// 156A8: using guessed type int android::s_callbacks;
-// 156AC: using guessed type int (__fastcall *dword_156AC)(_DWORD, _DWORD, _DWORD);
+// 3B1C: using guessed type int _android_log_buf_print(_DWORD, _DWORD, _DWORD, const char *, ...);
+// 3E34: using guessed type int __fastcall strndup16to8(_DWORD, _DWORD);
+// 166D8: using guessed type int android::s_callbacks;
+// 166DC: using guessed type int (__fastcall *dword_166DC)(_DWORD, _DWORD, _DWORD);
 
-//----- (00009748) --------------------------------------------------------
-int __fastcall sub_9748(android::Parcel *this, int *a2, int a3)
+//----- (00009C2C) --------------------------------------------------------
+int __fastcall sub_9C2C(android::Parcel *this, int *a2, int a3)
 {
   int *v3; // r4
   android::Parcel *v4; // r5
   int v5; // r6
   int v6; // r7
   int *v7; // r7
-  int v8; // r0
-  signed int v9; // r1
-  int v10; // r6
-  int v11; // r7
-  int *v12; // r7
-  int v13; // r0
+  signed int v8; // r1
+  const char *v9; // r3
+  int v11; // r6
+  int v12; // r7
+  int *v13; // r7
   signed int v14; // r1
-  const char *v16; // r3
-  int v17; // [sp+0h] [bp-20h]
-  signed int v18; // [sp+4h] [bp-1Ch]
+  int v15; // [sp+0h] [bp-20h]
+  signed int v16; // [sp+4h] [bp-1Ch]
 
   v3 = a2;
   v4 = this;
   if ( !a2 )
   {
-    v16 = "invalid response: NULL";
-LABEL_18:
-    _android_log_buf_print(1, 6, "RILC", v16, v17, v18);
+    v9 = "invalid response: NULL";
+LABEL_11:
+    _android_log_buf_print(1, 6, "RILC", v9, v15, v16);
     return -1;
   }
   if ( a3 != 16 )
   {
-    v17 = a3;
-    v18 = 16;
-    v16 = "responseCarrierRestrictions: invalid response length %u expecting len: %u";
-    goto LABEL_18;
+    v15 = a3;
+    v16 = 16;
+    v9 = "responseCarrierRestrictions: invalid response length %u expecting len: %u";
+    goto LABEL_11;
   }
   android::Parcel::writeInt32(this, *a2);
   android::Parcel::writeInt32(v4, v3[1]);
-  if ( *v3 >= 1 )
+  v5 = 0;
+  while ( v5 < *v3 )
   {
-    v5 = 0;
-    while ( 1 )
-    {
-      v6 = v3[2];
-      sub_98F0((int)v4, *(_DWORD *)(v6 + 16 * v5));
-      v7 = (int *)(v6 + 16 * v5);
-      sub_98F0((int)v4, v7[1]);
-      android::Parcel::writeInt32(v4, v7[2]);
-      sub_98F0((int)v4, v7[3]);
-      v8 = v5 + 1;
-      v9 = 1;
-      if ( v5 + 1 > v5 )
-        v9 = 0;
-      if ( v9 )
-        break;
-      ++v5;
-      if ( v8 >= *v3 )
-        goto LABEL_9;
-    }
-LABEL_20:
-    abort();
+    v6 = v3[2];
+    sub_A0F8((int)v4, *(_DWORD *)(v6 + 16 * v5));
+    v7 = (int *)(v6 + 16 * v5);
+    sub_A0F8((int)v4, v7[1]);
+    android::Parcel::writeInt32(v4, v7[2]);
+    sub_A0F8((int)v4, v7[3]);
+    v8 = 1;
+    if ( v5 + 1 > v5 )
+      v8 = 0;
+    ++v5;
+    if ( v8 )
+LABEL_17:
+      abort();
   }
-LABEL_9:
-  if ( v3[1] >= 1 )
+  v11 = 0;
+  while ( v11 < v3[1] )
   {
-    v10 = 0;
-    while ( 1 )
-    {
-      v11 = v3[3];
-      sub_98F0((int)v4, *(_DWORD *)(v11 + 16 * v10));
-      v12 = (int *)(v11 + 16 * v10);
-      sub_98F0((int)v4, v12[1]);
-      android::Parcel::writeInt32(v4, v12[2]);
-      sub_98F0((int)v4, v12[3]);
-      v13 = v10 + 1;
-      v14 = 1;
-      if ( v10 + 1 > v10 )
-        v14 = 0;
-      if ( v14 )
-        break;
-      ++v10;
-      if ( v13 >= v3[1] )
-        return 0;
-    }
-    goto LABEL_20;
+    v12 = v3[3];
+    sub_A0F8((int)v4, *(_DWORD *)(v12 + 16 * v11));
+    v13 = (int *)(v12 + 16 * v11);
+    sub_A0F8((int)v4, v13[1]);
+    android::Parcel::writeInt32(v4, v13[2]);
+    sub_A0F8((int)v4, v13[3]);
+    v14 = 1;
+    if ( v11 + 1 > v11 )
+      v14 = 0;
+    ++v11;
+    if ( v14 )
+      goto LABEL_17;
   }
   return 0;
 }
-// 38A4: using guessed type int _android_log_buf_print(_DWORD, _DWORD, _DWORD, const char *, ...);
+// 3B1C: using guessed type int _android_log_buf_print(_DWORD, _DWORD, _DWORD, const char *, ...);
 
-//----- (00009838) --------------------------------------------------------
-int __fastcall sub_9838(android::Parcel *a1, int *a2)
+//----- (00009D14) --------------------------------------------------------
+int __fastcall sub_9D14(android::Parcel *this, int *a2)
 {
-  int *v2; // r5
-  android::Parcel *v3; // r4
+  android::Parcel *v2; // r5
+  int *v3; // r4
+  int v4; // r6
+  int v5; // r0
+  void *v6; // r0
+  void *v7; // r4
+  void *v8; // r0
+  int v9; // r0
+  int v10; // r5
+  const char *v11; // r0
+  char v13; // [sp+Fh] [bp-21h]
+  int v14; // [sp+10h] [bp-20h]
+  void *ptr; // [sp+14h] [bp-1Ch]
+  unsigned int v16; // [sp+18h] [bp-18h]
+  int v17; // [sp+1Ch] [bp-14h]
+
+  v2 = this;
+  v3 = a2;
+  v14 = 0;
+  ptr = 0;
+  v4 = android::Parcel::read(this, &v13, 1u);
+  LOBYTE(v14) = v13;
+  v5 = android::Parcel::readString16Inplace(v2, &v16);
+  v6 = (void *)strndup16to8(v5, v16);
+  ptr = v6;
+  if ( v4 || !v6 )
+  {
+    v10 = *v3;
+    v11 = j_requestToString(*(_DWORD *)v3[1]);
+    _android_log_buf_print(1, 6, "RILC", "invalid command block for token %d request %s", v10, v11);
+  }
+  else
+  {
+    dword_166DC(*(_DWORD *)v3[1], &v14, 8);
+    v7 = ptr;
+    v8 = 0;
+    if ( ptr )
+    {
+      v9 = _strlen_chk(ptr, -1);
+      _aeabi_memclr(v7, v9);
+      v8 = ptr;
+    }
+    free(v8);
+    v14 = 0;
+    ptr = 0;
+  }
+  return _stack_chk_guard - v17;
+}
+// 3B1C: using guessed type int _android_log_buf_print(_DWORD, _DWORD, _DWORD, const char *, ...);
+// 3C00: using guessed type int __fastcall _strlen_chk(_DWORD, _DWORD);
+// 3E34: using guessed type int __fastcall strndup16to8(_DWORD, _DWORD);
+// 3E40: using guessed type int __fastcall _aeabi_memclr(_DWORD, _DWORD);
+// 166DC: using guessed type int (__fastcall *dword_166DC)(_DWORD, _DWORD, _DWORD);
+
+//----- (00009DD8) --------------------------------------------------------
+int __fastcall sub_9DD8(android::Parcel *this, int *a2)
+{
+  void **v2; // r7
+  android::Parcel *v3; // r5
+  int *v4; // r8
+  int v5; // r0
+  int v6; // r0
+  int v7; // r0
+  int v8; // r0
+  int v9; // r1
+  int i; // r4
+  int v11; // r0
+  signed int v12; // r1
+  int v13; // r0
+  int v14; // r1
+  int v15; // r4
+  const char *v16; // r0
+  int result; // r0
+  int j; // r4
+  int v19; // r0
+  signed int v20; // r1
+  void *v21; // r4
+  int v22; // r0
+  void *v23; // r4
+  int v24; // r0
+  int v25; // r6
+  int *v26; // r7
+  int v27; // r4
+  int v28; // t1
+  int v29; // r0
+  void *v30; // r0
+  signed int v31; // r1
+  int v32; // r6
+  int *v33; // r7
+  int v34; // r4
+  int v35; // t1
+  int v36; // r0
+  void *v37; // r0
+  signed int v38; // r1
+  int v39; // [sp+8h] [bp-50h]
+  unsigned int v40; // [sp+Ch] [bp-4Ch]
+  int v41; // [sp+10h] [bp-48h]
+  void *ptr; // [sp+14h] [bp-44h]
+  void *v43; // [sp+18h] [bp-40h]
+  int v44; // [sp+1Ch] [bp-3Ch]
+  int v45; // [sp+20h] [bp-38h]
+  int v46; // [sp+28h] [bp-30h]
+  __int64 v47; // [sp+2Ch] [bp-2Ch]
+  __int64 v48; // [sp+34h] [bp-24h]
+  int v49; // [sp+3Ch] [bp-1Ch]
+
+  v3 = this;
+  v4 = a2;
+  v5 = android::Parcel::readInt32(this, &v39);
+  v41 = v39;
+  if ( !v5 )
+  {
+    v6 = android::Parcel::readString16Inplace(v3, &v40);
+    ptr = (void *)strndup16to8(v6, v40);
+    v7 = android::Parcel::readString16Inplace(v3, &v40);
+    v43 = (void *)strndup16to8(v7, v40);
+    v8 = android::Parcel::readInt32(v3, &v39);
+    v9 = v39;
+    v44 = v39;
+    if ( !v8 )
+    {
+      v2 = (void **)&v41;
+      for ( i = 0; i < v9; ++i )
+      {
+        v11 = android::Parcel::readString16Inplace(v3, &v40);
+        *(&v41 + i + 4) = strndup16to8(v11, v40);
+        v12 = 1;
+        if ( i + 1 > i )
+          v12 = 0;
+        if ( v12 )
+LABEL_41:
+          abort();
+        v9 = v44;
+      }
+      v13 = android::Parcel::readInt32(v3, &v39);
+      v14 = v39;
+      v46 = v39;
+      if ( !v13 )
+        goto LABEL_13;
+    }
+  }
+  v15 = *v4;
+  v16 = j_requestToString(*(_DWORD *)v4[1]);
+  _android_log_buf_print(1, 6, "RILC", "invalid command block for token %d request %s", v15, v16);
+  while ( 1 )
+  {
+    v14 = v49;
+    result = _stack_chk_guard - v49;
+    if ( _stack_chk_guard == v49 )
+      return result;
+LABEL_13:
+    for ( j = 0; j < v14; ++j )
+    {
+      v19 = android::Parcel::readString16Inplace(v3, &v40);
+      v2[j + 7] = (void *)strndup16to8(v19, v40);
+      v20 = 1;
+      if ( j + 1 > j )
+        v20 = 0;
+      if ( v20 )
+        goto LABEL_41;
+      v14 = v46;
+    }
+    v2 = (void **)dword_166DC;
+    dword_166DC(*(_DWORD *)v4[1], &v41, 44);
+    v21 = ptr;
+    if ( ptr )
+    {
+      v22 = _strlen_chk(ptr, -1);
+      _aeabi_memclr(v21, v22);
+    }
+    v23 = v43;
+    if ( v43 )
+    {
+      v24 = _strlen_chk(v43, -1);
+      _aeabi_memclr(v23, v24);
+    }
+    free(ptr);
+    free(v43);
+    v25 = 0;
+    while ( v25 < v44 )
+    {
+      v26 = &v41 + v25;
+      v28 = v26[4];
+      v2 = (void **)(v26 + 4);
+      v27 = v28;
+      if ( v28 )
+      {
+        v29 = _strlen_chk(v27, -1);
+        _aeabi_memclr(v27, v29);
+        v30 = *v2;
+      }
+      else
+      {
+        v30 = 0;
+      }
+      free(v30);
+      v31 = 1;
+      if ( v25 + 1 > v25 )
+        v31 = 0;
+      ++v25;
+      if ( v31 )
+        goto LABEL_41;
+    }
+    v32 = 0;
+    while ( v32 < v46 )
+    {
+      v33 = &v41 + v32;
+      v35 = v33[7];
+      v2 = (void **)(v33 + 7);
+      v34 = v35;
+      if ( v35 )
+      {
+        v36 = _strlen_chk(v34, -1);
+        _aeabi_memclr(v34, v36);
+        v37 = *v2;
+      }
+      else
+      {
+        v37 = 0;
+      }
+      free(v37);
+      v38 = 1;
+      if ( v32 + 1 > v32 )
+        v38 = 0;
+      ++v32;
+      if ( v38 )
+        goto LABEL_41;
+    }
+    v47 = 0LL;
+    v48 = 0LL;
+    *(_QWORD *)&v41 = 0LL;
+    *(_QWORD *)&v43 = 0LL;
+    v3 = (android::Parcel *)&v45;
+    *(_QWORD *)&v45 = 0LL;
+    *(_QWORD *)&v46 = 0LL;
+  }
+}
+// 3B1C: using guessed type int _android_log_buf_print(_DWORD, _DWORD, _DWORD, const char *, ...);
+// 3C00: using guessed type int __fastcall _strlen_chk(_DWORD, _DWORD);
+// 3E34: using guessed type int __fastcall strndup16to8(_DWORD, _DWORD);
+// 3E40: using guessed type int __fastcall _aeabi_memclr(_DWORD, _DWORD);
+// 166DC: using guessed type int (__fastcall *dword_166DC)(_DWORD, _DWORD, _DWORD);
+
+//----- (00009FD8) --------------------------------------------------------
+int __fastcall sub_9FD8(android::Parcel *a1, int *a2)
+{
+  int *v2; // r4
+  android::Parcel *v3; // r5
 
   v2 = a2;
   v3 = a1;
@@ -6627,11 +6801,14 @@ int __fastcall sub_9838(android::Parcel *a1, int *a2)
   android::Parcel::writeInt32(v3, v2[2]);
   android::Parcel::writeInt32(v3, v2[3]);
   android::Parcel::writeInt32(v3, v2[4]);
-  return sub_9874(v3, v2[5], (int)(v2 + 6));
+  sub_A040(v3, v2[5], (int)(v2 + 6));
+  android::Parcel::writeInt32(v3, v2[102]);
+  return _android_log_buf_print(1, 3, "RILC", "FIH_QCRIL_UIM_HOTSWAP_PUK, SIM hotswap state: %d", v2[102]);
 }
+// 3B1C: using guessed type int _android_log_buf_print(_DWORD, _DWORD, _DWORD, const char *, ...);
 
-//----- (00009874) --------------------------------------------------------
-int __fastcall sub_9874(android::Parcel *a1, int a2, int a3)
+//----- (0000A040) --------------------------------------------------------
+int __fastcall sub_A040(android::Parcel *a1, int a2, int a3)
 {
   int v3; // r4
   int v4; // r8
@@ -6640,40 +6817,56 @@ int __fastcall sub_9874(android::Parcel *a1, int a2, int a3)
   int v7; // r7
   int *v8; // r5
   signed int v9; // r1
+  int v10; // r7
+  int *v11; // r5
+  signed int v12; // r1
 
   v3 = a3;
   v4 = a2;
   v5 = a1;
   result = android::Parcel::writeInt32(a1, a2);
-  if ( v4 > 0 )
+  v7 = 0;
+  while ( v7 < v4 )
   {
-    v7 = 0;
-    do
-    {
-      android::Parcel::writeInt32(v5, *(_DWORD *)(v3 + 32 * v7));
-      v8 = (int *)(v3 + 32 * v7);
-      android::Parcel::writeInt32(v5, v8[1]);
-      android::Parcel::writeInt32(v5, v8[2]);
-      sub_98F0((int)v5, v8[3]);
-      sub_98F0((int)v5, v8[4]);
-      android::Parcel::writeInt32(v5, v8[5]);
-      android::Parcel::writeInt32(v5, v8[6]);
-      android::Parcel::writeInt32(v5, v8[7]);
-      result = v7 + 1;
-      v9 = 1;
-      if ( v7 + 1 > v7 )
-        v9 = 0;
-      if ( v9 )
-        abort();
-      ++v7;
-    }
-    while ( result < v4 );
+    android::Parcel::writeInt32(v5, *(_DWORD *)(v3 + 48 * v7));
+    v8 = (int *)(v3 + 48 * v7);
+    android::Parcel::writeInt32(v5, v8[1]);
+    android::Parcel::writeInt32(v5, v8[2]);
+    sub_A0F8((int)v5, v8[3]);
+    sub_A0F8((int)v5, v8[4]);
+    android::Parcel::writeInt32(v5, v8[5]);
+    android::Parcel::writeInt32(v5, v8[6]);
+    android::Parcel::writeInt32(v5, v8[7]);
+    result = v7 + 1;
+    v9 = 1;
+    if ( v7 + 1 > v7 )
+      v9 = 0;
+    ++v7;
+    if ( v9 )
+LABEL_12:
+      abort();
+  }
+  v10 = 0;
+  while ( v10 < v4 )
+  {
+    v11 = (int *)(v3 + 48 * v10);
+    android::Parcel::writeInt32(v5, v11[8]);
+    android::Parcel::writeInt32(v5, v11[9]);
+    android::Parcel::writeInt32(v5, v11[10]);
+    android::Parcel::writeInt32(v5, v11[11]);
+    result = v10 + 1;
+    v12 = 1;
+    if ( v10 + 1 > v10 )
+      v12 = 0;
+    ++v10;
+    if ( v12 )
+      goto LABEL_12;
   }
   return result;
 }
 
-//----- (000098F0) --------------------------------------------------------
-int __fastcall sub_98F0(int a1, int a2)
+//----- (0000A0F8) --------------------------------------------------------
+int __fastcall sub_A0F8(int a1, int a2)
 {
   int v2; // r4
   void *v3; // r5
@@ -6686,11 +6879,11 @@ int __fastcall sub_98F0(int a1, int a2)
   free(v3);
   return _stack_chk_guard - v6;
 }
-// 3C88: using guessed type int __fastcall strdup8to16(_DWORD, _DWORD);
-// 3C94: using guessed type int __fastcall android::Parcel::writeString16(_DWORD, _DWORD, _DWORD);
+// 3EF4: using guessed type int __fastcall strdup8to16(_DWORD, _DWORD);
+// 3F00: using guessed type int __fastcall android::Parcel::writeString16(_DWORD, _DWORD, _DWORD);
 
-//----- (0000993C) --------------------------------------------------------
-int __fastcall sub_993C(android::Parcel *a1, int *a2)
+//----- (0000A144) --------------------------------------------------------
+int __fastcall sub_A144(android::Parcel *a1, int *a2)
 {
   int *v2; // r5
   android::Parcel *v3; // r4
@@ -6699,15 +6892,15 @@ int __fastcall sub_993C(android::Parcel *a1, int *a2)
   v3 = a1;
   android::Parcel::writeInt32(a1, *a2);
   android::Parcel::writeInt32(v3, v2[1]);
-  android::Parcel::writeInt32(v3, v2[2]);
-  android::Parcel::writeInt32(v3, v2[3]);
   android::Parcel::writeInt32(v3, v2[4]);
   android::Parcel::writeInt32(v3, v2[5]);
-  return android::Parcel::writeInt32(v3, v2[6]);
+  android::Parcel::writeInt32(v3, v2[6]);
+  android::Parcel::writeInt32(v3, v2[7]);
+  return android::Parcel::writeInt32(v3, v2[8]);
 }
 
-//----- (0000997C) --------------------------------------------------------
-int __fastcall sub_997C(android::Parcel *this, _DWORD *a2)
+//----- (0000A184) --------------------------------------------------------
+int __fastcall sub_A184(android::Parcel *this, _DWORD *a2)
 {
   _DWORD *v2; // r5
   android::Parcel *v3; // r4
@@ -6718,13 +6911,13 @@ int __fastcall sub_997C(android::Parcel *this, _DWORD *a2)
 
   v2 = a2;
   v3 = this;
-  v4 = a2[7];
+  v4 = a2[9];
   if ( v4 == -1 )
   {
     v4 = 99;
-    v2[7] = 99;
+    v2[9] = 99;
   }
-  v5 = v2[8];
+  v5 = v2[10];
   if ( v5 == -1 )
   {
     v7 = 0x7FFFFFFF;
@@ -6740,364 +6933,318 @@ int __fastcall sub_997C(android::Parcel *this, _DWORD *a2)
       abort();
     v7 = -v5;
   }
-  v2[8] = v7;
+  v2[10] = v7;
 LABEL_11:
-  if ( v2[9] == -1 )
-    v2[9] = 0x7FFFFFFF;
   if ( v2[11] == -1 )
     v2[11] = 0x7FFFFFFF;
+  if ( v2[13] == -1 )
+    v2[13] = 0x7FFFFFFF;
   android::Parcel::writeInt32(v3, v4);
-  android::Parcel::writeInt32(v3, v2[8]);
-  android::Parcel::writeInt32(v3, v2[9]);
   android::Parcel::writeInt32(v3, v2[10]);
-  return android::Parcel::writeInt32(v3, v2[11]);
+  android::Parcel::writeInt32(v3, v2[11]);
+  android::Parcel::writeInt32(v3, v2[12]);
+  return android::Parcel::writeInt32(v3, v2[13]);
 }
 
-//----- (000099F8) --------------------------------------------------------
-int __fastcall sub_99F8(android::Parcel *this, int a2, unsigned int a3)
+//----- (0000A200) --------------------------------------------------------
+int __fastcall sub_A200(android::Parcel *this, int a2, unsigned int a3)
 {
   int v3; // r4
-  unsigned int v4; // r6
-  android::Parcel *v5; // r5
-  const char *v6; // r3
-  signed int v7; // r8
+  android::Parcel *v4; // r5
+  const char *v5; // r3
+  int v6; // r9
   int v8; // r7
-  int *v10; // r6
-  int v11; // r0
-  signed int v12; // r1
-  unsigned int v13; // [sp+0h] [bp-28h]
-  signed int v14; // [sp+4h] [bp-24h]
+  int *v9; // r6
+  signed int v10; // r1
+  int v11; // [sp+0h] [bp-28h]
+  signed int v12; // [sp+4h] [bp-24h]
 
   v3 = a2;
-  v4 = a3;
-  v5 = this;
+  v4 = this;
   if ( !a2 && a3 )
   {
-    v6 = "invalid response: NULL";
+    v5 = "invalid response: NULL";
 LABEL_6:
-    _android_log_buf_print(1, 6, "RILC", v6, v13, v14);
+    _android_log_buf_print(1, 6, "RILC", v5, v11, v12);
     return -1;
   }
-  v7 = a3 / 0x2C;
-  if ( a3 % 0x2C )
+  v6 = a3 / 0x2C;
+  if ( a3 != 44 * (a3 / 0x2C) )
   {
-    v13 = a3;
-    v14 = 44;
-    v6 = "invalid response length %d expected multiple of %d";
+    v11 = a3;
+    v12 = 44;
+    v5 = "invalid response length %d expected multiple of %d";
     goto LABEL_6;
   }
   android::Parcel::writeInt32(this, 11);
-  android::Parcel::writeInt32(v5, v4 / 0x2C);
+  android::Parcel::writeInt32(v4, v6);
   v8 = 0;
-  if ( v4 >= 0x2C )
+  while ( v8 < v6 )
   {
-    do
-    {
-      android::Parcel::writeInt32(v5, *(_DWORD *)(v3 + 44 * v8));
-      v10 = (int *)(v3 + 44 * v8);
-      android::Parcel::writeInt32(v5, v10[1]);
-      android::Parcel::writeInt32(v5, v10[2]);
-      android::Parcel::writeInt32(v5, v10[3]);
-      sub_98F0((int)v5, v10[4]);
-      sub_98F0((int)v5, v10[5]);
-      sub_98F0((int)v5, v10[6]);
-      sub_98F0((int)v5, v10[7]);
-      sub_98F0((int)v5, v10[8]);
-      sub_98F0((int)v5, v10[9]);
-      android::Parcel::writeInt32(v5, v10[10]);
-      v11 = v8 + 1;
-      v12 = 1;
-      if ( v8 + 1 > v8 )
-        v12 = 0;
-      if ( v12 )
-        abort();
-      ++v8;
-    }
-    while ( v11 < v7 );
-    v8 = 0;
+    android::Parcel::writeInt32(v4, *(_DWORD *)(v3 + 44 * v8));
+    v9 = (int *)(44 * v8 + v3);
+    android::Parcel::writeInt32(v4, v9[1]);
+    android::Parcel::writeInt32(v4, v9[2]);
+    android::Parcel::writeInt32(v4, v9[3]);
+    sub_A0F8((int)v4, v9[4]);
+    sub_A0F8((int)v4, v9[5]);
+    sub_A0F8((int)v4, v9[6]);
+    sub_A0F8((int)v4, v9[7]);
+    sub_A0F8((int)v4, v9[8]);
+    sub_A0F8((int)v4, v9[9]);
+    android::Parcel::writeInt32(v4, v9[10]);
+    v10 = 1;
+    if ( v8 + 1 > v8 )
+      v10 = 0;
+    ++v8;
+    if ( v10 )
+      abort();
   }
-  return v8;
+  return 0;
 }
-// 38A4: using guessed type int _android_log_buf_print(_DWORD, _DWORD, _DWORD, const char *, ...);
+// 3B1C: using guessed type int _android_log_buf_print(_DWORD, _DWORD, _DWORD, const char *, ...);
 
-//----- (00009AF0) --------------------------------------------------------
-int __fastcall sub_9AF0(android::Parcel *a1, int a2)
+//----- (0000A2F4) --------------------------------------------------------
+int __fastcall sub_A2F4(android::Parcel *a1, int a2)
 {
   android::Parcel *v2; // r5
   int v3; // r4
-  signed int v4; // r6
-  signed int v5; // r9
-  int v6; // r7
-  int v7; // r0
-  signed int v8; // r1
-  unsigned int v9; // r0
-  int v10; // r7
-  int v11; // r0
-  signed int v12; // r1
+  signed int v4; // r7
+  int v5; // r6
+  signed int v6; // r1
+  signed int v7; // r7
+  int v8; // r6
+  signed int v9; // r1
   int result; // r0
-  int v14; // r7
-  int v15; // r6
-  int v16; // r1
-  signed int v17; // r2
-  unsigned __int8 v18; // [sp+3h] [bp-25h]
-  int v19; // [sp+4h] [bp-24h]
-  int v20; // [sp+8h] [bp-20h]
+  int v11; // r7
+  int v12; // r6
+  signed int v13; // r2
+  unsigned __int8 v14; // [sp+7h] [bp-21h]
+  int v15; // [sp+8h] [bp-20h]
 
   v2 = a1;
   v3 = a2;
   _aeabi_memclr4(a2, 372);
-  android::Parcel::readInt32(v2, &v19);
-  *(_DWORD *)v3 = v19;
-  android::Parcel::read(v2, &v18, 1u);
-  *(_BYTE *)(v3 + 4) = v18;
-  android::Parcel::readInt32(v2, &v19);
-  *(_DWORD *)(v3 + 8) = v19;
-  android::Parcel::readInt32(v2, &v19);
-  *(_DWORD *)(v3 + 12) = v19;
-  android::Parcel::readInt32(v2, &v19);
-  *(_DWORD *)(v3 + 16) = v19;
-  android::Parcel::readInt32(v2, &v19);
-  *(_DWORD *)(v3 + 20) = v19;
-  android::Parcel::readInt32(v2, &v19);
-  *(_DWORD *)(v3 + 24) = v19;
-  android::Parcel::read(v2, &v18, 1u);
-  v4 = v18;
-  v5 = 36;
-  *(_BYTE *)(v3 + 28) = v18;
+  android::Parcel::readInt32(v2, &v15);
+  *(_DWORD *)v3 = v15;
+  android::Parcel::read(v2, &v14, 1u);
+  *(_BYTE *)(v3 + 4) = v14;
+  android::Parcel::readInt32(v2, &v15);
+  *(_DWORD *)(v3 + 8) = v15;
+  android::Parcel::readInt32(v2, &v15);
+  *(_DWORD *)(v3 + 12) = v15;
+  android::Parcel::readInt32(v2, &v15);
+  *(_DWORD *)(v3 + 16) = v15;
+  android::Parcel::readInt32(v2, &v15);
+  *(_DWORD *)(v3 + 20) = v15;
+  android::Parcel::readInt32(v2, &v15);
+  *(_DWORD *)(v3 + 24) = v15;
+  android::Parcel::read(v2, &v14, 1u);
+  v4 = v14;
+  v5 = 0;
+  *(_BYTE *)(v3 + 28) = v14;
   if ( (unsigned int)v4 >= 0x24 )
     v4 = 36;
-  if ( v4 )
+  while ( v5 < v4 )
   {
-    v6 = 0;
-    while ( 1 )
-    {
-      android::Parcel::read(v2, &v18, 1u);
-      *(_BYTE *)(v3 + v6 + 29) = v18;
-      v7 = v6 + 1;
-      v8 = 1;
-      if ( v6 + 1 > v6 )
-        v8 = 0;
-      if ( v8 )
-        break;
-      ++v6;
-      if ( v7 >= v4 )
-        goto LABEL_9;
-    }
-LABEL_26:
-    abort();
+    android::Parcel::read(v2, &v14, 1u);
+    *(_BYTE *)(v3 + v5 + 29) = v14;
+    v6 = 1;
+    if ( v5 + 1 > v5 )
+      v6 = 0;
+    ++v5;
+    if ( v6 )
+LABEL_21:
+      abort();
   }
-LABEL_9:
-  android::Parcel::readInt32(v2, &v19);
-  *(_DWORD *)(v3 + 68) = v19;
-  android::Parcel::read(v2, &v18, 1u);
-  *(_BYTE *)(v3 + 72) = v18;
-  android::Parcel::read(v2, &v18, 1u);
-  v9 = v18;
-  *(_BYTE *)(v3 + 73) = v18;
-  if ( v9 < 0x24 )
-    v5 = v9;
-  if ( v5 )
+  android::Parcel::readInt32(v2, &v15);
+  *(_DWORD *)(v3 + 68) = v15;
+  android::Parcel::read(v2, &v14, 1u);
+  *(_BYTE *)(v3 + 72) = v14;
+  android::Parcel::read(v2, &v14, 1u);
+  v7 = v14;
+  v8 = 0;
+  *(_BYTE *)(v3 + 73) = v14;
+  if ( (unsigned int)v7 >= 0x24 )
+    v7 = 36;
+  while ( v8 < v7 )
   {
-    v10 = 0;
-    do
-    {
-      android::Parcel::read(v2, &v18, 1u);
-      *(_BYTE *)(v3 + v10 + 74) = v18;
-      v11 = v10 + 1;
-      v12 = 1;
-      if ( v10 + 1 > v10 )
-        v12 = 0;
-      if ( v12 )
-        goto LABEL_26;
-      ++v10;
-    }
-    while ( v11 < v5 );
+    android::Parcel::read(v2, &v14, 1u);
+    *(_BYTE *)(v3 + v8 + 74) = v14;
+    v9 = 1;
+    if ( v8 + 1 > v8 )
+      v9 = 0;
+    ++v8;
+    if ( v9 )
+      goto LABEL_21;
   }
-  result = android::Parcel::readInt32(v2, &v19);
-  v14 = v19;
-  *(_DWORD *)(v3 + 112) = v19;
-  if ( v14 >= 255 )
-    v14 = 255;
-  if ( v14 >= 1 )
+  result = android::Parcel::readInt32(v2, &v15);
+  v11 = v15;
+  *(_DWORD *)(v3 + 112) = v15;
+  v12 = 0;
+  if ( v11 >= 255 )
+    v11 = 255;
+  while ( v12 < v11 )
   {
-    v15 = 0;
-    do
-    {
-      result = android::Parcel::read(v2, &v18, 1u);
-      *(_BYTE *)(v3 + v15 + 116) = v18;
-      v16 = v15 + 1;
-      v17 = 1;
-      if ( v15 + 1 > v15 )
-        v17 = 0;
-      if ( v17 )
-        goto LABEL_26;
-      ++v15;
-    }
-    while ( v16 < v14 );
+    result = android::Parcel::read(v2, &v14, 1u);
+    *(_BYTE *)(v3 + v12 + 116) = v14;
+    v13 = 1;
+    if ( v12 + 1 > v12 )
+      v13 = 0;
+    ++v12;
+    if ( v13 )
+      goto LABEL_21;
   }
-  if ( _stack_chk_guard != v20 )
-    goto LABEL_26;
   return result;
 }
-// 3C40: using guessed type int __fastcall _aeabi_memclr4(_DWORD, _DWORD);
+// 3EAC: using guessed type int __fastcall _aeabi_memclr4(_DWORD, _DWORD);
 
-//----- (00009C88) --------------------------------------------------------
-int __fastcall sub_9C88(android::Parcel *this, int a2, unsigned int a3)
+//----- (0000A47C) --------------------------------------------------------
+int __fastcall sub_A47C(android::Parcel *this, int a2, unsigned int a3)
 {
-  int v3; // r7
-  unsigned int v4; // r6
-  android::Parcel *v5; // r4
-  const char *v6; // r3
-  signed int v7; // r5
-  int *v9; // r6
+  int v3; // r6
+  android::Parcel *v4; // r4
+  const char *v5; // r3
+  signed int v6; // r5
+  int *v8; // r6
+  int v9; // r0
   int v10; // r7
   int v11; // r1
-  int v12; // r0
-  signed int v13; // r1
-  unsigned int v14; // [sp+0h] [bp-20h]
-  signed int v15; // [sp+4h] [bp-1Ch]
+  signed int v12; // r1
+  int v13; // [sp+0h] [bp-20h]
+  signed int v14; // [sp+4h] [bp-1Ch]
 
   v3 = a2;
-  v4 = a3;
-  v5 = this;
+  v4 = this;
   if ( !a2 && a3 )
   {
-    v6 = "invalid response: NULL";
+    v5 = "invalid response: NULL";
 LABEL_6:
-    _android_log_buf_print(1, 6, "RILC", v6, v14, v15);
+    _android_log_buf_print(1, 6, "RILC", v5, v13, v14);
     return -1;
   }
-  v7 = a3 / 0x48;
+  v6 = a3 / 0x48;
   if ( a3 % 0x48 )
   {
-    v14 = a3;
-    v15 = 72;
-    v6 = "responseCellInfoList: invalid response length %d expected multiple of %d";
+    v13 = a3;
+    v14 = 72;
+    v5 = "responseCellInfoList: invalid response length %d expected multiple of %d";
     goto LABEL_6;
   }
   android::Parcel::writeInt32(this, a3 / 0x48);
-  if ( v4 >= 0x48 )
+  v8 = (int *)(v3 + 36);
+  v9 = 0;
+  while ( 1 )
   {
-    v9 = (int *)(v3 + 36);
-    v10 = 0;
-    do
+    v10 = v9;
+    if ( v9 >= v6 )
+      return 0;
+    android::Parcel::writeInt32(v4, *(v8 - 9));
+    android::Parcel::writeInt32(v4, *(v8 - 8));
+    android::Parcel::writeInt32(v4, *(v8 - 7));
+    android::Parcel::writeInt64(v4, *(_QWORD *)(v8 - 5));
+    switch ( *(v8 - 9) )
     {
-      android::Parcel::writeInt32(v5, *(v9 - 9));
-      android::Parcel::writeInt32(v5, *(v9 - 8));
-      android::Parcel::writeInt32(v5, *(v9 - 7));
-      android::Parcel::writeInt64(v5, *(_QWORD *)(v9 - 5));
-      switch ( *(v9 - 9) )
-      {
-        case 1:
-          android::Parcel::writeInt32(v5, *(v9 - 3));
-          android::Parcel::writeInt32(v5, *(v9 - 2));
-          android::Parcel::writeInt32(v5, *(v9 - 1));
-          android::Parcel::writeInt32(v5, *v9);
-          android::Parcel::writeInt32(v5, v9[1]);
-          android::Parcel::writeInt32(v5, *((unsigned __int8 *)v9 + 8));
-          android::Parcel::writeInt32(v5, v9[3]);
-          android::Parcel::writeInt32(v5, v9[4]);
-          v11 = v9[5];
-          goto LABEL_15;
-        case 2:
-          android::Parcel::writeInt32(v5, *(v9 - 3));
-          android::Parcel::writeInt32(v5, *(v9 - 2));
-          android::Parcel::writeInt32(v5, *(v9 - 1));
-          android::Parcel::writeInt32(v5, *v9);
-          android::Parcel::writeInt32(v5, v9[1]);
-          android::Parcel::writeInt32(v5, v9[2]);
-          android::Parcel::writeInt32(v5, v9[3]);
-          android::Parcel::writeInt32(v5, v9[4]);
-          android::Parcel::writeInt32(v5, v9[5]);
-          v11 = v9[6];
-          goto LABEL_15;
-        case 3:
-          android::Parcel::writeInt32(v5, *(v9 - 3));
-          android::Parcel::writeInt32(v5, *(v9 - 2));
-          android::Parcel::writeInt32(v5, *(v9 - 1));
-          android::Parcel::writeInt32(v5, *v9);
-          android::Parcel::writeInt32(v5, v9[1]);
-          android::Parcel::writeInt32(v5, v9[2]);
-          android::Parcel::writeInt32(v5, v9[3]);
-          android::Parcel::writeInt32(v5, v9[4]);
-          android::Parcel::writeInt32(v5, v9[5]);
-          android::Parcel::writeInt32(v5, v9[6]);
-          android::Parcel::writeInt32(v5, v9[7]);
-          v11 = v9[8];
-          goto LABEL_15;
-        case 4:
-          android::Parcel::writeInt32(v5, *(v9 - 3));
-          android::Parcel::writeInt32(v5, *(v9 - 2));
-          android::Parcel::writeInt32(v5, *(v9 - 1));
-          android::Parcel::writeInt32(v5, *v9);
-          android::Parcel::writeInt32(v5, v9[1]);
-          android::Parcel::writeInt32(v5, v9[2]);
-          android::Parcel::writeInt32(v5, v9[3]);
-          v11 = v9[4];
-          goto LABEL_15;
-        case 5:
-          android::Parcel::writeInt32(v5, *(v9 - 3));
-          android::Parcel::writeInt32(v5, *(v9 - 2));
-          android::Parcel::writeInt32(v5, *(v9 - 1));
-          android::Parcel::writeInt32(v5, *v9);
-          android::Parcel::writeInt32(v5, v9[1]);
-          v11 = v9[2];
+      case 1:
+        android::Parcel::writeInt32(v4, *(v8 - 3));
+        android::Parcel::writeInt32(v4, *(v8 - 2));
+        android::Parcel::writeInt32(v4, *(v8 - 1));
+        android::Parcel::writeInt32(v4, *v8);
+        android::Parcel::writeInt32(v4, v8[1]);
+        android::Parcel::writeInt32(v4, *((unsigned __int8 *)v8 + 8));
+        android::Parcel::writeInt32(v4, v8[3]);
+        android::Parcel::writeInt32(v4, v8[4]);
+        v11 = v8[5];
+        goto LABEL_15;
+      case 2:
+        android::Parcel::writeInt32(v4, *(v8 - 3));
+        android::Parcel::writeInt32(v4, *(v8 - 2));
+        android::Parcel::writeInt32(v4, *(v8 - 1));
+        android::Parcel::writeInt32(v4, *v8);
+        android::Parcel::writeInt32(v4, v8[1]);
+        android::Parcel::writeInt32(v4, v8[2]);
+        android::Parcel::writeInt32(v4, v8[3]);
+        android::Parcel::writeInt32(v4, v8[4]);
+        android::Parcel::writeInt32(v4, v8[5]);
+        v11 = v8[6];
+        goto LABEL_15;
+      case 3:
+        android::Parcel::writeInt32(v4, *(v8 - 3));
+        android::Parcel::writeInt32(v4, *(v8 - 2));
+        android::Parcel::writeInt32(v4, *(v8 - 1));
+        android::Parcel::writeInt32(v4, *v8);
+        android::Parcel::writeInt32(v4, v8[1]);
+        android::Parcel::writeInt32(v4, v8[2]);
+        android::Parcel::writeInt32(v4, v8[3]);
+        android::Parcel::writeInt32(v4, v8[4]);
+        android::Parcel::writeInt32(v4, v8[5]);
+        android::Parcel::writeInt32(v4, v8[6]);
+        android::Parcel::writeInt32(v4, v8[7]);
+        v11 = v8[8];
+        goto LABEL_15;
+      case 4:
+        android::Parcel::writeInt32(v4, *(v8 - 3));
+        android::Parcel::writeInt32(v4, *(v8 - 2));
+        android::Parcel::writeInt32(v4, *(v8 - 1));
+        android::Parcel::writeInt32(v4, *v8);
+        android::Parcel::writeInt32(v4, v8[1]);
+        android::Parcel::writeInt32(v4, v8[2]);
+        android::Parcel::writeInt32(v4, v8[3]);
+        v11 = v8[4];
+        goto LABEL_15;
+      case 5:
+        android::Parcel::writeInt32(v4, *(v8 - 3));
+        android::Parcel::writeInt32(v4, *(v8 - 2));
+        android::Parcel::writeInt32(v4, *(v8 - 1));
+        android::Parcel::writeInt32(v4, *v8);
+        android::Parcel::writeInt32(v4, v8[1]);
+        v11 = v8[2];
 LABEL_15:
-          android::Parcel::writeInt32(v5, v11);
-          break;
-        default:
-          break;
-      }
-      v12 = v10 + 1;
-      v13 = 1;
-      if ( v10 + 1 > v10 )
-        v13 = 0;
-      if ( v13 )
-        abort();
-      v9 += 18;
-      ++v10;
+        android::Parcel::writeInt32(v4, v11);
+        break;
+      default:
+        break;
     }
-    while ( v12 < v7 );
+    v9 = v10 + 1;
+    v8 += 18;
+    v12 = 1;
+    if ( v10 + 1 > v10 )
+      v12 = 0;
+    if ( v12 )
+      abort();
   }
-  return 0;
 }
-// 38A4: using guessed type int _android_log_buf_print(_DWORD, _DWORD, _DWORD, const char *, ...);
+// 3B1C: using guessed type int _android_log_buf_print(_DWORD, _DWORD, _DWORD, const char *, ...);
 
-//----- (00009ECC) --------------------------------------------------------
-void __fastcall sub_9ECC(int a1, _DWORD *a2)
+//----- (0000A6C4) --------------------------------------------------------
+void __fastcall sub_A6C4(int a1, _DWORD *a2)
 {
-  int v2; // r5
-  _DWORD *v3; // r4
+  _DWORD *v2; // r4
+  int v3; // r5
   int v4; // r6
   void *v5; // r0
-  int v6; // r0
-  signed int v7; // r1
+  signed int v6; // r1
 
-  v2 = a1;
-  v3 = a2;
-  if ( a1 > 0 )
+  v2 = a2;
+  v3 = a1;
+  v4 = 0;
+  while ( v4 < v3 )
   {
-    v4 = 0;
-    do
-    {
-      v5 = (void *)v3[v4];
-      if ( v5 )
-        free(v5);
-      v6 = v4 + 1;
-      v7 = 1;
-      if ( v4 + 1 > v4 )
-        v7 = 0;
-      if ( v7 )
-        abort();
-      ++v4;
-    }
-    while ( v6 < v2 );
+    v5 = (void *)v2[v4];
+    if ( v5 )
+      free(v5);
+    v6 = 1;
+    if ( v4 + 1 > v4 )
+      v6 = 0;
+    ++v4;
+    if ( v6 )
+      abort();
   }
-  j_free(v3);
+  j_free(v2);
 }
 
-//----- (00009F04) --------------------------------------------------------
-int __fastcall sub_9F04(int a1, int a2, int a3)
+//----- (0000A6F8) --------------------------------------------------------
+int __fastcall sub_A6F8(int a1, int a2, int a3)
 {
   int v3; // r9
   int v4; // r5
@@ -7117,16 +7264,16 @@ int __fastcall sub_9F04(int a1, int a2, int a3)
   if ( v6 )
   {
     v6[13] = 1;
+    *((_DWORD *)v6 + 1) = (char *)&unk_1601C + 12 * v4;
     *(_DWORD *)v6 = -1;
-    *((_DWORD *)v6 + 1) = (char *)&unk_1501C + 12 * v4;
-    pthread_mutex_lock((pthread_mutex_t *)&unk_157A0);
-    v8 = dword_157A4;
-    dword_157A4 = v7;
+    pthread_mutex_lock((pthread_mutex_t *)&unk_167D0);
+    v8 = dword_167D4;
+    dword_167D4 = v7;
     *(_DWORD *)(v7 + 8) = v8;
-    pthread_mutex_unlock((pthread_mutex_t *)&unk_157A0);
+    pthread_mutex_unlock((pthread_mutex_t *)&unk_167D0);
     v9 = j_requestToString(v4);
     _android_log_buf_print(1, 3, "RILC", "C[locl]> %s", v9);
-    result = dword_156AC(v4, v3, v5);
+    result = dword_166DC(v4, v3, v5);
   }
   else
   {
@@ -7135,23 +7282,23 @@ int __fastcall sub_9F04(int a1, int a2, int a3)
   }
   return result;
 }
-// 38A4: using guessed type int _android_log_buf_print(_DWORD, _DWORD, _DWORD, const char *, ...);
-// 156AC: using guessed type int (__fastcall *dword_156AC)(_DWORD, _DWORD, _DWORD);
-// 157A4: using guessed type int dword_157A4;
+// 3B1C: using guessed type int _android_log_buf_print(_DWORD, _DWORD, _DWORD, const char *, ...);
+// 166DC: using guessed type int (__fastcall *dword_166DC)(_DWORD, _DWORD, _DWORD);
+// 167D4: using guessed type int dword_167D4;
 
-//----- (00009FC0) --------------------------------------------------------
-int sub_9FC0()
+//----- (0000A7B4) --------------------------------------------------------
+int sub_A7B4()
 {
   pthread_t v0; // r0
   int result; // r0
 
   v0 = pthread_self();
-  result = pthread_equal(v0, dword_156CC);
+  result = pthread_equal(v0, dword_166FC);
   if ( !result )
   {
     do
     {
-      result = _write_chk(dword_15778, " ", 1, 2);
+      result = _write_chk(dword_167A8, " ", 1, 2);
       if ( result > -1 )
         break;
       result = *(_DWORD *)_errno(result);
@@ -7160,59 +7307,56 @@ int sub_9FC0()
   }
   return result;
 }
-// 3928: using guessed type int __fastcall _errno(_DWORD);
-// 3B98: using guessed type int __fastcall _write_chk(_DWORD, _DWORD, _DWORD, _DWORD);
-// 156CC: using guessed type int dword_156CC;
-// 15778: using guessed type int dword_15778;
+// 3A68: using guessed type int __fastcall _errno(_DWORD);
+// 3E04: using guessed type int __fastcall _write_chk(_DWORD, _DWORD, _DWORD, _DWORD);
+// 166FC: using guessed type int dword_166FC;
+// 167A8: using guessed type int dword_167A8;
 
-//----- (0000A004) --------------------------------------------------------
-int __fastcall sub_A004(int a1, unsigned int a2)
+//----- (0000A7F8) --------------------------------------------------------
+signed int __fastcall sub_A7F8(int a1, unsigned int a2)
 {
-  int v2; // r5
-  unsigned int v3; // r4
+  int v2; // r6
+  unsigned int v3; // r5
   int v4; // r7
-  signed int v5; // r6
-  signed int v6; // r4
-  int result; // r0
-  unsigned int v8; // [sp+Ch] [bp-1Ch]
-  int v9; // [sp+10h] [bp-18h]
+  signed int v5; // r4
+  unsigned int v7; // [sp+Ch] [bp-1Ch]
+  int v8; // [sp+10h] [bp-18h]
 
   v2 = a1;
   v3 = a2;
-  v4 = dword_156E0;
-  if ( dword_156E0 >= 0 )
+  v4 = dword_16710;
+  if ( dword_16710 >= 0 )
   {
     if ( a2 <= 0x2000 )
-    {
-      pthread_mutex_lock((pthread_mutex_t *)&unk_157A8);
-      v8 = bswap32(v3);
-      v5 = sub_6538(v4, (int)&v8, 4u);
-      if ( v5 <= -1 )
-      {
-        pthread_mutex_unlock((pthread_mutex_t *)&unk_157A8);
-      }
-      else
-      {
-        v6 = sub_6538(v4, v2, v3);
-        pthread_mutex_unlock((pthread_mutex_t *)&unk_157A8);
-        v5 = v6 & (v6 >> 31);
-      }
-      goto LABEL_8;
-    }
+      goto LABEL_7;
     _android_log_buf_print(1, 6, "RILC", "RIL: packet larger than %u (%u)", 0x2000, a2);
   }
   v5 = -1;
-LABEL_8:
-  result = _stack_chk_guard - v9;
-  if ( _stack_chk_guard == v9 )
-    result = v5;
-  return result;
+  while ( _stack_chk_guard != v8 )
+  {
+LABEL_7:
+    pthread_mutex_lock((pthread_mutex_t *)&unk_167D8);
+    v7 = bswap32(v3);
+    v5 = sub_69B4(v4, (int)&v7, 4u);
+    if ( v5 <= -1 )
+    {
+      pthread_mutex_unlock((pthread_mutex_t *)&unk_167D8);
+    }
+    else
+    {
+      v5 = sub_69B4(v4, v2, v3);
+      pthread_mutex_unlock((pthread_mutex_t *)&unk_167D8);
+      if ( v5 >= 0 )
+        v5 = 0;
+    }
+  }
+  return v5;
 }
-// 38A4: using guessed type int _android_log_buf_print(_DWORD, _DWORD, _DWORD, const char *, ...);
-// 156E0: using guessed type int dword_156E0;
+// 3B1C: using guessed type int _android_log_buf_print(_DWORD, _DWORD, _DWORD, const char *, ...);
+// 16710: using guessed type int dword_16710;
 
-//----- (0000A0BC) --------------------------------------------------------
-int __fastcall sub_A0BC(android::Parcel *this, int *a2, int a3)
+//----- (0000A8B4) --------------------------------------------------------
+int __fastcall sub_A8B4(android::Parcel *this, int *a2, int a3)
 {
   int *v3; // r5
   android::Parcel *v4; // r4
@@ -7230,7 +7374,7 @@ int __fastcall sub_A0BC(android::Parcel *this, int *a2, int a3)
       android::Parcel::writeInt32(v4, v3[1]);
       android::Parcel::writeInt32(v4, v3[2]);
       android::Parcel::writeInt32(v4, v3[3]);
-      sub_98F0((int)v4, v3[4]);
+      sub_A0F8((int)v4, v3[4]);
       return 0;
     }
     v7 = a3;
@@ -7244,10 +7388,10 @@ int __fastcall sub_A0BC(android::Parcel *this, int *a2, int a3)
   _android_log_buf_print(1, 6, "RILC", v6, v7, v8);
   return -1;
 }
-// 38A4: using guessed type int _android_log_buf_print(_DWORD, _DWORD, _DWORD, const char *, ...);
+// 3B1C: using guessed type int _android_log_buf_print(_DWORD, _DWORD, _DWORD, const char *, ...);
 
-//----- (0000A134) --------------------------------------------------------
-int __fastcall sub_A134(android::Parcel *this, int *a2, unsigned int a3)
+//----- (0000A92C) --------------------------------------------------------
+int __fastcall sub_A92C(android::Parcel *this, int *a2, unsigned int a3)
 {
   android::Parcel *v3; // r4
   int *v4; // r5
@@ -7280,10 +7424,10 @@ LABEL_4:
     android::Parcel::writeInt32(this, *a2);
     android::Parcel::writeInt32(v3, v4[1]);
     v5 = 0;
-    sub_98F0((int)v3, 0);
+    sub_A0F8((int)v3, 0);
     goto LABEL_11;
   }
-  sub_AA68(v3, v4);
+  sub_B398(v3, v4);
   v5 = 0;
 LABEL_11:
   result = _stack_chk_guard - v8;
@@ -7291,12 +7435,12 @@ LABEL_11:
     result = v5;
   return result;
 }
-// 38A4: using guessed type int _android_log_buf_print(_DWORD, _DWORD, _DWORD, const char *, ...);
-// 3BB0: using guessed type int __fastcall property_get(_DWORD, _DWORD, _DWORD);
-// 156A8: using guessed type int android::s_callbacks;
+// 3B1C: using guessed type int _android_log_buf_print(_DWORD, _DWORD, _DWORD, const char *, ...);
+// 3E1C: using guessed type int __fastcall property_get(_DWORD, _DWORD, _DWORD);
+// 166D8: using guessed type int android::s_callbacks;
 
-//----- (0000A220) --------------------------------------------------------
-signed int __fastcall sub_A220(android::Parcel *a1, unsigned __int8 *a2, int a3)
+//----- (0000AA18) --------------------------------------------------------
+signed int __fastcall sub_AA18(android::Parcel *a1, unsigned __int8 *a2, int a3)
 {
   android::Parcel *v3; // r3
   signed int result; // r0
@@ -7307,7 +7451,7 @@ signed int __fastcall sub_A220(android::Parcel *a1, unsigned __int8 *a2, int a3)
   {
     if ( a3 == 4 )
     {
-      sub_AA88(v3, a2);
+      sub_B3B8(v3, a2);
       result = 0;
     }
     else
@@ -7324,134 +7468,106 @@ signed int __fastcall sub_A220(android::Parcel *a1, unsigned __int8 *a2, int a3)
   }
   return result;
 }
-// 38A4: using guessed type int _android_log_buf_print(_DWORD, _DWORD, _DWORD, const char *, ...);
+// 3B1C: using guessed type int _android_log_buf_print(_DWORD, _DWORD, _DWORD, const char *, ...);
 
-//----- (0000A264) --------------------------------------------------------
-signed int __fastcall sub_A264(android::Parcel *a1, int *a2, int a3)
+//----- (0000AA5C) --------------------------------------------------------
+signed int __fastcall sub_AA5C(android::Parcel *a1, int *a2, int a3)
 {
   int v3; // r6
   int *v4; // r8
   android::Parcel *v5; // r4
   const char *v6; // r3
-  signed int v7; // r7
-  signed int v8; // r9
-  int v9; // r6
-  int v10; // r0
-  signed int v11; // r1
-  int v12; // r6
-  int v13; // r0
-  signed int v14; // r1
-  signed int v15; // r6
-  int v16; // r7
-  int v17; // r0
-  signed int v18; // r1
-  int v20; // [sp+0h] [bp-28h]
-  signed int v21; // [sp+4h] [bp-24h]
+  signed int v7; // r6
+  int v8; // r5
+  signed int v9; // r1
+  signed int v11; // r6
+  int v12; // r5
+  signed int v13; // r1
+  signed int v14; // r6
+  int v15; // r7
+  signed int v16; // r1
+  int v17; // [sp+0h] [bp-20h]
+  signed int v18; // [sp+4h] [bp-1Ch]
 
   v3 = a3;
   v4 = a2;
   v5 = a1;
   _android_log_buf_print(1, 3, "RILC", "Inside responseCdmaSms");
-  if ( v4 || !v3 )
-  {
-    if ( v3 == 372 )
-    {
-      android::Parcel::writeInt32(v5, *v4);
-      android::Parcel::write(v5, v4 + 1, 1u);
-      android::Parcel::writeInt32(v5, v4[2]);
-      android::Parcel::writeInt32(v5, v4[3]);
-      android::Parcel::writeInt32(v5, v4[4]);
-      android::Parcel::writeInt32(v5, v4[5]);
-      android::Parcel::writeInt32(v5, v4[6]);
-      android::Parcel::write(v5, v4 + 7, 1u);
-      v7 = *((unsigned __int8 *)v4 + 28);
-      v8 = 36;
-      if ( (unsigned int)v7 >= 0x24 )
-        v7 = 36;
-      if ( v7 )
-      {
-        v9 = 0;
-        while ( 1 )
-        {
-          android::Parcel::write(v5, (char *)v4 + v9 + 29, 1u);
-          v10 = v9 + 1;
-          v11 = 1;
-          if ( v9 + 1 > v9 )
-            v11 = 0;
-          if ( v11 )
-            break;
-          ++v9;
-          if ( v10 >= v7 )
-            goto LABEL_13;
-        }
-      }
-      else
-      {
-LABEL_13:
-        android::Parcel::writeInt32(v5, v4[17]);
-        android::Parcel::write(v5, v4 + 18, 1u);
-        android::Parcel::write(v5, (char *)v4 + 73, 1u);
-        if ( *((unsigned __int8 *)v4 + 73) < 0x24u )
-          v8 = *((unsigned __int8 *)v4 + 73);
-        if ( v8 )
-        {
-          v12 = 0;
-          while ( 1 )
-          {
-            android::Parcel::write(v5, (char *)v4 + v12 + 74, 1u);
-            v13 = v12 + 1;
-            v14 = 1;
-            if ( v12 + 1 > v12 )
-              v14 = 0;
-            if ( v14 )
-              break;
-            ++v12;
-            if ( v13 >= v8 )
-              goto LABEL_21;
-          }
-        }
-        else
-        {
-LABEL_21:
-          v15 = v4[28];
-          android::Parcel::writeInt32(v5, v4[28]);
-          if ( v15 >= 255 )
-            v15 = 255;
-          if ( v15 < 1 )
-            return 0;
-          v16 = 0;
-          while ( 1 )
-          {
-            android::Parcel::write(v5, (char *)v4 + v16 + 116, 1u);
-            v17 = v16 + 1;
-            v18 = 1;
-            if ( v16 + 1 > v16 )
-              v18 = 0;
-            if ( v18 )
-              break;
-            ++v16;
-            if ( v17 >= v15 )
-              return 0;
-          }
-        }
-      }
-      abort();
-    }
-    v20 = v3;
-    v21 = 372;
-    v6 = "invalid response length was %d expected %d";
-  }
-  else
+  if ( !v4 && v3 )
   {
     v6 = "invalid response: NULL";
+LABEL_13:
+    _android_log_buf_print(1, 6, "RILC", v6, v17, v18);
+    return -1;
   }
-  _android_log_buf_print(1, 6, "RILC", v6, v20, v21);
-  return -1;
+  if ( v3 != 372 )
+  {
+    v17 = v3;
+    v18 = 372;
+    v6 = "invalid response length was %d expected %d";
+    goto LABEL_13;
+  }
+  android::Parcel::writeInt32(v5, *v4);
+  android::Parcel::write(v5, v4 + 1, 1u);
+  android::Parcel::writeInt32(v5, v4[2]);
+  android::Parcel::writeInt32(v5, v4[3]);
+  android::Parcel::writeInt32(v5, v4[4]);
+  android::Parcel::writeInt32(v5, v4[5]);
+  android::Parcel::writeInt32(v5, v4[6]);
+  android::Parcel::write(v5, v4 + 7, 1u);
+  v7 = *((unsigned __int8 *)v4 + 28);
+  v8 = 0;
+  if ( (unsigned int)v7 >= 0x24 )
+    v7 = 36;
+  while ( v8 < v7 )
+  {
+    android::Parcel::write(v5, (char *)v4 + v8 + 29, 1u);
+    v9 = 1;
+    if ( v8 + 1 > v8 )
+      v9 = 0;
+    ++v8;
+    if ( v9 )
+LABEL_28:
+      abort();
+  }
+  android::Parcel::writeInt32(v5, v4[17]);
+  android::Parcel::write(v5, v4 + 18, 1u);
+  android::Parcel::write(v5, (char *)v4 + 73, 1u);
+  v11 = *((unsigned __int8 *)v4 + 73);
+  v12 = 0;
+  if ( (unsigned int)v11 >= 0x24 )
+    v11 = 36;
+  while ( v12 < v11 )
+  {
+    android::Parcel::write(v5, (char *)v4 + v12 + 74, 1u);
+    v13 = 1;
+    if ( v12 + 1 > v12 )
+      v13 = 0;
+    ++v12;
+    if ( v13 )
+      goto LABEL_28;
+  }
+  v14 = v4[28];
+  android::Parcel::writeInt32(v5, v4[28]);
+  if ( v14 >= 255 )
+    v14 = 255;
+  v15 = 0;
+  while ( v15 < v14 )
+  {
+    android::Parcel::write(v5, (char *)v4 + v15 + 116, 1u);
+    v16 = 1;
+    if ( v15 + 1 > v15 )
+      v16 = 0;
+    ++v15;
+    if ( v16 )
+      goto LABEL_28;
+  }
+  return 0;
 }
-// 38A4: using guessed type int _android_log_buf_print(_DWORD, _DWORD, _DWORD, const char *, ...);
+// 3B1C: using guessed type int _android_log_buf_print(_DWORD, _DWORD, _DWORD, const char *, ...);
 
-//----- (0000A3F0) --------------------------------------------------------
-int __fastcall sub_A3F0(android::Parcel *a1, int a2, unsigned int a3)
+//----- (0000ABE0) --------------------------------------------------------
+int __fastcall sub_ABE0(android::Parcel *a1, int a2, unsigned int a3)
 {
   android::Parcel *v3; // r4
   int v4; // r5
@@ -7473,10 +7589,10 @@ LABEL_4:
   }
   if ( a3 <= 0x17 )
     _android_log_buf_print(1, 5, "RILC", "Upgrade to ril version %d\n", 12);
-  sub_98F0((int)v3, *(_DWORD *)v4);
+  sub_A0F8((int)v3, *(_DWORD *)v4);
   android::Parcel::writeInt32(v3, *(_DWORD *)(v4 + 4));
-  sub_98F0((int)v3, *(_DWORD *)(v4 + 8));
-  sub_AA88(v3, (unsigned __int8 *)(v4 + 12));
+  sub_A0F8((int)v3, *(_DWORD *)(v4 + 8));
+  sub_B3B8(v3, (unsigned __int8 *)(v4 + 12));
   if ( android::s_callbacks > 12 )
   {
     if ( v5 % 0x18 )
@@ -7503,265 +7619,258 @@ LABEL_13:
     result = v6;
   return result;
 }
-// 38A4: using guessed type int _android_log_buf_print(_DWORD, _DWORD, _DWORD, const char *, ...);
-// 3BB0: using guessed type int __fastcall property_get(_DWORD, _DWORD, _DWORD);
-// 156A8: using guessed type int android::s_callbacks;
+// 3B1C: using guessed type int _android_log_buf_print(_DWORD, _DWORD, _DWORD, const char *, ...);
+// 3E1C: using guessed type int __fastcall property_get(_DWORD, _DWORD, _DWORD);
+// 166D8: using guessed type int android::s_callbacks;
 
-//----- (0000A520) --------------------------------------------------------
-int __fastcall sub_A520(android::Parcel *this, unsigned __int8 *a2, unsigned int a3)
+//----- (0000AD10) --------------------------------------------------------
+int __fastcall sub_AD10(android::Parcel *this, unsigned __int8 *a2, unsigned int a3)
 {
-  unsigned __int8 *v3; // r7
-  android::Parcel *v4; // r11
-  const char *v5; // r3
-  int v6; // r9
-  int v7; // r8
-  int v8; // r10
-  int v9; // r6
-  unsigned __int8 *v10; // r4
-  unsigned int v11; // r5
-  _BYTE *v12; // r7
-  int v13; // r0
-  int v14; // r1
-  bool v15; // vf
-  signed int v16; // r0
+  android::Parcel *v3; // r11
+  const char *v4; // r3
+  int v5; // r9
+  int v6; // r10
+  int v7; // r0
+  int v8; // r6
+  unsigned __int8 *v9; // r4
+  unsigned int v10; // r5
+  _BYTE *v11; // r7
+  int v12; // r0
+  int v13; // r1
+  bool v14; // vf
+  signed int v15; // r0
+  bool v16; // zf
   int v17; // r1
-  int v18; // r5
-  unsigned int v19; // r4
-  _BYTE *v20; // r7
-  int v21; // r0
-  int v22; // r1
-  signed int v23; // r0
-  unsigned __int8 *v24; // r4
+  unsigned __int8 *v18; // r4
+  int v19; // r5
+  unsigned int v20; // r4
+  _BYTE *v21; // r7
+  int v22; // r0
+  int v23; // r1
+  signed int v24; // r0
   int v25; // r4
   _BYTE *v26; // r7
   int v27; // r0
   int v28; // r1
   signed int v29; // r0
   int v30; // r4
-  int v31; // r0
-  signed int v32; // r1
-  signed int v34; // r0
+  unsigned int v31; // r1
+  int v32; // r4
+  signed int v33; // r1
   unsigned int v35; // [sp+0h] [bp-30h]
   signed int v36; // [sp+4h] [bp-2Ch]
 
-  v3 = a2;
-  v4 = this;
+  v3 = this;
   if ( !a2 && a3 )
   {
-    v5 = "invalid response: NULL";
-    goto LABEL_48;
+    v4 = "invalid response: NULL";
+    goto LABEL_49;
   }
   if ( a3 != 964 )
   {
     v35 = a3;
     v36 = 4;
-    v5 = "responseCdmaInformationRecords: invalid response length %d expected multiple of %d\n";
-    goto LABEL_48;
+    v4 = "responseCdmaInformationRecords: invalid response length %d expected multiple of %d\n";
+    goto LABEL_49;
   }
-  v6 = *a2;
-  if ( (unsigned int)v6 >= 0xA )
-    v6 = 10;
-  android::Parcel::writeInt32(this, v6);
+  v6 = (int)(a2 + 4);
+  v5 = *a2;
+  if ( (unsigned int)v5 >= 0xA )
+    v5 = 10;
+  android::Parcel::writeInt32(this, v5);
   v7 = 0;
-  if ( v6 )
+  while ( 2 )
   {
-    v8 = (int)(v3 + 4);
-    v9 = 0;
-    while ( 1 )
+    v8 = v7;
+    if ( v7 >= v5 )
+      return 0;
+    android::Parcel::writeInt32(v3, *(_DWORD *)(v6 + 96 * v7));
+    switch ( *(_DWORD *)(v6 + 96 * v8) )
     {
-      android::Parcel::writeInt32(v4, *(_DWORD *)(v8 + 96 * v9));
-      switch ( *(_DWORD *)(v8 + 96 * v9) )
-      {
-        case 0:
-        case 7:
-          v18 = v8 + 96 * v9;
-          v19 = *(unsigned __int8 *)(v18 + 4);
-          if ( v19 >= 0x41 )
+      case 0:
+        v19 = v6 + 96 * v8;
+        v20 = *(unsigned __int8 *)(v19 + 4);
+        if ( v20 >= 0x41 )
+        {
+          v35 = *(unsigned __int8 *)(v19 + 4);
+          v36 = 64;
+          v4 = "invalid display info response length %d                           expected not more than %d\n";
+          goto LABEL_49;
+        }
+        v21 = calloc(v20 + 1, 1u);
+        if ( !v21 )
+          goto LABEL_60;
+        v22 = 0;
+        while ( v22 < (signed int)v20 )
+        {
+          v21[v22] = *(_BYTE *)(v19 + v22 + 5);
+          v23 = v22 + 1;
+          v14 = v22 + 1 <= v22;
+          v24 = 1;
+          if ( !v14 )
+            v24 = 0;
+          v16 = v24 == 0;
+          v22 = v23;
+          if ( !v16 )
+            goto LABEL_47;
+        }
+        v21[v20] = 0;
+        sub_A0F8((int)v3, (int)v21);
+        free(v21);
+        goto LABEL_44;
+      case 1:
+      case 2:
+      case 3:
+        v9 = (unsigned __int8 *)(v6 + 96 * v8);
+        v10 = v9[4];
+        if ( v10 < 0x52 )
+        {
+          v11 = calloc(v10 + 1, 1u);
+          if ( !v11 )
+            goto LABEL_60;
+          v12 = 0;
+          while ( v12 < (signed int)v10 )
           {
-            v34 = 64;
-            v35 = *(unsigned __int8 *)(v18 + 4);
-            v5 = "invalid display info response length %d                           expected not more than %d\n";
-            goto LABEL_58;
+            v11[v12] = v9[v12 + 5];
+            v13 = v12 + 1;
+            v14 = v12 + 1 <= v12;
+            v15 = 1;
+            if ( !v14 )
+              v15 = 0;
+            v16 = v15 == 0;
+            v12 = v13;
+            if ( !v16 )
+              goto LABEL_47;
           }
-          v20 = calloc(v19 + 1, 1u);
-          if ( !v20 )
-            goto LABEL_59;
-          if ( v19 )
-          {
-            v21 = 0;
-            do
-            {
-              v20[v21] = *(_BYTE *)(v18 + v21 + 5);
-              v22 = v21 + 1;
-              v15 = v21 + 1 <= v21;
-              v23 = 1;
-              if ( !v15 )
-                v23 = 0;
-              if ( v23 )
-                goto LABEL_60;
-              v21 = v22;
-            }
-            while ( v22 < (signed int)v19 );
-          }
-          v20[v19] = 0;
-          sub_98F0((int)v4, (int)v20);
-          free(v20);
-          goto LABEL_42;
-        case 1:
-        case 2:
-        case 3:
-          v10 = (unsigned __int8 *)(v8 + 96 * v9);
-          v11 = v10[4];
-          if ( v11 >= 0x52 )
-          {
-            v5 = "invalid display info response length %d                           expected not more than %d\n";
-            goto LABEL_57;
-          }
-          v12 = calloc(v11 + 1, 1u);
-          if ( !v12 )
-            goto LABEL_59;
-          if ( v11 )
-          {
-            v13 = 0;
-            do
-            {
-              v12[v13] = v10[v13 + 5];
-              v14 = v13 + 1;
-              v15 = v13 + 1 <= v13;
-              v16 = 1;
-              if ( !v15 )
-                v16 = 0;
-              if ( v16 )
-                goto LABEL_60;
-              v13 = v14;
-            }
-            while ( v14 < (signed int)v11 );
-          }
-          v12[v11] = 0;
-          sub_98F0((int)v4, (int)v12);
-          free(v12);
-          android::Parcel::writeInt32(v4, v10[86]);
-          android::Parcel::writeInt32(v4, v10[87]);
-          android::Parcel::writeInt32(v4, v10[88]);
-          v17 = v10[89];
-          goto LABEL_41;
-        case 4:
-        case 6:
-          v24 = (unsigned __int8 *)(v8 + 96 * v9);
-          android::Parcel::writeInt32(v4, v24[4]);
-          android::Parcel::writeInt32(v4, v24[5]);
-          android::Parcel::writeInt32(v4, v24[6]);
-          v17 = v24[7];
-          goto LABEL_41;
-        case 5:
-          v25 = v8 + 96 * v9;
-          v11 = *(unsigned __int8 *)(v25 + 4);
-          if ( v11 >= 0x52 )
-          {
-            v5 = "invalid display info response length %d                           expected not more than %d\n";
-LABEL_57:
-            v34 = 81;
-            v35 = v11;
-LABEL_58:
-            v36 = v34;
-LABEL_48:
-            _android_log_buf_print(1, 6, "RILC", v5, v35, v36);
-            return -1;
-          }
-          v26 = calloc(v11 + 1, 1u);
+          v11[v10] = 0;
+          sub_A0F8((int)v3, (int)v11);
+          free(v11);
+          android::Parcel::writeInt32(v3, v9[86]);
+          android::Parcel::writeInt32(v3, v9[87]);
+          android::Parcel::writeInt32(v3, v9[88]);
+          v17 = v9[89];
+LABEL_43:
+          android::Parcel::writeInt32(v3, v17);
+          goto LABEL_44;
+        }
+        v4 = "invalid display info response length %d                           expected not more than %d\n";
+        goto LABEL_58;
+      case 4:
+      case 6:
+        v18 = (unsigned __int8 *)(v6 + 96 * v8);
+        android::Parcel::writeInt32(v3, v18[4]);
+        android::Parcel::writeInt32(v3, v18[5]);
+        android::Parcel::writeInt32(v3, v18[6]);
+        v17 = v18[7];
+        goto LABEL_43;
+      case 5:
+        v25 = v6 + 96 * v8;
+        v10 = *(unsigned __int8 *)(v25 + 4);
+        if ( v10 < 0x52 )
+        {
+          v26 = calloc(v10 + 1, 1u);
           if ( !v26 )
           {
-LABEL_59:
+LABEL_60:
             _android_log_buf_print(1, 6, "RILC", "Memory allocation failed for responseCdmaInformationRecords");
             return -12;
           }
-          if ( v11 )
+          v27 = 0;
+          while ( v27 < (signed int)v10 )
           {
-            v27 = 0;
-            while ( 1 )
-            {
-              v26[v27] = *(_BYTE *)(v25 + v27 + 5);
-              v28 = v27 + 1;
-              v15 = v27 + 1 <= v27;
-              v29 = 1;
-              if ( !v15 )
-                v29 = 0;
-              if ( v29 )
-                break;
-              v27 = v28;
-              if ( v28 >= (signed int)v11 )
-                goto LABEL_38;
-            }
-LABEL_60:
-            abort();
+            v26[v27] = *(_BYTE *)(v25 + v27 + 5);
+            v28 = v27 + 1;
+            v14 = v27 + 1 <= v27;
+            v29 = 1;
+            if ( !v14 )
+              v29 = 0;
+            v16 = v29 == 0;
+            v27 = v28;
+            if ( !v16 )
+              goto LABEL_47;
           }
-LABEL_38:
-          v26[v11] = 0;
-          sub_98F0((int)v4, (int)v26);
+          v26[v10] = 0;
+          sub_A0F8((int)v3, (int)v26);
           free(v26);
-          android::Parcel::writeInt32(v4, *(unsigned __int8 *)(v25 + 86));
-          android::Parcel::writeInt32(v4, *(unsigned __int8 *)(v25 + 87));
-          android::Parcel::writeInt32(v4, *(unsigned __int8 *)(v25 + 88));
-          android::Parcel::writeInt32(v4, *(unsigned __int8 *)(v25 + 89));
+          android::Parcel::writeInt32(v3, *(unsigned __int8 *)(v25 + 86));
+          android::Parcel::writeInt32(v3, *(unsigned __int8 *)(v25 + 87));
+          android::Parcel::writeInt32(v3, *(unsigned __int8 *)(v25 + 88));
+          android::Parcel::writeInt32(v3, *(unsigned __int8 *)(v25 + 89));
           v17 = *(_DWORD *)(v25 + 92);
-LABEL_41:
-          android::Parcel::writeInt32(v4, v17);
-LABEL_42:
-          v31 = v9 + 1;
-          v32 = 1;
-          if ( v9 + 1 > v9 )
-            v32 = 0;
-          if ( v32 )
-            goto LABEL_60;
-          ++v9;
-          if ( v31 >= v6 )
-            return 0;
-          break;
-        case 8:
-          v17 = *(unsigned __int8 *)(v8 + 96 * v9 + 4);
-          goto LABEL_41;
-        case 9:
-          v5 = "RIL_CDMA_T53_RELEASE_INFO_REC: return INVALID_RESPONSE";
-          goto LABEL_48;
-        case 0xA:
-          v30 = v8 + 96 * v9;
-          android::Parcel::writeInt32(v4, *(unsigned __int8 *)(v30 + 4));
-          v17 = *(unsigned __int8 *)(v30 + 5);
-          goto LABEL_41;
-        default:
-          v5 = "Incorrect name value";
-          goto LABEL_48;
-      }
+          goto LABEL_43;
+        }
+        v4 = "invalid display info response length %d                           expected not more than %d\n";
+LABEL_58:
+        v35 = v10;
+        v36 = 81;
+        goto LABEL_49;
+      case 7:
+        v30 = v6 + 96 * v8;
+        v31 = *(unsigned __int8 *)(v30 + 4);
+        if ( v31 < 0x41 )
+        {
+          android::Parcel::writeInt32(v3, v31);
+          android::Parcel::write(v3, (const void *)(v30 + 5), *(unsigned __int8 *)(v30 + 4));
+LABEL_44:
+          v7 = v8 + 1;
+          v33 = 1;
+          if ( v8 + 1 > v8 )
+            v33 = 0;
+          if ( v33 )
+LABEL_47:
+            abort();
+          continue;
+        }
+        v35 = *(unsigned __int8 *)(v30 + 4);
+        v36 = 64;
+        v4 = "invalid display info response length %d                           expected not more than %d\n";
+LABEL_49:
+        _android_log_buf_print(1, 6, "RILC", v4, v35, v36);
+        return -1;
+      case 8:
+        v17 = *(unsigned __int8 *)(v6 + 96 * v8 + 4);
+        goto LABEL_43;
+      case 9:
+        v4 = "RIL_CDMA_T53_RELEASE_INFO_REC: return INVALID_RESPONSE";
+        goto LABEL_49;
+      case 0xA:
+        v32 = v6 + 96 * v8;
+        android::Parcel::writeInt32(v3, *(unsigned __int8 *)(v32 + 4));
+        v17 = *(unsigned __int8 *)(v32 + 5);
+        goto LABEL_43;
+      default:
+        v4 = "Incorrect name value";
+        goto LABEL_49;
     }
   }
-  return v7;
 }
-// 38A4: using guessed type int _android_log_buf_print(_DWORD, _DWORD, _DWORD, const char *, ...);
+// 3B1C: using guessed type int _android_log_buf_print(_DWORD, _DWORD, _DWORD, const char *, ...);
 
-//----- (0000A810) --------------------------------------------------------
-signed int __fastcall sub_A810(android::Parcel *a1, int *a2, int a3)
+//----- (0000B034) --------------------------------------------------------
+signed int __fastcall sub_B034(android::Parcel *a1, int *a2, int a3)
 {
-  int v3; // r5
-  int *v4; // r6
+  int v3; // r6
+  int *v4; // r5
   android::Parcel *v5; // r4
   signed int v6; // r0
   const char *v7; // r3
-  int v8; // r5
+  int v8; // r4
   int v9; // r10
-  int v10; // r11
-  int v11; // r0
-  __int64 v12; // kr00_8
-  int v13; // r6
-  int v14; // r8
-  int v15; // r9
-  int v16; // r0
-  signed int v17; // r1
-  int v19; // r7
-  int v20; // r5
-  int v21; // r0
+  int v10; // r6
+  _DWORD *v11; // r0
+  int v12; // r7
+  int v13; // r5
+  int v14; // r4
+  int v15; // r8
+  int v16; // r9
+  int v17; // ST08_4
+  signed int v18; // r1
+  int v20; // r6
+  int v21; // r7
   signed int v22; // r1
-  int v23; // [sp+1Ch] [bp-2Ch]
-  int *v24; // [sp+20h] [bp-28h]
+  int v23; // [sp+18h] [bp-30h]
+  int *v24; // [sp+1Ch] [bp-2Ch]
+  android::Parcel *v25; // [sp+20h] [bp-28h]
 
   v3 = a3;
   v4 = a2;
@@ -7772,7 +7881,7 @@ signed int __fastcall sub_A810(android::Parcel *a1, int *a2, int a3)
   {
     v6 = 12;
     v7 = "invalid response length was %d expected %d";
-LABEL_17:
+LABEL_16:
     _android_log_buf_print(1, 6, "RILC", v7, v3, v6);
     return -1;
   }
@@ -7780,91 +7889,92 @@ LABEL_17:
   {
     v6 = 192;
     v7 = "invalid response length %d, expected %d";
-    goto LABEL_17;
+    goto LABEL_16;
   }
+  v25 = v5;
   android::Parcel::writeInt32(v5, *v4);
   android::Parcel::writeInt32(v5, v4[1]);
   android::Parcel::writeInt32(v5, v4[2]);
   android::Parcel::writeInt32(v5, v4[3]);
   android::Parcel::writeInt32(v5, v4[4]);
-  if ( v4[1] != 2 || (*v4 | 1u) - 1 > 4 )
+  if ( (unsigned int)*v4 > 5 || v4[1] != 2 )
   {
     android::Parcel::writeInt32(v5, 4);
-    v19 = (int)(v4 + 5);
-    v20 = 0;
-    while ( 1 )
+    v20 = (int)(v4 + 5);
+    v21 = 0;
+    while ( v21 <= 3 )
     {
-      _android_log_buf_print(1, 3, "RILC", "Data: %d", *(_DWORD *)(v19 + 4 * v20));
-      android::Parcel::writeInt32(v5, *(_DWORD *)(v19 + 4 * v20));
-      v21 = v20 + 1;
+      _android_log_buf_print(1, 3, "RILC", "Data: %d", *(_DWORD *)(v20 + 4 * v21));
+      android::Parcel::writeInt32(v5, *(_DWORD *)(v20 + 4 * v21));
       v22 = 1;
-      if ( v20 + 1 > v20 )
+      if ( v21 + 1 > v21 )
         v22 = 0;
+      ++v21;
       if ( v22 )
-        break;
-      ++v20;
-      if ( v21 >= 4 )
-        return 0;
+LABEL_22:
+        abort();
     }
-LABEL_25:
-    abort();
   }
-  _android_log_buf_print(1, 3, "RILC", "responseSSData CF type, num of Cf elements %d", v4[5]);
-  v8 = v4[5];
-  if ( v8 >= 8 )
+  else
   {
-    v8 = 7;
-    _android_log_buf_print(1, 6, "RILC", "numValidIndexes is greater than max value %d, truncating it to max value", 7);
-    v4[5] = 7;
-  }
-  android::Parcel::writeInt32(v5, v8);
-  if ( v4[5] >= 1 )
-  {
+    _android_log_buf_print(1, 3, "RILC", "responseSSData CF type, num of Cf elements %d", v4[5]);
+    v8 = v4[5];
+    if ( v8 >= 8 )
+    {
+      v8 = 7;
+      _android_log_buf_print(
+        1,
+        6,
+        "RILC",
+        "numValidIndexes is greater than max value %d, truncating it to max value",
+        7);
+      v4[5] = 7;
+    }
+    android::Parcel::writeInt32(v25, v8);
     v9 = 0;
     v23 = (int)(v4 + 6);
-    while ( 1 )
+    while ( v9 < v4[5] )
     {
       v10 = *(_DWORD *)(v23 + 24 * v9);
-      v11 = v23 + 24 * v9;
-      v12 = *(_QWORD *)(v11 + 4);
-      v13 = *(_DWORD *)(v11 + 12);
-      v14 = *(_DWORD *)(v11 + 16);
-      v15 = *(_DWORD *)(v11 + 20);
-      android::Parcel::writeInt32(v5, *(_DWORD *)(v23 + 24 * v9));
-      android::Parcel::writeInt32(v5, v12);
-      android::Parcel::writeInt32(v5, SHIDWORD(v12));
-      android::Parcel::writeInt32(v5, v13);
-      sub_98F0((int)v5, v14);
-      android::Parcel::writeInt32(v5, v15);
+      v11 = (_DWORD *)(v23 + 24 * v9);
+      v12 = v11[1];
+      v13 = v11[2];
+      v14 = v11[3];
+      v15 = v11[4];
+      v16 = v11[5];
+      android::Parcel::writeInt32(v25, *(_DWORD *)(v23 + 24 * v9));
+      android::Parcel::writeInt32(v25, v12);
+      android::Parcel::writeInt32(v25, v13);
+      android::Parcel::writeInt32(v25, v14);
+      sub_A0F8((int)v25, v15);
+      android::Parcel::writeInt32(v25, v16);
+      v17 = v13;
+      v4 = v24;
       _android_log_buf_print(
         1,
         3,
         "RILC",
         "Data: %d,reason=%d,cls=%d,toa=%d,num=%s,tout=%d],",
         v10,
-        (_DWORD)v12,
-        HIDWORD(v12),
-        v13,
+        v12,
+        v17,
         v14,
-        v15);
-      v16 = v9 + 1;
-      v17 = 1;
+        v15,
+        v16);
+      v18 = 1;
       if ( v9 + 1 > v9 )
-        v17 = 0;
-      if ( v17 )
-        break;
+        v18 = 0;
       ++v9;
-      if ( v16 >= v24[5] )
-        return 0;
+      if ( v18 )
+        goto LABEL_22;
     }
-    goto LABEL_25;
   }
   return 0;
 }
-// 38A4: using guessed type int _android_log_buf_print(_DWORD, _DWORD, _DWORD, const char *, ...);
+// 3B1C: using guessed type int _android_log_buf_print(_DWORD, _DWORD, _DWORD, const char *, ...);
 
-//----- (0000A9EC) --------------------------------------------------------
-int __fastcall sub_A9EC(android::Parcel *this, int *a2, int a3)
+//----- (0000B210) --------------------------------------------------------
+int __fastcall sub_B210(android::Parcel *this, int *a2, int a3)
 {
   int *v3; // r5
   android::Parcel *v4; // r4
@@ -7879,10 +7989,10 @@ int __fastcall sub_A9EC(android::Parcel *this, int *a2, int a3)
     if ( a3 == 20 )
     {
       android::Parcel::writeInt32(this, *a2);
-      sub_98F0((int)v4, v3[1]);
+      sub_A0F8((int)v4, v3[1]);
       android::Parcel::writeInt32(v4, v3[2]);
       android::Parcel::writeInt32(v4, v3[3]);
-      android::Parcel::write(v4, (const void *)(*(_QWORD *)(v3 + 3) >> 32), *(_QWORD *)(v3 + 3));
+      android::Parcel::write(v4, (const void *)v3[4], v3[3]);
       return 0;
     }
     v7 = a3;
@@ -7896,10 +8006,92 @@ int __fastcall sub_A9EC(android::Parcel *this, int *a2, int a3)
   _android_log_buf_print(1, 6, "RILC", v6, v7, v8);
   return -1;
 }
-// 38A4: using guessed type int _android_log_buf_print(_DWORD, _DWORD, _DWORD, const char *, ...);
+// 3B1C: using guessed type int _android_log_buf_print(_DWORD, _DWORD, _DWORD, const char *, ...);
 
-//----- (0000AA68) --------------------------------------------------------
-int __fastcall sub_AA68(android::Parcel *a1, int *a2)
+//----- (0000B28C) --------------------------------------------------------
+int __fastcall sub_B28C(android::Parcel *this, int *a2, int a3)
+{
+  int *v3; // r10
+  android::Parcel *v4; // r5
+  const char *v5; // r3
+  int v6; // r8
+  int v7; // r10
+  int v8; // t1
+  int v9; // r11
+  int v10; // r4
+  signed int v11; // r1
+  int v12; // r7
+  int *v13; // r7
+  int v14; // t1
+  int v15; // r6
+  signed int v16; // r1
+  signed int v17; // r1
+
+  v3 = a2;
+  v4 = this;
+  if ( !a2 && a3 )
+  {
+    v5 = "invalid response: NULL";
+LABEL_24:
+    _android_log_buf_print(1, 6, "RILC", v5);
+    return -1;
+  }
+  if ( a3 != 444 )
+  {
+    v5 = "responseAdnRecords: A RIL_AdnRecord_v1 expected\n";
+    goto LABEL_24;
+  }
+  android::Parcel::writeInt32(this, *a2);
+  v8 = *v3;
+  v7 = (int)(v3 + 1);
+  v6 = v8;
+  v9 = 0;
+  while ( v9 < v6 )
+  {
+    android::Parcel::writeInt32(v4, *(_DWORD *)(v7 + 44 * v9));
+    sub_A0F8((int)v4, *(_DWORD *)(v7 + 44 * v9 + 4));
+    sub_A0F8((int)v4, *(_DWORD *)(v7 + 44 * v9 + 8));
+    android::Parcel::writeInt32(v4, *(_DWORD *)(v7 + 44 * v9 + 12));
+    v10 = 0;
+    while ( v10 < *(_DWORD *)(v7 + 44 * v9 + 12) )
+    {
+      sub_A0F8((int)v4, *(_DWORD *)(v7 + 44 * v9 + 4 * v10 + 16));
+      v11 = 1;
+      if ( v10 + 1 > v10 )
+        v11 = 0;
+      ++v10;
+      if ( v11 )
+        goto LABEL_22;
+    }
+    v12 = v7 + 44 * v9;
+    v14 = *(_DWORD *)(v12 + 24);
+    v13 = (int *)(v12 + 24);
+    android::Parcel::writeInt32(v4, v14);
+    v15 = 0;
+    while ( v15 < *v13 )
+    {
+      sub_A0F8((int)v4, *(_DWORD *)(v7 + 44 * v9 + 4 * v15 + 28));
+      v16 = 1;
+      if ( v15 + 1 > v15 )
+        v16 = 0;
+      ++v15;
+      if ( v16 )
+        goto LABEL_22;
+    }
+    v17 = 1;
+    if ( v9 + 1 > v9 )
+      v17 = 0;
+    ++v9;
+    if ( v17 )
+LABEL_22:
+      abort();
+  }
+  return 0;
+}
+// 3B1C: using guessed type int _android_log_buf_print(_DWORD, _DWORD, _DWORD, const char *, ...);
+
+//----- (0000B398) --------------------------------------------------------
+int __fastcall sub_B398(android::Parcel *a1, int *a2)
 {
   int *v2; // r4
   android::Parcel *v3; // r5
@@ -7908,11 +8100,11 @@ int __fastcall sub_AA68(android::Parcel *a1, int *a2)
   v3 = a1;
   android::Parcel::writeInt32(a1, *a2);
   android::Parcel::writeInt32(v3, v2[1]);
-  return sub_98F0((int)v3, v2[2]);
+  return sub_A0F8((int)v3, v2[2]);
 }
 
-//----- (0000AA88) --------------------------------------------------------
-int __fastcall sub_AA88(android::Parcel *a1, unsigned __int8 *a2)
+//----- (0000B3B8) --------------------------------------------------------
+int __fastcall sub_B3B8(android::Parcel *a1, unsigned __int8 *a2)
 {
   unsigned __int8 *v2; // r4
   android::Parcel *v3; // r5
@@ -7925,91 +8117,93 @@ int __fastcall sub_AA88(android::Parcel *a1, unsigned __int8 *a2)
   return android::Parcel::writeInt32(v3, v2[3]);
 }
 
-//----- (0000AAB0) --------------------------------------------------------
-void __fastcall sub_AAB0(int a1, int a2, _QWORD *a3)
+//----- (0000B3E0) --------------------------------------------------------
+void __fastcall sub_B3E0(int a1, int a2, void (__fastcall **a3)(_DWORD))
 {
   void *v3; // r4
 
   v3 = a3;
-  ((void (__fastcall *)(_DWORD))*a3)(*a3 >> 32);
-  if ( dword_15768 && (void *)dword_15768 == v3 )
-    dword_15768 = 0;
+  (*a3)(a3[1]);
+  if ( dword_16798 && (void *)dword_16798 == v3 )
+    dword_16798 = 0;
   j_free(v3);
 }
-// 15768: using guessed type int dword_15768;
+// 16798: using guessed type int dword_16798;
 
-//----- (0000AAE0) --------------------------------------------------------
-signed int ril_event_init(void)
+//----- (0000B410) --------------------------------------------------------
+void *ril_event_init(void)
 {
-  unsigned int v0; // r2
-  unsigned int v1; // r1
+  unsigned int v0; // r1
+  int v1; // r2
   bool v2; // cf
-  signed int v3; // r2
-  signed int result; // r0
+  signed int v3; // r1
+  bool v4; // zf
+  void *result; // r0
 
-  pthread_mutex_init((pthread_mutex_t *)&unk_157B0, 0);
+  pthread_mutex_init((pthread_mutex_t *)&unk_167E0, 0);
   v0 = 0;
-  do
+  while ( v0 <= 0x1F )
   {
     v1 = v0 + 1;
-    dword_157B8[v0] = 0;
+    dword_167E8[v0] = 0;
     v2 = v0 + 1 >= v0;
     v3 = 1;
     if ( v2 )
       v3 = 0;
-    if ( v3 )
-      abort();
+    v4 = v3 == 0;
     v0 = v1;
+    if ( !v4 )
+      abort();
   }
-  while ( v1 < 0x20 );
-  dword_15858 = 0;
-  *(_QWORD *)&dword_15840 = 0LL;
-  unk_15848 = 0LL;
-  unk_15850 = 0LL;
-  result = -1;
-  dword_15838 = (int)&dword_15838;
-  *(_DWORD *)algn_1583C = &dword_15838;
-  dword_15880 = 0;
-  *(_QWORD *)&dword_15868 = 0LL;
-  dword_15840 = -1;
-  *(_QWORD *)&algn_1586C[4] = 0LL;
-  *(_QWORD *)&algn_1586C[12] = 0LL;
-  dword_15860 = (int)&dword_15860;
-  dword_15864 = (int)&dword_15860;
-  *(_QWORD *)dword_15888 = 0LL;
-  unk_15890 = 0LL;
-  dword_15868 = -1;
-  unk_15898 = 0LL;
-  unk_158A0 = 0LL;
+  *(_QWORD *)&dword_16870 = 0LL;
+  unk_16878 = 0LL;
+  unk_16880 = 0LL;
+  dword_16888 = 0;
+  dword_16870 = -1;
+  dword_16868 = (int)&dword_16868;
+  dword_1686C = (int)&dword_16868;
+  dword_168B0 = 0;
+  *(_QWORD *)&dword_16898 = 0LL;
+  result = &unk_168A0;
+  unk_168D0 = 0LL;
+  unk_168C8 = 0LL;
+  *(_QWORD *)dword_168B8 = 0LL;
+  unk_168A0 = 0LL;
+  unk_168A8 = 0LL;
+  dword_16898 = -1;
+  dword_16890 = (int)&dword_16890;
+  dword_16894 = (int)&dword_16890;
+  unk_168C0 = 0LL;
   return result;
 }
-// 15838: using guessed type int dword_15838;
-// 15840: using guessed type int dword_15840;
-// 15858: using guessed type int dword_15858;
-// 15860: using guessed type int dword_15860;
-// 15864: using guessed type int dword_15864;
-// 15868: using guessed type int dword_15868;
-// 15880: using guessed type int dword_15880;
+// 16868: using guessed type int dword_16868;
+// 1686C: using guessed type int dword_1686C;
+// 16870: using guessed type int dword_16870;
+// 16888: using guessed type int dword_16888;
+// 16890: using guessed type int dword_16890;
+// 16894: using guessed type int dword_16894;
+// 16898: using guessed type int dword_16898;
+// 168B0: using guessed type int dword_168B0;
 
-//----- (0000AB68) --------------------------------------------------------
+//----- (0000B4A8) --------------------------------------------------------
 int __fastcall ril_event_set(int a1, int fd, int a3, int a4, int a5)
 {
   _QWORD *v5; // lr
 
+  *(_QWORD *)(a1 + 24) = 0LL;
+  *(_QWORD *)(a1 + 16) = 0LL;
   *(_QWORD *)a1 = 0LL;
-  *(_QWORD *)(a1 + 8) = 0LL;
-  v5 = (_QWORD *)(a1 + 16);
+  v5 = (_QWORD *)(a1 + 8);
   *v5 = 0LL;
-  v5[1] = 0LL;
-  *(_DWORD *)(a1 + 8) = fd;
+  *(_DWORD *)v5 = fd;
   *(_DWORD *)(a1 + 12) = -1;
-  *(_BYTE *)v5 = a3;
-  *(_DWORD *)(a1 + 28) = a4;
+  *(_BYTE *)(a1 + 16) = a3;
   *(_DWORD *)(a1 + 32) = a5;
+  *(_DWORD *)(a1 + 28) = a4;
   return fcntl(fd, 4, 2048);
 }
 
-//----- (0000AB9C) --------------------------------------------------------
+//----- (0000B4E8) --------------------------------------------------------
 int __fastcall ril_event_add(int a1)
 {
   int v1; // r4
@@ -8017,45 +8211,51 @@ int __fastcall ril_event_add(int a1)
   int v3; // r1
   bool v4; // vf
   signed int v5; // r2
-  int v6; // r1
-  signed int v7; // r2
+  bool v6; // zf
+  int v7; // r0
+  int v8; // r1
+  signed int v9; // r2
 
   v1 = a1;
-  pthread_mutex_lock((pthread_mutex_t *)&unk_157B0);
+  pthread_mutex_lock((pthread_mutex_t *)&unk_167E0);
   v2 = 0;
-  while ( dword_15888[v2] )
+  while ( v2 <= 7 )
   {
+    if ( !dword_168B8[v2] )
+    {
+      dword_168B8[v2] = v1;
+      v7 = *(_DWORD *)(v1 + 8);
+      *(_DWORD *)(v1 + 12) = v2;
+      _FD_SET_chk(v7, dword_167E8, 128);
+      v8 = *(_DWORD *)(v1 + 8);
+      if ( v8 >= dword_168D8 )
+      {
+        v9 = 1;
+        if ( v8 + 1 > v8 )
+          v9 = 0;
+        if ( v9 )
+LABEL_7:
+          abort();
+        dword_168D8 = v8 + 1;
+      }
+      return j_pthread_mutex_unlock((pthread_mutex_t *)&unk_167E0);
+    }
     v3 = v2 + 1;
     v4 = v2 + 1 <= v2;
     v5 = 1;
     if ( !v4 )
       v5 = 0;
-    if ( v5 )
-      goto LABEL_14;
+    v6 = v5 == 0;
     v2 = v3;
-    if ( v3 >= 8 )
-      return j_pthread_mutex_unlock((pthread_mutex_t *)&unk_157B0);
+    if ( !v6 )
+      goto LABEL_7;
   }
-  dword_15888[v2] = v1;
-  *(_DWORD *)(v1 + 12) = v2;
-  _FD_SET_chk(*(_DWORD *)(v1 + 8), dword_157B8, 128);
-  v6 = *(_DWORD *)(v1 + 8);
-  if ( v6 >= dword_158A8 )
-  {
-    v7 = 1;
-    if ( v6 + 1 > v6 )
-      v7 = 0;
-    if ( v7 )
-LABEL_14:
-      abort();
-    dword_158A8 = v6 + 1;
-  }
-  return j_pthread_mutex_unlock((pthread_mutex_t *)&unk_157B0);
+  return j_pthread_mutex_unlock((pthread_mutex_t *)&unk_167E0);
 }
-// 3CC4: using guessed type int __fastcall _FD_SET_chk(_DWORD, _DWORD, _DWORD);
-// 158A8: using guessed type int dword_158A8;
+// 3F30: using guessed type int __fastcall _FD_SET_chk(_DWORD, _DWORD, _DWORD);
+// 168D8: using guessed type int dword_168D8;
 
-//----- (0000AC2C) --------------------------------------------------------
+//----- (0000B578) --------------------------------------------------------
 int __fastcall ril_timer_add(int **a1, _DWORD *a2)
 {
   int **v2; // r4
@@ -8079,11 +8279,11 @@ int __fastcall ril_timer_add(int **a1, _DWORD *a2)
 
   v2 = a1;
   v3 = a2;
-  pthread_mutex_lock((pthread_mutex_t *)&unk_157B0);
+  pthread_mutex_lock((pthread_mutex_t *)&unk_167E0);
   if ( v3 )
   {
     v4 = 1;
-    v5 = (int *)dword_15838;
+    v5 = (int *)dword_16868;
     v2[2] = (int *)-1;
     clock_gettime(1, (struct timespec *)&v17);
     v6 = *v3 + v17;
@@ -8124,10 +8324,10 @@ LABEL_18:
               v14 = v5[5];
               if ( v14 == v6 )
               {
-                if ( v5 == &dword_15838 || v5[6] >= v10 )
+                if ( v5 == &dword_16868 || v5[6] >= v10 )
                   goto LABEL_24;
               }
-              else if ( v5 == &dword_15838 || v14 >= v6 )
+              else if ( v5 == &dword_16868 || v14 >= v6 )
               {
 LABEL_24:
                 *v2 = v5;
@@ -8147,94 +8347,95 @@ LABEL_26:
     abort();
   }
 LABEL_25:
-  pthread_mutex_unlock((pthread_mutex_t *)&unk_157B0);
+  pthread_mutex_unlock((pthread_mutex_t *)&unk_167E0);
   result = _stack_chk_guard - v19;
   if ( _stack_chk_guard != v19 )
     goto LABEL_26;
   return result;
 }
-// 15838: using guessed type int dword_15838;
+// 16868: using guessed type int dword_16868;
 
-//----- (0000AD34) --------------------------------------------------------
+//----- (0000B680) --------------------------------------------------------
 int __fastcall ril_event_del(int a1)
 {
   int v1; // r4
   unsigned int v2; // r1
 
   v1 = a1;
-  pthread_mutex_lock((pthread_mutex_t *)&unk_157B0);
+  pthread_mutex_lock((pthread_mutex_t *)&unk_167E0);
   v2 = *(_DWORD *)(v1 + 12);
   if ( v2 < 8 )
-    sub_AD70(v1, v2);
-  return j_pthread_mutex_unlock((pthread_mutex_t *)&unk_157B0);
+    sub_B6BC(v1, v2);
+  return j_pthread_mutex_unlock((pthread_mutex_t *)&unk_167E0);
 }
 
-//----- (0000AD70) --------------------------------------------------------
-int *__fastcall sub_AD70(int a1, int a2)
+//----- (0000B6BC) --------------------------------------------------------
+int __fastcall sub_B6BC(int a1, int a2)
 {
   int v2; // r4
-  int v3; // r1
-  signed int v4; // r2
-  int *result; // r0
-  int v6; // r0
-  int v7; // r2
-  int v8; // r3
-  int v9; // r3
+  int v3; // r0
+  int v4; // r1
+  signed int v5; // r2
+  int result; // r0
+  int v7; // r3
+  int v8; // r1
+  int v9; // r2
   int v10; // r3
-  bool v11; // vf
-  signed int v12; // r2
-  int v13; // r1
+  int v11; // r3
+  bool v12; // vf
+  signed int v13; // r2
   signed int v14; // r2
 
   v2 = a1;
-  dword_15888[a2] = 0;
-  *(_DWORD *)(a1 + 12) = -1;
-  _FD_CLR_chk(*(_DWORD *)(a1 + 8), dword_157B8, 128);
-  v3 = *(_DWORD *)(v2 + 8);
-  v4 = 1;
-  result = (int *)(v3 + 1);
-  if ( v3 + 1 > v3 )
-    v4 = 0;
-  if ( v4 )
-    goto LABEL_17;
-  if ( result != (int *)dword_158A8 )
+  dword_168B8[a2] = 0;
+  v3 = *(_DWORD *)(a1 + 8);
+  *(_DWORD *)(v2 + 12) = -1;
+  _FD_CLR_chk(v3, dword_167E8, 128);
+  v4 = *(_DWORD *)(v2 + 8);
+  v5 = 1;
+  result = v4 + 1;
+  if ( v4 + 1 > v4 )
+    v5 = 0;
+  if ( v5 )
+    goto LABEL_13;
+  if ( result != dword_168D8 )
     return result;
-  v6 = 0;
   v7 = 0;
-  do
+  v8 = 0;
+  while ( 1 )
   {
-    v8 = dword_15888[v7];
-    if ( v8 )
+    v9 = v7;
+    if ( v7 >= 8 )
+      break;
+    v10 = dword_168B8[v7];
+    if ( v10 )
     {
-      v9 = *(_DWORD *)(v8 + 8);
-      if ( v9 > v6 )
-        v6 = v9;
+      v11 = *(_DWORD *)(v10 + 8);
+      if ( v11 > v8 )
+        v8 = v11;
     }
-    v10 = v7 + 1;
-    v11 = v7 + 1 <= v7;
-    v12 = 1;
-    if ( !v11 )
-      v12 = 0;
-    if ( v12 )
-      goto LABEL_17;
-    v7 = v10;
+    v7 = v9 + 1;
+    v12 = v9 + 1 <= v9;
+    v13 = 1;
+    if ( !v12 )
+      v13 = 0;
+    if ( v13 )
+      goto LABEL_13;
   }
-  while ( v10 < 8 );
-  v13 = v6 + 1;
+  result = v8 + 1;
   v14 = 1;
-  if ( v6 + 1 > v6 )
+  if ( v8 + 1 > v8 )
     v14 = 0;
   if ( v14 )
-LABEL_17:
+LABEL_13:
     abort();
-  result = &dword_158A8;
-  dword_158A8 = v13;
+  dword_168D8 = v8 + 1;
   return result;
 }
-// 3CDC: using guessed type int __fastcall _FD_CLR_chk(_DWORD, _DWORD, _DWORD);
-// 158A8: using guessed type int dword_158A8;
+// 3F48: using guessed type int __fastcall _FD_CLR_chk(_DWORD, _DWORD, _DWORD);
+// 168D8: using guessed type int dword_168D8;
 
-//----- (0000AE04) --------------------------------------------------------
+//----- (0000B754) --------------------------------------------------------
 int ril_event_loop(void)
 {
   int *v0; // r4
@@ -8263,42 +8464,47 @@ int ril_event_loop(void)
   bool v23; // nf
   unsigned __int8 v24; // vf
   int v25; // r2
-  __int64 v26; // r2
-  int v27; // r6
-  int v28; // r7
-  int *v29; // r0
-  signed int v30; // r0
-  signed int v31; // r1
-  int v32; // r1
-  __int64 v33; // kr00_8
-  _DWORD *v34; // r0
+  int v26; // r2
+  int **v27; // r3
+  int v28; // r0
+  int v29; // r6
+  int v30; // r7
+  int *v31; // r0
+  signed int v32; // r0
+  signed int v33; // r1
+  int *v34; // r1
+  int *v35; // r4
+  int v36; // r0
+  void (__fastcall *v37)(int, _DWORD, int); // r3
+  int v38; // r2
+  _DWORD *v39; // r0
   int result; // r0
-  int v36; // [sp+8h] [bp-8h]
-  int v37; // [sp+Ch] [bp-4h]
-  int v38; // [sp+10h] [bp+0h]
-  int v39; // [sp+14h] [bp+4h]
-  int v40; // [sp+18h] [bp+8h]
-  int v41; // [sp+98h] [bp+88h]
+  int v41; // [sp+8h] [bp-8h]
+  int v42; // [sp+Ch] [bp-4h]
+  int v43; // [sp+10h] [bp+0h]
+  int v44; // [sp+14h] [bp+4h]
+  int v45; // [sp+18h] [bp+8h]
+  int v46; // [sp+98h] [bp+88h]
 
   do
   {
     while ( 1 )
     {
-      _aeabi_memcpy8(&v40, dword_157B8, 128);
-      v0 = (int *)dword_15838;
-      clock_gettime(1, (struct timespec *)&v38);
-      if ( v0 == &dword_15838 )
+      _aeabi_memcpy8(&v45, dword_167E8, 128);
+      v0 = (int *)dword_16868;
+      clock_gettime(1, (struct timespec *)&v43);
+      if ( v0 == &dword_16868 )
       {
         timeout = 0;
       }
       else
       {
-        v1 = v39 / 1000;
+        v1 = v44 / 1000;
         v2 = v0[5];
-        v5 = __OFSUB__(v2, v38);
-        v3 = v2 == v38;
-        v4 = v2 - v38 < 0;
-        if ( v2 == v38 )
+        v5 = __OFSUB__(v2, v43);
+        v3 = v2 == v43;
+        v4 = v2 - v43 < 0;
+        if ( v2 == v43 )
         {
           v6 = v0[6];
           v5 = __OFSUB__(v6, v1);
@@ -8307,18 +8513,18 @@ int ril_event_loop(void)
         }
         if ( (unsigned __int8)(v4 ^ v5) | v3 )
         {
-          v36 = 0;
-          v37 = 0;
+          v41 = 0;
+          v42 = 0;
         }
         else
         {
           v7 = 1;
-          if ( !__OFSUB__(v2, v38) )
+          if ( !__OFSUB__(v2, v43) )
             v7 = 0;
           if ( v7 )
             goto LABEL_51;
-          v8 = v2 - v38;
-          v36 = v2 - v38;
+          v8 = v2 - v43;
+          v41 = v2 - v43;
           v9 = v0[6];
           v10 = 1;
           if ( !__OFSUB__(v9, v1) )
@@ -8327,7 +8533,7 @@ int ril_event_loop(void)
 LABEL_51:
             abort();
           v11 = v9 - v1;
-          v37 = v11;
+          v42 = v11;
           if ( v11 <= -1 )
           {
             v12 = v11 + 1000000;
@@ -8337,28 +8543,28 @@ LABEL_51:
               v13 = 0;
             if ( v13 )
               goto LABEL_51;
-            v37 = v12;
+            v42 = v12;
             v14 = 1;
             if ( !__OFSUB__(v8, 1) )
               v14 = 0;
             if ( v14 )
               goto LABEL_51;
-            v36 = v8 - 1;
+            v41 = v8 - 1;
           }
         }
-        timeout = (struct timeval *)&v36;
+        timeout = (struct timeval *)&v41;
       }
-      v16 = select(dword_158A8, (fd_set *)&v40, 0, 0, timeout);
+      v16 = select(dword_168D8, (fd_set *)&v45, 0, 0, timeout);
       v17 = v16;
       if ( v16 <= -1 )
         break;
-      pthread_mutex_lock((pthread_mutex_t *)&unk_157B0);
-      v18 = (int *)dword_15838;
-      clock_gettime(1, (struct timespec *)&v38);
-      if ( v18 != &dword_15838 )
+      pthread_mutex_lock((pthread_mutex_t *)&unk_167E0);
+      v18 = (int *)dword_16868;
+      clock_gettime(1, (struct timespec *)&v43);
+      if ( v18 != &dword_16868 )
       {
-        v19 = v38;
-        v20 = v39 / 1000;
+        v19 = v43;
+        v20 = v44 / 1000;
         do
         {
           v21 = v18[5];
@@ -8374,108 +8580,102 @@ LABEL_51:
           }
           if ( (unsigned __int8)(v23 ^ v24) | v22 )
             break;
-          v26 = *(_QWORD *)v18;
-          v3 = (unsigned int)*(_QWORD *)v18 == (_DWORD)&dword_15838;
-          *(_DWORD *)(v26 + 4) = HIDWORD(v26);
-          *(_DWORD *)(*(_QWORD *)v18 >> 32) = *(_QWORD *)v18;
-          *v18 = (int)&dword_15860;
+          v26 = *v18;
+          v3 = *v18 == (_DWORD)&dword_16868;
+          *(_DWORD *)(v26 + 4) = v18[1];
+          *(_DWORD *)v18[1] = *v18;
+          *v18 = (int)&dword_16890;
           v18[1] = 0;
-          HIDWORD(v26) = dword_15864;
-          v18[1] = dword_15864;
-          *(_DWORD *)HIDWORD(v26) = v18;
-          dword_15864 = (int)v18;
+          v27 = (int **)dword_16894;
+          v18[1] = dword_16894;
+          *v27 = v18;
+          dword_16894 = (int)v18;
           v18 = (int *)v26;
         }
         while ( !v3 );
       }
-      pthread_mutex_unlock((pthread_mutex_t *)&unk_157B0);
-      pthread_mutex_lock((pthread_mutex_t *)&unk_157B0);
-      if ( v17 >= 1 )
+      pthread_mutex_unlock((pthread_mutex_t *)&unk_167E0);
+      pthread_mutex_lock((pthread_mutex_t *)&unk_167E0);
+      v28 = 0;
+      while ( 1 )
       {
-        v27 = 0;
-        while ( 1 )
-        {
-          v28 = dword_15888[v27];
-          if ( v28 && _FD_ISSET_chk(*(_DWORD *)(v28 + 8), &v40, 128) )
-          {
-            *(_DWORD *)v28 = &dword_15860;
-            v29 = (int *)dword_15864;
-            *(_DWORD *)(v28 + 4) = dword_15864;
-            *v29 = v28;
-            dword_15864 = v28;
-            if ( !*(_BYTE *)(v28 + 16) )
-              sub_AD70(v28, v27);
-            v30 = 1;
-            if ( !__OFSUB__(v17, 1) )
-              v30 = 0;
-            if ( v30 )
-              goto LABEL_50;
-            --v17;
-          }
-          v31 = 1;
-          if ( v27 + 1 > v27 )
-            v31 = 0;
-          if ( v31 )
-            goto LABEL_50;
-          if ( v27 + 1 <= 7 )
-          {
-            ++v27;
-            if ( v17 > 0 )
-              continue;
-          }
+        v29 = v28;
+        if ( v28 > 7 || v17 < 1 )
           break;
+        v30 = dword_168B8[v28];
+        if ( v30 && _FD_ISSET_chk(*(_DWORD *)(v30 + 8), &v45, 128) )
+        {
+          *(_DWORD *)v30 = &dword_16890;
+          v31 = (int *)dword_16894;
+          *(_DWORD *)(v30 + 4) = dword_16894;
+          *v31 = v30;
+          dword_16894 = v30;
+          if ( !*(_BYTE *)(v30 + 16) )
+            sub_B6BC(v30, v29);
+          v32 = 1;
+          if ( !__OFSUB__(v17, 1) )
+            v32 = 0;
+          if ( v32 )
+            goto LABEL_50;
+          --v17;
         }
+        v28 = v29 + 1;
+        v33 = 1;
+        if ( v29 + 1 > v29 )
+          v33 = 0;
+        if ( v33 )
+          goto LABEL_50;
       }
-      pthread_mutex_unlock((pthread_mutex_t *)&unk_157B0);
-      v32 = dword_15860;
-      if ( (int *)dword_15860 != &dword_15860 )
+      pthread_mutex_unlock((pthread_mutex_t *)&unk_167E0);
+      v34 = (int *)dword_16890;
+      if ( (int *)dword_16890 != &dword_16890 )
       {
         do
         {
-          v33 = *(_QWORD *)v32;
-          *(_DWORD *)(v33 + 4) = HIDWORD(v33);
-          *(_DWORD *)(*(_QWORD *)v32 >> 32) = *(_QWORD *)v32;
-          *(_DWORD *)v32 = 0;
-          *(_DWORD *)(v32 + 4) = 0;
-          ((void (__fastcall *)(_DWORD, _DWORD, _DWORD))*(_QWORD *)(v32 + 28))(
-            *(_DWORD *)(v32 + 8),
-            0,
-            *(_QWORD *)(v32 + 28) >> 32);
-          v32 = v33;
+          v35 = (int *)*v34;
+          *(_DWORD *)(*v34 + 4) = v34[1];
+          *(_DWORD *)v34[1] = *v34;
+          v36 = v34[2];
+          v37 = (void (__fastcall *)(int, _DWORD, int))v34[7];
+          v38 = v34[8];
+          v34[1] = 0;
+          *v34 = 0;
+          v37(v36, 0, v38);
+          v34 = v35;
         }
-        while ( (int *)v33 != &dword_15860 );
+        while ( v35 != &dword_16890 );
       }
     }
-    v34 = (_DWORD *)_errno(v16);
+    v39 = (_DWORD *)_errno(v16);
   }
-  while ( *v34 == 4 );
-  _android_log_buf_print(1, 6, "RILC", "ril_event: select error (%d)", *v34);
-  result = _stack_chk_guard - v41;
-  if ( _stack_chk_guard != v41 )
+  while ( *v39 == 4 );
+  _android_log_buf_print(1, 6, "RILC", "ril_event: select error (%d)", *v39);
+  result = _stack_chk_guard - v46;
+  if ( _stack_chk_guard != v46 )
 LABEL_50:
     abort();
   return result;
 }
-// 38A4: using guessed type int _android_log_buf_print(_DWORD, _DWORD, _DWORD, const char *, ...);
-// 3928: using guessed type int __fastcall _errno(_DWORD);
-// 3CE8: using guessed type int __fastcall _aeabi_memcpy8(_DWORD, _DWORD, _DWORD);
-// 3D00: using guessed type int __fastcall _FD_ISSET_chk(_DWORD, _DWORD, _DWORD);
-// 15838: using guessed type int dword_15838;
-// 15860: using guessed type int dword_15860;
-// 15864: using guessed type int dword_15864;
-// 158A8: using guessed type int dword_158A8;
+// 3A68: using guessed type int __fastcall _errno(_DWORD);
+// 3B1C: using guessed type int _android_log_buf_print(_DWORD, _DWORD, _DWORD, const char *, ...);
+// 3F54: using guessed type int __fastcall _aeabi_memcpy8(_DWORD, _DWORD, _DWORD);
+// 3F6C: using guessed type int __fastcall _FD_ISSET_chk(_DWORD, _DWORD, _DWORD);
+// 16868: using guessed type int dword_16868;
+// 16890: using guessed type int dword_16890;
+// 16894: using guessed type int dword_16894;
+// 168D8: using guessed type int dword_168D8;
 
-//----- (0000B058) --------------------------------------------------------
+//----- (0000B9B0) --------------------------------------------------------
 int __fastcall RilSocket::socketInit(RilSocket *this)
 {
   RilSocket *v1; // r4
-  __int64 v2; // r1
-  char *v3; // r0
-  const char *v4; // r6
-  int v5; // r5
+  int v2; // r3
+  int v3; // r0
+  char *v4; // r0
+  const char *v5; // r5
   _DWORD *v6; // r0
-  _DWORD *v7; // r7
-  int v8; // r0
+  _DWORD *v7; // r6
+  signed int v8; // r0
   int v9; // r0
   int v10; // r5
   int v11; // r1
@@ -8487,28 +8687,22 @@ int __fastcall RilSocket::socketInit(RilSocket *this)
   int *v17; // r0
   char *v18; // r0
   int result; // r0
-  char v20; // [sp+Ch] [bp-5Ch]
-  int v21; // [sp+4Ch] [bp-1Ch]
+  char v20; // [sp+10h] [bp-58h]
+  int v21; // [sp+50h] [bp-18h]
 
   v1 = this;
-  HIDWORD(v2) = RilSocket::sSocketRequestsHandler;
-  LODWORD(v2) = RilSocket::sSocketListener;
-  *((_QWORD *)this + 3) = v2;
-  _snprintf_chk(&v20, 64, 0, 64, "ANDROID_SOCKET_%s", *((_DWORD *)this + 1));
-  v3 = getenv(&v20);
-  v4 = v3;
-  v5 = -1;
-  if ( v3 )
-  {
-    v6 = (_DWORD *)_errno(v3);
-    v7 = v6;
-    *v6 = 0;
-    v8 = strtol(v4, 0, 10);
-    if ( !*v7 )
-      v5 = v8;
-  }
-  *((_DWORD *)v1 + 3) = v5;
-  v9 = listen(v5, 0);
+  v2 = *((_DWORD *)this + 1);
+  v3 = _stack_chk_guard;
+  *((_DWORD *)v1 + 7) = RilSocket::sSocketRequestsHandler;
+  v21 = v3;
+  *((_DWORD *)v1 + 6) = RilSocket::sSocketListener;
+  _snprintf_chk(&v20, 64, 0, 64, "ANDROID_SOCKET_%s", v2);
+  v4 = getenv(&v20);
+  v5 = v4;
+  if ( !v4 || (v6 = (_DWORD *)_errno(v4), v7 = v6, *v6 = 0, v8 = strtol(v5, 0, 10), *v7) )
+    v8 = -1;
+  *((_DWORD *)v1 + 3) = v8;
+  v9 = listen(v8, 0);
   v10 = v9;
   if ( v9 <= -1 )
   {
@@ -8532,11 +8726,11 @@ int __fastcall RilSocket::socketInit(RilSocket *this)
     result = v10;
   return result;
 }
-// 38A4: using guessed type int _android_log_buf_print(_DWORD, _DWORD, _DWORD, const char *, ...);
-// 3928: using guessed type int __fastcall _errno(_DWORD);
-// 3958: using guessed type int _snprintf_chk(_DWORD, _DWORD, _DWORD, _DWORD, const char *, ...);
+// 3A68: using guessed type int __fastcall _errno(_DWORD);
+// 3B1C: using guessed type int _android_log_buf_print(_DWORD, _DWORD, _DWORD, const char *, ...);
+// 3BD0: using guessed type int _snprintf_chk(_DWORD, _DWORD, _DWORD, _DWORD, const char *, ...);
 
-//----- (0000B140) --------------------------------------------------------
+//----- (0000BA88) --------------------------------------------------------
 int __fastcall RilSocket::sSocketListener(RilSocket *this, int a2, int a3, void *a4)
 {
   char v5; // [sp+4h] [bp-34h]
@@ -8544,19 +8738,19 @@ int __fastcall RilSocket::sSocketListener(RilSocket *this, int a2, int a3, void 
   int v7; // [sp+28h] [bp-10h]
   int v8; // [sp+2Ch] [bp-Ch]
 
-  v7 = a3;
   v6 = 1;
+  v7 = a3;
   listenCallback_helper((int)this, a2, &v5);
   return _stack_chk_guard - v8;
 }
 
-//----- (0000B178) --------------------------------------------------------
+//----- (0000BAC0) --------------------------------------------------------
 int __fastcall RilSocket::sSocketRequestsHandler(RilSocket *this, int a2, int a3, void *a4)
 {
-  return j_RilSocket::socketRequestsHandler((int *)*(_QWORD *)a3, a2, 0, *(_QWORD *)a3 >> 32);
+  return j_RilSocket::socketRequestsHandler(*(int **)a3, a2, 0, *(_DWORD *)(a3 + 4));
 }
 
-//----- (0000B184) --------------------------------------------------------
+//----- (0000BACC) --------------------------------------------------------
 int __fastcall RilSocket::onNewCommandConnect(RilSocket *this)
 {
   pthread_t *v1; // r4
@@ -8572,16 +8766,16 @@ int __fastcall RilSocket::onNewCommandConnect(RilSocket *this)
   _android_log_buf_print(1, 6, 0, "New socket command connected and socket request thread started");
   return _stack_chk_guard - *(&attr.__align + 6);
 }
-// 38A4: using guessed type int _android_log_buf_print(_DWORD, _DWORD, _DWORD, const char *, ...);
+// 3B1C: using guessed type int _android_log_buf_print(_DWORD, _DWORD, _DWORD, const char *, ...);
 
-//----- (0000B204) --------------------------------------------------------
+//----- (0000BB4C) --------------------------------------------------------
 int __fastcall ril_socket_process_requests_loop(int a1)
 {
   (*(void (**)(void))(*(_DWORD *)a1 + 4))();
   return 0;
 }
 
-//----- (0000B210) --------------------------------------------------------
+//----- (0000BB58) --------------------------------------------------------
 int __fastcall RilSocket::socketRequestsHandler(int *a1, int a2, int a3, int a4)
 {
   int *v4; // r4
@@ -8653,112 +8847,106 @@ LABEL_21:
   }
   return _stack_chk_guard - v18;
 }
-// 38A4: using guessed type int _android_log_buf_print(_DWORD, _DWORD, _DWORD, const char *, ...);
-// 3928: using guessed type int __fastcall _errno(_DWORD);
-// 39B8: using guessed type int __fastcall record_stream_get_next(_DWORD, _DWORD, _DWORD);
-// 3A48: using guessed type int __fastcall record_stream_free(_DWORD);
+// 3A68: using guessed type int __fastcall _errno(_DWORD);
+// 3B1C: using guessed type int _android_log_buf_print(_DWORD, _DWORD, _DWORD, const char *, ...);
+// 3C24: using guessed type int __fastcall record_stream_get_next(_DWORD, _DWORD, _DWORD);
+// 3CB4: using guessed type int __fastcall record_stream_free(_DWORD);
 
-//----- (0000B304) --------------------------------------------------------
+//----- (0000BC4C) --------------------------------------------------------
 int __fastcall RilSocket::setListenFd(int result, int a2)
 {
   *(_DWORD *)(result + 12) = a2;
   return result;
 }
 
-//----- (0000B308) --------------------------------------------------------
+//----- (0000BC50) --------------------------------------------------------
 int __fastcall RilSocket::setCommandFd(int result, int a2)
 {
   *(_DWORD *)(result + 16) = a2;
   return result;
 }
 
-//----- (0000B30C) --------------------------------------------------------
+//----- (0000BC54) --------------------------------------------------------
 int __fastcall RilSocket::getListenFd(RilSocket *this)
 {
   return *((_DWORD *)this + 3);
 }
 
-//----- (0000B310) --------------------------------------------------------
+//----- (0000BC58) --------------------------------------------------------
 int __fastcall RilSocket::getCommandFd(RilSocket *this)
 {
   return *((_DWORD *)this + 4);
 }
 
-//----- (0000B314) --------------------------------------------------------
+//----- (0000BC5C) --------------------------------------------------------
 int __fastcall RilSocket::setListenCb(int result, void (__cdecl *a2)(int, __int16, void *))
 {
   *(_DWORD *)(result + 24) = a2;
   return result;
 }
 
-//----- (0000B318) --------------------------------------------------------
+//----- (0000BC60) --------------------------------------------------------
 int __fastcall RilSocket::setCommandCb(int result, void (__cdecl *a2)(int, __int16, void *))
 {
   *(_DWORD *)(result + 28) = a2;
   return result;
 }
 
-//----- (0000B31C) --------------------------------------------------------
+//----- (0000BC64) --------------------------------------------------------
 int __fastcall RilSocket::getListenCb(RilSocket *this)
 {
   return *((_DWORD *)this + 6);
 }
 
-//----- (0000B320) --------------------------------------------------------
+//----- (0000BC68) --------------------------------------------------------
 int __fastcall RilSocket::getCommandCb(RilSocket *this)
 {
   return *((_DWORD *)this + 7);
 }
 
-//----- (0000B324) --------------------------------------------------------
-int __fastcall RilSocket::setListenEvent(_DWORD *a1, int a2, int a3, int a4, int a5, int a6, int a7, int a8, int a9, int a10)
+//----- (0000BC6C) --------------------------------------------------------
+_DWORD *__fastcall RilSocket::setListenEvent(_DWORD *result, int a2, int a3, int a4, int a5, int a6, int a7, int a8, int a9, int a10)
 {
-  _DWORD *v10; // r0
-
-  a1[8] = a2;
-  a1[9] = a3;
-  a1[10] = a4;
-  a1[11] = a5;
-  a1[12] = a6;
-  a1[13] = a7;
-  v10 = a1 + 14;
-  *v10 = a8;
-  v10[1] = a9;
-  v10[2] = a10;
-  return (int)(v10 + 3);
+  result[8] = a2;
+  result[9] = a3;
+  result[10] = a4;
+  result[11] = a5;
+  result[12] = a6;
+  result[13] = a7;
+  result[14] = a8;
+  result[16] = a10;
+  result[15] = a9;
+  return result;
 }
 
-//----- (0000B348) --------------------------------------------------------
-int __fastcall RilSocket::setCallbackEvent(_DWORD *a1, int a2, int a3, int a4, int a5, int a6, int a7, int a8, int a9, int a10)
+//----- (0000BC94) --------------------------------------------------------
+_DWORD *__fastcall RilSocket::setCallbackEvent(_DWORD *result, int a2, int a3, int a4, int a5, int a6, int a7, int a8, int a9, int a10)
 {
-  _DWORD *v10; // r0
-
-  a1[17] = a2;
-  a1[18] = a3;
-  a1[19] = a4;
-  a1[20] = a5;
-  a1[21] = a6;
-  a1[22] = a7;
-  v10 = a1 + 23;
-  *v10 = a8;
-  v10[1] = a9;
-  v10[2] = a10;
-  return (int)(v10 + 3);
+  result[17] = a2;
+  result[18] = a3;
+  result[19] = a4;
+  result[20] = a5;
+  result[21] = a6;
+  result[22] = a7;
+  result[23] = a8;
+  result[25] = a10;
+  result[24] = a9;
+  return result;
 }
 
-//----- (0000B36C) --------------------------------------------------------
+//----- (0000BCBC) --------------------------------------------------------
 char *__fastcall RilSocket::getListenEvent(RilSocket *this)
 {
   return (char *)this + 32;
 }
 
-//----- (0000B370) --------------------------------------------------------
+//----- (0000BCC0) --------------------------------------------------------
 char *__fastcall RilSocket::getCallbackEvent(RilSocket *this)
 {
   return (char *)this + 68;
 }
 
-//----- (0000B374) --------------------------------------------------------
+//----- (0000BCC4) --------------------------------------------------------
 void __fastcall RilSapSocket::sOnRequestComplete(_DWORD *a1, int a2, int a3, unsigned int a4)
 {
   unsigned int v4; // r7
@@ -8791,24 +8979,26 @@ void __fastcall RilSapSocket::sOnRequestComplete(_DWORD *a1, int a2, int a3, uns
     j_free(v6);
   }
 }
-// 38A4: using guessed type int _android_log_buf_print(_DWORD, _DWORD, _DWORD, const char *, ...);
+// 3B1C: using guessed type int _android_log_buf_print(_DWORD, _DWORD, _DWORD, const char *, ...);
 
-//----- (0000B3EC) --------------------------------------------------------
-int __fastcall RilSapSocket::sOnUnsolicitedResponse(RilSapSocket *this, int a2, const void *a3, unsigned int a4)
+//----- (0000BD3C) --------------------------------------------------------
+RilSapSocket *__fastcall RilSapSocket::sOnUnsolicitedResponse(RilSapSocket *this, int a2, const void *a3, unsigned int a4)
 {
   RilSapSocket *v4; // r6
   const void *v5; // r4
   void *v6; // r5
-  RilSapSocket *v7; // r0
+  RilSapSocket *result; // r0
 
   v4 = this;
   v5 = a3;
   v6 = (void *)a2;
-  v7 = (RilSapSocket *)RilSapSocket::getSocketById(0);
-  return j_RilSapSocket::onUnsolicitedResponse(v7, (int)v4, v6, (unsigned int)v5);
+  result = (RilSapSocket *)RilSapSocket::getSocketById(0);
+  if ( result )
+    result = (RilSapSocket *)j_RilSapSocket::onUnsolicitedResponse(result, (int)v4, v6, (unsigned int)v5);
+  return result;
 }
 
-//----- (0000B408) --------------------------------------------------------
+//----- (0000BD5C) --------------------------------------------------------
 int __fastcall RilSapSocket::getSocketById(int a1)
 {
   int v1; // r4
@@ -8817,7 +9007,7 @@ int __fastcall RilSapSocket::getSocketById(int a1)
   int result; // r0
 
   v1 = a1;
-  v2 = (_DWORD *)dword_158AC;
+  v2 = (_DWORD *)dword_168DC;
   v3 = (RilSapSocket *)_android_log_buf_print(1, 3, "RIL_UIM_SOCKET", "Entered getSocketById");
   RilSapSocket::printList(v3);
   while ( v2 )
@@ -8829,21 +9019,21 @@ int __fastcall RilSapSocket::getSocketById(int a1)
   }
   return 0;
 }
-// 38A4: using guessed type int _android_log_buf_print(_DWORD, _DWORD, _DWORD, const char *, ...);
-// 158AC: using guessed type int dword_158AC;
+// 3B1C: using guessed type int _android_log_buf_print(_DWORD, _DWORD, _DWORD, const char *, ...);
+// 168DC: using guessed type int dword_168DC;
 
-//----- (0000B448) --------------------------------------------------------
+//----- (0000BD9C) --------------------------------------------------------
 int __fastcall RilSapSocket::onRequestComplete(int a1, int a2, int a3, int a4, unsigned int a5)
 {
   int v5; // r8
   int v6; // r6
   int *v7; // r4
-  signed int v8; // r0
-  unsigned int *v9; // r0
-  unsigned int *v10; // r5
+  __int64 v8; // r0
+  signed int v9; // r0
+  unsigned int *v10; // r0
+  unsigned int *v11; // r5
   int result; // r0
-  int v12; // [sp+8h] [bp-30h]
-  int v13; // [sp+Ch] [bp-2Ch]
+  __int64 v13; // [sp+8h] [bp-30h]
   int v14; // [sp+10h] [bp-28h]
   int v15; // [sp+14h] [bp-24h]
   void *ptr; // [sp+18h] [bp-20h]
@@ -8852,27 +9042,28 @@ int __fastcall RilSapSocket::onRequestComplete(int a1, int a2, int a3, int a4, u
   v5 = a1;
   v6 = a4;
   v7 = *(int **)(a2 + 4);
-  v12 = *v7;
-  v13 = 2;
+  HIDWORD(v8) = 2;
+  LODWORD(v8) = *v7;
+  v13 = v8;
   v14 = v7[2];
   v15 = a3;
-  v8 = 1;
+  v9 = 1;
   if ( a5 + 8 >= a5 )
-    v8 = 0;
-  if ( v8 )
-    goto LABEL_16;
-  v9 = (unsigned int *)calloc(1u, a5 + 8);
-  v10 = v9;
-  ptr = v9;
+    v9 = 0;
   if ( v9 )
+    goto LABEL_16;
+  v10 = (unsigned int *)calloc(1u, a5 + 8);
+  v11 = v10;
+  ptr = v10;
+  if ( v10 )
   {
     if ( v6 && a5 )
     {
-      _aeabi_memcpy(v9 + 1, v6, a5);
-      *v10 = a5;
+      _aeabi_memcpy(v10 + 1, v6, a5);
+      *v11 = a5;
     }
-    _android_log_buf_print(1, 6, "RIL_UIM_SOCKET", "Token:%d, MessageId:%d", *v7, v7[2], v12, v13, v14, v15);
-    RilSapSocket::sendResponse(v5, &v12);
+    _android_log_buf_print(1, 6, "RIL_UIM_SOCKET", "Token:%d, MessageId:%d", *v7, v7[2], v13, v14, v15);
+    RilSapSocket::sendResponse(v5, (int *)&v13);
     free(ptr);
   }
   else
@@ -8881,7 +9072,7 @@ int __fastcall RilSapSocket::onRequestComplete(int a1, int a2, int a3, int a4, u
   }
   if ( !Ril_queue<RilSapSocket::SapSocketRequest>::checkAndDequeue(v5 + 132, v7[2], *v7) )
   {
-    _android_log_buf_print(1, 6, "RIL_UIM_SOCKET", "Token:%d, MessageId:%d", *v7, v7[2], v12, v13, v14, v15, ptr);
+    _android_log_buf_print(1, 6, "RIL_UIM_SOCKET", "Token:%d, MessageId:%d", *v7, v7[2], v13, v14, v15, ptr);
     _android_log_buf_print(1, 6, "RIL_UIM_SOCKET", "RilSapSocket::onRequestComplete: invalid Token or Message Id");
   }
   free(v7);
@@ -8891,10 +9082,10 @@ LABEL_16:
     abort();
   return result;
 }
-// 38A4: using guessed type int _android_log_buf_print(_DWORD, _DWORD, _DWORD, const char *, ...);
-// 3AF0: using guessed type int __fastcall _aeabi_memcpy(_DWORD, _DWORD, _DWORD);
+// 3B1C: using guessed type int _android_log_buf_print(_DWORD, _DWORD, _DWORD, const char *, ...);
+// 3D5C: using guessed type int __fastcall _aeabi_memcpy(_DWORD, _DWORD, _DWORD);
 
-//----- (0000B554) --------------------------------------------------------
+//----- (0000BEA8) --------------------------------------------------------
 int __fastcall RilSapSocket::onUnsolicitedResponse(RilSapSocket *this, int a2, void *a3, unsigned int a4)
 {
   RilSapSocket *v4; // r8
@@ -8930,10 +9121,10 @@ LABEL_11:
     {
       _aeabi_memcpy(v9 + 1, v5, v6);
       *v10 = v6;
-      v16 = v10;
       v13 = 3;
       v14 = v7;
       v15 = 0;
+      v16 = v10;
       RilSapSocket::sendResponse((int)v4, &v12);
       free(v10);
     }
@@ -8947,16 +9138,16 @@ LABEL_11:
     goto LABEL_11;
   return result;
 }
-// 38A4: using guessed type int _android_log_buf_print(_DWORD, _DWORD, _DWORD, const char *, ...);
-// 3AF0: using guessed type int __fastcall _aeabi_memcpy(_DWORD, _DWORD, _DWORD);
+// 3B1C: using guessed type int _android_log_buf_print(_DWORD, _DWORD, _DWORD, const char *, ...);
+// 3D5C: using guessed type int __fastcall _aeabi_memcpy(_DWORD, _DWORD, _DWORD);
 
-//----- (0000B5F8) --------------------------------------------------------
+//----- (0000BF4C) --------------------------------------------------------
 int __fastcall RilSapSocket::printList(RilSapSocket *this)
 {
   _DWORD *v1; // r7
   int result; // r0
 
-  v1 = (_DWORD *)dword_158AC;
+  v1 = (_DWORD *)dword_168DC;
   for ( result = _android_log_buf_print(1, 3, "RIL_UIM_SOCKET", "Printing socket list"); v1; v1 = (_DWORD *)v1[1] )
   {
     _android_log_buf_print(1, 3, "RIL_UIM_SOCKET", "SocketName:%s", *(_DWORD *)(*v1 + 4));
@@ -8964,10 +9155,10 @@ int __fastcall RilSapSocket::printList(RilSapSocket *this)
   }
   return result;
 }
-// 38A4: using guessed type int _android_log_buf_print(_DWORD, _DWORD, _DWORD, const char *, ...);
-// 158AC: using guessed type int dword_158AC;
+// 3B1C: using guessed type int _android_log_buf_print(_DWORD, _DWORD, _DWORD, const char *, ...);
+// 168DC: using guessed type int dword_168DC;
 
-//----- (0000B668) --------------------------------------------------------
+//----- (0000BFBC) --------------------------------------------------------
 int __fastcall RilSapSocket::initSapSocket(const char *a1, pthread_mutexattr_t a2)
 {
   pthread_mutexattr_t v2; // r4
@@ -8987,23 +9178,23 @@ int __fastcall RilSapSocket::initSapSocket(const char *a1, pthread_mutexattr_t a
   return result;
 }
 
-//----- (0000B694) --------------------------------------------------------
+//----- (0000BFE8) --------------------------------------------------------
 signed int __fastcall RilSapSocket::SocketExists(RilSapSocket *this, const char *a2)
 {
   RilSapSocket *v2; // r4
   _DWORD *i; // r5
 
   v2 = this;
-  for ( i = (_DWORD *)dword_158AC; i; i = (_DWORD *)i[1] )
+  for ( i = (_DWORD *)dword_168DC; i; i = (_DWORD *)i[1] )
   {
     if ( !strcmp(*(const char **)(*i + 4), (const char *)v2) )
       return 1;
   }
   return 0;
 }
-// 158AC: using guessed type int dword_158AC;
+// 168DC: using guessed type int dword_168DC;
 
-//----- (0000B6C0) --------------------------------------------------------
+//----- (0000C014) --------------------------------------------------------
 signed int __fastcall RilSapSocket::addSocketToList(RilSapSocket *a1, const char *a2, pthread_mutexattr_t a3)
 {
   pthread_mutexattr_t v3; // r5
@@ -9011,8 +9202,8 @@ signed int __fastcall RilSapSocket::addSocketToList(RilSapSocket *a1, const char
   pthread_mutexattr_t v5; // r7
   signed int result; // r0
   pthread_mutexattr_t *v7; // r4
-  _DWORD *v8; // r0
-  int v9; // r5
+  _DWORD *v8; // r5
+  pthread_mutexattr_t v9; // r0
   int v10; // r0
   int v11; // r1
 
@@ -9025,14 +9216,14 @@ signed int __fastcall RilSapSocket::addSocketToList(RilSapSocket *a1, const char
     v7 = (pthread_mutexattr_t *)operator new(0x94u);
     RilSapSocket::RilSapSocket(v7, v5, v4, v3);
     v8 = malloc(8u);
-    v9 = (int)v8;
     if ( v8 )
     {
+      v9 = v7[2];
       *v8 = v7;
       v8[1] = 0;
-      _android_log_buf_print(1, 3, "RIL_UIM_SOCKET", "Adding socket with id: %d", v7[2].__align);
-      v10 = dword_158AC;
-      if ( dword_158AC )
+      _android_log_buf_print(1, 3, "RIL_UIM_SOCKET", "Adding socket with id: %d", v9.__align);
+      v10 = dword_168DC;
+      if ( dword_168DC )
       {
         do
         {
@@ -9040,12 +9231,12 @@ signed int __fastcall RilSapSocket::addSocketToList(RilSapSocket *a1, const char
           v10 = *(_DWORD *)(v10 + 4);
         }
         while ( v10 );
-        *(_DWORD *)(v11 + 4) = v9;
+        *(_DWORD *)(v11 + 4) = v8;
       }
       else
       {
-        *(_DWORD *)(v9 + 4) = 0;
-        dword_158AC = v9;
+        v8[1] = 0;
+        dword_168DC = (int)v8;
       }
       result = j_RilSocket::socketInit((RilSocket *)v7);
     }
@@ -9056,10 +9247,10 @@ signed int __fastcall RilSapSocket::addSocketToList(RilSapSocket *a1, const char
   }
   return result;
 }
-// 38A4: using guessed type int _android_log_buf_print(_DWORD, _DWORD, _DWORD, const char *, ...);
-// 158AC: using guessed type int dword_158AC;
+// 3B1C: using guessed type int _android_log_buf_print(_DWORD, _DWORD, _DWORD, const char *, ...);
+// 168DC: using guessed type int dword_168DC;
 
-//----- (0000B75C) --------------------------------------------------------
+//----- (0000C0B0) --------------------------------------------------------
 void __fastcall __noreturn RilSapSocket::processRequestsLoop(RilSapSocket *this)
 {
   RilSapSocket *v1; // r4
@@ -9082,9 +9273,9 @@ void __fastcall __noreturn RilSapSocket::processRequestsLoop(RilSapSocket *this)
     }
   }
 }
-// 38A4: using guessed type int _android_log_buf_print(_DWORD, _DWORD, _DWORD, const char *, ...);
+// 3B1C: using guessed type int _android_log_buf_print(_DWORD, _DWORD, _DWORD, const char *, ...);
 
-//----- (0000B7CC) --------------------------------------------------------
+//----- (0000C120) --------------------------------------------------------
 int __fastcall Ril_queue<RilSapSocket::SapSocketRequest>::dequeue(int a1)
 {
   int v1; // r5
@@ -9101,13 +9292,15 @@ int __fastcall Ril_queue<RilSapSocket::SapSocketRequest>::dequeue(int a1)
   return i;
 }
 
-//----- (0000B800) --------------------------------------------------------
+//----- (0000C154) --------------------------------------------------------
 void __fastcall RilSapSocket::dispatchRequest(int a1, _DWORD *a2)
 {
   int v2; // r6
   _DWORD *v3; // r4
   _DWORD *v4; // r0
   _DWORD *v5; // r5
+  int v6; // r0
+  int v7; // r1
 
   v2 = a1;
   v3 = a2;
@@ -9115,11 +9308,13 @@ void __fastcall RilSapSocket::dispatchRequest(int a1, _DWORD *a2)
   v5 = v4;
   if ( v4 )
   {
-    *v4 = *v3;
     v4[1] = v3;
-    v4[2] = 0;
-    v4[3] = *(_DWORD *)(v2 + 8);
-    Ril_queue<RilSapSocket::SapSocketRequest>::enqueue(v2 + 132, (int)v4);
+    v6 = *v3;
+    v7 = *(_DWORD *)(v2 + 8);
+    v5[2] = 0;
+    *v5 = v6;
+    v5[3] = v7;
+    Ril_queue<RilSapSocket::SapSocketRequest>::enqueue(v2 + 132, (int)v5);
     if ( *(_DWORD *)(v2 + 112) )
     {
       _android_log_buf_print(
@@ -9144,74 +9339,69 @@ void __fastcall RilSapSocket::dispatchRequest(int a1, _DWORD *a2)
     j_free(v3);
   }
 }
-// 38A4: using guessed type int _android_log_buf_print(_DWORD, _DWORD, _DWORD, const char *, ...);
+// 3B1C: using guessed type int _android_log_buf_print(_DWORD, _DWORD, _DWORD, const char *, ...);
 
-//----- (0000B890) --------------------------------------------------------
+//----- (0000C1F0) --------------------------------------------------------
 pthread_mutexattr_t *__fastcall RilSapSocket::RilSapSocket(pthread_mutexattr_t *a1, pthread_mutexattr_t a2, pthread_mutexattr_t a3, pthread_mutexattr_t a4)
 {
   pthread_mutexattr_t *v4; // r5
-  const pthread_mutexattr_t *v5; // r6
-  pthread_mutexattr_t v6; // r4
+  pthread_mutexattr_t v5; // r4
+  const pthread_mutexattr_t *v6; // r6
 
   v4 = a1;
-  v5 = a1 + 29;
-  v6 = a4;
+  v5 = a4;
   a1[3].__align = -1;
+  v6 = a1 + 29;
   a1[4].__align = -1;
   a1[26].__align = 0;
   a1[1] = a2;
   a1[2] = a3;
-  a1->__align = (int)&off_14B60;
+  a1->__align = (int)&off_15B34;
   pthread_mutexattr_init(a1 + 29);
-  pthread_mutex_init((pthread_mutex_t *)&v4[30], v5);
-  v4[31].__align = 0;
+  pthread_mutex_init((pthread_mutex_t *)&v4[30], v6);
   v4[32].__align = 0;
+  v4[31].__align = 0;
   pthread_mutexattr_init(v4 + 33);
   pthread_mutex_init((pthread_mutex_t *)&v4[34], v4 + 33);
-  v4[35].__align = 0;
   v4[36].__align = 0;
-  if ( v6.__align )
-    v4[28] = v6;
+  v4[35].__align = 0;
+  if ( v5.__align )
+    v4[28] = v5;
   return v4;
 }
-// 14B60: using guessed type void *;
+// 15B34: using guessed type void *;
 
-//----- (0000B8F0) --------------------------------------------------------
+//----- (0000C258) --------------------------------------------------------
 int __fastcall log_hex(const char *a1, const unsigned __int8 *a2, int a3)
 {
   int v3; // r4
-  const unsigned __int8 *v4; // r5
-  int v5; // r8
-  signed int v6; // r9
+  const unsigned __int8 *v4; // r8
+  int v5; // r9
+  signed int v6; // r5
   int v7; // r10
   int v8; // r0
   signed int v9; // r1
-  int v10; // lr
-  const unsigned __int8 *v11; // r12
-  int v12; // r2
-  int v13; // r1
-  signed int v14; // r3
-  signed int v15; // r11
-  int v16; // r3
-  signed int v17; // r6
-  unsigned int v18; // r5
-  int v19; // r4
-  int v20; // r6
-  signed int v21; // r0
-  char v22; // r4
-  signed int v23; // r3
-  bool v24; // vf
-  signed int v25; // r2
-  signed int v26; // r1
-  signed int v27; // r1
-  signed int v28; // r1
-  signed int v29; // r0
+  signed int v10; // r1
+  signed int v11; // r11
+  int v12; // r1
+  signed int v13; // r2
+  unsigned int v14; // r3
+  int v15; // r6
+  int v16; // r2
+  signed int v17; // r0
+  int v18; // r0
+  char v19; // r3
+  signed int v20; // r1
+  signed int v21; // r2
+  signed int v22; // r3
+  signed int v23; // r1
+  signed int v24; // r0
   int result; // r0
-  const char *v31; // [sp+Ch] [bp-4h]
-  int v32; // [sp+10h] [bp+0h]
-  int v33; // [sp+60h] [bp+50h]
+  const char *v26; // [sp+Ch] [bp-4h]
+  int v27; // [sp+10h] [bp+0h]
+  int v28; // [sp+60h] [bp+50h]
 
-  v31 = a1;
+  v26 = a1;
   v3 = a3;
   v4 = a2;
   v5 = 0;
@@ -9219,123 +9409,105 @@ int __fastcall log_hex(const char *a1, const unsigned __int8 *a2, int a3)
   v7 = 0;
   do
   {
-    v8 = _sprintf_chk(&v32, 0, 80, "%8.8s [%8.8x] ", v31, v7) + v6;
+    v8 = _snprintf_chk(&v27, 80, 0, 80, "%8.8s [%8.8x] ", v26, v7) + v6;
     v9 = 1;
     if ( !__OFSUB__(v8, v6) )
       v9 = 0;
-    v10 = v3;
-    v11 = v4;
     if ( v9 )
-      goto LABEL_47;
-    if ( v7 >= v3 )
+      goto LABEL_44;
+    while ( v7 < v3 )
     {
-LABEL_32:
-      v4 = v11;
-      v3 = v10;
-      v15 = 0;
-    }
-    else
-    {
-      v12 = v7;
-      v13 = v5;
-      while ( 1 )
+      v10 = 1;
+      if ( !__OFSUB__(80, v8) )
+        v10 = 0;
+      if ( !v10 )
       {
-        v14 = 1;
-        if ( !__OFSUB__(80, v8) )
-          v14 = 0;
-        if ( v14 )
-          goto LABEL_47;
-        v15 = 1;
-        if ( v13 > 15 || 80 - v8 < 4 )
-          break;
-        v16 = v8 + 1;
-        v17 = 1;
-        if ( v8 + 1 > v8 )
-          v17 = 0;
-        if ( v17 )
-          goto LABEL_47;
-        v18 = v11[v12];
-        v19 = (v18 >> 4) | 0x30;
-        if ( v18 > 0x9F )
-          v19 = (v18 >> 4) + 55;
-        v20 = v8 + 2;
-        *((_BYTE *)&v32 + v8) = v19;
-        v21 = 1;
-        if ( v16 + 1 > v16 )
-          v21 = 0;
-        if ( v21 )
-          goto LABEL_47;
-        v22 = v18 & 0xF | 0x30;
-        if ( (v18 & 0xE) > 9 )
-          v22 = (v18 & 0xF) + 55;
-        v8 = v16 + 2;
-        *((_BYTE *)&v32 + v16) = v22;
-        v23 = 1;
-        if ( v20 + 1 > v20 )
-          v23 = 0;
-        if ( v23 )
-          goto LABEL_47;
-        v7 = v12 + 1;
-        v24 = v12 + 1 <= v12;
-        v25 = 1;
-        *((_BYTE *)&v32 + v20) = 32;
-        if ( !v24 )
-          v25 = 0;
-        if ( v25 )
-          goto LABEL_47;
-        v5 = v13 + 1;
-        v24 = v13 + 1 <= v13;
-        v26 = 1;
-        if ( !v24 )
-          v26 = 0;
-        if ( v26 )
-          goto LABEL_47;
-        v12 = v7;
-        v13 = v5;
-        if ( v7 >= v10 )
+        v11 = 1;
+        if ( v5 > 15 || 80 - v8 < 4 )
           goto LABEL_32;
+        v12 = v8 + 1;
+        v13 = 1;
+        if ( v8 + 1 > v8 )
+          v13 = 0;
+        if ( !v13 )
+        {
+          v14 = v4[v7];
+          v15 = (v14 >> 4) | 0x30;
+          if ( v14 > 0x9F )
+            v15 = (v14 >> 4) + 55;
+          v16 = v8 + 2;
+          *((_BYTE *)&v27 + v8) = v15;
+          v17 = 1;
+          if ( v12 + 1 > v12 )
+            v17 = 0;
+          if ( !v17 )
+          {
+            v18 = v14 & 0xF;
+            v19 = v14 & 0xF | 0x30;
+            if ( (unsigned __int8)v18 > 9u )
+              v19 = v18 + 55;
+            v8 = v12 + 2;
+            *((_BYTE *)&v27 + v12) = v19;
+            v20 = 1;
+            if ( v16 + 1 > v16 )
+              v20 = 0;
+            if ( !v20 )
+            {
+              *((_BYTE *)&v27 + v16) = 32;
+              v21 = 1;
+              if ( v7 + 1 > v7 )
+                v21 = 0;
+              if ( !v21 )
+              {
+                v22 = 1;
+                if ( v5 + 1 > v5 )
+                  v22 = 0;
+                ++v5;
+                ++v7;
+                if ( !v22 )
+                  continue;
+              }
+            }
+          }
+        }
       }
-      v4 = v11;
-      v3 = v10;
-      v7 = v12;
-      v5 = v13;
+      goto LABEL_44;
     }
+    v11 = 0;
+LABEL_32:
     if ( v8 > 79 )
       break;
-    v27 = 0;
-    if ( v5 != 16 )
-      v27 = 1;
-    if ( v27 & v15 )
+    if ( v5 == 16 || v7 >= v3 )
+    {
+      v23 = 1;
+      if ( v8 + 1 > v8 )
+        v23 = 0;
+      if ( v23 )
+        goto LABEL_44;
+      v5 = 0;
+      *((_BYTE *)&v27 + v8) = 0;
+      _android_log_buf_print(1, 3, "RIL_UIM_SOCKET", "%s\n", &v27);
+      v6 = 0;
+    }
+    else
     {
       v6 = v8;
     }
-    else
-    {
-      v28 = 1;
-      if ( v8 + 1 > v8 )
-        v28 = 0;
-      if ( v28 )
-        goto LABEL_47;
-      v5 = 0;
-      *((_BYTE *)&v32 + v8) = 0;
-      _android_log_buf_print(1, 3, "RIL_UIM_SOCKET", "%s\n", &v32);
-      v6 = 0;
-    }
-    v29 = 0;
+    v24 = 0;
     if ( v6 < 80 )
-      v29 = 1;
+      v24 = 1;
   }
-  while ( v15 & v29 );
-  result = _stack_chk_guard - v33;
-  if ( _stack_chk_guard != v33 )
-LABEL_47:
+  while ( v11 & v24 );
+  result = _stack_chk_guard - v28;
+  if ( _stack_chk_guard != v28 )
+LABEL_44:
     abort();
   return result;
 }
-// 38A4: using guessed type int _android_log_buf_print(_DWORD, _DWORD, _DWORD, const char *, ...);
-// 3DE4: using guessed type int _sprintf_chk(_DWORD, _DWORD, _DWORD, const char *, ...);
+// 3B1C: using guessed type int _android_log_buf_print(_DWORD, _DWORD, _DWORD, const char *, ...);
+// 3BD0: using guessed type int _snprintf_chk(_DWORD, _DWORD, _DWORD, _DWORD, const char *, ...);
 
-//----- (0000BA84) --------------------------------------------------------
+//----- (0000C3C8) --------------------------------------------------------
 int __fastcall Ril_queue<RilSapSocket::SapSocketRequest>::enqueue(int a1, int a2)
 {
   int v2; // r5
@@ -9362,7 +9534,7 @@ int __fastcall Ril_queue<RilSapSocket::SapSocketRequest>::enqueue(int a1, int a2
   return j_pthread_mutex_unlock(v3);
 }
 
-//----- (0000BAB4) --------------------------------------------------------
+//----- (0000C3F8) --------------------------------------------------------
 int __fastcall RilSapSocket::sendResponse(int a1, int *a2)
 {
   int v2; // r7
@@ -9371,123 +9543,130 @@ int __fastcall RilSapSocket::sendResponse(int a1, int *a2)
   int v5; // r0
   signed int v6; // r1
   int v7; // r5
-  unsigned int v8; // r10
+  int v8; // r10
   signed int v9; // r0
   unsigned __int8 *v10; // r8
   int v11; // r0
-  _DWORD *v12; // r0
+  int *v12; // r0
   const char *v13; // r3
   const char *v14; // r3
   const char *v15; // r0
-  signed int v16; // r1
+  int v16; // r7
+  int v17; // r6
+  signed int v18; // r1
   int result; // r0
-  int v18; // [sp+0h] [bp-68h]
-  __int64 v19; // [sp+0h] [bp-68h]
-  int v20; // [sp+4h] [bp-64h]
-  signed int v21; // [sp+8h] [bp-60h]
-  unsigned int v22; // [sp+8h] [bp-60h]
-  int v23; // [sp+Ch] [bp-5Ch]
-  const char *v24; // [sp+Ch] [bp-5Ch]
-  char v25; // [sp+10h] [bp-58h]
-  __int64 v26; // [sp+18h] [bp-50h]
-  const char *v27; // [sp+20h] [bp-48h]
-  __int64 v28; // [sp+28h] [bp-40h]
-  __int64 v29; // [sp+30h] [bp-38h]
-  const char *v30; // [sp+38h] [bp-30h]
-  unsigned int v31; // [sp+3Ch] [bp-2Ch]
-  int v32; // [sp+40h] [bp-28h]
-  int v33; // [sp+44h] [bp-24h]
+  int v20; // [sp+0h] [bp-68h]
+  int v21; // [sp+0h] [bp-68h]
+  int v22; // [sp+4h] [bp-64h]
+  int v23; // [sp+4h] [bp-64h]
+  signed int v24; // [sp+8h] [bp-60h]
+  int v25; // [sp+8h] [bp-60h]
+  int v26; // [sp+Ch] [bp-5Ch]
+  const char *v27; // [sp+Ch] [bp-5Ch]
+  __int64 v28; // [sp+10h] [bp-58h]
+  __int64 v29; // [sp+18h] [bp-50h]
+  const char *v30; // [sp+20h] [bp-48h]
+  __int64 v31; // [sp+28h] [bp-40h]
+  __int64 v32; // [sp+30h] [bp-38h]
+  const char *v33; // [sp+38h] [bp-30h]
+  unsigned int v34; // [sp+3Ch] [bp-2Ch]
+  int v35; // [sp+40h] [bp-28h]
+  int v36; // [sp+44h] [bp-24h]
 
   v2 = a1;
   v3 = (pthread_mutex_t *)(a1 + 104);
   v4 = a2;
-  v32 = 0;
+  v35 = 0;
   pthread_mutex_lock((pthread_mutex_t *)(a1 + 104));
-  v5 = j_pb_get_encoded_size(&v32, (unsigned __int8 *)&MsgHeader_fields, v4);
+  v5 = j_pb_get_encoded_size(&v35, (unsigned __int8 *)&MsgHeader_fields, v4);
   v6 = *(_DWORD *)(v2 + 16);
-  v7 = v32;
-  if ( v5 != 1 || v32 < 0 )
+  v7 = v35;
+  if ( v5 != 1 || v35 < 0 )
     goto LABEL_12;
   if ( v6 == -1 )
   {
     v6 = -1;
 LABEL_12:
-    v18 = v4[1];
-    v20 = v32;
+    v24 = v6;
+    v26 = v5;
     v14 = "Not sending response type %d: encoded_size: %zu. commandFd: %d. encoded size result:                %d";
-    v21 = v6;
-    v23 = v5;
+    v20 = v4[1];
+    v22 = v35;
 LABEL_13:
-    _android_log_buf_print(1, 6, "RIL_UIM_SOCKET", v14, v18, v20, v21, v23);
+    _android_log_buf_print(1, 6, "RIL_UIM_SOCKET", v14, v20, v22, v24, v26);
     goto LABEL_21;
   }
-  v8 = v32 + 4;
+  v8 = v35 + 4;
   v9 = 1;
-  if ( v32 + 4 >= (unsigned int)v32 )
+  if ( v35 + 4 >= (unsigned int)v35 )
     v9 = 0;
   if ( v9 )
 LABEL_22:
     abort();
-  v10 = (unsigned __int8 *)malloc(v32 + 4);
+  v10 = (unsigned __int8 *)malloc(v35 + 4);
   if ( !v10 )
   {
     v14 = "sendResponse: OOM";
     goto LABEL_13;
   }
-  v31 = bswap32(v7);
-  j_pb_ostream_from_buffer((int)&v25, (int)v10, v8);
-  v28 = *(_QWORD *)&v25;
-  v29 = v26;
-  v30 = v27;
-  j_pb_write((int)&v28, (int)&v31, 4);
-  if ( j_pb_encode(&v28, (unsigned __int8 *)&MsgHeader_fields, v4) == 1 )
+  v34 = bswap32(v7);
+  j_pb_ostream_from_buffer(&v28, (int)v10, v8);
+  v31 = v28;
+  v32 = v29;
+  v33 = v30;
+  j_pb_write(&v31, (int)&v34, 4);
+  if ( j_pb_encode(&v31, (unsigned __int8 *)&MsgHeader_fields, v4) == 1 )
   {
-    _android_log_buf_print(1, 3, "RIL_UIM_SOCKET", "Size: %zu (0x%zx) Size as written: 0x%x", v32, v32, v31);
-    log_hex("onRequestComplete", v10 + 4, v32);
+    _android_log_buf_print(1, 3, "RIL_UIM_SOCKET", "Size: %zu (0x%zx) Size as written: 0x%x", v35, v35, v34);
+    log_hex("onRequestComplete", v10 + 4, v35);
     _android_log_buf_print(
       1,
       4,
       "RIL_UIM_SOCKET",
       "[%d] < SAP RESPONSE type: %d. id: %d. error: %d",
-      *(_QWORD *)v4,
+      *v4,
+      v4[1],
       v4[2],
       v4[3]);
     v11 = blockingWrite_helper(*(_DWORD *)(v2 + 16), v10, v8);
     if ( !v11 )
     {
-      v16 = 3;
+      v18 = 3;
       v13 = "Write successful";
       goto LABEL_20;
     }
-    v12 = (_DWORD *)_errno(v11);
+    v12 = (int *)_errno(v11);
     v13 = "Error %d while writing to fd";
-    LODWORD(v19) = *v12;
+    v21 = *v12;
   }
   else
   {
     v15 = "(none)";
+    v16 = v4[1];
     v13 = "Error while encoding response of type %d id %d buffer_size: %zu: %s.";
-    if ( v30 )
-      v15 = v30;
-    v19 = *(_QWORD *)(v4 + 1);
-    v22 = v8;
-    v24 = v15;
+    v17 = v4[2];
+    if ( v33 )
+      v15 = v33;
+    v25 = v8;
+    v27 = v15;
+    v21 = v16;
+    v23 = v17;
   }
-  v16 = 6;
+  v18 = 6;
 LABEL_20:
-  _android_log_buf_print(1, v16, "RIL_UIM_SOCKET", v13, v19, v22, v24);
+  _android_log_buf_print(1, v18, "RIL_UIM_SOCKET", v13, v21, v23, v25, v27);
   free(v10);
 LABEL_21:
   pthread_mutex_unlock(v3);
-  result = _stack_chk_guard - v33;
-  if ( _stack_chk_guard != v33 )
+  result = _stack_chk_guard - v36;
+  if ( _stack_chk_guard != v36 )
     goto LABEL_22;
   return result;
 }
-// 38A4: using guessed type int _android_log_buf_print(_DWORD, _DWORD, _DWORD, const char *, ...);
-// 3928: using guessed type int __fastcall _errno(_DWORD);
+// 3A68: using guessed type int __fastcall _errno(_DWORD);
+// 3B1C: using guessed type int _android_log_buf_print(_DWORD, _DWORD, _DWORD, const char *, ...);
 
-//----- (0000BC84) --------------------------------------------------------
+//----- (0000C5D0) --------------------------------------------------------
 signed int __fastcall Ril_queue<RilSapSocket::SapSocketRequest>::checkAndDequeue(int a1, int a2, int a3)
 {
   int v3; // r7
@@ -9523,39 +9702,44 @@ LABEL_8:
   return v10;
 }
 
-//----- (0000BCCC) --------------------------------------------------------
+//----- (0000C618) --------------------------------------------------------
 int __fastcall RilSapSocket::pushRecord(RilSapSocket *this, void *a2, unsigned int a3)
 {
   RilSapSocket *v3; // r5
   int v4; // r6
   const unsigned __int8 *v5; // r7
   _QWORD *v6; // r4
-  _DWORD *v7; // r0
-  const char *v8; // r0
-  char v10; // [sp+8h] [bp-28h]
-  const char *v11; // [sp+14h] [bp-1Ch]
-  int v12; // [sp+18h] [bp-18h]
+  _DWORD *v7; // r1
+  int v8; // r0
+  int v9; // r2
+  const char *v10; // r0
+  char v12; // [sp+8h] [bp-28h]
+  const char *v13; // [sp+14h] [bp-1Ch]
+  int v14; // [sp+18h] [bp-18h]
 
   v3 = this;
   v4 = a3;
   v5 = (const unsigned __int8 *)a2;
-  j_pb_istream_from_buffer(&v10, (int)a2, a3);
+  j_pb_istream_from_buffer(
+    (signed int (__fastcall **)(int, char *, int))&v12,
+    (signed int (__fastcall *)(int, char *, int))a2,
+    (signed int (__fastcall *)(int, char *, int))a3);
   v6 = malloc(0x14u);
   if ( !v6 )
   {
     _android_log_buf_print(1, 6, "RIL_UIM_SOCKET", "pushRecord: OOM");
-    return _stack_chk_guard - v12;
+    return _stack_chk_guard - v14;
   }
   *v6 = 0LL;
   v6[1] = 0LL;
   *((_DWORD *)v6 + 4) = 0;
   log_hex("BtSapTest-Payload", v5, v4);
-  if ( !j_pb_decode((int)&v10, (int)&MsgHeader_fields, (int)v6) )
+  if ( !j_pb_decode((int)&v12, (int)&MsgHeader_fields, (int)v6) )
   {
-    v8 = "(none)";
-    if ( v11 )
-      v8 = v11;
-    _android_log_buf_print(1, 6, "RIL_UIM_SOCKET", "Error decoding protobuf buffer : %s", v8);
+    v10 = "(none)";
+    if ( v13 )
+      v10 = v13;
+    _android_log_buf_print(1, 6, "RIL_UIM_SOCKET", "Error decoding protobuf buffer : %s", v10);
     goto LABEL_10;
   }
   v7 = malloc(0x10u);
@@ -9564,17 +9748,20 @@ int __fastcall RilSapSocket::pushRecord(RilSapSocket *this, void *a2, unsigned i
     _android_log_buf_print(1, 6, "RIL_UIM_SOCKET", "pushRecord: OOM");
 LABEL_10:
     free(v6);
-    return _stack_chk_guard - v12;
+    return _stack_chk_guard - v14;
   }
-  *v7 = *(_DWORD *)v6;
+  v8 = *((_DWORD *)v3 + 2);
+  v9 = *(_DWORD *)v6;
   v7[1] = v6;
-  v7[3] = *((_DWORD *)v3 + 2);
+  *v7 = v9;
+  v7[3] = v8;
   Ril_queue<RilSapSocket::SapSocketRequest>::enqueue((int)v3 + 116, (int)v7);
-  return _stack_chk_guard - v12;
+  return _stack_chk_guard - v14;
 }
-// 38A4: using guessed type int _android_log_buf_print(_DWORD, _DWORD, _DWORD, const char *, ...);
+// 3B1C: using guessed type int _android_log_buf_print(_DWORD, _DWORD, _DWORD, const char *, ...);
+// 65A0: using guessed type char *off_65A0;
 
-//----- (0000BDBC) --------------------------------------------------------
+//----- (0000C708) --------------------------------------------------------
 int __fastcall RilSapSocket::sendDisconnect(RilSapSocket *this)
 {
   char *v1; // r6
@@ -9585,66 +9772,64 @@ int __fastcall RilSapSocket::sendDisconnect(RilSapSocket *this)
   unsigned int v6; // r7
   signed int v7; // r0
   char *v8; // r0
-  char *v9; // r0
-  _DWORD *v10; // r12
+  _DWORD *v9; // r0
   void *i; // r0
   int result; // r0
-  char v13; // [sp+0h] [bp-50h]
-  __int64 v14; // [sp+8h] [bp-48h]
-  int v15; // [sp+10h] [bp-40h]
-  char v16; // [sp+17h] [bp-39h]
-  __int64 v17; // [sp+18h] [bp-38h]
-  __int64 v18; // [sp+20h] [bp-30h]
-  int v19; // [sp+28h] [bp-28h]
-  unsigned int v20; // [sp+30h] [bp-20h]
-  unsigned int v21; // [sp+34h] [bp-1Ch]
-  int v22; // [sp+38h] [bp-18h]
+  __int64 v12; // [sp+0h] [bp-50h]
+  __int64 v13; // [sp+8h] [bp-48h]
+  int v14; // [sp+10h] [bp-40h]
+  char v15; // [sp+17h] [bp-39h]
+  __int64 v16; // [sp+18h] [bp-38h]
+  __int64 v17; // [sp+20h] [bp-30h]
+  int v18; // [sp+28h] [bp-28h]
+  unsigned int v19; // [sp+30h] [bp-20h]
+  unsigned int v20; // [sp+34h] [bp-1Ch]
+  int v21; // [sp+38h] [bp-18h]
 
   v2 = this;
-  v21 = 0;
-  if ( j_pb_get_encoded_size(&v21, (unsigned __int8 *)&RIL_SIM_SAP_DISCONNECT_REQ_fields, (int *)&v16) != 1 )
+  v20 = 0;
+  if ( j_pb_get_encoded_size(&v20, (unsigned __int8 *)&RIL_SIM_SAP_DISCONNECT_REQ_fields, (int *)&v15) != 1 )
     goto LABEL_19;
-  v3 = v21;
-  if ( (v21 & 0x80000000) != 0 )
+  v3 = v20;
+  if ( (v20 & 0x80000000) != 0 )
     goto LABEL_19;
-  v1 = (char *)(v21 + 4);
+  v1 = (char *)(v20 + 4);
   v4 = 1;
-  if ( v21 + 4 >= v21 )
+  if ( v20 + 4 >= v20 )
     v4 = 0;
   if ( v4 )
     goto LABEL_21;
-  v5 = (int *)malloc(v21 + 4);
+  v5 = (int *)malloc(v20 + 4);
   if ( !v5 )
     goto LABEL_18;
-  v20 = bswap32(v3);
-  j_pb_ostream_from_buffer((int)&v13, (int)v5, (unsigned int)v1);
-  v1 = (char *)&v17;
-  v17 = *(_QWORD *)&v13;
+  v19 = bswap32(v3);
+  j_pb_ostream_from_buffer(&v12, (int)v5, (int)v1);
+  v1 = (char *)&v16;
+  v16 = v12;
+  v17 = v13;
   v18 = v14;
-  v19 = v15;
-  j_pb_write((int)&v17, (int)&v20, 4);
-  if ( j_pb_encode(&v17, (unsigned __int8 *)&RIL_SIM_SAP_DISCONNECT_REQ_fields, v5) == 1 )
+  j_pb_write(&v16, (int)&v19, 4);
+  if ( j_pb_encode(&v16, (unsigned __int8 *)&RIL_SIM_SAP_DISCONNECT_REQ_fields, v5) == 1 )
   {
-    v6 = v20;
+    v6 = v19;
     v7 = 1;
-    if ( v20 + 8 >= v20 )
+    if ( v19 + 8 >= v19 )
       v7 = 0;
     if ( !v7 )
     {
-      v8 = (char *)calloc(1u, v20 + 8);
+      v8 = (char *)calloc(1u, v19 + 8);
       v1 = v8;
       if ( v8 )
       {
         _aeabi_memcpy(v8 + 4, v5, v6);
         *(_DWORD *)v1 = v6;
-        v9 = (char *)malloc(0x14u);
+        v9 = malloc(0x14u);
         if ( !v9 )
           goto LABEL_20;
-        v10 = v9 + 4;
-        *v10 = 1;
-        v10[1] = 2;
-        v10[2] = 0;
-        v10[3] = v1;
+        v9[4] = v1;
+        v9[1] = 1;
+        v9[3] = 0;
+        v9[2] = 2;
         RilSapSocket::dispatchDisconnect((int)v2, (int)v9);
         goto LABEL_16;
       }
@@ -9661,18 +9846,18 @@ LABEL_16:
   {
     free(i);
 LABEL_19:
-    result = _stack_chk_guard - v22;
-    if ( _stack_chk_guard == v22 )
+    result = _stack_chk_guard - v21;
+    if ( _stack_chk_guard == v21 )
       break;
 LABEL_20:
     _android_log_buf_print(1, 6, "RIL_UIM_SOCKET", "sendDisconnect: OOM");
   }
   return result;
 }
-// 38A4: using guessed type int _android_log_buf_print(_DWORD, _DWORD, _DWORD, const char *, ...);
-// 3AF0: using guessed type int __fastcall _aeabi_memcpy(_DWORD, _DWORD, _DWORD);
+// 3B1C: using guessed type int _android_log_buf_print(_DWORD, _DWORD, _DWORD, const char *, ...);
+// 3D5C: using guessed type int __fastcall _aeabi_memcpy(_DWORD, _DWORD, _DWORD);
 
-//----- (0000BF18) --------------------------------------------------------
+//----- (0000C864) --------------------------------------------------------
 void __fastcall RilSapSocket::dispatchDisconnect(int a1, int a2)
 {
   int v2; // r6
@@ -9688,8 +9873,8 @@ void __fastcall RilSapSocket::dispatchDisconnect(int a1, int a2)
   {
     *v4 = -1;
     v4[1] = v3;
-    v4[2] = 0;
     v4[3] = 99;
+    v4[2] = 0;
     _android_log_buf_print(1, 3, "RIL_UIM_SOCKET", "Sending disconnect on command close!");
     (*(void (__fastcall **)(_DWORD, int, _DWORD, _DWORD *))(*(_DWORD *)(v2 + 112) + 4))(
       *(_DWORD *)(v3 + 8),
@@ -9704,17 +9889,17 @@ void __fastcall RilSapSocket::dispatchDisconnect(int a1, int a2)
     j_free((void *)v3);
   }
 }
-// 38A4: using guessed type int _android_log_buf_print(_DWORD, _DWORD, _DWORD, const char *, ...);
+// 3B1C: using guessed type int _android_log_buf_print(_DWORD, _DWORD, _DWORD, const char *, ...);
 
-//----- (0000BF90) --------------------------------------------------------
+//----- (0000C8DC) --------------------------------------------------------
 int __fastcall RilSapSocket::onCommandsSocketClosed(RilSapSocket *this)
 {
   RilSapSocket::sendDisconnect(this);
   return _android_log_buf_print(1, 6, "RIL_UIM_SOCKET", "Socket command closed");
 }
-// 38A4: using guessed type int _android_log_buf_print(_DWORD, _DWORD, _DWORD, const char *, ...);
+// 3B1C: using guessed type int _android_log_buf_print(_DWORD, _DWORD, _DWORD, const char *, ...);
 
-//----- (0000BFB4) --------------------------------------------------------
+//----- (0000C900) --------------------------------------------------------
 signed int __fastcall pb_read(int a1, int a2, unsigned int a3)
 {
   int v3; // r4
@@ -9724,7 +9909,7 @@ signed int __fastcall pb_read(int a1, int a2, unsigned int a3)
 
   v3 = a1;
   v4 = a3;
-  if ( !a2 && *(int (**)())a1 != sub_C054 )
+  if ( !a2 && *(signed int (__fastcall **)(int, char *, int))a1 != sub_C9A0 )
   {
     if ( a3 < 0x11 )
       return j_pb_read(v3, (int)&v7, v4);
@@ -9758,20 +9943,114 @@ LABEL_14:
   }
   return 0;
 }
-// C054: using guessed type int sub_C054();
 
-//----- (0000C074) --------------------------------------------------------
-_DWORD *__fastcall pb_istream_from_buffer(_DWORD *result, int a2, int a3)
+//----- (0000C9A0) --------------------------------------------------------
+signed int __fastcall sub_C9A0(int a1, char *a2, int a3)
 {
-  *result = sub_C054;
+  char *v3; // r3
+  unsigned int v4; // r5
+  bool v5; // cf
+  bool v6; // zf
+  char v7; // t1
+  int v9; // r5
+  int v10; // r0
+  __int64 *v11; // r4
+  char *v12; // r6
+  __int64 v13; // d16
+  __int64 v14; // d17
+  __int64 v15; // d16
+  char *v16; // r6
+
+  v3 = *(char **)(a1 + 4);
+  v4 = (unsigned int)&v3[a3];
+  *(_DWORD *)(a1 + 4) = &v3[a3];
+  if ( !a2 || !a3 )
+    return 1;
+  if ( v3 > a2 || v3 - a2 > a3 )
+  {
+    _aeabi_memmove(a2, v3);
+    return 1;
+  }
+  v5 = v4 >= (unsigned int)a2;
+  v6 = v4 == (_DWORD)a2;
+  if ( v4 > (unsigned int)a2 )
+  {
+    v5 = &a2[a3] >= v3;
+    v6 = &a2[a3] == v3;
+  }
+  if ( !v6 && v5 )
+  {
+    do
+    {
+      v7 = *v3++;
+      --a3;
+      *a2++ = v7;
+    }
+    while ( a3 );
+    return 1;
+  }
+  if ( a3 < 1 )
+    return 1;
+  if ( a3 >= 8 )
+  {
+    if ( a3 <= 15 )
+    {
+      v10 = 0;
+    }
+    else
+    {
+      v9 = 0;
+      v10 = a3 - (a3 & 0xF);
+      v11 = (__int64 *)v3;
+      v12 = a2;
+      do
+      {
+        v13 = *v11;
+        v14 = v11[1];
+        v11 += 2;
+        v6 = v9 == v10 - 16;
+        *(_QWORD *)v12 = v13;
+        *((_QWORD *)v12 + 1) = v14;
+        v12 += 16;
+        v9 += 16;
+      }
+      while ( !v6 );
+      if ( !(a3 & 0xF) )
+        return 1;
+      if ( (a3 & 0xFu) <= 7 )
+        goto LABEL_25;
+    }
+    v15 = *(_QWORD *)&v3[v10];
+    v16 = &a2[v10];
+    v10 += 8;
+    *(_QWORD *)v16 = v15;
+    goto LABEL_26;
+  }
+  v10 = 0;
+  do
+  {
+LABEL_25:
+    a2[v10] = v3[v10];
+    ++v10;
+LABEL_26:
+    ;
+  }
+  while ( v10 < a3 );
+  return 1;
+}
+// 4128: using guessed type int __fastcall _aeabi_memmove(_DWORD, _DWORD);
+
+//----- (0000CA44) --------------------------------------------------------
+signed int (__fastcall **__fastcall pb_istream_from_buffer(signed int (__fastcall **result)(int a1, char *a2, int a3), signed int (__fastcall *a2)(int a1, char *a2, int a3), signed int (__fastcall *a3)(int a1, char *a2, int a3)))(int a1, char *a2, int a3)
+{
   result[1] = a2;
   result[2] = a3;
   result[3] = 0;
+  *result = sub_C9A0;
   return result;
 }
-// C054: using guessed type int sub_C054();
 
-//----- (0000C08C) --------------------------------------------------------
+//----- (0000CA58) --------------------------------------------------------
 signed int __fastcall pb_decode_varint(int a1, _DWORD *a2)
 {
   int v2; // r4
@@ -9795,7 +10074,7 @@ signed int __fastcall pb_decode_varint(int a1, _DWORD *a2)
     v7 = v6;
     if ( v6 >= 0x40u )
       break;
-    if ( sub_C120(v2, (int)&v11) != 1 )
+    if ( sub_CAF0(v2, (int)&v11) != 1 )
       return 0;
     v8 = v11 & 0x7F;
     v9 = v8 >> (32 - v7);
@@ -9804,7 +10083,7 @@ signed int __fastcall pb_decode_varint(int a1, _DWORD *a2)
     v4 |= v8 << v7;
     v5 |= v9;
     v6 = v7 + 7;
-    if ( !(v11 & 0x80) )
+    if ( v11 >= 0 )
     {
       result = 1;
       *v3 = v4;
@@ -9817,8 +10096,8 @@ signed int __fastcall pb_decode_varint(int a1, _DWORD *a2)
   return 0;
 }
 
-//----- (0000C120) --------------------------------------------------------
-signed int __fastcall sub_C120(int a1, int a2)
+//----- (0000CAF0) --------------------------------------------------------
+signed int __fastcall sub_CAF0(int a1, int a2)
 {
   int v2; // r4
   const char *v4; // r0
@@ -9847,7 +10126,7 @@ LABEL_8:
   return 0;
 }
 
-//----- (0000C15C) --------------------------------------------------------
+//----- (0000CB2C) --------------------------------------------------------
 signed int __fastcall pb_decode_tag(int a1, int *a2, unsigned int *a3, _BYTE *a4)
 {
   int v4; // r7
@@ -9864,7 +10143,7 @@ signed int __fastcall pb_decode_tag(int a1, int *a2, unsigned int *a3, _BYTE *a4
   *a4 = 0;
   *a2 = 0;
   *a3 = 0;
-  if ( sub_C1C0(a1, (int *)&v10) )
+  if ( sub_CB90(a1, (int *)&v10) )
   {
     v8 = v10;
     if ( v10 )
@@ -9881,8 +10160,8 @@ LABEL_5:
   return 0;
 }
 
-//----- (0000C1C0) --------------------------------------------------------
-signed int __fastcall sub_C1C0(int a1, int *a2)
+//----- (0000CB90) --------------------------------------------------------
+signed int __fastcall sub_CB90(int a1, int *a2)
 {
   int v2; // r4
   int *v3; // r8
@@ -9894,10 +10173,10 @@ signed int __fastcall sub_C1C0(int a1, int *a2)
 
   v2 = a1;
   v3 = a2;
-  if ( sub_C120(a1, (int)&v8) == 1 )
+  if ( sub_CAF0(a1, (int)&v8) == 1 )
   {
     v4 = v8;
-    if ( !(v8 & 0x80) )
+    if ( (char)v8 > -1 )
     {
 LABEL_7:
       result = 1;
@@ -9911,11 +10190,11 @@ LABEL_7:
       v6 = v5;
       if ( v5 >= 0x20u )
         break;
-      if ( sub_C120(v2, (int)&v8) != 1 )
+      if ( sub_CAF0(v2, (int)&v8) != 1 )
         return 0;
       v4 |= (v8 & 0x7F) << v6;
       v5 = v6 + 7;
-      if ( !(v8 & 0x80) )
+      if ( (v8 & 0x80u) == 0 )
         goto LABEL_7;
     }
     if ( !*(_DWORD *)(v2 + 12) )
@@ -9924,7 +10203,7 @@ LABEL_7:
   return 0;
 }
 
-//----- (0000C25C) --------------------------------------------------------
+//----- (0000CC2C) --------------------------------------------------------
 int __fastcall pb_skip_field(int a1, int a2)
 {
   int v2; // r4
@@ -9948,7 +10227,7 @@ int __fastcall pb_skip_field(int a1, int a2)
       result = j_pb_read(a1, 0, 8);
       break;
     case 2:
-      if ( sub_C1C0(a1, &v5) != 1 )
+      if ( sub_CB90(a1, &v5) != 1 )
         goto LABEL_10;
       result = j_pb_read(v2, 0, v5);
       break;
@@ -9965,7 +10244,7 @@ LABEL_10:
   return result;
 }
 
-//----- (0000C2F8) --------------------------------------------------------
+//----- (0000CCC8) --------------------------------------------------------
 signed int __fastcall pb_make_string_substream(int a1, _QWORD *a2)
 {
   int v2; // r4
@@ -9976,24 +10255,24 @@ signed int __fastcall pb_make_string_substream(int a1, _QWORD *a2)
 
   v2 = a1;
   v3 = a2;
-  if ( sub_C1C0(a1, (int *)&v7) != 1 )
+  if ( sub_CB90(a1, (int *)&v7) != 1 )
     return 0;
   v4 = *(_QWORD *)(v2 + 8);
+  v5 = v7;
   *v3 = *(_QWORD *)v2;
   v3[1] = v4;
-  v5 = v7;
-  if ( *((_DWORD *)v3 + 2) < v7 )
+  if ( *((_DWORD *)v3 + 2) < v5 )
   {
     if ( !*(_DWORD *)(v2 + 12) )
       *(_DWORD *)(v2 + 12) = "parent stream too short";
     return 0;
   }
-  *((_DWORD *)v3 + 2) = v7;
+  *((_DWORD *)v3 + 2) = v5;
   *(_DWORD *)(v2 + 8) -= v5;
   return 1;
 }
 
-//----- (0000C360) --------------------------------------------------------
+//----- (0000CD30) --------------------------------------------------------
 int __fastcall pb_close_string_substream(int result, int a2)
 {
   *(_DWORD *)(result + 4) = *(_DWORD *)(a2 + 4);
@@ -10001,30 +10280,30 @@ int __fastcall pb_close_string_substream(int result, int a2)
   return result;
 }
 
-//----- (0000C36C) --------------------------------------------------------
+//----- (0000CD3C) --------------------------------------------------------
 int __fastcall pb_decode_noinit(int a1, unsigned __int8 *a2, int a3)
 {
-  int v3; // r9
+  int v3; // r10
   int v4; // r11
-  signed int v5; // r10
-  unsigned int v6; // r5
-  int v7; // r7
-  int v8; // r0
-  unsigned int v9; // r0
-  signed int v10; // r0
-  bool v11; // zf
-  int v12; // r0
-  int v13; // r8
-  int v14; // r7
-  int v15; // r0
-  int (__fastcall *v16)(int, int, unsigned int, int); // r4
-  unsigned __int8 *v17; // r0
-  unsigned int v18; // r5
-  unsigned __int8 v19; // r6
-  int v20; // r1
+  unsigned int v5; // r8
+  int v6; // r0
+  int v7; // r3
+  int v8; // r7
+  unsigned int v9; // r5
+  unsigned int v10; // r4
+  int v11; // r9
+  int v12; // r7
+  int v13; // r0
+  int (__fastcall *v14)(int, int, unsigned int, int); // r4
+  unsigned __int8 *v15; // r0
+  signed int v16; // r4
+  int v17; // r4
+  unsigned int v18; // r4
+  unsigned __int8 v19; // r5
+  unsigned int v20; // r2
   unsigned int v21; // r0
+  int *v22; // r3
   int result; // r0
-  unsigned int v23; // [sp+4h] [bp-74h]
   int v24; // [sp+8h] [bp-70h]
   unsigned __int8 *v25; // [sp+Ch] [bp-6Ch]
   unsigned __int8 *v26; // [sp+10h] [bp-68h]
@@ -10032,7 +10311,7 @@ int __fastcall pb_decode_noinit(int a1, unsigned __int8 *a2, int a3)
   unsigned int v28; // [sp+18h] [bp-60h]
   int v29; // [sp+1Ch] [bp-5Ch]
   int *v30; // [sp+20h] [bp-58h]
-  _DWORD *v31; // [sp+24h] [bp-54h]
+  int v31; // [sp+24h] [bp-54h]
   int v32; // [sp+28h] [bp-50h]
   int v33; // [sp+2Ch] [bp-4Ch]
   unsigned int v34; // [sp+34h] [bp-44h]
@@ -10046,174 +10325,170 @@ int __fastcall pb_decode_noinit(int a1, unsigned __int8 *a2, int a3)
 
   v3 = a1;
   v4 = 0;
+  v5 = 0;
   v32 = 0;
   v33 = 0;
+  v6 = (char)a2[3];
+  v29 = a3;
   v25 = a2;
-  v26 = a2;
   v27 = 0;
   v28 = 0;
-  v30 = (int *)(a2[2] + a3);
-  v31 = (int *)((char *)v30 + (char)a2[3]);
-  v29 = a3;
-  if ( !*(_DWORD *)(a1 + 8) )
-    goto LABEL_43;
-  v5 = 0;
-  v23 = 0;
-  while ( 1 )
+  v7 = a2[2];
+  v26 = a2;
+  v30 = (int *)(a3 + v7);
+  v31 = v6 + a3 + v7;
+LABEL_30:
+  while ( 2 )
   {
-    if ( sub_C1C0(v3, (int *)&v34) )
+    v17 = v4;
+    if ( *(_DWORD *)(v3 + 8) )
     {
-      if ( v34 )
+      if ( sub_CB90(v3, (int *)&v34) )
       {
-        v6 = v34 >> 3;
-        v7 = v4;
-        v24 = v34 & 7;
-        do
+        if ( v34 )
         {
-          if ( *v26 == v6 && (v26[1] & 0xF) != 8 )
+          v8 = v34 & 7;
+          v9 = v34 >> 3;
+          while ( *v26 != v9 || (v26[1] & 0xF) == 8 )
           {
-            if ( !(v26[1] & 0x30) && v28 <= 0x3F )
-              *((_BYTE *)&v32 + (v28 >> 3)) |= 1 << (v28 & 7);
-            v12 = sub_C59C(v3, v24, &v25) ^ 1;
-            v4 = v7;
-            goto LABEL_38;
-          }
-          sub_C988((int *)&v25);
-          v7 = v27;
-        }
-        while ( v27 != v4 );
-        v8 = v4;
-        if ( v6 < v23 )
-          goto LABEL_36;
-        while ( (v26[1] & 0xF) != 8 )
-        {
-          sub_C988((int *)&v25);
-          v8 = v27;
-          if ( v27 == v4 )
-          {
-            v9 = -1;
-            goto LABEL_25;
-          }
-        }
-        v4 = v8;
-        v9 = *v26;
-LABEL_25:
-        if ( v6 < v9 )
-        {
-          v23 = v9;
-LABEL_36:
-          v11 = j_pb_skip_field(v3, v24) == 0;
-          v12 = 1;
-          if ( !v11 )
-            v12 = 2;
-          goto LABEL_38;
-        }
-        v23 = v9;
-        v13 = *(_DWORD *)(v3 + 8);
-        v14 = *v30;
-        v15 = *(_DWORD *)(v3 + 8);
-        if ( *v30 )
-        {
-          do
-          {
-            v16 = **(int (__fastcall ***)(int, int, unsigned int, int))v14;
-            if ( v16 )
+            sub_D344((int *)&v25);
+            v4 = v27;
+            if ( v27 == v17 )
             {
-              if ( !v16(v3, v14, v6, v24) )
-                goto LABEL_56;
-            }
-            else
-            {
-              v17 = *(unsigned __int8 **)(*(_DWORD *)v14 + 8);
-              if ( *v17 == v6 )
+              v4 = v17;
+              if ( v9 < v5 )
               {
-                v34 = *(_DWORD *)(*(_DWORD *)v14 + 8);
-                v35 = v17;
-                v36 = 0;
-                v37 = 0;
-                v38 = *(_DWORD *)(v14 + 4);
-                v39 = v38;
-                v40 = v14 + 12;
-                if ( sub_C59C(v3, v24, &v34) != 1 )
-                  goto LABEL_57;
+                v4 = v17;
+                goto LABEL_18;
               }
+              while ( (v26[1] & 0xF) != 8 )
+              {
+                sub_D344((int *)&v25);
+                v4 = v27;
+                if ( v27 == v17 )
+                {
+                  v5 = -1;
+                  v4 = v17;
+                  goto LABEL_17;
+                }
+              }
+              v5 = *v26;
+LABEL_17:
+              if ( v9 >= v5 )
+              {
+                v11 = *(_DWORD *)(v3 + 8);
+                v24 = v8;
+                v12 = *v30;
+                v13 = *(_DWORD *)(v3 + 8);
+                if ( *v30 )
+                {
+                  while ( v11 == v13 )
+                  {
+                    v14 = **(int (__fastcall ***)(int, int, unsigned int, int))v12;
+                    if ( v14 )
+                    {
+                      if ( !v14(v3, v12, v9, v24) )
+                        goto LABEL_49;
+                    }
+                    else
+                    {
+                      v15 = *(unsigned __int8 **)(*(_DWORD *)v12 + 8);
+                      if ( *v15 == v9 )
+                      {
+                        v16 = 0;
+                        v34 = *(_DWORD *)(*(_DWORD *)v12 + 8);
+                        v35 = v15;
+                        v36 = 0;
+                        v37 = 0;
+                        v38 = *(_DWORD *)(v12 + 4);
+                        v39 = v38;
+                        v40 = v12 + 12;
+                        if ( sub_CF3C(v3, v24, &v34) != 1 )
+                          goto LABEL_50;
+                      }
+                    }
+                    v12 = *(_DWORD *)(v12 + 8);
+                    v13 = *(_DWORD *)(v3 + 8);
+                    if ( !v12 )
+                      break;
+                  }
+                }
+                v10 = v5;
+                v8 = v24;
+                if ( v11 != v13 )
+                  goto LABEL_30;
+              }
+              else
+              {
+LABEL_18:
+                v10 = v5;
+              }
+              v5 = v10;
+              if ( j_pb_skip_field(v3, v8) )
+                goto LABEL_30;
+              goto LABEL_49;
             }
-            v14 = *(_DWORD *)(v14 + 8);
-            v15 = *(_DWORD *)(v3 + 8);
           }
-          while ( v14 && v13 == v15 );
+          if ( !(v26[1] & 0x30) && v28 <= 0x3F )
+            *((_BYTE *)&v32 + (v28 >> 3)) |= 1 << (v28 & 7);
+          if ( sub_CF3C(v3, v8, &v25) )
+            continue;
+          goto LABEL_49;
         }
-        if ( v13 == v15 )
-          goto LABEL_36;
-        goto LABEL_40;
       }
-      v10 = 1;
+      else if ( *(_DWORD *)(v3 + 8) )
+      {
+        goto LABEL_49;
+      }
     }
-    else
-    {
-      v10 = 0;
-      if ( !*(_DWORD *)(v3 + 8) )
-        v10 = 1;
-    }
-    v11 = v10 == 0;
-    v12 = 3;
-    if ( v11 )
-      v12 = 1;
-LABEL_38:
-    if ( v12 && v12 != 2 )
-      break;
-LABEL_40:
-    if ( !*(_DWORD *)(v3 + 8) )
-      goto LABEL_43;
+    break;
   }
-  if ( v12 != 3 )
-    goto LABEL_56;
   do
   {
-LABEL_43:
     v18 = v28;
     v19 = v26[1];
   }
-  while ( sub_C988((int *)&v25) );
+  while ( sub_D344((int *)&v25) );
   if ( !(v19 & 0x30) && *v26 )
     ++v18;
   v20 = 0;
   v21 = v18 >> 3;
   if ( v18 >> 3 )
   {
-    while ( *((unsigned __int8 *)&v32 + v20) == 255 )
+    v22 = &v32;
+    while ( *(unsigned __int8 *)v22 == 255 )
     {
-      if ( ++v20 >= v21 )
-        goto LABEL_50;
+      ++v20;
+      v22 = (int *)((char *)v22 + 1);
+      if ( v20 >= v21 )
+        goto LABEL_43;
     }
-    if ( !*(_DWORD *)(v3 + 12) )
-LABEL_55:
-      *(_DWORD *)(v3 + 12) = "missing required field";
-LABEL_56:
-    v5 = 0;
+    if ( *(_DWORD *)(v3 + 12) )
+      goto LABEL_49;
+    goto LABEL_48;
   }
-  else
+LABEL_43:
+  if ( *((unsigned __int8 *)&v32 + v21) == 0xFFu >> (8 - (v18 & 7)) )
   {
-LABEL_50:
-    if ( *((unsigned __int8 *)&v32 + v21) != 0xFFu >> (8 - (v18 & 7)) )
-    {
-      if ( !*(_DWORD *)(v3 + 12) )
-        goto LABEL_55;
-      goto LABEL_56;
-    }
-    v5 = 1;
+    v16 = 1;
+    goto LABEL_50;
   }
-LABEL_57:
+  if ( !*(_DWORD *)(v3 + 12) )
+LABEL_48:
+    *(_DWORD *)(v3 + 12) = "missing required field";
+LABEL_49:
+  v16 = 0;
+LABEL_50:
   result = _stack_chk_guard - v41;
   if ( _stack_chk_guard == v41 )
-    result = v5;
+    result = v16;
   return result;
 }
 
-//----- (0000C59C) --------------------------------------------------------
-int __fastcall sub_C59C(int a1, int a2, _DWORD *a3)
+//----- (0000CF3C) --------------------------------------------------------
+int __fastcall sub_CF3C(int a1, int a2, _DWORD *a3)
 {
-  int v3; // r10
+  int v3; // r11
   _DWORD *v4; // r5
   int v5; // r2
   _BYTE *v6; // r1
@@ -10224,28 +10499,28 @@ int __fastcall sub_C59C(int a1, int a2, _DWORD *a3)
   const char *v11; // r0
   unsigned int v12; // r3
   int v13; // r0
-  int (__fastcall *v14)(int (**)(), _BYTE *, _DWORD *); // r9
+  int (__fastcall *v14)(int, _BYTE *, _DWORD *); // r9
   _DWORD *v15; // r2
-  int (__fastcall **v16)(int (**)(), _DWORD, int); // r4
+  int (__fastcall **v16)(_DWORD, int, int); // r8
   int *v17; // r6
   int v18; // r6
   int v19; // t1
+  const char *v20; // r0
   int result; // r0
-  int v21; // r7
-  int v22; // r0
-  int v23; // r2
-  unsigned int *v24; // r7
-  int v25; // r2
-  unsigned int v26; // r0
-  int v27; // r1
-  int v28; // r2
+  int v22; // r7
+  int v23; // r4
+  int v24; // r0
+  unsigned int *v25; // r7
+  int v26; // r2
+  unsigned int v27; // r0
+  int v28; // r1
   int v29; // r2
-  int *v30; // r6
-  unsigned int v31; // r4
-  int v32; // r1
-  int v33; // r0
-  void **v34; // r7
-  unsigned int v35; // r0
+  int v30; // r2
+  int *v31; // r10
+  unsigned int v32; // r6
+  int v33; // r1
+  int v34; // r0
+  void **v35; // r4
   void *v36; // r0
   int v37; // r1
   _DWORD *v38; // r7
@@ -10258,22 +10533,20 @@ int __fastcall sub_C59C(int a1, int a2, _DWORD *a3)
   unsigned int v45; // r0
   int v46; // r1
   int v47; // r2
-  int v48; // r0
-  void **v49; // r4
-  void *v50; // r0
-  int v51; // r0
-  _DWORD *v52; // r7
+  void **v48; // r4
+  void *v49; // r0
+  int v50; // r0
+  _DWORD *v51; // r7
+  int v52; // r1
   int v53; // r1
-  int v54; // r7
-  bool v55; // cf
-  bool v56; // zf
-  const char *v57; // r1
-  int (*v58)(); // [sp+4h] [bp-44h]
-  char *v59; // [sp+8h] [bp-40h]
-  int v60; // [sp+Ch] [bp-3Ch]
-  const char *v61; // [sp+10h] [bp-38h]
-  char v62[10]; // [sp+16h] [bp-32h]
-  int v63; // [sp+20h] [bp-28h]
+  const char *v54; // r1
+  const char *v55; // r1
+  signed int (__fastcall *v56)(int, char *, int); // [sp+4h] [bp-44h]
+  char *v57; // [sp+8h] [bp-40h]
+  int v58; // [sp+Ch] [bp-3Ch]
+  const char *v59; // [sp+10h] [bp-38h]
+  char v60[10]; // [sp+16h] [bp-32h]
+  int v61; // [sp+20h] [bp-28h]
 
   v3 = a1;
   v4 = a3;
@@ -10284,96 +10557,94 @@ int __fastcall sub_C59C(int a1, int a2, _DWORD *a3)
   {
     v12 = v7 & 0xF;
     v13 = v7 & 0x30;
-    v14 = (int (__fastcall *)(int (**)(), _BYTE *, _DWORD *))*(&off_14B74 + v12);
+    v14 = (int (__fastcall *)(int, _BYTE *, _DWORD *))*(&off_15B48 + v12);
     if ( v13 )
     {
       if ( v13 == 32 )
       {
-        v30 = (int *)v4[6];
-        v31 = *v30;
+        v31 = (int *)v4[6];
+        v32 = *v31;
         if ( v5 == 2 && v12 <= 4 )
         {
-          if ( j_pb_make_string_substream(v3, &v58) == 1 )
+          if ( j_pb_make_string_substream(v3, &v56) == 1 )
           {
-            v32 = v60;
-            if ( v60 )
+            v33 = v58;
+            if ( v58 )
             {
-              v33 = *v30;
+              v34 = *v31;
               do
               {
-                if ( v33 + 1 > v31 )
+                if ( v34 + 1 > v32 )
                 {
-                  v34 = (void **)v4[5];
-                  v35 = *(unsigned __int8 *)(v4[1] + 4);
-                  v31 += (v32 - 1) / v35 + 1;
-                  v36 = realloc(*v34, v31 * v35);
+                  v35 = (void **)v4[5];
+                  v32 += (v33 - 1) / (unsigned int)*(unsigned __int8 *)(v4[1] + 4) + 1;
+                  v36 = realloc(*v35, v32 * *(unsigned __int8 *)(v4[1] + 4));
                   if ( !v36 )
-                    goto LABEL_100;
-                  *v34 = v36;
-                  v33 = *v30;
+                    goto LABEL_97;
+                  *v35 = v36;
+                  v34 = *v31;
                 }
                 v37 = v4[1];
-                v38 = (_DWORD *)(*(_DWORD *)v4[5] + *(unsigned __int8 *)(v37 + 4) * v33);
+                v38 = (_DWORD *)(*(_DWORD *)v4[5] + *(unsigned __int8 *)(v37 + 4) * v34);
                 v39 = *(_BYTE *)(v37 + 1) & 0xF;
                 if ( (unsigned int)(v39 - 5) >= 2 )
                 {
                   if ( v39 == 7 )
-                    sub_CA30(*(_DWORD *)(v37 + 6), (int)v38);
+                    sub_D3EC(*(_DWORD *)(v37 + 6), (int)v38);
                 }
                 else
                 {
                   *v38 = 0;
                 }
-                if ( v14(&v58, (_BYTE *)v4[1], v38) != 1 )
-                  goto LABEL_102;
-                v33 = *v30 + 1;
-                *v30 = v33;
-                v32 = v60;
+                if ( v14((int)&v56, (_BYTE *)v4[1], v38) != 1 )
+                  goto LABEL_99;
+                v34 = *v31 + 1;
+                *v31 = v34;
+                v33 = v58;
               }
-              while ( v60 );
+              while ( v58 );
             }
             result = 1;
-            goto LABEL_103;
+            goto LABEL_100;
           }
-          goto LABEL_98;
+          goto LABEL_95;
         }
-        v48 = v31 + 1;
-        *v30 = v31 + 1;
-        v49 = (void **)v4[5];
-        v50 = realloc(*v49, *(unsigned __int8 *)(v4[1] + 4) * v48);
-        if ( !v50 )
+        *v31 = v32 + 1;
+        v48 = (void **)v4[5];
+        v49 = realloc(*v48, *(unsigned __int8 *)(v4[1] + 4) * (v32 + 1));
+        if ( !v49 )
         {
           if ( !*(_DWORD *)(v3 + 12) )
           {
             v11 = "realloc failed";
-            goto LABEL_97;
+            goto LABEL_94;
           }
-          goto LABEL_98;
+          goto LABEL_95;
         }
-        *v49 = v50;
-        v51 = v4[1];
-        v52 = (_DWORD *)(*(_DWORD *)v4[5] + (*v30 - 1) * *(unsigned __int8 *)(v51 + 4));
-        v53 = *(_BYTE *)(v51 + 1) & 0xF;
-        if ( (unsigned int)(v53 - 5) >= 2 )
+        *v48 = v49;
+        v50 = v4[1];
+        v51 = (_DWORD *)(*(_DWORD *)v4[5] + (*v31 - 1) * *(unsigned __int8 *)(v50 + 4));
+        v52 = *(_BYTE *)(v50 + 1) & 0xF;
+        if ( (unsigned int)(v52 - 5) >= 2 )
         {
-          if ( v53 == 7 )
-            sub_CA30(*(_DWORD *)(v51 + 6), (int)v52);
+          if ( v52 == 7 )
+            sub_D3EC(*(_DWORD *)(v50 + 6), (int)v51);
         }
         else
         {
-          *v52 = 0;
+          *v51 = 0;
         }
-        result = v14((int (**)())v3, (_BYTE *)v4[1], v52);
-        goto LABEL_99;
+        result = v14(v3, (_BYTE *)v4[1], v51);
+        goto LABEL_96;
       }
       if ( v13 != 16 )
       {
         if ( !*(_DWORD *)(v3 + 12) )
         {
           v11 = "invalid field type";
-          goto LABEL_97;
+          goto LABEL_94;
         }
-        goto LABEL_98;
+        goto LABEL_95;
       }
     }
     if ( v12 - 5 > 1 )
@@ -10385,9 +10656,9 @@ int __fastcall sub_C59C(int a1, int a2, _DWORD *a3)
         if ( !*(_DWORD *)(v3 + 12) )
         {
           v11 = "realloc failed";
-          goto LABEL_97;
+          goto LABEL_94;
         }
-        goto LABEL_98;
+        goto LABEL_95;
       }
       *v40 = v41;
       v42 = v4[1];
@@ -10396,7 +10667,7 @@ int __fastcall sub_C59C(int a1, int a2, _DWORD *a3)
       if ( (unsigned int)(v44 - 5) >= 2 )
       {
         if ( v44 == 7 )
-          sub_CA30(*(_DWORD *)(v42 + 6), (int)v43);
+          sub_D3EC(*(_DWORD *)(v42 + 6), (int)v43);
       }
       else
       {
@@ -10409,98 +10680,92 @@ int __fastcall sub_C59C(int a1, int a2, _DWORD *a3)
     {
       v15 = (_DWORD *)v4[5];
     }
-    result = v14((int (**)())v3, v6, v15);
-    goto LABEL_99;
+    result = v14(v3, v6, v15);
+    goto LABEL_96;
   }
   if ( (v7 & 0xC0) == 64 )
   {
-    v16 = (int (__fastcall **)(int (**)(), _DWORD, int))v4[5];
+    v16 = (int (__fastcall **)(_DWORD, int, int))v4[5];
     v17 = (int *)v4[5];
     v19 = *v17;
     v18 = (int)(v17 + 1);
     if ( !v19 )
     {
       result = j_pb_skip_field(v3, v5);
-      goto LABEL_99;
+      goto LABEL_96;
     }
     switch ( v5 )
     {
       case 2:
-        if ( j_pb_make_string_substream(v3, &v58) != 1 )
-          goto LABEL_98;
-        while ( (*v16)(&v58, v4[1], v18) )
+        if ( j_pb_make_string_substream(v3, &v56) != 1 )
+          goto LABEL_95;
+        while ( (*v16)(&v56, v4[1], v18) )
         {
-          if ( !v60 )
+          if ( !v58 )
           {
-            *(_DWORD *)(v3 + 4) = v59;
-            *(_DWORD *)(v3 + 12) = v61;
+            v20 = v59;
+            *(_DWORD *)(v3 + 4) = v57;
+            *(_DWORD *)(v3 + 12) = v20;
             result = 1;
-            goto LABEL_99;
+            goto LABEL_96;
           }
         }
         if ( *(_DWORD *)(v3 + 12) )
-          goto LABEL_98;
+          goto LABEL_95;
         v11 = "callback failed";
-        goto LABEL_97;
-      case 0:
-        v54 = 0;
-        while ( j_pb_read(v3, (int)&v62[v54], 1) == 1 )
-        {
-          if ( v62[v54] >= 0 )
-          {
-            v21 = v54 + 1;
-            goto LABEL_91;
-          }
-          v55 = (unsigned int)(v54 + 2) >= 0xA;
-          v56 = v54++ == 8;
-          if ( !v56 && v55 )
-            goto LABEL_98;
-        }
-        goto LABEL_98;
-      case 1:
-        v21 = 8;
-        v22 = v3;
-        v23 = 8;
-        break;
+        goto LABEL_94;
       case 5:
-        v21 = 4;
-        v22 = v3;
         v23 = 4;
+        if ( !j_pb_read(v3, (int)v60, 4) )
+          goto LABEL_95;
         break;
+      case 1:
+        v23 = 8;
+        if ( j_pb_read(v3, (int)v60, 8) != 1 )
+          goto LABEL_95;
+        break;
+      case 0:
+        v22 = 0;
+        while ( 1 )
+        {
+          v23 = v22 + 1;
+          if ( (unsigned int)(v22 + 1) > 0xA || j_pb_read(v3, (int)&v60[v22], 1) != 1 )
+            goto LABEL_95;
+          v24 = v60[v22++];
+          if ( v24 >= 0 )
+            goto LABEL_75;
+        }
       default:
         if ( !*(_DWORD *)(v3 + 12) )
         {
           v11 = "invalid wire_type";
-          goto LABEL_97;
+          goto LABEL_94;
         }
-        goto LABEL_98;
+        goto LABEL_95;
     }
-    if ( j_pb_read(v22, (int)v62, v23) )
-    {
-LABEL_91:
-      v58 = sub_C054;
-      v59 = v62;
-      v60 = v21;
-      v61 = 0;
-      result = (*v16)(&v58, v4[1], v18);
-      goto LABEL_99;
-    }
-    goto LABEL_98;
+LABEL_75:
+    v57 = v60;
+    v59 = 0;
+    v53 = v4[1];
+    v58 = v23;
+    v56 = sub_C9A0;
+    result = (*v16)(&v56, v53, v18);
+    goto LABEL_96;
   }
   if ( v7 & 0xC0 )
   {
     if ( !*(_DWORD *)(v3 + 12) )
     {
       v11 = "invalid field type";
-      goto LABEL_97;
+      goto LABEL_94;
     }
-LABEL_98:
+LABEL_95:
     result = 0;
-    goto LABEL_99;
+    goto LABEL_96;
   }
   v8 = v7 & 0xF;
   v9 = v7 & 0x30;
-  v10 = (int (__fastcall *)(_DWORD))*(&off_14B74 + v8);
+  v10 = (int (__fastcall *)(_DWORD))*(&off_15B48 + v8);
   if ( v9 != 32 )
   {
     if ( v9 == 16 )
@@ -10513,117 +10778,118 @@ LABEL_98:
       if ( !*(_DWORD *)(v3 + 12) )
       {
         v11 = "invalid field type";
-LABEL_97:
+LABEL_94:
         *(_DWORD *)(v3 + 12) = v11;
-        goto LABEL_98;
+        goto LABEL_95;
       }
-      goto LABEL_98;
+      goto LABEL_95;
     }
-    v29 = v4[5];
-LABEL_38:
-    result = ((int (__fastcall *)(int, _BYTE *, int))v10)(v3, v6, v29);
-    goto LABEL_99;
+    v30 = v4[5];
+LABEL_42:
+    result = ((int (__fastcall *)(int, _BYTE *, int))v10)(v3, v6, v30);
+    goto LABEL_96;
   }
-  v24 = (unsigned int *)v4[6];
+  v25 = (unsigned int *)v4[6];
   if ( v5 != 2 || v8 > 4 )
   {
-    v45 = *v24;
-    if ( *v24 >= (unsigned __int8)v6[5] )
+    v45 = *v25;
+    if ( *v25 >= (unsigned __int8)v6[5] )
     {
       if ( !*(_DWORD *)(v3 + 12) )
       {
         v11 = "array overflow";
-        goto LABEL_97;
+        goto LABEL_94;
       }
-      goto LABEL_98;
+      goto LABEL_95;
     }
     v46 = (unsigned __int8)v6[4];
     v47 = v4[5];
-    *v24 = v45 + 1;
-    v29 = v47 + v46 * v45;
+    *v25 = v45 + 1;
+    v30 = v47 + v46 * v45;
     v6 = (_BYTE *)v4[1];
-    goto LABEL_38;
+    goto LABEL_42;
   }
-  if ( j_pb_make_string_substream(v3, &v58) != 1 )
-    goto LABEL_98;
-  v25 = v60;
-  if ( v60 )
+  if ( j_pb_make_string_substream(v3, &v56) != 1 )
+    goto LABEL_95;
+  v26 = v58;
+  if ( v58 )
   {
-    v26 = *v24;
+    v27 = *v25;
     while ( 1 )
     {
-      v27 = v4[1];
-      if ( v26 >= *(unsigned __int8 *)(v27 + 5) )
+      v28 = v4[1];
+      if ( v27 >= *(unsigned __int8 *)(v28 + 5) )
       {
         result = 1;
-        goto LABEL_94;
+        goto LABEL_91;
       }
-      v28 = v4[5] + *(unsigned __int8 *)(v27 + 4) * v26;
-      if ( !v10(&v58) )
+      v29 = v4[5] + *(unsigned __int8 *)(v28 + 4) * v27;
+      if ( !v10(&v56) )
         break;
-      v26 = *v24 + 1;
-      *v24 = v26;
-      v25 = v60;
-      if ( !v60 )
-        goto LABEL_35;
+      v27 = *v25 + 1;
+      *v25 = v27;
+      v26 = v58;
+      if ( !v58 )
+        goto LABEL_39;
     }
-    v25 = v60;
+    v26 = v58;
     result = 0;
   }
   else
   {
-LABEL_35:
+LABEL_39:
     result = 1;
-    v25 = 0;
+    v26 = 0;
   }
-LABEL_94:
-  *(_DWORD *)(v3 + 4) = v59;
-  v57 = v61;
-  *(_DWORD *)(v3 + 12) = v61;
-  if ( v25 )
+LABEL_91:
+  v54 = v59;
+  *(_DWORD *)(v3 + 4) = v57;
+  *(_DWORD *)(v3 + 12) = v54;
+  if ( v26 )
   {
-    if ( !v57 )
+    if ( !v54 )
     {
       v11 = "array overflow";
-      goto LABEL_97;
+      goto LABEL_94;
     }
-    goto LABEL_98;
+    goto LABEL_95;
   }
-LABEL_99:
-  while ( _stack_chk_guard != v63 )
+LABEL_96:
+  while ( _stack_chk_guard != v61 )
   {
-LABEL_100:
-    if ( !v61 )
-      v61 = "realloc failed";
-LABEL_102:
+LABEL_97:
+    if ( !v59 )
+      v59 = "realloc failed";
+LABEL_99:
     result = 0;
-LABEL_103:
-    *(_DWORD *)(v3 + 4) = v59;
-    *(_DWORD *)(v3 + 12) = v61;
+LABEL_100:
+    v55 = v59;
+    *(_DWORD *)(v3 + 4) = v57;
+    *(_DWORD *)(v3 + 12) = v55;
   }
   return result;
 }
-// C054: using guessed type int sub_C054();
-// 14B74: using guessed type void *off_14B74;
-// C59C: using guessed type char var_32[10];
+// 15B48: using guessed type void *off_15B48;
+// CF3C: using guessed type char var_32[10];
 
-//----- (0000C988) --------------------------------------------------------
-signed int __fastcall sub_C988(int *a1)
+//----- (0000D344) --------------------------------------------------------
+signed int __fastcall sub_D344(int *a1)
 {
   _BYTE *v1; // r1
   char v2; // r3
-  signed int v3; // lr
-  int v4; // r3
-  int v5; // r12
-  signed int v6; // r4
-  int v7; // r1
+  int v3; // lr
+  int v4; // r2
+  int v5; // r3
+  int v6; // r12
+  signed int v7; // r4
+  int v8; // r1
 
   v1 = (_BYTE *)a1[1];
   v2 = v1[1];
   v3 = (unsigned __int8)v1[4];
   if ( (v2 & 0xF0) == 32 )
   {
-    v3 *= (unsigned __int8)v1[5];
+    v3 = (unsigned __int8)v1[5] * (unsigned __int8)v1[4];
   }
   else if ( (v2 & 0xC0) == 128 )
   {
@@ -10633,32 +10899,33 @@ signed int __fastcall sub_C988(int *a1)
     return 0;
   if ( !(v1[1] & 0x30) )
     ++a1[3];
-  v4 = (int)(v1 + 10);
+  v4 = a1[2];
+  v5 = (int)(v1 + 10);
   a1[1] = (int)(v1 + 10);
-  ++a1[2];
+  a1[2] = v4 + 1;
   if ( v1[10] )
   {
-    v5 = a1[5];
-    v6 = 1;
+    v6 = a1[5];
+    v7 = 1;
   }
   else
   {
-    v4 = *a1;
-    v6 = 0;
-    a1[1] = *a1;
+    v6 = a1[4];
+    v7 = 0;
+    v5 = *a1;
     v3 = 0;
     a1[2] = 0;
     a1[3] = 0;
-    v5 = a1[4];
-    a1[5] = v5;
+    a1[1] = v5;
+    a1[5] = v6;
   }
-  v7 = v5 + v3 + *(unsigned __int8 *)(v4 + 2);
-  a1[5] = v7;
-  a1[6] = v7 + *(char *)(v4 + 3);
-  return v6;
+  v8 = v6 + v3 + *(unsigned __int8 *)(v5 + 2);
+  a1[5] = v8;
+  a1[6] = v8 + *(char *)(v5 + 3);
+  return v7;
 }
 
-//----- (0000CA06) --------------------------------------------------------
+//----- (0000D3C2) --------------------------------------------------------
 int __fastcall pb_decode(int a1, int a2, int a3)
 {
   int v3; // r4
@@ -10669,87 +10936,91 @@ int __fastcall pb_decode(int a1, int a2, int a3)
   v3 = a3;
   v4 = (unsigned __int8 *)a2;
   v5 = a1;
-  sub_CA30(a2, a3);
+  sub_D3EC(a2, a3);
   v6 = j_pb_decode_noinit(v5, v4, v3);
   if ( !v6 )
     j_pb_release((int)v4, v3);
   return v6;
 }
 
-//----- (0000CA30) --------------------------------------------------------
-int __fastcall sub_CA30(int a1, int a2)
+//----- (0000D3EC) --------------------------------------------------------
+int __fastcall sub_D3EC(int a1, int a2)
 {
-  char v2; // r1
+  int v2; // r4
   int v3; // r3
-  int v4; // r2
-  int v6; // [sp+0h] [bp-30h]
-  int v7; // [sp+4h] [bp-2Ch]
-  int v8; // [sp+8h] [bp-28h]
-  int v9; // [sp+Ch] [bp-24h]
-  int v10; // [sp+10h] [bp-20h]
-  _DWORD *v11; // [sp+14h] [bp-1Ch]
-  _DWORD *v12; // [sp+18h] [bp-18h]
-  int v13; // [sp+1Ch] [bp-14h]
+  char v4; // r1
+  int v5; // r3
+  int v6; // r2
+  int v8; // [sp+0h] [bp-30h]
+  int v9; // [sp+4h] [bp-2Ch]
+  int v10; // [sp+8h] [bp-28h]
+  int v11; // [sp+Ch] [bp-24h]
+  int v12; // [sp+10h] [bp-20h]
+  _DWORD *v13; // [sp+14h] [bp-1Ch]
+  _DWORD *v14; // [sp+18h] [bp-18h]
+  int v15; // [sp+1Ch] [bp-14h]
 
-  v6 = a1;
-  v7 = a1;
-  v8 = 0;
-  v9 = 0;
-  v11 = (_DWORD *)(*(unsigned __int8 *)(a1 + 2) + a2);
-  v12 = (_DWORD *)((char *)v11 + *(char *)(a1 + 3));
-  v10 = a2;
+  v8 = a1;
+  v2 = *(unsigned __int8 *)(a1 + 2);
+  v3 = *(char *)(a1 + 3);
+  v10 = 0;
+  v11 = 0;
+  v13 = (_DWORD *)(a2 + v2);
+  v14 = (_DWORD *)(a2 + v2 + v3);
+  v9 = a1;
+  v12 = a2;
   while ( 1 )
   {
     if ( !*(_BYTE *)a1 )
       goto LABEL_16;
-    v2 = *(_BYTE *)(a1 + 1);
-    if ( (v2 & 0xC0) == 128 )
+    v4 = *(_BYTE *)(a1 + 1);
+    if ( (v4 & 0xC0) == 128 )
     {
-      *v11 = 0;
-      if ( (v2 & 0x30) != 32 )
+      *v13 = 0;
+      if ( (v4 & 0x30) != 32 )
         goto LABEL_16;
 LABEL_12:
-      *v12 = 0;
+      *v14 = 0;
       goto LABEL_16;
     }
     if ( *(_BYTE *)(a1 + 1) & 0xC0 )
       goto LABEL_16;
-    if ( (v2 & 0x30) == 32 )
+    if ( (v4 & 0x30) == 32 )
       goto LABEL_12;
-    if ( (v2 & 0x30) == 16 )
+    if ( (v4 & 0x30) == 16 )
     {
-      *(_BYTE *)v12 = 0;
-      v2 = *(_BYTE *)(a1 + 1);
+      *(_BYTE *)v14 = 0;
+      v4 = *(_BYTE *)(a1 + 1);
     }
-    v3 = *(_DWORD *)(a1 + 6);
-    if ( (v2 & 0xF) == 7 )
+    v5 = *(_DWORD *)(a1 + 6);
+    if ( (v4 & 0xF) == 7 )
     {
-      sub_CA30(*(_DWORD *)(a1 + 6), v11);
+      sub_D3EC(*(_DWORD *)(a1 + 6), v13);
     }
     else
     {
-      v4 = *(unsigned __int8 *)(a1 + 4);
-      if ( v3 )
-        _aeabi_memcpy(v11, v3, v4);
+      v6 = *(unsigned __int8 *)(a1 + 4);
+      if ( v5 )
+        _aeabi_memcpy(v13, v5, v6);
       else
-        _aeabi_memclr(v11, v4);
+        _aeabi_memclr(v13, v6);
     }
 LABEL_16:
-    if ( sub_C988(&v6) != 1 )
-      return _stack_chk_guard - v13;
-    a1 = v7;
+    if ( sub_D344(&v8) != 1 )
+      return _stack_chk_guard - v15;
+    a1 = v9;
   }
 }
-// 3AF0: using guessed type int __fastcall _aeabi_memcpy(_DWORD, _DWORD, _DWORD);
-// 3BD4: using guessed type int __fastcall _aeabi_memclr(_DWORD, _DWORD);
+// 3D5C: using guessed type int __fastcall _aeabi_memcpy(_DWORD, _DWORD, _DWORD);
+// 3E40: using guessed type int __fastcall _aeabi_memclr(_DWORD, _DWORD);
 
-//----- (0000CAE8) --------------------------------------------------------
+//----- (0000D4A4) --------------------------------------------------------
 int __fastcall pb_release(int a1, int a2)
 {
   int v2; // r5
-  char v3; // r1
-  int v4; // r0
-  int v5; // r1
+  int v3; // r3
+  int v4; // r2
+  char v5; // r1
   signed int v6; // r4
   void **v7; // r5
   char *v8; // r6
@@ -10766,30 +11037,30 @@ int __fastcall pb_release(int a1, int a2)
 
   v2 = a1;
   v12 = a1;
-  v13 = a1;
+  v3 = *(unsigned __int8 *)(a1 + 2);
+  v4 = *(char *)(a1 + 3);
   v14 = 0;
   v15 = 0;
-  v17 = (void **)(*(unsigned __int8 *)(a1 + 2) + a2);
-  v18 = (signed int *)((char *)v17 + *(char *)(a1 + 3));
+  v17 = (void **)(a2 + v3);
+  v18 = (signed int *)(a2 + v3 + v4);
+  v13 = a1;
   v16 = a2;
   while ( 1 )
   {
     if ( *(_BYTE *)v2 )
     {
-      v3 = *(_BYTE *)(v2 + 1);
-      if ( (v3 & 0xC0) == 128 )
+      v5 = *(_BYTE *)(v2 + 1);
+      if ( (v5 & 0xC0) == 128 )
       {
-        v4 = v3 & 0x30;
-        v5 = v3 & 0xF;
-        if ( v4 != 32 || (unsigned int)(v5 - 5) > 1 )
+        if ( (v5 & 0x30) != 32 || (v5 & 0xFu) - 5 > 1 )
         {
-          if ( v5 == 7 )
+          if ( (v5 & 0xF) == 7 )
           {
             v8 = (char *)*v17;
             v9 = (signed int)*v17;
             if ( *v17 )
               v9 = 1;
-            if ( v4 == 32 )
+            if ( (v5 & 0x30) == 32 )
               v9 = *v18;
             for ( ; v9; v8 += *(unsigned __int8 *)(v2 + 4) )
             {
@@ -10819,41 +11090,43 @@ int __fastcall pb_release(int a1, int a2)
         *v10 = 0;
       }
     }
-    if ( sub_C988(&v12) != 1 )
+    if ( sub_D344(&v12) != 1 )
       break;
     v2 = v13;
   }
   return _stack_chk_guard - v19;
 }
 
-//----- (0000CBB4) --------------------------------------------------------
+//----- (0000D574) --------------------------------------------------------
 int __fastcall pb_decode_delimited(int a1, int a2, int a3)
 {
   int v3; // r4
   int v4; // r6
   int v5; // r5
   int result; // r0
-  char v7; // [sp+4h] [bp-24h]
-  int v8; // [sp+8h] [bp-20h]
-  int v9; // [sp+10h] [bp-18h]
+  int v7; // r2
+  char v8; // [sp+4h] [bp-24h]
+  int v9; // [sp+8h] [bp-20h]
+  int v10; // [sp+10h] [bp-18h]
 
   v3 = a1;
   v4 = a2;
   v5 = a3;
-  if ( j_pb_make_string_substream(a1, &v7) != 1 )
+  if ( j_pb_make_string_substream(a1, &v8) != 1 )
     return 0;
-  result = j_pb_decode((int)&v7, v4, v5);
-  *(_DWORD *)(v3 + 4) = v8;
-  *(_DWORD *)(v3 + 12) = v9;
+  result = j_pb_decode((int)&v8, v4, v5);
+  v7 = v9;
+  *(_DWORD *)(v3 + 12) = v10;
+  *(_DWORD *)(v3 + 4) = v7;
   return result;
 }
 
-//----- (0000CC08) --------------------------------------------------------
-signed int __fastcall pb_decode_svarint(int a1, _QWORD *a2)
+//----- (0000D5C8) --------------------------------------------------------
+signed int __fastcall pb_decode_svarint(int a1, int *a2)
 {
-  _QWORD *v2; // r4
+  int *v2; // r4
   int v3; // t2
-  __int64 v4; // r0
+  int v4; // r0
   int v6; // [sp+0h] [bp-18h]
   unsigned int v7; // [sp+4h] [bp-14h]
 
@@ -10861,95 +11134,91 @@ signed int __fastcall pb_decode_svarint(int a1, _QWORD *a2)
   if ( j_pb_decode_varint(a1, &v6) != 1 )
     return 0;
   v3 = __RCR__(v6, 1);
-  HIDWORD(v4) = (v7 >> 1) ^ (v6 << 31 >> 31);
-  LODWORD(v4) = v3 ^ (v6 << 31 >> 31);
+  v4 = v3 ^ (v6 << 31 >> 31);
+  v2[1] = (v7 >> 1) ^ (v6 << 31 >> 31);
   *v2 = v4;
   return 1;
 }
 
-//----- (0000CC64) --------------------------------------------------------
+//----- (0000D624) --------------------------------------------------------
 int __fastcall pb_decode_fixed32(int a1, int a2)
 {
   return j_j_pb_read(a1, a2, 4);
 }
 
-//----- (0000CC6A) --------------------------------------------------------
+//----- (0000D62A) --------------------------------------------------------
 int __fastcall pb_decode_fixed64(int a1, int a2)
 {
   return j_j_pb_read(a1, a2, 8);
 }
 
-//----- (0000CC70) --------------------------------------------------------
-signed int __fastcall sub_CC70(int a1, int a2, _BYTE *a3)
+//----- (0000D630) --------------------------------------------------------
+signed int __fastcall sub_D630(int a1, int a2, int a3)
 {
   int v3; // r5
   int v4; // r6
-  _BYTE *v5; // r4
-  signed int result; // r0
-  int v7; // [sp+0h] [bp-20h]
-  int v8; // [sp+Ch] [bp-14h]
+  int v5; // r4
+  int v7; // r0
+  int v8; // [sp+0h] [bp-20h]
+  int v9; // [sp+4h] [bp-1Ch]
 
   v3 = a1;
   v4 = a2;
   v5 = a3;
-  if ( j_pb_decode_varint(a1, &v7) == 1 )
+  if ( j_pb_decode_varint(a1, &v8) != 1 )
+    return 0;
+  switch ( *(unsigned __int8 *)(v4 + 4) )
   {
-    switch ( *(unsigned __int8 *)(v4 + 4) )
-    {
-      case 1u:
-        *v5 = v7;
-        result = 1;
-        goto LABEL_8;
-      case 2u:
-        *(_WORD *)v5 = v7;
-        result = 1;
-        goto LABEL_8;
-      case 4u:
-        goto LABEL_9;
-      case 8u:
-        *(_QWORD *)v5 = *(_QWORD *)&v7;
-        result = 1;
-        goto LABEL_8;
-      default:
-        if ( !*(_DWORD *)(v3 + 12) )
-          *(_DWORD *)(v3 + 12) = "invalid data_size";
-        break;
-    }
+    case 1u:
+      *(_BYTE *)v5 = v8;
+      return 1;
+    case 2u:
+      *(_WORD *)v5 = v8;
+      return 1;
+    case 4u:
+      v7 = v8;
+      break;
+    case 8u:
+      v7 = v8;
+      *(_DWORD *)(v5 + 4) = v9;
+      break;
+    default:
+      if ( !*(_DWORD *)(v3 + 12) )
+        *(_DWORD *)(v3 + 12) = "invalid data_size";
+      return 0;
   }
-  result = 0;
-LABEL_8:
-  while ( _stack_chk_guard != v8 )
-  {
-LABEL_9:
-    *(_DWORD *)v5 = v7;
-    result = 1;
-  }
-  return result;
+  *(_DWORD *)v5 = v7;
+  return 1;
 }
 
-//----- (0000CCFC) --------------------------------------------------------
-signed int __fastcall sub_CCFC(int a1, int a2, _QWORD *a3)
+//----- (0000D6B8) --------------------------------------------------------
+signed int __fastcall sub_D6B8(int a1, int a2, int *a3)
 {
   int v3; // r5
   int v4; // r6
-  _QWORD *v5; // r4
+  int *v5; // r4
   int v6; // r0
-  int v8; // [sp+0h] [bp-20h]
+  int v7; // r0
+  int v9; // [sp+0h] [bp-20h]
+  int v10; // [sp+4h] [bp-1Ch]
 
   v3 = a1;
   v4 = a2;
   v5 = a3;
-  if ( j_pb_decode_varint(a1, &v8) == 1 )
+  if ( j_pb_decode_varint(a1, &v9) == 1 )
   {
     v6 = *(unsigned __int8 *)(v4 + 4);
     if ( v6 == 8 )
     {
-      *v5 = *(_QWORD *)&v8;
-      return 1;
+      v7 = v9;
+      v5[1] = v10;
+      goto LABEL_6;
     }
     if ( v6 == 4 )
     {
-      *(_DWORD *)v5 = v8;
+      v7 = v9;
+LABEL_6:
+      *v5 = v7;
       return 1;
     }
     if ( !*(_DWORD *)(v3 + 12) )
@@ -10958,34 +11227,39 @@ signed int __fastcall sub_CCFC(int a1, int a2, _QWORD *a3)
   return 0;
 }
 
-//----- (0000CD68) --------------------------------------------------------
-signed int __fastcall sub_CD68(int a1, int a2, _QWORD *a3)
+//----- (0000D720) --------------------------------------------------------
+signed int __fastcall sub_D720(int a1, int a2, int *a3)
 {
   int v3; // r5
   int v4; // r6
-  _QWORD *v5; // r4
-  int v6; // t2
-  __int64 v7; // r0
-  int v9; // [sp+0h] [bp-20h]
-  unsigned int v10; // [sp+4h] [bp-1Ch]
+  int *v5; // r4
+  int v6; // r1
+  unsigned int v7; // r2
+  int v8; // r3
+  int v9; // t2
+  int v10; // r0
+  int v12; // [sp+0h] [bp-20h]
+  unsigned int v13; // [sp+4h] [bp-1Ch]
 
   v3 = a1;
   v4 = a2;
   v5 = a3;
-  if ( j_pb_decode_varint(a1, &v9) )
+  if ( j_pb_decode_varint(a1, &v12) == 1 )
   {
-    HIDWORD(v7) = *(unsigned __int8 *)(v4 + 4);
-    v6 = __RCR__(v9, 1);
-    LODWORD(v7) = v6 ^ (v9 << 31 >> 31);
-    if ( HIDWORD(v7) == 8 )
+    v6 = *(unsigned __int8 *)(v4 + 4);
+    v7 = v13 >> 1;
+    v8 = v12 << 31;
+    v9 = __RCR__(v12, 1);
+    v10 = v9 ^ (v12 << 31 >> 31);
+    if ( v6 == 8 )
     {
-      HIDWORD(v7) = (v10 >> 1) ^ (v9 << 31 >> 31);
-      *v5 = v7;
+      *v5 = v10;
+      v5[1] = v7 ^ (v8 >> 31);
       return 1;
     }
-    if ( HIDWORD(v7) == 4 )
+    if ( v6 == 4 )
     {
-      *(_DWORD *)v5 = v7;
+      *v5 = v10;
       return 1;
     }
     if ( !*(_DWORD *)(v3 + 12) )
@@ -10994,20 +11268,20 @@ signed int __fastcall sub_CD68(int a1, int a2, _QWORD *a3)
   return 0;
 }
 
-//----- (0000CDE4) --------------------------------------------------------
-int __fastcall sub_CDE4(int a1, int a2, int a3)
+//----- (0000D7A0) --------------------------------------------------------
+int __fastcall sub_D7A0(int a1, int a2, int a3)
 {
   return j_j_pb_read(a1, a3, 4);
 }
 
-//----- (0000CDEC) --------------------------------------------------------
-int __fastcall sub_CDEC(int a1, int a2, int a3)
+//----- (0000D7A8) --------------------------------------------------------
+int __fastcall sub_D7A8(int a1, int a2, int a3)
 {
   return j_j_pb_read(a1, a3, 8);
 }
 
-//----- (0000CDF4) --------------------------------------------------------
-int __fastcall sub_CDF4(int a1, int a2, void **a3)
+//----- (0000D7B0) --------------------------------------------------------
+int __fastcall sub_D7B0(int a1, int a2, void **a3)
 {
   int v3; // r4
   int v4; // r7
@@ -11021,7 +11295,7 @@ int __fastcall sub_CDF4(int a1, int a2, void **a3)
   v3 = a1;
   v4 = a2;
   v5 = a3;
-  if ( sub_C1C0(a1, &v11) != 1 )
+  if ( sub_CB90(a1, &v11) != 1 )
     return 0;
   v6 = v11;
   v7 = v11 + 4;
@@ -11057,8 +11331,8 @@ LABEL_11:
   return 0;
 }
 
-//----- (0000CE84) --------------------------------------------------------
-int __fastcall sub_CE84(int a1, int a2, void **a3)
+//----- (0000D840) --------------------------------------------------------
+int __fastcall sub_D840(int a1, int a2, void **a3)
 {
   int v3; // r4
   int v4; // r7
@@ -11073,7 +11347,7 @@ int __fastcall sub_CE84(int a1, int a2, void **a3)
   v3 = a1;
   v4 = a2;
   v5 = a3;
-  if ( sub_C1C0(a1, &v11) != 1 )
+  if ( sub_CB90(a1, &v11) != 1 )
     return 0;
   v6 = v11;
   v7 = v11 + 1;
@@ -11110,23 +11384,24 @@ LABEL_11:
   return 0;
 }
 
-//----- (0000CF14) --------------------------------------------------------
-int __fastcall sub_CF14(int a1, int a2, int a3)
+//----- (0000D8D0) --------------------------------------------------------
+int __fastcall sub_D8D0(int a1, int a2, int a3)
 {
   int v3; // r4
   int v4; // r7
   int v5; // r5
   unsigned __int8 *v6; // r6
   int result; // r0
-  int v8; // [sp+0h] [bp-28h]
-  int v9; // [sp+4h] [bp-24h]
-  int v10; // [sp+Ch] [bp-1Ch]
+  int v8; // r1
+  int v9; // [sp+0h] [bp-28h]
+  int v10; // [sp+4h] [bp-24h]
+  int v11; // [sp+Ch] [bp-1Ch]
 
   v3 = a1;
   v4 = a2;
   v5 = a3;
   v6 = *(unsigned __int8 **)(a2 + 6);
-  if ( j_pb_make_string_substream(a1, &v8) != 1 )
+  if ( j_pb_make_string_substream(a1, &v9) != 1 )
     return 0;
   if ( !*(_DWORD *)(v4 + 6) )
   {
@@ -11135,54 +11410,153 @@ int __fastcall sub_CF14(int a1, int a2, int a3)
     return 0;
   }
   if ( (*(_BYTE *)(v4 + 1) & 0x30) == 32 )
-    result = j_pb_decode((int)&v8, (int)v6, v5);
+    result = j_pb_decode((int)&v9, (int)v6, v5);
   else
-    result = j_pb_decode_noinit((int)&v8, v6, v5);
-  *(_DWORD *)(v3 + 4) = v9;
-  *(_DWORD *)(v3 + 12) = v10;
+    result = j_pb_decode_noinit((int)&v9, v6, v5);
+  v8 = v11;
+  *(_DWORD *)(v3 + 4) = v10;
+  *(_DWORD *)(v3 + 12) = v8;
   return result;
 }
 
-//----- (0000CF98) --------------------------------------------------------
-int __fastcall pb_ostream_from_buffer(int result, int a2, unsigned int a3)
+//----- (0000D954) --------------------------------------------------------
+_DWORD *__fastcall pb_ostream_from_buffer(_DWORD *result, int a2, int a3)
 {
-  *(_DWORD *)result = sub_CFB0;
-  *(_DWORD *)(result + 4) = a2;
-  *(_QWORD *)(result + 8) = a3;
-  *(_DWORD *)(result + 16) = 0;
+  result[1] = a2;
+  result[2] = a3;
+  result[3] = 0;
+  result[4] = 0;
+  *result = sub_D96C;
   return result;
 }
-// CFB0: using guessed type int sub_CFB0();
 
-//----- (0000CFD0) --------------------------------------------------------
-signed int __fastcall pb_write(int a1, int a2, int a3)
+//----- (0000D96C) --------------------------------------------------------
+signed int __fastcall sub_D96C(int a1, char *a2, int a3)
 {
-  int v3; // r4
+  int v3; // r3
+  char *v4; // r0
+  unsigned int v5; // r12
+  bool v6; // cf
+  bool v7; // zf
+  char v8; // t1
+  int v10; // r5
+  int v11; // r3
+  __int64 *v12; // r4
+  char *v13; // r6
+  __int64 v14; // d16
+  __int64 v15; // d17
+  __int64 v16; // d16
+  char *v17; // r6
+
+  v3 = a1;
+  v4 = *(char **)(a1 + 4);
+  v5 = (unsigned int)&v4[a3];
+  *(_DWORD *)(v3 + 4) = &v4[a3];
+  if ( !a3 )
+    return 1;
+  if ( v4 < a2 || a2 - v4 > a3 )
+  {
+    _aeabi_memmove(v4, a2);
+    return 1;
+  }
+  v6 = &a2[a3] >= v4;
+  v7 = &a2[a3] == v4;
+  if ( &a2[a3] > v4 )
+  {
+    v6 = v5 >= (unsigned int)a2;
+    v7 = v5 == (_DWORD)a2;
+  }
+  if ( !v7 && v6 )
+  {
+    do
+    {
+      v8 = *a2++;
+      --a3;
+      *v4++ = v8;
+    }
+    while ( a3 );
+    return 1;
+  }
+  if ( a3 < 1 )
+    return 1;
+  if ( a3 >= 8 )
+  {
+    if ( a3 <= 15 )
+    {
+      v11 = 0;
+    }
+    else
+    {
+      v10 = 0;
+      v11 = a3 - (a3 & 0xF);
+      v12 = (__int64 *)a2;
+      v13 = v4;
+      do
+      {
+        v14 = *v12;
+        v15 = v12[1];
+        v12 += 2;
+        v7 = v10 == v11 - 16;
+        *(_QWORD *)v13 = v14;
+        *((_QWORD *)v13 + 1) = v15;
+        v13 += 16;
+        v10 += 16;
+      }
+      while ( !v7 );
+      if ( !(a3 & 0xF) )
+        return 1;
+      if ( (a3 & 0xFu) <= 7 )
+        goto LABEL_24;
+    }
+    v16 = *(_QWORD *)&a2[v11];
+    v17 = &v4[v11];
+    v11 += 8;
+    *(_QWORD *)v17 = v16;
+    goto LABEL_25;
+  }
+  v11 = 0;
+  do
+  {
+LABEL_24:
+    v4[v11] = a2[v11];
+    ++v11;
+LABEL_25:
+    ;
+  }
+  while ( v11 < a3 );
+  return 1;
+}
+// 4128: using guessed type int __fastcall _aeabi_memmove(_DWORD, _DWORD);
+
+//----- (0000DA0C) --------------------------------------------------------
+signed int __fastcall pb_write(_DWORD *a1, int a2, int a3)
+{
+  _DWORD *v3; // r4
   int v4; // r5
   const char *v5; // r0
 
   v3 = a1;
   v4 = a3;
-  if ( !*(_DWORD *)a1 )
+  if ( !*a1 )
     goto LABEL_13;
-  if ( (unsigned int)((*(_QWORD *)(a1 + 8) >> 32) + a3) > (unsigned int)*(_QWORD *)(a1 + 8) )
+  if ( (unsigned int)(a1[3] + a3) > a1[2] )
   {
-    if ( !*(_DWORD *)(a1 + 16) )
+    if ( !a1[4] )
     {
       v5 = "stream full";
 LABEL_9:
-      *(_DWORD *)(v3 + 16) = v5;
+      v3[4] = v5;
       return 0;
     }
     return 0;
   }
-  if ( (*(int (__fastcall **)(int, int, int))a1)(a1, a2, a3) )
+  if ( ((int (__fastcall *)(_DWORD *, int, int))*a1)(a1, a2, a3) )
   {
 LABEL_13:
-    *(_DWORD *)(v3 + 12) += v4;
+    v3[3] += v4;
     return 1;
   }
-  if ( !*(_DWORD *)(v3 + 16) )
+  if ( !v3[4] )
   {
     v5 = "io error";
     goto LABEL_9;
@@ -11190,13 +11564,13 @@ LABEL_13:
   return 0;
 }
 
-//----- (0000D018) --------------------------------------------------------
+//----- (0000DA54) --------------------------------------------------------
 signed int __fastcall pb_encode(__int64 *a1, unsigned __int8 *a2, int *a3)
 {
   unsigned __int8 *v3; // r4
   __int64 *v4; // r5
   int *v5; // r6
-  signed int v6; // r8
+  int v6; // r8
   unsigned __int8 v7; // r0
   int v8; // r2
   int i; // r7
@@ -11219,7 +11593,7 @@ signed int __fastcall pb_encode(__int64 *a1, unsigned __int8 *a2, int *a3)
       v6 = v3[4];
     v5 = (int *)(v8 + v3[2]);
     if ( (v7 & 0xF0) == 32 )
-      v6 *= v3[5];
+      v6 = v3[5] * (signed __int16)v6;
     if ( (v7 & 0xF) == 8 )
     {
       for ( i = *v5; i; i = *(_DWORD *)(i + 8) )
@@ -11230,14 +11604,14 @@ signed int __fastcall pb_encode(__int64 *a1, unsigned __int8 *a2, int *a3)
           if ( !v10(v4, i) )
             return 0;
         }
-        else if ( sub_D0A8(v4, *(unsigned __int8 **)(*(_DWORD *)i + 8), *(int (__fastcall **)(__int64 *))(i + 4)) != 1 )
+        else if ( sub_DAE4(v4, *(unsigned __int8 **)(*(_DWORD *)i + 8), *(int (__fastcall **)(__int64 *))(i + 4)) != 1 )
         {
           return 0;
         }
       }
       goto LABEL_18;
     }
-    if ( sub_D0A8(v4, v3, (int (__fastcall *)(__int64 *))(v8 + v3[2])) != 1 )
+    if ( sub_DAE4(v4, v3, (int (__fastcall *)(__int64 *))(v8 + v3[2])) != 1 )
       return 0;
 LABEL_18:
     v11 = v3[10];
@@ -11247,8 +11621,8 @@ LABEL_18:
   }
 }
 
-//----- (0000D0A8) --------------------------------------------------------
-signed int __fastcall sub_D0A8(__int64 *a1, unsigned __int8 *a2, int (__fastcall *a3)(__int64 *))
+//----- (0000DAE4) --------------------------------------------------------
+signed int __fastcall sub_DAE4(__int64 *a1, unsigned __int8 *a2, int (__fastcall *a3)(__int64 *))
 {
   unsigned int v3; // r4
   __int64 *v4; // r11
@@ -11321,7 +11695,7 @@ LABEL_34:
       v11 = 1;
     v23 = v11;
   }
-  v12 = (int (__fastcall *)(__int64 *, unsigned __int8 *, _DWORD *))*(&off_14B98 + v9);
+  v12 = (int (__fastcall *)(__int64 *, unsigned __int8 *, _DWORD *))*(&off_15B6C + v9);
   v13 = v7 & 0x30;
   if ( v13 != 32 )
   {
@@ -11352,7 +11726,7 @@ LABEL_33:
     if ( *v10 )
     {
 LABEL_28:
-      if ( j_pb_encode_tag_for_field((int)v4, v5) != 1 || !v12(v4, v5, v6) )
+      if ( j_pb_encode_tag_for_field(v4, v5) != 1 || !v12(v4, v5, v6) )
         goto LABEL_34;
     }
 LABEL_59:
@@ -11374,7 +11748,7 @@ LABEL_59:
   if ( v9 >= 5 )
   {
     v19 = 0;
-    while ( j_pb_encode_tag_for_field((int)v4, v5) == 1 )
+    while ( j_pb_encode_tag_for_field(v4, v5) == 1 )
     {
       v20 = v5[1];
       if ( (v20 & 0xC0) != 128 || (v20 & 0xFu) - 5 > 1 )
@@ -11394,7 +11768,7 @@ LABEL_59:
     goto LABEL_34;
   }
   v16 = 0;
-  if ( j_pb_encode_varint((int)v4, 2, 8 * (unsigned int)*v5 | 2LL) == 1 )
+  if ( j_pb_encode_varint(v4, 2, 8 * (unsigned int)*v5 | 2LL) == 1 )
   {
     v18 = v5[1] & 0xF;
     if ( v18 == 4 )
@@ -11426,7 +11800,7 @@ LABEL_59:
     }
 LABEL_54:
     v16 = 0;
-    if ( j_pb_encode_varint((int)v4, v17, v3) == 1 )
+    if ( j_pb_encode_varint(v4, v17, v3) == 1 )
     {
       if ( !*(_DWORD *)v4 )
         goto LABEL_62;
@@ -11446,51 +11820,52 @@ LABEL_60:
   {
 LABEL_62:
     v16 = 0;
-    if ( j_pb_write((int)v4, 0, v3) )
+    if ( j_pb_write(v4, 0, v3) )
       v16 = 1;
   }
   return v16;
 }
-// D0A8: too many cbuild loops
-// 14B98: using guessed type void *off_14B98;
+// DAE4: too many cbuild loops
+// 15B6C: using guessed type void *off_15B6C;
 
-//----- (0000D2DC) --------------------------------------------------------
-signed int __fastcall pb_encode_submessage(int a1, unsigned __int8 *a2, int *a3)
+//----- (0000DD18) --------------------------------------------------------
+signed int __fastcall pb_encode_submessage(_DWORD *a1, unsigned __int8 *a2, int *a3)
 {
   int v3; // r8
-  int v4; // r4
+  _DWORD *v4; // r4
   unsigned __int8 *v5; // r6
   int *v6; // r5
   int v7; // r1
   signed int v8; // r7
   const char *v9; // r0
-  bool v11; // zf
-  int v12; // r0
-  __int64 v13; // [sp+0h] [bp-30h]
-  __int64 v14; // [sp+8h] [bp-28h]
-  const char *v15; // [sp+10h] [bp-20h]
-  int v16; // [sp+14h] [bp-1Ch]
+  int v11; // r1
+  __int64 v12; // kr00_8
+  int v13; // r3
+  __int64 v14; // [sp+0h] [bp-30h]
+  __int64 v15; // [sp+8h] [bp-28h]
+  const char *v16; // [sp+10h] [bp-20h]
+  int v17; // [sp+14h] [bp-1Ch]
 
   v4 = a1;
   v5 = a2;
   v6 = a3;
-  v13 = 0LL;
   v14 = 0LL;
-  v15 = 0;
-  if ( !j_pb_encode(&v13, a2, a3) )
+  v15 = 0LL;
+  v16 = 0;
+  if ( !j_pb_encode(&v14, a2, a3) )
   {
-    v9 = v15;
+    v9 = v16;
     goto LABEL_8;
   }
-  v3 = HIDWORD(v14);
+  v3 = HIDWORD(v15);
   v8 = 0;
-  if ( j_pb_encode_varint(v4, v7, HIDWORD(v14)) != 1 )
+  if ( j_pb_encode_varint(v4, v7, HIDWORD(v15)) != 1 )
     goto LABEL_10;
-  if ( !*(_DWORD *)v4 )
+  if ( !*v4 )
     goto LABEL_12;
-  if ( (unsigned int)((*(_QWORD *)(v4 + 8) >> 32) + v3) > (unsigned int)*(_QWORD *)(v4 + 8) )
+  if ( (unsigned int)(v4[3] + v3) > v4[2] )
   {
-    if ( *(_DWORD *)(v4 + 16) )
+    if ( v4[4] )
     {
 LABEL_9:
       v8 = 0;
@@ -11498,33 +11873,35 @@ LABEL_9:
     }
     v9 = "stream full";
 LABEL_8:
-    *(_DWORD *)(v4 + 16) = v9;
+    v4[4] = v9;
     goto LABEL_9;
   }
-  v13 = *(_QWORD *)v4;
-  v14 = (unsigned int)v3;
-  v15 = 0;
-  v8 = j_pb_encode(&v13, v5, v6);
-  v11 = HIDWORD(v14) == v3;
-  *(_DWORD *)(v4 + 12) += HIDWORD(v14);
-  *(_DWORD *)(v4 + 4) = HIDWORD(v13);
-  v12 = (int)v15;
-  *(_DWORD *)(v4 + 16) = v15;
-  if ( !v11 )
+  LODWORD(v14) = *v4;
+  v11 = v4[1];
+  *(__int64 *)((char *)&v15 + 4) = 0LL;
+  HIDWORD(v14) = v11;
+  LODWORD(v15) = v3;
+  v8 = j_pb_encode(&v14, v5, v6);
+  v12 = *(__int64 *)((char *)&v15 + 4);
+  v13 = HIDWORD(v14);
+  v4[3] += HIDWORD(v15);
+  v4[1] = v13;
+  v4[4] = HIDWORD(v12);
+  if ( (_DWORD)v12 != v3 )
   {
-    if ( v12 )
+    if ( HIDWORD(v12) )
       goto LABEL_9;
     v9 = "submsg size changed";
     goto LABEL_8;
   }
 LABEL_10:
-  while ( _stack_chk_guard != v16 )
+  while ( _stack_chk_guard != v17 )
 LABEL_12:
     v8 = j_pb_write(v4, 0, v3);
   return v8;
 }
 
-//----- (0000D3B0) --------------------------------------------------------
+//----- (0000DDEC) --------------------------------------------------------
 int __fastcall pb_get_encoded_size(_DWORD *a1, unsigned __int8 *a2, int *a3)
 {
   _DWORD *v3; // r5
@@ -11551,46 +11928,48 @@ int __fastcall pb_get_encoded_size(_DWORD *a1, unsigned __int8 *a2, int *a3)
   return result;
 }
 
-//----- (0000D400) --------------------------------------------------------
-signed int __fastcall pb_encode_varint(int a1, int a2, __int64 a3)
+//----- (0000DE3C) --------------------------------------------------------
+signed int __fastcall pb_encode_varint(_DWORD *a1, int a2, __int64 a3)
 {
-  unsigned int v3; // r12
-  __int64 *v4; // r1
+  int v3; // r12
+  _BYTE *v4; // r1
   char v5; // lr
   int v6; // r4
-  __int64 v8; // [sp+0h] [bp-20h]
-  char v9[10]; // [sp+Ah] [bp-16h]
+  __int64 *v7; // r1
+  int v8; // r2
+  __int64 v10; // [sp+0h] [bp-20h]
+  _BYTE v11[3]; // [sp+9h] [bp-17h]
 
-  v3 = a3;
-  v8 = a3;
+  v10 = a3;
   if ( a3 )
   {
-    v4 = (__int64 *)v9;
-    LODWORD(a3) = 0;
+    v3 = 0;
+    v4 = v11;
     do
     {
-      v5 = v3;
-      v9[a3] = v3 | 0x80;
-      v3 = (v3 >> 7) | (HIDWORD(a3) << 25);
-      LODWORD(a3) = a3 + 1;
-      v6 = v3 | (HIDWORD(a3) >> 7);
+      v5 = a3 | 0x80;
+      LODWORD(a3) = a3 >> 7;
+      (v4++)[1] = v5;
+      ++v3;
+      v6 = a3 | (HIDWORD(a3) >> 7);
       HIDWORD(a3) >>= 7;
     }
     while ( v6 );
-    v8 = 0LL;
-    v9[(_DWORD)a3 - 1] = v5 & 0x7F;
+    v10 = 0LL;
+    *v4 = v5 & 0x7F;
+    v7 = (__int64 *)&v11[1];
+    v8 = v3;
   }
   else
   {
-    v4 = &v8;
-    LODWORD(a3) = 1;
+    v7 = &v10;
+    v8 = 1;
   }
-  return j_pb_write(a1, (int)v4, a3);
+  return j_pb_write(a1, (int)v7, v8);
 }
-// D400: using guessed type char var_16[10];
 
-//----- (0000D478) --------------------------------------------------------
-signed int __fastcall pb_encode_svarint(int a1, int a2, int a3, int a4)
+//----- (0000DEB4) --------------------------------------------------------
+signed int __fastcall pb_encode_svarint(_DWORD *a1, int a2, int a3, int a4)
 {
   unsigned __int8 v4; // cf
   __int64 v5; // r2
@@ -11603,20 +11982,20 @@ signed int __fastcall pb_encode_svarint(int a1, int a2, int a3, int a4)
   return j_j_pb_encode_varint(a1, v6, v5);
 }
 
-//----- (0000D48A) --------------------------------------------------------
-signed int __fastcall pb_encode_fixed32(int a1, int a2)
+//----- (0000DEC6) --------------------------------------------------------
+signed int __fastcall pb_encode_fixed32(_DWORD *a1, int a2)
 {
   return j_j_pb_write(a1, a2, 4);
 }
 
-//----- (0000D490) --------------------------------------------------------
-signed int __fastcall pb_encode_fixed64(int a1, int a2)
+//----- (0000DECC) --------------------------------------------------------
+signed int __fastcall pb_encode_fixed64(_DWORD *a1, int a2)
 {
   return j_j_pb_write(a1, a2, 8);
 }
 
-//----- (0000D496) --------------------------------------------------------
-signed int __fastcall pb_encode_tag(int a1, int a2, unsigned int a3)
+//----- (0000DED2) --------------------------------------------------------
+signed int __fastcall pb_encode_tag(_DWORD *a1, int a2, unsigned int a3)
 {
   __int64 v3; // r2
 
@@ -11625,25 +12004,25 @@ signed int __fastcall pb_encode_tag(int a1, int a2, unsigned int a3)
   return j_j_pb_encode_varint(a1, v3, v3);
 }
 
-//----- (0000D4A4) --------------------------------------------------------
-signed int __fastcall pb_encode_tag_for_field(int a1, unsigned __int8 *a2)
+//----- (0000DEE0) --------------------------------------------------------
+signed int __fastcall pb_encode_tag_for_field(_DWORD *a1, unsigned __int8 *a2)
 {
   unsigned int v2; // r2
 
   v2 = a2[1] & 0xF;
   if ( v2 < 8 )
-    return j_pb_encode_varint(a1, *a2, dword_12C50[v2] | (unsigned __int64)(8 * (unsigned int)*a2));
-  if ( !*(_DWORD *)(a1 + 16) )
-    *(_DWORD *)(a1 + 16) = "invalid field type";
+    return j_pb_encode_varint(a1, *a2, dword_138D0[v2] | (unsigned __int64)(8 * (unsigned int)*a2));
+  if ( !a1[4] )
+    a1[4] = "invalid field type";
   return 0;
 }
 
-//----- (0000D4DC) --------------------------------------------------------
-signed int __fastcall pb_encode_string(int a1, int a2, int a3)
+//----- (0000DF18) --------------------------------------------------------
+signed int __fastcall pb_encode_string(_DWORD *a1, int a2, int a3)
 {
   int v3; // r4
   int v4; // r5
-  int v5; // r7
+  _DWORD *v5; // r7
   signed int v6; // r6
 
   v3 = a3;
@@ -11655,110 +12034,114 @@ signed int __fastcall pb_encode_string(int a1, int a2, int a3)
   return v6;
 }
 
-//----- (0000D504) --------------------------------------------------------
-signed int __fastcall sub_D504(int a1, int a2, _DWORD *a3)
+//----- (0000DF40) --------------------------------------------------------
+signed int __fastcall sub_DF40(_DWORD *a1, int a2, _DWORD *a3)
 {
-  int v3; // r1
-  __int64 v4; // r2
+  _DWORD *v3; // r3
+  int v4; // r1
+  __int64 v5; // r2
   signed int result; // r0
 
-  v3 = *(unsigned __int8 *)(a2 + 4) - 1;
-  switch ( v3 )
+  v3 = a3;
+  v4 = *(unsigned __int8 *)(a2 + 4) - 1;
+  switch ( v4 )
   {
     case 0:
-      LODWORD(v4) = *(char *)a3;
+      LODWORD(v5) = *(char *)a3;
       goto LABEL_8;
     case 1:
-      LODWORD(v4) = *(signed __int16 *)a3;
+      LODWORD(v5) = *(signed __int16 *)a3;
       goto LABEL_8;
     case 3:
-      LODWORD(v4) = *a3;
+      LODWORD(v5) = *a3;
 LABEL_8:
-      v4 = (signed int)v4;
+      v5 = (signed int)v5;
       goto LABEL_10;
     case 7:
-      v4 = *(_QWORD *)a3;
+      LODWORD(v5) = *a3;
+      HIDWORD(v5) = v3[1];
 LABEL_10:
-      result = j_pb_encode_varint(a1, v3, v4);
+      result = j_pb_encode_varint(a1, v4, v5);
       break;
     default:
-      if ( !*(_DWORD *)(a1 + 16) )
-        *(_DWORD *)(a1 + 16) = "invalid data_size";
+      if ( !a1[4] )
+        a1[4] = "invalid data_size";
       result = 0;
       break;
   }
   return result;
 }
 
-//----- (0000D548) --------------------------------------------------------
-signed int __fastcall sub_D548(int a1, int a2, __int64 *a3)
+//----- (0000DF88) --------------------------------------------------------
+signed int __fastcall sub_DF88(_DWORD *a1, int a2, _DWORD *a3)
 {
   int v3; // r1
-  __int64 v4; // r2
+  _DWORD *v4; // r3
+  __int64 v5; // r2
 
   v3 = *(unsigned __int8 *)(a2 + 4);
+  v4 = a3;
   if ( v3 == 8 )
   {
-    v4 = *a3;
-    return j_pb_encode_varint(a1, v3, v4);
+    LODWORD(v5) = *a3;
+    HIDWORD(v5) = v4[1];
+    return j_pb_encode_varint(a1, v3, v5);
   }
   if ( v3 == 4 )
   {
-    v4 = *(unsigned int *)a3;
-    return j_pb_encode_varint(a1, v3, v4);
+    v5 = (unsigned int)*a3;
+    return j_pb_encode_varint(a1, v3, v5);
   }
-  if ( !*(_DWORD *)(a1 + 16) )
-    *(_DWORD *)(a1 + 16) = "invalid data_size";
+  if ( !a1[4] )
+    a1[4] = "invalid data_size";
   return 0;
 }
 
-//----- (0000D578) --------------------------------------------------------
-signed int __fastcall sub_D578(int a1, int a2, _QWORD *a3)
+//----- (0000DFB8) --------------------------------------------------------
+signed int __fastcall sub_DFB8(_DWORD *a1, int a2, int *a3)
 {
   int v3; // r1
-  int v4; // r2
+  int v4; // r3
   int v5; // r1
-  unsigned __int8 v6; // cf
-  __int64 v7; // r2
+  __int64 v6; // r2
 
   v3 = *(unsigned __int8 *)(a2 + 4);
   if ( v3 == 8 )
   {
-    v5 = *a3 >> 32;
     v4 = *a3;
+    v5 = a3[1];
     goto LABEL_5;
   }
   if ( v3 == 4 )
   {
-    v4 = *(_DWORD *)a3;
-    v5 = v4 >> 31;
+    v4 = *a3;
+    v5 = *a3 >> 31;
 LABEL_5:
-    v6 = __CFADD__(v4, v4);
-    LODWORD(v7) = 2 * v4 ^ (v5 >> 31);
-    HIDWORD(v7) = (v5 + v6 + v5) ^ (v5 >> 31);
-    return j_pb_encode_varint(a1, v5, v7);
+    LODWORD(v6) = 2 * v4 ^ (v5 >> 31);
+    HIDWORD(v6) = (v5 + __CFADD__(v4, v4) + v5) ^ (v5 >> 31);
+    return j_pb_encode_varint(a1, v5, v6);
   }
-  if ( !*(_DWORD *)(a1 + 16) )
-    *(_DWORD *)(a1 + 16) = "invalid data_size";
+  if ( !a1[4] )
+    a1[4] = "invalid data_size";
   return 0;
 }
 
-//----- (0000D5B4) --------------------------------------------------------
-signed int __fastcall sub_D5B4(int a1, int a2, int a3)
+//----- (0000DFF4) --------------------------------------------------------
+signed int __fastcall sub_DFF4(_DWORD *a1, int a2, int a3)
 {
   return j_j_pb_write(a1, a3, 4);
 }
 
-//----- (0000D5BC) --------------------------------------------------------
-signed int __fastcall sub_D5BC(int a1, int a2, int a3)
+//----- (0000DFFC) --------------------------------------------------------
+signed int __fastcall sub_DFFC(_DWORD *a1, int a2, int a3)
 {
   return j_j_pb_write(a1, a3, 8);
 }
 
-//----- (0000D5C4) --------------------------------------------------------
-int __fastcall sub_D5C4(int a1, int a2, int *a3)
+//----- (0000E004) --------------------------------------------------------
+int __fastcall sub_E004(_DWORD *a1, int a2, int *a3)
 {
-  int v3; // r4
+  _DWORD *v3; // r4
   int v4; // r5
   signed int v5; // r0
   int result; // r0
@@ -11784,8 +12167,8 @@ LABEL_10:
     v4 = v5;
     goto LABEL_11;
   }
-  if ( !*(_DWORD *)(a1 + 16) )
-    *(_DWORD *)(a1 + 16) = "bytes size exceeded";
+  if ( !a1[4] )
+    a1[4] = "bytes size exceeded";
   v4 = 0;
 LABEL_11:
   result = _stack_chk_guard - v9;
@@ -11794,51 +12177,53 @@ LABEL_11:
   return result;
 }
 
-//----- (0000D648) --------------------------------------------------------
-signed int __fastcall sub_D648(int a1, int a2, int a3)
+//----- (0000E088) --------------------------------------------------------
+signed int __fastcall sub_E088(_DWORD *a1, int a2, int a3)
 {
-  unsigned int v3; // r12
-  unsigned int v4; // r3
+  unsigned int v3; // lr
+  unsigned int v4; // r12
+  _BYTE *v5; // r1
 
-  v3 = *(unsigned __int8 *)(a2 + 4);
+  v3 = 0;
+  v4 = *(unsigned __int8 *)(a2 + 4);
   if ( (*(_BYTE *)(a2 + 1) & 0xC0) == 128 )
-    v3 = -1;
-  v4 = 0;
-  if ( a3 && v3 )
+    v4 = -1;
+  if ( a3 && v4 )
   {
+    v5 = (_BYTE *)a3;
     do
     {
-      if ( !*(_BYTE *)(a3 + v4) )
+      if ( !*v5 )
         break;
-      ++v4;
+      ++v3;
+      ++v5;
     }
-    while ( v4 < v3 );
+    while ( v3 < v4 );
   }
-  return j_j_pb_encode_string(a1, a3, v4);
+  return j_j_pb_encode_string(a1, a3, v3);
 }
 
-//----- (0000D678) --------------------------------------------------------
-signed int __fastcall sub_D678(int a1, int a2, int *a3)
+//----- (0000E0C4) --------------------------------------------------------
+signed int __fastcall sub_E0C4(_DWORD *a1, int a2, int *a3)
 {
   unsigned __int8 *v3; // r1
 
   v3 = *(unsigned __int8 **)(a2 + 6);
   if ( v3 )
     return j_pb_encode_submessage(a1, v3, a3);
-  if ( !*(_DWORD *)(a1 + 16) )
-    *(_DWORD *)(a1 + 16) = "invalid field descriptor";
+  if ( !a1[4] )
+    a1[4] = "invalid field descriptor";
   return 0;
 }
 
-//----- (0000D698) --------------------------------------------------------
-unsigned int *__fastcall sub_D698(unsigned int *result, signed int *a2, int *a3)
+//----- (0000E0E4) --------------------------------------------------------
+unsigned int *__fastcall sub_E0E4(unsigned int *result, signed int *a2, _DWORD *a3)
 {
   unsigned int v3; // r3
   unsigned int v4; // t1
   int v5; // r12
   bool v6; // zf
-  int v7; // r3
-  signed int v8; // r12
+  signed int v7; // r2
 
   v3 = *result;
   if ( (*result & 0x80000000) == 0 )
@@ -11850,56 +12235,55 @@ unsigned int *__fastcall sub_D698(unsigned int *result, signed int *a2, int *a3)
     return result;
   }
   v5 = (v3 >> 24) & 0xF;
-  if ( v5 )
+  v6 = v5 == 3;
+  if ( v5 != 3 )
+    v6 = v5 == 1;
+  if ( v6 )
   {
-    v6 = v5 == 3;
-    if ( v5 != 3 )
-      v6 = v5 == 1;
-    if ( !v6 )
-      return 0;
-    v7 = 4 * ((v3 >> 16) & 0xFF) + 4;
-    v8 = 2;
+    *a3 = 4 * ((v3 >> 16) & 0xFF) + 4;
+    v7 = 2;
   }
   else
   {
-    v8 = 1;
-    v7 = 4;
+    if ( v5 )
+      return 0;
+    *a3 = 4;
+    v7 = 1;
   }
-  *a3 = v7;
-  *a2 = v8;
+  *a2 = v7;
   return result;
 }
 
-//----- (0000D6EC) --------------------------------------------------------
-signed int __fastcall sub_D6EC(int a1, int a2, unsigned int a3, unsigned int a4)
+//----- (0000E134) --------------------------------------------------------
+signed int __fastcall sub_E134(int a1, int a2, unsigned int a3, unsigned int a4)
 {
   int v4; // r4
-  unsigned int v5; // r5
-  unsigned int v6; // r11
-  int v7; // r9
-  unsigned int v8; // r7
-  int v9; // r10
-  int v10; // r0
-  int v11; // r2
-  int v12; // r1
+  unsigned int v5; // r11
+  unsigned int v6; // r7
+  int v7; // r5
+  signed int v8; // r6
+  unsigned int v9; // r9
+  int v10; // r10
+  int v11; // r0
+  int v12; // r2
+  int v13; // r2
   signed int result; // r0
-  int v14; // r3
-  int v15; // r2
-  int v16; // r0
-  int v17; // r1
+  int v15; // r3
+  int v16; // r2
+  int v17; // r0
   int v18; // r1
-  int v19; // r6
-  int v20; // r2
-  int v21; // r0
-  int v22; // r1
-  int v23; // r3
-  int v24; // r0
-  int v25; // r0
-  unsigned int v32; // r1
-  unsigned int v33; // r0
-  int v34; // r1
+  int v19; // r2
+  int v20; // r0
+  int v21; // r1
+  int v22; // r3
+  signed int v23; // r9
+  int v24; // r6
+  char v25; // r0
+  int v26; // r1
+  int v28; // r0
+  unsigned int v34; // r2
   unsigned int v35; // r0
-  int v36; // [sp+0h] [bp-30h]
+  unsigned int v36; // r0
   int v37; // [sp+4h] [bp-2Ch]
 
   v4 = a1;
@@ -11908,98 +12292,39 @@ signed int __fastcall sub_D6EC(int a1, int a2, unsigned int a3, unsigned int a4)
   v7 = a2;
   if ( a3 >= a4 )
   {
-LABEL_54:
-    sub_DFE4(v4, 14, &v37);
-    sub_E012(v4, 15, v37);
+LABEL_59:
+    sub_EA30(v4, 14, &v37);
+    sub_EA5E(v4, 15, v37);
     return 8;
   }
-  v36 = 0;
+  v8 = 0;
   do
   {
-    v8 = v6 + 1;
-    v9 = *(unsigned __int8 *)(v7 + (v6 ^ 3));
-    if ( !(v9 & 0x80) )
+    v9 = v6 + 1;
+    v10 = *(unsigned __int8 *)(v7 + (v6 ^ 3));
+    if ( (v10 & 0x80u) == 0 )
     {
-      sub_DFE4(v4, 13, &v37);
-      v10 = 4 * v9;
-      if ( v9 & 0x40 )
-        v11 = -4 - (v10 & 0xFC) + v37;
-      else
-        v11 = v10 + v37 + 4;
-LABEL_12:
-      v37 = v11;
-LABEL_13:
-      sub_E012(v4, 13, v11);
-LABEL_36:
-      v6 = v8;
+      sub_EA30(v4, 13, &v37);
+      v11 = 4 * v10 + 4;
+      if ( v10 & 0x40 )
+        v11 = -4 - (unsigned __int8)(4 * v10);
+      v12 = v37 + v11;
+      v37 += v11;
+LABEL_7:
+      sub_EA5E(v4, 13, v12);
+LABEL_34:
+      ++v6;
       continue;
     }
-    v12 = v9 & 0xF0;
+    v13 = v10 & 0xF0;
     result = 9;
-    if ( v12 > 175 )
+    if ( v13 > 175 )
     {
-      switch ( v12 )
+      if ( v13 != 176 )
       {
-        case 176:
-          result = 9;
-          v18 = 0;
-          v19 = 0;
-          switch ( v9 )
-          {
-            case 176:
-              goto LABEL_53;
-            case 177:
-              if ( v8 >= v5 )
-                return 9;
-              v20 = *(unsigned __int8 *)(v7 + (v8 ^ 3));
-              result = 9;
-              if ( !*(_BYTE *)(v7 + (v8 ^ 3)) || v20 & 0xF0 )
-                return result;
-              v21 = v4;
-              v22 = 0;
-              v23 = 0;
-              goto LABEL_48;
-            case 178:
-              break;
-            case 179:
-              v23 = 1;
-              v25 = *(unsigned __int8 *)(v7 + (v8 ^ 3));
-              _R1 = v25 << 12;
-              __asm { UXTB16.W        R1, R1 }
-              v20 = ((v25 & 0xF) + 1) | _R1;
-              v21 = v4;
-              v22 = 1;
-LABEL_48:
-              sub_DACC(v21, v22, v20, v23);
-              goto LABEL_49;
-            case 180:
-            case 181:
-            case 182:
-            case 183:
-              return result;
-            default:
-              v17 = 1;
-              v14 = 1;
-              v15 = ((v9 & 7) + 1) | 0x80000;
-              v16 = v4;
-              goto LABEL_35;
-          }
-          while ( v8 < v5 )
-          {
-            v24 = v8++ ^ 3;
-            LOBYTE(v24) = *(_BYTE *)(v7 + v24);
-            v19 |= (v24 & 0x7F) << v18;
-            v18 += 7;
-            if ( !(v24 & 0x80) )
-            {
-              sub_DFE4(v4, 13, &v37);
-              v11 = v37 + 4 * v19 + 516;
-              goto LABEL_12;
-            }
-          }
-          break;
-        case 192:
-          switch ( v9 )
+        if ( v13 == 192 )
+        {
+          switch ( v10 )
           {
             case 192:
             case 193:
@@ -12007,90 +12332,156 @@ LABEL_48:
             case 195:
             case 196:
             case 197:
-              v17 = 3;
-              v15 = ((v9 & 7) + 1) | 0xA0000;
-              v16 = v4;
-              goto LABEL_34;
+              v18 = 3;
+              v16 = ((v10 & 7) + 1) | 0xA0000;
+              v17 = v4;
+              goto LABEL_32;
             case 198:
-              v35 = *(unsigned __int8 *)(v7 + (v8 ^ 3));
-              if ( (v35 & 0xF) + (v35 >> 4) > 0xF )
+              v36 = *(unsigned __int8 *)(v7 + (v9 ^ 3));
+              if ( (v36 & 0xF) + (v36 >> 4) > 0xF )
                 return 9;
-              v20 = ((v35 & 0xF) + 1) | (v35 >> 4 << 16);
-              v21 = v4;
-              v22 = 3;
-              goto LABEL_47;
+              v19 = ((v36 & 0xF) + 1) | (v36 >> 4 << 16);
+              v20 = v4;
+              v21 = 3;
+              goto LABEL_52;
             case 199:
-              if ( !*(_BYTE *)(v7 + (v8 ^ 3)) || *(unsigned __int8 *)(v7 + (v8 ^ 3)) >= 0x10u )
+              if ( !*(_BYTE *)(v7 + (v9 ^ 3)) || *(unsigned __int8 *)(v7 + (v9 ^ 3)) >= 0x10u )
                 return 9;
-              goto LABEL_49;
+              goto LABEL_54;
             case 200:
             case 201:
-              v32 = *(unsigned __int8 *)(v7 + (v8 ^ 3));
-              v33 = v32 >> 4;
-              if ( v9 == 200 )
-                v33 = (v32 >> 4) | 0x10;
-              v34 = v32 & 0xF;
-              if ( v33 + v34 > 0x1F )
+              v34 = *(unsigned __int8 *)(v7 + (v9 ^ 3));
+              v35 = v34 >> 4;
+              if ( (unsigned __int8)v10 == 200 )
+                v35 = (v34 >> 4) | 0x10;
+              if ( v35 + (v34 & 0xF) > 0x1F )
                 return 9;
-              v20 = (v34 + 1) | (v33 << 16);
-              v21 = v4;
-              v22 = 1;
-LABEL_47:
-              v23 = 5;
-              goto LABEL_48;
+              v19 = ((v34 & 0xF) + 1) | (v35 << 16);
+              v20 = v4;
+              v21 = 1;
+LABEL_52:
+              v22 = 5;
+              goto LABEL_53;
             default:
               return 9;
           }
-        case 208:
-          if ( v9 & 8 )
-            return 9;
-          v17 = 1;
-          v15 = ((v9 & 7) + 1) | 0x80000;
-          v16 = v4;
-LABEL_34:
-          v14 = 5;
-          goto LABEL_35;
-        default:
-          return result;
-      }
-      return 9;
-    }
-    if ( v12 != 128 )
-    {
-      if ( v12 == 144 )
-      {
-        if ( (v9 & 0xF | 2) == 15 )
           return 9;
-        sub_DFE4(v4, v9 & 0xF, &v37);
-        v11 = v37;
-        goto LABEL_13;
+        }
+        if ( v13 != 208 )
+          return result;
+        if ( v10 & 8 )
+          return 9;
+        v18 = 1;
+        v16 = ((v10 & 7) + 1) | 0x80000;
+        v17 = v4;
+LABEL_32:
+        v15 = 5;
+        goto LABEL_33;
       }
-      if ( v12 != 160 )
-        return result;
-      v14 = 0;
-      v15 = ((16 << ((*(_BYTE *)(v7 + (v6 ^ 3)) & 7) + 1)) - 16) | (*(unsigned __int8 *)(v7 + (v6 ^ 3)) << 11) & 0x4000;
-      v16 = v4;
-      v17 = 0;
-LABEL_35:
-      sub_DACC(v16, v17, v15, v14);
-      goto LABEL_36;
+      result = 9;
+      switch ( v10 )
+      {
+        case 176:
+          goto LABEL_58;
+        case 177:
+          if ( v9 >= v5 )
+            return 9;
+          v19 = *(unsigned __int8 *)(v7 + (v9 ^ 3));
+          result = 9;
+          if ( !*(_BYTE *)(v7 + (v9 ^ 3)) || v19 & 0xF0 )
+            return result;
+          v20 = v4;
+          v21 = 0;
+          v22 = 0;
+          goto LABEL_53;
+        case 178:
+          if ( v9 >= v5 )
+            return 9;
+          v23 = v8;
+          v6 += 2;
+          v24 = 0;
+          v25 = 0;
+          break;
+        case 179:
+          v22 = 1;
+          v28 = *(unsigned __int8 *)(v7 + (v9 ^ 3));
+          _R1 = v28 << 12;
+          __asm { UXTB16.W        R1, R1 }
+          v19 = ((v28 & 0xF) + 1) | _R1;
+          v20 = v4;
+          v21 = 1;
+LABEL_53:
+          sub_E524(v20, v21, v19, v22);
+LABEL_54:
+          v6 += 2;
+          continue;
+        case 180:
+        case 181:
+        case 182:
+        case 183:
+          return result;
+        default:
+          v18 = 1;
+          v15 = 1;
+          v16 = ((v10 & 7) + 1) | 0x80000;
+          v17 = v4;
+          goto LABEL_33;
+      }
+      while ( 1 )
+      {
+        v26 = *(char *)(v7 + ((v6 - 1) ^ 3));
+        v24 |= (v26 & 0x7F) << v25;
+        if ( v26 >= 0 )
+          break;
+        v25 += 7;
+        _CF = v6++ >= v5;
+        if ( _CF )
+          return 9;
+      }
+      sub_EA30(v4, 13, &v37);
+      v37 += 4 * v24 + 516;
+      sub_EA5E(v4, 13, v37);
+      v8 = v23;
     }
-    if ( v8 >= v5 || !((unsigned __int16)((_WORD)v9 << 12) | 16 * *(unsigned __int8 *)(v7 + ((v6 + 1) ^ 3))) )
-      return 9;
-    sub_DACC(v4, 0, (unsigned __int16)((_WORD)v9 << 12) | 16 * *(unsigned __int8 *)(v7 + (v8 ^ 3)), 0);
-    v36 |= (((_WORD)v9 << 12) & 0x8000u) >> 15;
-LABEL_49:
-    v6 += 2;
+    else
+    {
+      if ( v13 != 128 )
+      {
+        if ( v13 == 144 )
+        {
+          if ( (v10 & 0xF | 2) == 15 )
+            return 9;
+          sub_EA30(v4, v10 & 0xF, &v37);
+          v12 = v37;
+          goto LABEL_7;
+        }
+        if ( v13 != 160 )
+          return result;
+        v15 = 0;
+        v16 = ((16 << ((*(_BYTE *)(v7 + (v6 ^ 3)) & 7) + 1)) - 16) | (*(unsigned __int8 *)(v7 + (v6 ^ 3)) << 11) & 0x4000;
+        v17 = v4;
+        v18 = 0;
+LABEL_33:
+        sub_E524(v17, v18, v16, v15);
+        goto LABEL_34;
+      }
+      if ( v9 >= v5 || !((unsigned __int16)((_WORD)v10 << 12) | 16 * *(unsigned __int8 *)(v7 + ((v6 + 1) ^ 3))) )
+        return 9;
+      sub_E524(v4, 0, (unsigned __int16)((_WORD)v10 << 12) | 16 * *(unsigned __int8 *)(v7 + (v9 ^ 3)), 0);
+      if ( (((_WORD)v10 << 12) & 0x8000u) != 0 )
+        v8 = 1;
+      v6 += 2;
+    }
   }
   while ( v6 < v5 );
-LABEL_53:
-  if ( !(v36 & 1) )
-    goto LABEL_54;
+LABEL_58:
+  if ( !(v8 & 1) )
+    goto LABEL_59;
   return 8;
 }
 
-//----- (0000DA30) --------------------------------------------------------
-signed int __fastcall sub_DA30(int a1, int a2, unsigned int a3, int a4, int *a5)
+//----- (0000E488) --------------------------------------------------------
+signed int __fastcall sub_E488(int a1, int a2, unsigned int a3, int a4, int *a5)
 {
   int v5; // r5
   int v6; // r4
@@ -12098,8 +12489,9 @@ signed int __fastcall sub_DA30(int a1, int a2, unsigned int a3, int a4, int *a5)
   int v8; // r2
   int v9; // r0
   int v10; // r1
-  __int64 v11; // r2
+  int v11; // r2
   int v12; // r1
+  int v13; // r3
 
   v5 = a3;
   v6 = a1;
@@ -12122,12 +12514,13 @@ signed int __fastcall sub_DA30(int a1, int a2, unsigned int a3, int a4, int *a5)
       }
       if ( a4 != 1 || a3 > 0xF )
         return 2;
-      sub_E0F4(a1);
+      sub_EB40(a1);
 LABEL_19:
-      v11 = *(_QWORD *)a5;
+      v11 = *a5;
       v12 = v5 + 256;
+      v13 = a5[1];
 LABEL_20:
-      result = sub_E086(v6, v12, v11, SHIDWORD(v11));
+      result = sub_EAD2(v6, v12, v11, v13);
 LABEL_21:
       if ( result )
         result = 2;
@@ -12136,8 +12529,9 @@ LABEL_21:
       result = 2;
       if ( a3 > 0x1F || a4 != 5 )
         return result;
-      v11 = *(_QWORD *)a5;
+      v11 = *a5;
       v12 = v5 + 112;
+      v13 = a5[1];
       goto LABEL_20;
     case 4:
       result = 2;
@@ -12147,10 +12541,10 @@ LABEL_21:
       v10 = v5 + 192;
       v9 = v6;
 LABEL_11:
-      result = sub_E012(v9, v10, v8);
+      result = sub_EA5E(v9, v10, v8);
       goto LABEL_21;
     default:
-      sub_DE4C(
+      sub_E894(
         (int)"_Unwind_VRS_Result _Unwind_VRS_Set(_Unwind_Context *, _Unwind_VRS_RegClass, uint32_t, _Unwind_VRS_DataRepre"
              "sentation, void *)",
         837,
@@ -12159,30 +12553,28 @@ LABEL_11:
   }
 }
 
-//----- (0000DACC) --------------------------------------------------------
-signed int __fastcall sub_DACC(int a1, int a2, unsigned int a3, int a4)
+//----- (0000E524) --------------------------------------------------------
+signed int __fastcall sub_E524(int a1, int a2, unsigned int a3, int a4)
 {
   int v4; // r8
   int v5; // r5
   int v6; // r7
   unsigned int v7; // r6
-  int v8; // r4
+  signed int v8; // r4
   unsigned int v9; // r7
   int *v10; // r0
   signed int v11; // r0
-  signed int v12; // r1
-  signed int v13; // r2
+  int v12; // r2
+  unsigned int v13; // r4
+  unsigned int v14; // r6
+  int *v15; // r0
+  int v16; // r2
+  int v17; // r0
   signed int result; // r0
-  unsigned int v15; // r4
-  unsigned int v16; // r6
-  int *v17; // r0
-  int v18; // r2
-  int v19; // r0
-  int v20; // r2
-  int *v21; // [sp+8h] [bp-30h]
-  int v22; // [sp+Ch] [bp-2Ch]
-  int *v23; // [sp+10h] [bp-28h]
-  int v24; // [sp+14h] [bp-24h]
+  int *v19; // [sp+8h] [bp-30h]
+  int v20; // [sp+Ch] [bp-2Ch]
+  int *v21; // [sp+10h] [bp-28h]
+  int v22; // [sp+14h] [bp-24h]
 
   v4 = a1;
   v5 = a2;
@@ -12192,101 +12584,96 @@ signed int __fastcall sub_DACC(int a1, int a2, unsigned int a3, int a4)
   {
     case 0:
     case 4:
-      if ( a4 || sub_DFE4(a1, 13, &v21) )
-        goto LABEL_23;
+      if ( a4 || sub_EA30(a1, 13, &v19) )
+        goto LABEL_22;
       v8 = 0;
       v9 = 0;
+      do
+      {
+        if ( (1 << v9) & v7 )
+        {
+          v10 = v19;
+          ++v19;
+          v21 = (int *)*v10;
+          if ( sub_E488(v4, v5, v9, 0, (int *)&v21) )
+            goto LABEL_22;
+          v11 = v8;
+          if ( v9 == 13 )
+            v11 = 1;
+          if ( !v5 )
+            v8 = v11;
+        }
+        ++v9;
+      }
+      while ( v9 < 0x10 );
+      if ( v8 & 1 )
+      {
+        result = 0;
+        goto LABEL_23;
+      }
+      v12 = (int)v19;
       break;
     case 1:
     case 3:
-      if ( (a4 | 4) != 5 || sub_DFE4(a1, 13, &v23) )
-        goto LABEL_23;
+      if ( (a4 | 4) != 5 || sub_EA30(a1, 13, &v21) )
+        goto LABEL_22;
       if ( !(_WORD)v7 )
-        goto LABEL_21;
-      v15 = v7 >> 16;
-      v16 = (v7 >> 16) + (unsigned __int16)v7;
-      while ( 1 )
+        goto LABEL_20;
+      v13 = v7 >> 16;
+      v14 = (v7 >> 16) + (unsigned __int16)v7;
+      do
       {
-        v17 = v23;
-        ++v23;
-        v18 = *v17;
-        v23 = v17 + 2;
-        v19 = v17[1];
-        v21 = (int *)v18;
-        v22 = v19;
-        if ( sub_DA30(v4, v5, v15, v6, (int *)&v21) )
-          goto LABEL_23;
-        if ( ++v15 >= v16 )
+        v15 = v21;
+        ++v21;
+        v16 = *v15;
+        v21 = v15 + 2;
+        v17 = v15[1];
+        v19 = (int *)v16;
+        v20 = v17;
+        if ( sub_E488(v4, v5, v13, v6, (int *)&v19) )
         {
-LABEL_21:
-          if ( v6 == 1 )
-          {
-            v20 = (int)(v23 + 1);
-            ++v23;
-            goto LABEL_27;
-          }
-          goto LABEL_25;
+LABEL_22:
+          result = 2;
+          goto LABEL_23;
         }
+        ++v13;
       }
+      while ( v13 < v14 );
+LABEL_20:
+      if ( v6 != 1 )
+        goto LABEL_24;
+      v12 = (int)(v21 + 1);
+      ++v21;
+      break;
     default:
-      sub_DE4C(
+      sub_E894(
         (int)"_Unwind_VRS_Result _Unwind_VRS_Pop(_Unwind_Context *, _Unwind_VRS_RegClass, uint32_t, _Unwind_VRS_DataRepresentation)",
         971,
         (int)"unsupported register class");
       return result;
   }
-  do
+  while ( 1 )
   {
-    if ( (1 << v9) & v7 )
-    {
-      v10 = v21;
-      ++v21;
-      v23 = (int *)*v10;
-      v11 = sub_DA30(v4, v5, v9, 0, (int *)&v23);
-      v12 = 0;
-      v13 = 0;
-      if ( v9 == 13 )
-        v12 = 1;
-      if ( !v5 )
-        v13 = 1;
-      if ( v11 )
-      {
-LABEL_23:
-        result = 2;
-        goto LABEL_24;
-      }
-      v8 |= v13 & v12;
-    }
-    ++v9;
-  }
-  while ( v9 < 0x10 );
-  if ( !(v8 & 1) )
-  {
-    v20 = (int)v21;
-    goto LABEL_27;
-  }
-  result = 0;
-LABEL_24:
-  while ( _stack_chk_guard != v24 )
-  {
-LABEL_25:
-    v20 = (int)v23;
-LABEL_27:
-    result = sub_E012(v4, 13, v20);
+    result = sub_EA5E(v4, 13, v12);
     if ( result )
       result = 2;
+LABEL_23:
+    if ( _stack_chk_guard == v22 )
+      break;
+LABEL_24:
+    v12 = (int)v21;
   }
   return result;
 }
 
-//----- (0000DC0C) --------------------------------------------------------
-signed int __fastcall sub_DC0C(int a1, int a2, int a3)
+//----- (0000E658) --------------------------------------------------------
+signed int __fastcall sub_E658(int a1, int a2, int a3)
 {
-  return sub_DC14(a2, a3);
+  return sub_E660(a2, a3);
 }
 
-//----- (0000DC14) --------------------------------------------------------
-signed int __fastcall sub_DC14(int a1, int a2)
+//----- (0000E660) --------------------------------------------------------
+signed int __fastcall sub_E660(int a1, int a2)
 {
   int v2; // r5
   int v3; // r4
@@ -12297,103 +12684,101 @@ signed int __fastcall sub_DC14(int a1, int a2)
 
   v2 = a1;
   v3 = a2;
-  sub_E0C4(a2, (int)&v6);
+  sub_EB10(a2, (int)&v6);
   if ( !(*(_BYTE *)(v2 + 80) & 1) && *v7 )
     return 9;
-  v5 = sub_E0BE(v3);
-  result = 9;
-  if ( v5 == 1 )
-    result = 8;
+  v5 = sub_EB0A(v3);
+  result = 8;
+  if ( v5 != 1 )
+    result = 9;
   return result;
 }
 
-//----- (0000DC70) --------------------------------------------------------
-signed int __fastcall sub_DC70(int a1, int a2, int a3)
+//----- (0000E6BC) --------------------------------------------------------
+signed int __fastcall sub_E6BC(int a1, int a2, int a3)
 {
-  return sub_DC14(a2, a3);
+  return sub_E660(a2, a3);
 }
 
-//----- (0000DC78) --------------------------------------------------------
-signed int __fastcall sub_DC78(int a1, int a2, int a3)
+//----- (0000E6C4) --------------------------------------------------------
+signed int __fastcall sub_E6C4(int a1, int a2, int a3)
 {
-  return sub_DC14(a2, a3);
+  return sub_E660(a2, a3);
 }
 
-//----- (0000DD2C) --------------------------------------------------------
-int __fastcall sub_DD2C(int a1, int *a2, char a3)
+//----- (0000E778) --------------------------------------------------------
+int __fastcall sub_E778(int a1, int *a2, char a3)
 {
   int *v3; // r4
   char v4; // r10
-  signed int i; // r6
-  signed int v6; // r7
-  int (__fastcall *v7)(signed int, int *, char *); // r3
-  int v8; // r0
-  int v10; // [sp+0h] [bp-4B8h]
-  int v11; // [sp+4h] [bp-4B4h]
-  int (__fastcall *v12)(signed int, int *, char *); // [sp+10h] [bp-4A8h]
-  int v13; // [sp+18h] [bp-4A0h]
-  int v14; // [sp+24h] [bp-494h]
-  int v15; // [sp+2Ch] [bp-48Ch]
-  char v16; // [sp+30h] [bp-488h]
-  int v17; // [sp+494h] [bp-24h]
+  int i; // r7
+  int v6; // r6
+  int (__fastcall *v7)(int, int *, char *); // r3
+  int v8; // r1
+  int v9; // r0
+  int v11; // [sp+0h] [bp-4B8h]
+  int v12; // [sp+4h] [bp-4B4h]
+  int (__fastcall *v13)(int, int *, char *); // [sp+10h] [bp-4A8h]
+  int v14; // [sp+18h] [bp-4A0h]
+  int v15; // [sp+24h] [bp-494h]
+  int v16; // [sp+2Ch] [bp-48Ch]
+  char v17; // [sp+30h] [bp-488h]
+  int v18; // [sp+494h] [bp-24h]
 
   v3 = a2;
   v4 = a3;
-  sub_DFA0((int)&v16, a1);
-  for ( i = 1; ; --i )
+  sub_E9E8((int)&v17, a1);
+  for ( i = 0; ; ++i )
   {
-    v6 = 1;
-    if ( v4 & 1 )
+    v6 = v4 & 1;
+    if ( i == 1 && v4 & 1 )
     {
-      v6 = 2;
-      if ( !i )
-      {
-        sub_E012((int)&v16, -1, v3[4]);
-        v4 = 0;
-      }
+      sub_EA5E((int)&v17, -1, v3[4]);
+      v4 = 0;
     }
-    sub_DFE4((int)&v16, -2, &v15);
-    if ( sub_E0C4((int)&v16, (int)&v11) )
+    sub_EA30((int)&v17, -2, &v16);
+    if ( sub_EB10((int)&v17, (int)&v12) )
       break;
-    v7 = v12;
-    if ( v12 )
+    v7 = v13;
+    if ( v13 )
     {
-      v3[18] = v11;
-      v3[19] = v14;
-      v3[20] = v13;
-      v8 = v7(v6, v3, &v16);
-      if ( v8 == 7 )
+      v8 = v15;
+      v3[18] = v12;
+      v3[19] = v8;
+      v3[20] = v14;
+      v9 = v7(v6 + 1, v3, &v17);
+      if ( v9 == 7 )
       {
-        sub_DFE4((int)&v16, -1, &v10);
-        v3[4] = v10;
-        sub_E0E2((int)&v16);
-        return _stack_chk_guard - v17;
+        sub_EA30((int)&v17, -1, &v11);
+        v3[4] = v11;
+        sub_EB2E((int)&v17);
+        return _stack_chk_guard - v18;
       }
-      if ( v8 != 8 )
+      if ( v9 != 8 )
       {
-        if ( v8 == 9 )
+        if ( v9 == 9 )
           abort();
-        return _stack_chk_guard - v17;
+        return _stack_chk_guard - v18;
       }
-      if ( v15 == v3[8] )
-        sub_DE4C(
+      if ( v16 == v3[8] )
+        sub_E894(
           (int)"_Unwind_Reason_Code unwind_phase2(unw_context_t *, _Unwind_Exception *, bool)",
           653,
           (int)"during phase1 personality function said it would stop here, but now in phase2 it did not stop here");
     }
   }
-  return _stack_chk_guard - v17;
+  return _stack_chk_guard - v18;
 }
 
-//----- (0000DE4C) --------------------------------------------------------
-void __fastcall __noreturn sub_DE4C(int a1, int a2, int a3)
+//----- (0000E894) --------------------------------------------------------
+void __fastcall __noreturn sub_E894(int a1, int a2, int a3)
 {
   fprintf((FILE *)stderr, "libunwind: %s %s:%d - %s\n", a1, "external/libunwind_llvm/src/Unwind-EHABI.cpp", a2, a3);
   abort();
 }
 
-//----- (0000DF18) --------------------------------------------------------
-int __fastcall sub_DF18(_DWORD *a1, int a2, int a3, int a4, int a5)
+//----- (0000E960) --------------------------------------------------------
+int __fastcall sub_E960(_DWORD *a1, int a2, int a3, int a4, int a5)
 {
   int v5; // r4
   int v6; // r5
@@ -12425,8 +12810,8 @@ int __fastcall sub_DF18(_DWORD *a1, int a2, int a3, int a4, int a5)
   return 0;
 }
 
-//----- (0000DF30) --------------------------------------------------------
-_QWORD *__fastcall sub_DF30(_QWORD *result)
+//----- (0000E978) --------------------------------------------------------
+_QWORD *__fastcall sub_E978(_QWORD *result)
 {
   __int64 v1; // d0
   __int64 v2; // d1
@@ -12464,8 +12849,8 @@ _QWORD *__fastcall sub_DF30(_QWORD *result)
   return result;
 }
 
-//----- (0000DF38) --------------------------------------------------------
-_QWORD *__fastcall sub_DF38(_QWORD *result)
+//----- (0000E980) --------------------------------------------------------
+_QWORD *__fastcall sub_E980(_QWORD *result)
 {
   __int64 v1; // d0
   __int64 v2; // d1
@@ -12503,8 +12888,8 @@ _QWORD *__fastcall sub_DF38(_QWORD *result)
   return result;
 }
 
-//----- (0000DF40) --------------------------------------------------------
-_QWORD *__fastcall sub_DF40(_QWORD *result)
+//----- (0000E988) --------------------------------------------------------
+_QWORD *__fastcall sub_E988(_QWORD *result)
 {
   __int64 v1; // d16
   __int64 v2; // d17
@@ -12542,8 +12927,8 @@ _QWORD *__fastcall sub_DF40(_QWORD *result)
   return result;
 }
 
-//----- (0000DF48) --------------------------------------------------------
-void sub_DF48()
+//----- (0000E990) --------------------------------------------------------
+void sub_E990()
 {
   __asm
   {
@@ -12566,8 +12951,8 @@ void sub_DF48()
   }
 }
 
-//----- (0000DF8C) --------------------------------------------------------
-void sub_DF8C()
+//----- (0000E9D4) --------------------------------------------------------
+void sub_E9D4()
 {
   __asm
   {
@@ -12578,27 +12963,27 @@ void sub_DF8C()
   }
 }
 
-//----- (0000DFA0) --------------------------------------------------------
-int __fastcall sub_DFA0(int a1, int a2)
+//----- (0000E9E8) --------------------------------------------------------
+int __fastcall sub_E9E8(int a1, int a2)
 {
   int v2; // r4
 
   v2 = a1;
-  *(_DWORD *)a1 = &off_14BC4;
-  *(_DWORD *)(a1 + 4) = &unk_158B0;
   *(_BYTE *)(a1 + 76) = 0;
   *(_DWORD *)(a1 + 72) = 0;
+  *(_DWORD *)(a1 + 4) = &unk_168E0;
+  *(_DWORD *)a1 = &off_15B98;
   _aeabi_memcpy(a1 + 8, a2, 64);
   _aeabi_memclr8(v2 + 80, 450);
-  sub_E4B8(v2, 0);
+  sub_EEFC(v2, 0);
   return 0;
 }
-// 3AF0: using guessed type int __fastcall _aeabi_memcpy(_DWORD, _DWORD, _DWORD);
-// 3C34: using guessed type int __fastcall _aeabi_memclr8(_DWORD, _DWORD);
-// 14BC4: using guessed type void *;
+// 3D5C: using guessed type int __fastcall _aeabi_memcpy(_DWORD, _DWORD, _DWORD);
+// 3EA0: using guessed type int __fastcall _aeabi_memclr8(_DWORD, _DWORD);
+// 15B98: using guessed type void *;
 
-//----- (0000DFE4) --------------------------------------------------------
-signed int __fastcall sub_DFE4(int a1, int a2, _DWORD *a3)
+//----- (0000EA30) --------------------------------------------------------
+signed int __fastcall sub_EA30(int a1, int a2, _DWORD *a3)
 {
   int v3; // r6
   _DWORD *v4; // r4
@@ -12613,8 +12998,8 @@ signed int __fastcall sub_DFE4(int a1, int a2, _DWORD *a3)
   return 0;
 }
 
-//----- (0000E012) --------------------------------------------------------
-signed int __fastcall sub_E012(int a1, int a2, int a3)
+//----- (0000EA5E) --------------------------------------------------------
+signed int __fastcall sub_EA5E(int a1, int a2, int a3)
 {
   int v3; // r4
   int v4; // r6
@@ -12634,26 +13019,28 @@ signed int __fastcall sub_E012(int a1, int a2, int a3)
   return v6;
 }
 
-//----- (0000E056) --------------------------------------------------------
-signed int __fastcall sub_E056(int a1, int a2, _QWORD *a3)
+//----- (0000EAA2) --------------------------------------------------------
+signed int __fastcall sub_EAA2(int a1, int a2, int *a3)
 {
   int v3; // r6
-  _QWORD *v4; // r4
+  int *v4; // r4
   int v5; // r5
-  __int64 v6; // r0
+  int v6; // r0
+  int v7; // r1
 
   v3 = a1;
   v4 = a3;
   v5 = a2;
   if ( (*(int (__fastcall **)(int))(*(_DWORD *)a1 + 20))(a1) != 1 )
     return -6542;
-  LODWORD(v6) = (*(int (__fastcall **)(int, int))(*(_DWORD *)v3 + 24))(v3, v5);
+  v6 = (*(int (__fastcall **)(int, int))(*(_DWORD *)v3 + 24))(v3, v5);
+  v4[1] = v7;
   *v4 = v6;
   return 0;
 }
 
-//----- (0000E086) --------------------------------------------------------
-signed int __fastcall sub_E086(int a1, int a2, int a3, int a4)
+//----- (0000EAD2) --------------------------------------------------------
+signed int __fastcall sub_EAD2(int a1, int a2, int a3, int a4)
 {
   int v4; // r7
   int v5; // r5
@@ -12670,14 +13057,14 @@ signed int __fastcall sub_E086(int a1, int a2, int a3, int a4)
   return 0;
 }
 
-//----- (0000E0BE) --------------------------------------------------------
-int __fastcall sub_E0BE(int a1)
+//----- (0000EB0A) --------------------------------------------------------
+int __fastcall sub_EB0A(int a1)
 {
   return (*(int (**)(void))(*(_DWORD *)a1 + 32))();
 }
 
-//----- (0000E0C4) --------------------------------------------------------
-signed int __fastcall sub_E0C4(int a1, int a2)
+//----- (0000EB10) --------------------------------------------------------
+signed int __fastcall sub_EB10(int a1, int a2)
 {
   int v2; // r4
   signed int result; // r0
@@ -12690,40 +13077,32 @@ signed int __fastcall sub_E0C4(int a1, int a2)
   return result;
 }
 
-//----- (0000E0E2) --------------------------------------------------------
-signed int __fastcall sub_E0E2(int a1)
+//----- (0000EB2E) --------------------------------------------------------
+signed int __fastcall sub_EB2E(int a1)
 {
   (*(void (**)(void))(*(_DWORD *)a1 + 40))();
   return -6540;
 }
 
-//----- (0000E0F4) --------------------------------------------------------
-int __fastcall sub_E0F4(int a1)
+//----- (0000EB40) --------------------------------------------------------
+int __fastcall sub_EB40(int a1)
 {
   return (*(int (**)(void))(*(_DWORD *)a1 + 60))();
 }
 
-//----- (0000E0FA) --------------------------------------------------------
-int __fastcall sub_E0FA(int a1, int a2)
+//----- (0000EB46) --------------------------------------------------------
+signed int __fastcall sub_EB46(int a1, int a2)
 {
-  signed int v2; // r2
-  bool v3; // zf
-  signed int v4; // r0
-  unsigned int v5; // r1
+  signed int result; // r0
 
-  v2 = 0;
-  v3 = (a2 & 0xFFFFFFFC) == 192;
-  v4 = 0;
-  v5 = a2 - 16;
-  if ( v3 )
-    v4 = 1;
-  if ( v5 > 0xFFFFFFED )
-    v2 = 1;
-  return v4 | v2;
+  result = 1;
+  if ( (unsigned int)(a2 - 16) <= 0xFFFFFFED && (a2 & 0xFFFFFFFC) != 192 )
+    result = 0;
+  return result;
 }
 
-//----- (0000E11C) --------------------------------------------------------
-int __fastcall sub_E11C(int a1, signed int a2)
+//----- (0000EB60) --------------------------------------------------------
+int __fastcall sub_EB60(int a1, signed int a2)
 {
   signed int v2; // r5
   int v3; // r4
@@ -12760,7 +13139,7 @@ LABEL_11:
   if ( (unsigned int)a2 > 0xC )
   {
     if ( (a2 & 0xFFFFFFFC) != 192 )
-      sub_E538(
+      sub_EF7C(
         (int)"uint32_t libunwind::Registers_arm::getRegister(int)",
         (int)"external/libunwind_llvm/src/Registers.hpp",
         1452,
@@ -12768,7 +13147,7 @@ LABEL_11:
     if ( !*(_BYTE *)(a1 + 76) )
     {
       *(_BYTE *)(a1 + 76) = 1;
-      sub_DF8C();
+      sub_E9D4();
     }
     v4 = v3 + 4 * v2 - 296;
   }
@@ -12779,8 +13158,8 @@ LABEL_11:
   return *(_DWORD *)v4;
 }
 
-//----- (0000E1A8) --------------------------------------------------------
-int __fastcall sub_E1A8(int result, signed int a2, int a3)
+//----- (0000EBEC) --------------------------------------------------------
+int __fastcall sub_EBEC(int result, signed int a2, int a3)
 {
   signed int v3; // r6
   int v4; // r4
@@ -12818,7 +13197,7 @@ LABEL_11:
   if ( (unsigned int)a2 > 0xC )
   {
     if ( (a2 & 0xFFFFFFFC) != 192 )
-      sub_E538(
+      sub_EF7C(
         (int)"void libunwind::Registers_arm::setRegister(int, uint32_t)",
         (int)"external/libunwind_llvm/src/Registers.hpp",
         1471,
@@ -12826,7 +13205,7 @@ LABEL_11:
     if ( !*(_BYTE *)(result + 76) )
     {
       *(_BYTE *)(result + 76) = 1;
-      sub_DF8C();
+      sub_E9D4();
     }
     result = v5 + 4 * v3;
     *(_DWORD *)(result - 296) = v4;
@@ -12839,8 +13218,8 @@ LABEL_11:
   return result;
 }
 
-//----- (0000E234) --------------------------------------------------------
-int __fastcall sub_E234(int a1, int a2)
+//----- (0000EC78) --------------------------------------------------------
+int __fastcall sub_EC78(int a1, int a2)
 {
   signed int v2; // r2
   bool v3; // zf
@@ -12858,14 +13237,14 @@ int __fastcall sub_E234(int a1, int a2)
   return v4 | v2;
 }
 
-//----- (0000E254) --------------------------------------------------------
-__int64 __fastcall sub_E254(int a1, int a2)
+//----- (0000EC98) --------------------------------------------------------
+__int64 __fastcall sub_EC98(int a1, int a2)
 {
   int v2; // r4
   int v3; // r5
   unsigned int v4; // r0
   _QWORD *v5; // r0
-  int v6; // r0
+  int v6; // r1
 
   v2 = a2;
   v3 = a1;
@@ -12875,7 +13254,7 @@ __int64 __fastcall sub_E254(int a1, int a2)
     if ( !*(_BYTE *)(v3 + 75) )
     {
       *(_BYTE *)(v3 + 75) = 1;
-      sub_DF48();
+      sub_E990();
     }
     v6 = v3 + 8 * v2 - 552;
   }
@@ -12884,14 +13263,14 @@ __int64 __fastcall sub_E254(int a1, int a2)
     if ( !*(_BYTE *)(v3 + 74) )
     {
       *(_BYTE *)(v3 + 74) = 1;
-      sub_DF40((_QWORD *)(v3 + 216));
+      sub_E988((_QWORD *)(v3 + 216));
     }
     v6 = v3 + 8 * v2 - 1960;
   }
   else
   {
     if ( v4 != 256 )
-      sub_E538(
+      sub_EF7C(
         (int)"unw_fpreg_t libunwind::Registers_arm::getFloatRegister(int)",
         (int)"external/libunwind_llvm/src/Registers.hpp",
         1673,
@@ -12901,17 +13280,17 @@ __int64 __fastcall sub_E254(int a1, int a2)
       *(_BYTE *)(v3 + 73) = 1;
       v5 = (_QWORD *)(v3 + 80);
       if ( *(_BYTE *)(v3 + 72) )
-        sub_DF38(v5);
+        sub_E980(v5);
       else
-        sub_DF30(v5);
+        sub_E978(v5);
     }
     v6 = v3 + 8 * v2 - 1968;
   }
   return *(_QWORD *)v6;
 }
 
-//----- (0000E2F8) --------------------------------------------------------
-int __fastcall sub_E2F8(int a1, int a2, int a3, int a4)
+//----- (0000ED3C) --------------------------------------------------------
+int __fastcall sub_ED3C(int a1, int a2, int a3, int a4)
 {
   int v4; // r6
   int v5; // r7
@@ -12932,7 +13311,7 @@ int __fastcall sub_E2F8(int a1, int a2, int a3, int a4)
     if ( !*(_BYTE *)(v5 + 75) )
     {
       *(_BYTE *)(v5 + 75) = 1;
-      sub_DF48();
+      sub_E990();
     }
     result = v5 + 8 * v4;
     *(_DWORD *)(result - 548) = v7;
@@ -12943,7 +13322,7 @@ int __fastcall sub_E2F8(int a1, int a2, int a3, int a4)
     if ( !*(_BYTE *)(v5 + 74) )
     {
       *(_BYTE *)(v5 + 74) = 1;
-      sub_DF40((_QWORD *)(v5 + 216));
+      sub_E988((_QWORD *)(v5 + 216));
     }
     result = v5 + 8 * v4;
     *(_DWORD *)(result - 1956) = v7;
@@ -12952,7 +13331,7 @@ int __fastcall sub_E2F8(int a1, int a2, int a3, int a4)
   else
   {
     if ( v6 != 256 )
-      sub_E538(
+      sub_EF7C(
         (int)"void libunwind::Registers_arm::setFloatRegister(int, unw_fpreg_t)",
         (int)"external/libunwind_llvm/src/Registers.hpp",
         1700,
@@ -12962,9 +13341,9 @@ int __fastcall sub_E2F8(int a1, int a2, int a3, int a4)
       *(_BYTE *)(v5 + 73) = 1;
       v9 = (_QWORD *)(v5 + 80);
       if ( *(_BYTE *)(v5 + 72) )
-        sub_DF38(v9);
+        sub_E980(v9);
       else
-        sub_DF30(v9);
+        sub_E978(v9);
     }
     result = v5 + 8 * v4;
     *(_DWORD *)(result - 1964) = v7;
@@ -12975,18 +13354,18 @@ int __fastcall sub_E2F8(int a1, int a2, int a3, int a4)
   return result;
 }
 
-//----- (0000E3C4) --------------------------------------------------------
-int __fastcall sub_E3C4(int a1)
+//----- (0000EE08) --------------------------------------------------------
+int __fastcall sub_EE08(int a1)
 {
   _DWORD *v1; // r4
   int result; // r0
-  __int64 v3; // kr00_8
+  void (__fastcall *v3)(_DWORD *, signed int, int); // r5
   int v4; // r0
 
   v1 = (_DWORD *)a1;
   if ( *(_BYTE *)(a1 + 528) )
     return 0;
-  result = sub_E564(a1);
+  result = sub_EFA8(a1);
   if ( result != 1 )
     return result;
   (*(void (__fastcall **)(_DWORD *, signed int))(*v1 + 52))(v1, 1);
@@ -12994,15 +13373,15 @@ int __fastcall sub_E3C4(int a1)
     return 0;
   if ( v1[126] )
   {
-    v3 = *(_QWORD *)(*v1 + 12);
-    v4 = ((int (__fastcall *)(_DWORD *, signed int))v3)(v1, -2);
-    ((void (__fastcall *)(_DWORD *, signed int, int))HIDWORD(v3))(v1, -2, v1[126] + v4);
+    v3 = *(void (__fastcall **)(_DWORD *, signed int, int))(*v1 + 16);
+    v4 = (*(int (__fastcall **)(_DWORD *, signed int))(*v1 + 12))(v1, -2);
+    v3(v1, -2, v1[126] + v4);
   }
   return 1;
 }
 
-//----- (0000E414) --------------------------------------------------------
-_DWORD *__fastcall sub_E414(int a1, _DWORD *a2)
+//----- (0000EE58) --------------------------------------------------------
+_DWORD *__fastcall sub_EE58(int a1, _DWORD *a2)
 {
   int *v2; // r0
   _DWORD *result; // r0
@@ -13042,21 +13421,21 @@ _DWORD *__fastcall sub_E414(int a1, _DWORD *a2)
   return result;
 }
 
-//----- (0000E42C) --------------------------------------------------------
-void __fastcall sub_E42C(int a1)
+//----- (0000EE70) --------------------------------------------------------
+void __fastcall sub_EE70(int a1)
 {
-  sub_E5B8(a1 + 8);
-  sub_EDE4();
+  sub_EFFC(a1 + 8);
+  sub_F914();
 }
 
-//----- (0000E442) --------------------------------------------------------
-int __fastcall sub_E442(int a1)
+//----- (0000EE86) --------------------------------------------------------
+int __fastcall sub_EE86(int a1)
 {
   return *(unsigned __int8 *)(a1 + 529);
 }
 
-//----- (0000E448) --------------------------------------------------------
-signed int __fastcall sub_E448(int a1, int a2, int a3, _DWORD *a4)
+//----- (0000EE8C) --------------------------------------------------------
+signed int __fastcall sub_EE8C(int a1, int a2, int a3, _DWORD *a4)
 {
   int v4; // r6
   int v5; // r5
@@ -13075,17 +13454,17 @@ signed int __fastcall sub_E448(int a1, int a2, int a3, _DWORD *a4)
   *v6 = v7 - v10;
   return 1;
 }
-// 3958: using guessed type int _snprintf_chk(_DWORD, _DWORD, _DWORD, _DWORD, const char *, ...);
-// 3F4C: using guessed type int dladdr(void);
+// 3BD0: using guessed type int _snprintf_chk(_DWORD, _DWORD, _DWORD, _DWORD, const char *, ...);
+// 41C4: using guessed type int dladdr(void);
 
-//----- (0000E4B8) --------------------------------------------------------
-int __fastcall sub_E4B8(int a1, int a2)
+//----- (0000EEFC) --------------------------------------------------------
+int __fastcall sub_EEFC(int a1, int a2)
 {
   int v2; // r4
   int v3; // r6
   int v4; // r5
-  int v6; // [sp+0h] [bp-20h]
-  int v7; // [sp+4h] [bp-1Ch]
+  __int64 v5; // r0
+  __int64 v7; // [sp+0h] [bp-20h]
   int v8; // [sp+8h] [bp-18h]
   int v9; // [sp+Ch] [bp-14h]
 
@@ -13095,16 +13474,17 @@ int __fastcall sub_E4B8(int a1, int a2)
   v8 = 0;
   if ( v3 )
     --v4;
-  v6 = _gnu_Unwind_Find_exidx(v4, &v8);
-  v7 = v8;
-  if ( !v6 || !v8 || !sub_E610((_DWORD *)v2, v4, &v6) )
+  LODWORD(v5) = _gnu_Unwind_Find_exidx(v4, &v8);
+  HIDWORD(v5) = v8;
+  v7 = v5;
+  if ( !(_DWORD)v5 || !v8 || !sub_F054((_DWORD *)v2, v4, &v7) )
     *(_BYTE *)(v2 + 528) = 1;
   return _stack_chk_guard - v9;
 }
-// 3F58: using guessed type int __fastcall _gnu_Unwind_Find_exidx(_DWORD, _DWORD);
+// 41D0: using guessed type int __fastcall _gnu_Unwind_Find_exidx(_DWORD, _DWORD);
 
-//----- (0000E528) --------------------------------------------------------
-const char *__fastcall sub_E528(int a1, int a2)
+//----- (0000EF6C) --------------------------------------------------------
+const char *__fastcall sub_EF6C(int a1, int a2)
 {
   const char *result; // r0
 
@@ -13208,7 +13588,7 @@ const char *__fastcall sub_E528(int a1, int a2)
     case 63:
     case 64:
     case 65:
-def_E8DE:
+def_F336:
       result = "unknown register";
       break;
     case 66:
@@ -13407,53 +13787,55 @@ def_E8DE:
           result = "d31";
           break;
         default:
-          goto def_E8DE;
+          goto def_F336;
       }
       break;
   }
   return result;
 }
 
-//----- (0000E52E) --------------------------------------------------------
-int __fastcall sub_E52E(int result)
+//----- (0000EF72) --------------------------------------------------------
+int __fastcall sub_EF72(int result)
 {
   *(_BYTE *)(result + 72) = 1;
   return result;
 }
 
-//----- (0000E538) --------------------------------------------------------
-void __fastcall __noreturn sub_E538(int a1, int a2, int a3, int a4)
+//----- (0000EF7C) --------------------------------------------------------
+void __fastcall __noreturn sub_EF7C(int a1, int a2, int a3, int a4)
 {
   fprintf((FILE *)stderr, "libunwind: %s %s:%d - %s\n", a1, a2, a3, a4);
   abort();
 }
 
-//----- (0000E564) --------------------------------------------------------
-int __fastcall sub_E564(int a1)
+//----- (0000EFA8) --------------------------------------------------------
+int __fastcall sub_EFA8(int a1)
 {
   int v1; // r5
   signed int v2; // r4
   unsigned int *v3; // r0
+  unsigned int *v4; // r0
   int result; // r0
-  unsigned int v5; // [sp+4h] [bp-1Ch]
-  unsigned int v6; // [sp+8h] [bp-18h]
-  int v7; // [sp+Ch] [bp-14h]
+  unsigned int v6; // [sp+4h] [bp-1Ch]
+  unsigned int v7; // [sp+8h] [bp-18h]
+  int v8; // [sp+Ch] [bp-14h]
 
   v1 = a1;
   v2 = 0;
-  v5 = 0;
+  v3 = *(unsigned int **)(a1 + 520);
   v6 = 0;
-  v3 = sub_D698(*(unsigned int **)(a1 + 520), (signed int *)&v5, (int *)&v6);
-  if ( sub_D6EC(v1, (int)v3, v5, v6) == 8 )
+  v7 = 0;
+  v4 = sub_E0E4(v3, (signed int *)&v6, &v7);
+  if ( sub_E134(v1, (int)v4, v6, v7) == 8 )
     v2 = 1;
-  result = _stack_chk_guard - v7;
-  if ( _stack_chk_guard == v7 )
+  result = _stack_chk_guard - v8;
+  if ( _stack_chk_guard == v8 )
     result = v2;
   return result;
 }
 
-//----- (0000E5B8) --------------------------------------------------------
-int __fastcall sub_E5B8(int a1)
+//----- (0000EFFC) --------------------------------------------------------
+int __fastcall sub_EFFC(int a1)
 {
   int v1; // r4
   __int64 *v2; // r0
@@ -13466,14 +13848,14 @@ int __fastcall sub_E5B8(int a1)
   {
     v2 = (__int64 *)(a1 + 72);
     if ( *(_BYTE *)(v1 + 64) )
-      sub_EC5C(v2);
+      sub_F6B4(v2);
     else
-      sub_EC54(v2);
+      sub_F6AC(v2);
   }
   v3 = *(unsigned __int16 *)(v1 + 66);
   if ( (_BYTE)v3 )
   {
-    sub_EC64((__int64 *)(v1 + 208));
+    sub_F6BC((__int64 *)(v1 + 208));
     v4 = *(unsigned __int8 *)(v1 + 67);
   }
   else
@@ -13481,160 +13863,164 @@ int __fastcall sub_E5B8(int a1)
     v4 = v3 >> 8;
   }
   if ( v4 )
-    sub_EC6C((int *)(v1 + 336));
+    sub_F6C4((int *)(v1 + 336));
   result = *(unsigned __int8 *)(v1 + 68);
   if ( *(_BYTE *)(v1 + 68) )
-    result = sub_EDF4((int *)(v1 + 464));
+    result = sub_F924((int *)(v1 + 464));
   return result;
 }
 
-//----- (0000E610) --------------------------------------------------------
-signed int __fastcall sub_E610(_DWORD *a1, int a2, _DWORD *a3)
+//----- (0000F054) --------------------------------------------------------
+signed int __fastcall sub_F054(_DWORD *a1, int a2, _DWORD *a3)
 {
   _DWORD *v3; // r4
-  signed int v4; // r5
-  int v5; // r6
-  char *v6; // r5
-  signed int *v7; // r0
-  int v8; // r3
-  signed int v9; // r7
-  unsigned int v10; // r7
-  int v11; // r6
-  signed int (__fastcall *v12)(int, int, int); // lr
-  signed int v13; // r12
-  int v14; // r9
-  int v15; // r6
-  signed int v16; // r6
-  int v17; // r2
-  unsigned int v18; // r2
-  _DWORD *v19; // r0
-  int v21; // [sp+14h] [bp-34h]
-  _DWORD *v22; // [sp+1Ch] [bp-2Ch]
-  int v23; // [sp+20h] [bp-28h]
-  int v24; // [sp+28h] [bp-20h]
+  _DWORD *v4; // r3
+  int v5; // r2
+  int v6; // r6
+  signed int v7; // r5
+  int v8; // r5
+  int *v9; // r0
+  signed int *v10; // r0
+  int v11; // r1
+  int v12; // t1
+  signed int v13; // r6
+  unsigned int v14; // r6
+  int v15; // r7
+  signed int (__fastcall *v16)(int, int, int); // r8
+  signed int v17; // r12
+  int v18; // r6
+  int v19; // r3
+  char v20; // r9
+  int v21; // r3
+  int v22; // r0
+  int v24; // [sp+14h] [bp-34h]
+  _DWORD *v25; // [sp+1Ch] [bp-2Ch]
+  int v26; // [sp+20h] [bp-28h]
+  int v27; // [sp+28h] [bp-20h]
 
   v3 = a1;
-  v4 = 0;
-  v23 = a2;
-  v5 = a3[1];
-  sub_E7B4(&v21, 0, a1[1], a3, a3[1], a1[1], (int)a3, &v23);
-  if ( !v21 || v21 == v5 )
-    goto LABEL_27;
-  v6 = (char *)(*v22 + 8 * v21);
-  v7 = (signed int *)(v6 - 4);
-  v8 = *(_DWORD *)v6;
-  if ( v6 == &byte_4 || (v9 = *v7, *v7 == 1) )
+  v4 = a3;
+  v5 = a1[1];
+  v6 = v4[1];
+  v7 = 0;
+  v26 = a2;
+  sub_F200(&v24, 0, v5, v4, v6, v5, (int)v4, &v26);
+  if ( !v24 || v24 == v6 )
+    goto LABEL_25;
+  v8 = *v25 + 8 * v24;
+  v9 = (int *)(*v25 + 8 * v24);
+  v12 = *v9;
+  v10 = v9 - 1;
+  v11 = v12;
+  if ( !v10 || (v13 = *v10, *v10 == 1) )
   {
-    v4 = 0;
-    goto LABEL_27;
+    v7 = 0;
+    goto LABEL_25;
   }
-  if ( v9 < 0 )
+  if ( v13 < 0 )
   {
-    v13 = 1;
+    v17 = 1;
     goto LABEL_11;
   }
-  v10 = v9 | 2 * v9 & 0x80000000;
-  v11 = (int)v7 + v10;
-  v9 = *(signed int *)((char *)v7 + v10);
-  if ( v9 <= -1 )
+  v14 = v13 | 2 * v13 & 0x80000000;
+  v15 = (int)v10 + v14;
+  v13 = *(signed int *)((char *)v10 + v14);
+  if ( v13 <= -1 )
   {
-    v13 = 0;
-    v7 = (signed int *)v11;
+    v17 = 0;
+    v10 = (signed int *)v15;
 LABEL_11:
-    v15 = ((unsigned int)v9 >> 24) & 0xF;
-    if ( v15 == 2 )
+    v19 = ((unsigned int)v13 >> 24) & 0xF;
+    if ( v19 == 2 )
     {
-      v12 = sub_DC78;
-      v16 = 1;
+      v20 = 2;
+      v16 = sub_E6C4;
     }
     else
     {
-      if ( v15 != 1 )
+      if ( v19 != 1 )
       {
-        if ( v15 )
-          goto LABEL_29;
-        v14 = (int)(v7 + 1);
-        if ( v13 )
-          v14 = 0;
-        v12 = sub_DC0C;
+        if ( v19 )
+          goto LABEL_27;
+        v18 = (int)(v10 + 1);
+        if ( v17 )
+          v18 = 0;
+        v16 = sub_E658;
         goto LABEL_17;
       }
-      v12 = sub_DC70;
-      v16 = 0;
+      v20 = 0;
+      v16 = sub_E6BC;
     }
-    v17 = ((unsigned int)v9 >> 16) & 0xFF;
-    if ( ((v17 != 0) & (unsigned __int8)v13) == 1 )
-      sub_E538(
+    v21 = ((unsigned int)v13 >> 16) & 0xFF;
+    if ( ((v21 != 0) & (unsigned __int8)v17) == 1 )
+      sub_EF7C(
         (int)"bool libunwind::UnwindCursor<libunwind::LocalAddressSpace, libunwind::Registers_arm>::getInfoFromEHABISecti"
              "on(pint_t, const libunwind::UnwindInfoSections &) [A = libunwind::LocalAddressSpace, R = libunwind::Registers_arm]",
         (int)"external/libunwind_llvm/src/UnwindCursor.hpp",
         783,
         (int)"index inlined table detected but pr function requires extra words");
-    v14 = (int)&v7[v17 + 1];
+    v18 = (int)&v10[v21 + 1];
     goto LABEL_22;
   }
-  v12 = (signed int (__fastcall *)(int, int, int))((2 * v9 & 0x80000000 | v9) + v11);
-  v13 = 0;
-  v14 = v11 + 4 + 4 * (*(_DWORD *)(v11 + 4) >> 24) + 4;
-  v7 = (signed int *)v11;
+  v16 = (signed int (__fastcall *)(int, int, int))((2 * v13 & 0x80000000 | v13) + v15);
+  v17 = 0;
+  v18 = v15 + 4 + 4 * (*(_DWORD *)(v15 + 4) >> 24) + 4;
+  v10 = (signed int *)v15;
 LABEL_17:
-  v16 = 0;
+  v20 = 0;
 LABEL_22:
-  v18 = 2 * *((_DWORD *)v6 - 2) & 0x80000000 | *((_DWORD *)v6 - 2);
-  v3[130] = v7;
-  v19 = v3 + 122;
-  *v19 = &v6[v18 - 8];
-  v19[1] = &v6[v8 | 2 * v8 & 0x80000000];
-  v19[2] = v14;
-  v19[3] = v12;
-  if ( v16 )
-    v16 = 2;
-  if ( v13 )
-    v16 = 1;
-  v4 = 1;
-  v3[127] = v16;
+  v3[122] = v8 - 8 + (2 * *(_DWORD *)(v8 - 8) & 0x80000000 | *(_DWORD *)(v8 - 8));
+  v3[123] = (v11 | 2 * v11 & 0x80000000) + v8;
+  v7 = 1;
+  v3[125] = v16;
+  v3[130] = v10;
+  v22 = v20 & 2;
+  v3[124] = v18;
+  if ( v17 )
+    v22 = 1;
+  v3[127] = v22;
+LABEL_25:
+  if ( _stack_chk_guard != v27 )
 LABEL_27:
-  if ( _stack_chk_guard != v24 )
-LABEL_29:
-    sub_E538(
+    sub_EF7C(
       (int)"bool libunwind::UnwindCursor<libunwind::LocalAddressSpace, libunwind::Registers_arm>::getInfoFromEHABISection"
            "(pint_t, const libunwind::UnwindInfoSections &) [A = libunwind::LocalAddressSpace, R = libunwind::Registers_arm]",
       (int)"external/libunwind_llvm/src/UnwindCursor.hpp",
       776,
       (int)"unknown personality routine");
-  return v4;
+  return v7;
 }
-// 4: using guessed type char;
 
-//----- (0000E7B4) --------------------------------------------------------
-int __fastcall sub_E7B4(int *a1, int a2, int a3, _DWORD *a4, int a5, int a6, int a7, _DWORD *a8)
+//----- (0000F200) --------------------------------------------------------
+int *__fastcall sub_F200(int *result, int a2, int a3, _DWORD *a4, int a5, int a6, int a7, _DWORD *a8)
 {
-  unsigned int v8; // r4
-  unsigned int v9; // r5
-  int v10; // r6
+  unsigned int v8; // r5
+  int v9; // r6
+  int v10; // r4
 
-  v8 = a5 - a2;
-  while ( 1 )
+  if ( a5 != a2 )
   {
-    v9 = v8;
-    if ( !v8 )
-      break;
-    v10 = a2 + (v8 >> 1);
-    v8 >>= 1;
-    if ( *a8 >= *a4 + 8 * v10 + (2 * *(_DWORD *)(*a4 + 8 * v10) & 0x80000000 | *(_DWORD *)(*a4 + 8 * v10)) )
+    v8 = a5 - a2;
+    do
     {
-      v8 = v9 - 1 - v8;
-      a2 = v10 + 1;
+      v9 = a2 + (v8 >> 1);
+      v10 = v8 - 1 - (v8 >> 1);
+      if ( *a8 < (2 * *(_DWORD *)(*a4 + 8 * v9) & 0x80000000 | *(_DWORD *)(*a4 + 8 * v9)) + *a4 + 8 * v9 )
+        v10 = v8 >> 1;
+      else
+        a2 = v9 + 1;
+      v8 = v10;
     }
+    while ( v10 );
   }
-  *a1 = a2;
-  a1[1] = a3;
-  a1[2] = (int)a4;
-  return (int)(a1 + 3);
+  *result = a2;
+  result[2] = (int)a4;
+  result[1] = a3;
+  return result;
 }
 
-//----- (0000EC54) --------------------------------------------------------
-__int64 *__fastcall sub_EC54(__int64 *result)
+//----- (0000F6AC) --------------------------------------------------------
+__int64 *__fastcall sub_F6AC(__int64 *result)
 {
   __int64 v1; // d0
 
@@ -13642,8 +14028,8 @@ __int64 *__fastcall sub_EC54(__int64 *result)
   return result;
 }
 
-//----- (0000EC5C) --------------------------------------------------------
-__int64 *__fastcall sub_EC5C(__int64 *result)
+//----- (0000F6B4) --------------------------------------------------------
+__int64 *__fastcall sub_F6B4(__int64 *result)
 {
   __int64 v1; // d0
 
@@ -13651,8 +14037,8 @@ __int64 *__fastcall sub_EC5C(__int64 *result)
   return result;
 }
 
-//----- (0000EC64) --------------------------------------------------------
-__int64 *__fastcall sub_EC64(__int64 *result)
+//----- (0000F6BC) --------------------------------------------------------
+__int64 *__fastcall sub_F6BC(__int64 *result)
 {
   __int64 v1; // d16
 
@@ -13660,8 +14046,8 @@ __int64 *__fastcall sub_EC64(__int64 *result)
   return result;
 }
 
-//----- (0000EC6C) --------------------------------------------------------
-int __fastcall sub_EC6C(int *a1)
+//----- (0000F6C4) --------------------------------------------------------
+int __fastcall sub_F6C4(int *a1)
 {
   int *v5; // r0
   int result; // r0
@@ -13717,8 +14103,8 @@ int __fastcall sub_EC6C(int *a1)
   return result;
 }
 
-//----- (0000ECB0) --------------------------------------------------------
-int __fastcall sub_ECB0(int *a1)
+//----- (0000F708) --------------------------------------------------------
+int __fastcall sub_F708(int *a1)
 {
   int *v5; // r0
   int result; // r0
@@ -13738,127 +14124,133 @@ int __fastcall sub_ECB0(int *a1)
   return result;
 }
 
-//----- (0000ECC4) --------------------------------------------------------
+//----- (0000F7E4) --------------------------------------------------------
+int _aeabi_ldiv0()
+{
+  return raise(8);
+}
+
+//----- (0000F7F4) --------------------------------------------------------
 char *__fastcall j_strncpy(char *dest, const char *src, size_t n)
 {
   return strncpy(dest, src, n);
 }
 
-//----- (0000ECD4) --------------------------------------------------------
+//----- (0000F804) --------------------------------------------------------
 int __fastcall j_RilSapSocket::initSapSocket(const char *a1, pthread_mutexattr_t a2)
 {
   return RilSapSocket::initSapSocket(a1, a2);
 }
 
-//----- (0000ECE4) --------------------------------------------------------
+//----- (0000F814) --------------------------------------------------------
 int __fastcall j_acquire_wake_lock(int a1, int a2)
 {
   return acquire_wake_lock(a1, a2);
 }
-// 3AC0: using guessed type int __fastcall acquire_wake_lock(_DWORD, _DWORD);
+// 3D2C: using guessed type int __fastcall acquire_wake_lock(_DWORD, _DWORD);
 
-//----- (0000ECF4) --------------------------------------------------------
+//----- (0000F824) --------------------------------------------------------
 int __fastcall j_pthread_mutex_unlock(pthread_mutex_t *mutex)
 {
   return pthread_mutex_unlock(mutex);
 }
 
-//----- (0000ED04) --------------------------------------------------------
+//----- (0000F834) --------------------------------------------------------
 int __fastcall j_release_wake_lock(int a1)
 {
   return release_wake_lock(a1);
 }
-// 3ACC: using guessed type int __fastcall release_wake_lock(_DWORD);
+// 3D38: using guessed type int __fastcall release_wake_lock(_DWORD);
 
-//----- (0000ED14) --------------------------------------------------------
+//----- (0000F844) --------------------------------------------------------
 int __fastcall j_j_RIL_onRequestComplete(int a1, int a2, int a3, int a4)
 {
   return j_RIL_onRequestComplete(a1, a2, a3, a4);
 }
 
-//----- (0000ED24) --------------------------------------------------------
+//----- (0000F854) --------------------------------------------------------
 int __fastcall android::Parcel::writeInt32(android::Parcel *this, int a2)
 {
   return android::Parcel::writeInt32(this, a2);
 }
 
-//----- (0000ED34) --------------------------------------------------------
+//----- (0000F864) --------------------------------------------------------
 void __fastcall j_free(void *ptr)
 {
   free(ptr);
 }
 
-//----- (0000ED44) --------------------------------------------------------
+//----- (0000F874) --------------------------------------------------------
 int __fastcall j_RilSocket::socketRequestsHandler(int *a1, int a2, int a3, int a4)
 {
   return RilSocket::socketRequestsHandler(a1, a2, a3, a4);
 }
 
-//----- (0000ED54) --------------------------------------------------------
+//----- (0000F884) --------------------------------------------------------
 int __fastcall j_RilSapSocket::onUnsolicitedResponse(RilSapSocket *this, int a2, void *a3, unsigned int a4)
 {
   return RilSapSocket::onUnsolicitedResponse(this, a2, a3, a4);
 }
 
-//----- (0000ED64) --------------------------------------------------------
+//----- (0000F894) --------------------------------------------------------
 signed int __fastcall j_RilSapSocket::addSocketToList(RilSapSocket *a1, const char *a2, pthread_mutexattr_t a3)
 {
   return RilSapSocket::addSocketToList(a1, a2, a3);
 }
 
-//----- (0000ED74) --------------------------------------------------------
+//----- (0000F8A4) --------------------------------------------------------
 int __fastcall j_RilSocket::socketInit(RilSocket *this)
 {
   return RilSocket::socketInit(this);
 }
 
-//----- (0000ED84) --------------------------------------------------------
+//----- (0000F8B4) --------------------------------------------------------
 void __fastcall operator delete(void *a1)
 {
   operator delete(a1);
 }
 
-//----- (0000ED94) --------------------------------------------------------
+//----- (0000F8C4) --------------------------------------------------------
 int __fastcall j_j_pb_read(int a1, int a2, int a3)
 {
   return j_pb_read(a1, a2, a3);
 }
 
-//----- (0000EDA4) --------------------------------------------------------
-signed int __fastcall j_j_pb_encode_submessage(int a1, unsigned __int8 *a2, int *a3)
+//----- (0000F8D4) --------------------------------------------------------
+signed int __fastcall j_j_pb_encode_submessage(_DWORD *a1, unsigned __int8 *a2, int *a3)
 {
   return j_pb_encode_submessage(a1, a2, a3);
 }
 
-//----- (0000EDB4) --------------------------------------------------------
-signed int __fastcall j_j_pb_encode_varint(int a1, int a2, __int64 a3)
+//----- (0000F8E4) --------------------------------------------------------
+signed int __fastcall j_j_pb_encode_varint(_DWORD *a1, int a2, __int64 a3)
 {
   return j_pb_encode_varint(a1, a2, a3);
 }
 
-//----- (0000EDC4) --------------------------------------------------------
-signed int __fastcall j_j_pb_write(int a1, int a2, int a3)
+//----- (0000F8F4) --------------------------------------------------------
+signed int __fastcall j_j_pb_write(_DWORD *a1, int a2, int a3)
 {
   return j_pb_write(a1, a2, a3);
 }
 
-//----- (0000EDD4) --------------------------------------------------------
-signed int __fastcall j_j_pb_encode_string(int a1, int a2, int a3)
+//----- (0000F904) --------------------------------------------------------
+signed int __fastcall j_j_pb_encode_string(_DWORD *a1, int a2, int a3)
 {
   return j_pb_encode_string(a1, a2, a3);
 }
 
-//----- (0000EDE4) --------------------------------------------------------
-void sub_EDE4()
+//----- (0000F914) --------------------------------------------------------
+void sub_F914()
 {
-  JUMPOUT(sub_EC40);
+  JUMPOUT(sub_F698);
 }
-// EC40: using guessed type int sub_EC40();
+// F698: using guessed type int sub_F698();
 
-//----- (0000EDF4) --------------------------------------------------------
-int __fastcall sub_EDF4(int *a1)
+//----- (0000F924) --------------------------------------------------------
+int __fastcall sub_F924(int *a1)
 {
-  return sub_ECB0(a1);
+  return sub_F708(a1);
 }
 
-// ALL OK, 324 function(s) have been successfully decompiled
+// ALL OK, 334 function(s) have been successfully decompiled
