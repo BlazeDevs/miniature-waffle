@@ -768,7 +768,7 @@ signed int *__fastcall populateResponseInfo(signed int *result, signed int a2, i
 signed int __fastcall responseIntOrEmpty(signed int *a1, signed int a2, int a3, signed int a4, int a5, int a6);
 signed int __fastcall responseInt(signed int *a1, signed int a2, int a3, signed int a4, int a5, int a6);
 int __fastcall radio::getIccCardStatusResponse(int a1, int a2, int a3, int a4, int a5, int a6);
-signed int __fastcall sub_197F8(int *a1, unsigned int a2);
+signed int __fastcall sub_197E0(int *a1, unsigned int a2);
 int __fastcall radio::supplyIccPinForAppResponse(int a1, int a2, signed int a3, signed int a4, int a5, int a6);
 int __fastcall radio::supplyIccPukForAppResponse(int a1, int a2, signed int a3, signed int a4, int a5, int a6);
 int __fastcall radio::supplyIccPin2ForAppResponse(int a1, int a2, signed int a3, signed int a4, int a5, int a6);
@@ -777,9 +777,9 @@ int __fastcall radio::changeIccPinForAppResponse(int a1, int a2, signed int a3, 
 int __fastcall radio::changeIccPin2ForAppResponse(int a1, int a2, signed int a3, signed int a4, int a5, int a6);
 int __fastcall radio::supplyNetworkDepersonalizationResponse(int a1, int a2, signed int a3, signed int a4, int a5, int a6);
 int __fastcall radio::getCurrentCallsResponse(int a1, int a2, int a3, int a4, int a5, unsigned int a6);
-signed int __fastcall sub_1A050(int *a1, unsigned int a2);
-signed int __fastcall sub_1A18A(int *a1, unsigned int a2);
-_DWORD *__fastcall sub_1A250(int *a1);
+signed int __fastcall sub_1A038(int *a1, unsigned int a2);
+signed int __fastcall sub_1A172(int *a1, unsigned int a2);
+_DWORD *__fastcall sub_1A238(int *a1);
 int __fastcall radio::dialResponse(int a1, int a2, int a3, int a4);
 int __fastcall radio::getIMSIForAppResponse(int a1, int a2, int a3, int a4, const char *a5);
 int __fastcall radio::hangupConnectionResponse(int a1, int a2, int a3, int a4);
@@ -793,10 +793,10 @@ int __fastcall radio::getSignalStrengthResponse(int a1, int a2, int a3, int a4, 
 int __fastcall convertRilSignalStrengthToHal(_DWORD *a1, int a2, int a3);
 int __fastcall getCellInfoTypeRadioTechnology(char *a1);
 int __fastcall fillCellIdentityResponse(_DWORD *a1, int a2);
-signed int __fastcall sub_1AE04(int *a1, unsigned int a2);
-signed int __fastcall sub_1AF14(int *a1, unsigned int a2);
-signed int __fastcall sub_1B01C(int a1, unsigned int a2);
-signed int __fastcall sub_1B086(int *a1, unsigned int a2);
+signed int __fastcall sub_1ADEC(int *a1, unsigned int a2);
+signed int __fastcall sub_1AEFC(int *a1, unsigned int a2);
+signed int __fastcall sub_1B004(int a1, unsigned int a2);
+signed int __fastcall sub_1B06E(int *a1, unsigned int a2);
 int __fastcall convertResponseStringEntryToInt(char **a1, int a2, int a3);
 int __fastcall convertResponseHexStringEntryToInt(char **a1, int a2, int a3);
 int __fastcall fillCellIdentityFromVoiceRegStateResponseString(_DWORD *a1, signed int a2, _DWORD *a3);
@@ -820,8 +820,8 @@ int __fastcall radio::cancelPendingUssdResponse(int a1, int a2, int a3, int a4);
 int __fastcall radio::getClirResponse(int a1, int a2, int a3, int a4, _QWORD *a5, int a6);
 int __fastcall radio::setClirResponse(int a1, int a2, int a3, int a4);
 int __fastcall radio::getCallForwardStatusResponse(int a1, int a2, int a3, int a4, int a5, unsigned int a6);
-signed int __fastcall sub_1CB54(int *a1, unsigned int a2);
-_DWORD *__fastcall sub_1CC32(int *a1);
+signed int __fastcall sub_1CB3C(int *a1, unsigned int a2);
+_DWORD *__fastcall sub_1CC1A(int *a1);
 int __fastcall radio::setCallForwardResponse(int a1, int a2, int a3, int a4);
 int __fastcall radio::getCallWaitingResponse(int a1, int a2, int a3, int a4, _QWORD *a5, int a6);
 int __fastcall radio::setCallWaitingResponse(int a1, int a2, int a3, int a4);
@@ -836,8 +836,8 @@ int __fastcall radio::setNetworkSelectionModeAutomaticResponse(int a1, int a2, i
 int __fastcall radio::setNetworkSelectionModeManualResponse(int a1, int a2, int a3, int a4);
 signed int __fastcall convertOperatorStatusToInt(const char *a1);
 int __fastcall radio::getAvailableNetworksResponse(int a1, int a2, int a3, int a4, int a5, unsigned int a6);
-signed int __fastcall sub_1D7D0(int *a1, unsigned int a2);
-_DWORD *__fastcall sub_1D8E8(int *a1);
+signed int __fastcall sub_1D7B8(int *a1, unsigned int a2);
+_DWORD *__fastcall sub_1D8D0(int *a1);
 int __fastcall radio::startDtmfResponse(int a1, int a2, int a3, int a4);
 int __fastcall radio::stopDtmfResponse(int a1, int a2, int a3, int a4);
 int __fastcall radio::getBasebandVersionResponse(int a1, int a2, int a3, int a4, const char *a5);
@@ -847,13 +847,13 @@ int __fastcall radio::getMuteResponse(int a1, int a2, int a3, int a4, _DWORD *a5
 int __fastcall radio::getClipResponse(int a1, int a2, int a3, int a4, signed int *a5, int a6);
 int __fastcall radio::getDataCallListResponse(int a1, int a2, int a3, int a4, int a5, unsigned int a6);
 unsigned int __fastcall convertRilDataCallListToHal(int a1, unsigned int a2, int *a3);
-_DWORD *__fastcall sub_1E1BA(int *a1);
+_DWORD *__fastcall sub_1E1A2(int *a1);
 int __fastcall radio::setSuppServiceNotificationsResponse(int a1, int a2, int a3, int a4);
 int __fastcall radio::deleteSmsOnSimResponse(int a1, int a2, int a3, int a4);
 int __fastcall radio::setBandModeResponse(int a1, int a2, int a3, int a4);
 int __fastcall radio::writeSmsToSimResponse(int a1, int a2, int a3, int a4, signed int *a5, int a6);
 int __fastcall radio::getAvailableBandModesResponse(int a1, int a2, int a3, int a4, int a5, unsigned int a6);
-signed int __fastcall sub_1E6D0(int a1, unsigned int a2);
+signed int __fastcall sub_1E6B8(int a1, unsigned int a2);
 int __fastcall radio::sendEnvelopeResponse(int a1, int a2, int a3, int a4, const char *a5);
 int __fastcall radio::sendTerminalResponseToSimResponse(int a1, int a2, int a3, int a4);
 int __fastcall radio::handleStkCallSetupRequestFromSimResponse(int a1, int a2, int a3, int a4);
@@ -861,8 +861,8 @@ int __fastcall radio::explicitCallTransferResponse(int a1, int a2, int a3, int a
 int __fastcall radio::setPreferredNetworkTypeResponse(int a1, int a2, int a3, int a4);
 int __fastcall radio::getPreferredNetworkTypeResponse(int a1, int a2, int a3, int a4, signed int *a5, int a6);
 int __fastcall radio::getNeighboringCidsResponse(int a1, int a2, int a3, int a4, int a5, unsigned int a6);
-signed int __fastcall sub_1ED0C(int *a1, unsigned int a2);
-_DWORD *__fastcall sub_1EDDC(int *a1);
+signed int __fastcall sub_1ECF4(int *a1, unsigned int a2);
+_DWORD *__fastcall sub_1EDC4(int *a1);
 int __fastcall radio::setLocationUpdatesResponse(int a1, int a2, int a3, int a4);
 int __fastcall radio::setCdmaSubscriptionSourceResponse(int a1, int a2, int a3, int a4);
 int __fastcall radio::setCdmaRoamingPreferenceResponse(int a1, int a2, int a3, int a4);
@@ -879,7 +879,7 @@ int __fastcall radio::getGsmBroadcastConfigResponse(int a1, int a2, int a3, int 
 int __fastcall radio::setGsmBroadcastConfigResponse(int a1, int a2, int a3, int a4);
 int __fastcall radio::setGsmBroadcastActivationResponse(int a1, int a2, int a3, int a4);
 int __fastcall radio::getCdmaBroadcastConfigResponse(int a1, int a2, int a3, int a4, int a5, unsigned int a6);
-signed int __fastcall sub_1FC04(int a1, unsigned int a2);
+signed int __fastcall sub_1FBEC(int a1, unsigned int a2);
 int __fastcall radio::setCdmaBroadcastConfigResponse(int a1, int a2, int a3, int a4);
 int __fastcall radio::setCdmaBroadcastActivationResponse(int a1, int a2, int a3, int a4);
 int __fastcall radio::getCDMASubscriptionResponse(int a1, int a2, int a3, int a4, const char **a5, int a6);
@@ -898,14 +898,14 @@ int __fastcall radio::sendEnvelopeWithStatusResponse(int a1, int a2, signed int 
 int __fastcall radio::getVoiceRadioTechnologyResponse(int a1, int a2, int a3, int a4, signed int *a5, int a6);
 int __fastcall radio::getCellInfoListResponse(int a1, int a2, int a3, int a4, int a5, unsigned int a6);
 int __fastcall convertRilCellInfoListToHal(int a1, unsigned int a2, int *a3);
-_DWORD *__fastcall sub_20DC4(int *a1);
+_DWORD *__fastcall sub_20DAC(int *a1);
 int __fastcall radio::setCellInfoListRateResponse(int a1, int a2, int a3, int a4);
 int __fastcall radio::setInitialAttachApnResponse(int a1, int a2, int a3, int a4);
 int __fastcall radio::getImsRegistrationStateResponse(int a1, int a2, int a3, int a4, _QWORD *a5, int a6);
 int __fastcall radio::sendImsSmsResponse(int a1, int a2, signed int a3, signed int a4, __int64 *a5, int a6);
 int __fastcall radio::iccTransmitApduBasicChannelResponse(int a1, int a2, signed int a3, signed int a4, int a5, int a6);
 int __fastcall radio::iccOpenLogicalChannelResponse(int a1, int a2, int a3, int a4, signed int *a5, unsigned int a6);
-signed int __fastcall sub_213A8(int a1, unsigned int a2);
+signed int __fastcall sub_21390(int a1, unsigned int a2);
 int __fastcall radio::iccCloseLogicalChannelResponse(int a1, int a2, int a3, int a4);
 int __fastcall radio::iccTransmitApduLogicalChannelResponse(int a1, int a2, signed int a3, signed int a4, int a5, int a6);
 int __fastcall radio::nvReadItemResponse(int a1, int a2, int a3, int a4, const char *a5);
@@ -916,7 +916,7 @@ int __fastcall radio::setUiccSubscriptionResponse(int a1, int a2, int a3, int a4
 int __fastcall radio::setDataAllowedResponse(int a1, int a2, int a3, int a4);
 int __fastcall radio::getHardwareConfigResponse(int a1, int a2, int a3, int a4, int a5, unsigned int a6);
 int __fastcall convertRilHardwareConfigListToHal(int a1, unsigned int a2, int *a3);
-_DWORD *__fastcall sub_21C14(int *a1);
+_DWORD *__fastcall sub_21BFC(int *a1);
 int __fastcall radio::requestIccSimAuthenticationResponse(int a1, int a2, signed int a3, signed int a4, int a5, int a6);
 int __fastcall radio::setDataProfileResponse(int a1, int a2, int a3, int a4);
 int __fastcall radio::requestShutdownResponse(int a1, int a2, int a3, int a4);
@@ -932,7 +932,7 @@ bool __fastcall convertRilLceDataInfoToHal(int a1, int a2, int a3);
 int __fastcall radio::getModemActivityInfoResponse(int a1, int a2, int a3, int a4, int a5, int a6);
 int __fastcall radio::setAllowedCarriersResponse(int a1, int a2, int a3, int a4, signed int *a5, int a6);
 int __fastcall radio::getAllowedCarriersResponse(int a1, int a2, int a3, int a4, unsigned int *a5, int a6);
-signed int __fastcall sub_2293C(int *a1, unsigned int a2);
+signed int __fastcall sub_22924(int *a1, unsigned int a2);
 int __fastcall radio::sendDeviceStateResponse(int a1, int a2, int a3, int a4);
 int __fastcall radio::setCarrierInfoForImsiEncryptionResponse(int a1, int a2, int a3, int a4);
 int __fastcall radio::setIndicationFilterResponse(int a1, int a2, int a3, int a4);
@@ -944,8 +944,8 @@ int __fastcall radio::startKeepaliveResponse(int a1, int a2, int a3, int a4, __i
 int __fastcall radio::stopKeepaliveResponse(int a1, int a2, int a3, int a4);
 int __fastcall radio::sendRequestRawResponse(int a1, int a2, int a3, int a4, void *a5, int a6);
 int __fastcall radio::sendRequestStringsResponse(int a1, int a2, int a3, int a4, int a5, unsigned int a6);
-signed int __fastcall sub_23330(int *a1, unsigned int a2);
-_DWORD *__fastcall sub_233DC(int *a1);
+signed int __fastcall sub_23318(int *a1, unsigned int a2);
+_DWORD *__fastcall sub_233C4(int *a1);
 signed int __fastcall convertIntToRadioIndicationType(int a1);
 int __fastcall radio::radioStateChangedInd(int a1, int a2);
 int __fastcall radio::callStateChangedInd(int a1, int a2);
@@ -960,7 +960,7 @@ int __fastcall radio::nitzTimeReceivedInd(int a1, int a2, int a3, int a4, const 
 int __fastcall convertRilSignalStrengthToHalV8(_DWORD *a1, int a2, int a3);
 int __fastcall convertRilSignalStrengthToHalV10(_DWORD *a1, int a2, _DWORD *a3);
 int __fastcall radio::currentSignalStrengthInd(int a1, int a2, int a3, int a4, _DWORD *a5, int a6);
-signed int __fastcall sub_2400C(int *a1, unsigned int a2);
+signed int __fastcall sub_23FF4(int *a1, unsigned int a2);
 int __fastcall radio::dataCallListChangedInd(int a1, int a2, int a3, int a4, int a5, unsigned int a6);
 int __fastcall radio::suppSvcNotifyInd(int a1, int a2, int a3, int a4, int *a5, int a6);
 int __fastcall radio::stkSessionEndInd(int a1, int a2);
@@ -980,10 +980,10 @@ int __fastcall radio::enterEmergencyCallbackModeInd(int a1, int a2);
 int __fastcall radio::cdmaCallWaitingInd(int a1, int a2, int a3, int a4, int a5, int a6);
 int __fastcall radio::cdmaOtaProvisionStatusInd(int a1, int a2, int a3, int a4, _DWORD *a5, int a6);
 int __fastcall radio::cdmaInfoRecInd(int a1, int a2, int a3, int a4, unsigned __int8 *a5, int a6);
-signed int __fastcall sub_25830(int *a1, unsigned int a2);
-signed int __fastcall sub_25992(int *a1, unsigned int a2);
-signed int __fastcall sub_25A3E(int *a1, unsigned int a2);
-signed int __fastcall sub_25B0C(int a1, unsigned int a2);
+signed int __fastcall sub_25818(int *a1, unsigned int a2);
+signed int __fastcall sub_2597A(int *a1, unsigned int a2);
+signed int __fastcall sub_25A26(int *a1, unsigned int a2);
+signed int __fastcall sub_25AF4(int a1, unsigned int a2);
 int __fastcall radio::indicateRingbackToneInd(int a1, int a2, int a3, int a4, _DWORD *a5, int a6);
 int __fastcall radio::resendIncallMuteInd(int a1, int a2);
 int __fastcall radio::cdmaSubscriptionSourceChangedInd(int a1, int a2, int a3, int a4, _DWORD *a5, int a6);
@@ -991,23 +991,23 @@ int __fastcall radio::cdmaPrlChangedInd(int a1, int a2, int a3, int a4, _DWORD *
 int __fastcall radio::exitEmergencyCallbackModeInd(int a1, int a2);
 int __fastcall radio::rilConnectedInd(int a1);
 int __fastcall radio::voiceRadioTechChangedInd(int a1, int a2, int a3, int a4, _DWORD *a5, int a6);
-signed int __fastcall sub_26170(int *a1, unsigned int a2);
-signed int __fastcall sub_26304(int *a1, unsigned int a2);
-signed int __fastcall sub_2641A(int *a1, unsigned int a2);
-signed int __fastcall sub_26528(int a1, unsigned int a2);
-signed int __fastcall sub_265A6(int *a1, unsigned int a2);
-signed int __fastcall sub_266C0(int *a1, unsigned int a2);
+signed int __fastcall sub_26158(int *a1, unsigned int a2);
+signed int __fastcall sub_262EC(int *a1, unsigned int a2);
+signed int __fastcall sub_26402(int *a1, unsigned int a2);
+signed int __fastcall sub_26510(int a1, unsigned int a2);
+signed int __fastcall sub_2658E(int *a1, unsigned int a2);
+signed int __fastcall sub_266A8(int *a1, unsigned int a2);
 int __fastcall radio::cellInfoListInd(int a1, int a2, int a3, int a4, int a5, unsigned int a6);
 int __fastcall radio::imsNetworkStateChangedInd(int a1, int a2);
 int __fastcall radio::subscriptionStatusChangedInd(int a1, int a2, int a3, int a4, _DWORD *a5, int a6);
 int __fastcall radio::srvccStateNotifyInd(int a1, int a2, int a3, int a4, _DWORD *a5, int a6);
-signed int __fastcall sub_26BC0(int *a1, unsigned int a2);
+signed int __fastcall sub_26BA8(int *a1, unsigned int a2);
 int __fastcall radio::hardwareConfigChangedInd(int a1, int a2, int a3, int a4, int a5, unsigned int a6);
 int __fastcall radio::radioCapabilityIndicationInd(int a1, int a2, int a3, int a4, int a5, int a6);
 int __fastcall isServiceTypeCfQuery(unsigned int a1, int a2);
 int __fastcall radio::onSupplementaryServiceIndicationInd(int a1, int a2, int a3, int a4, int a5, int a6);
-signed int __fastcall sub_27148(int *a1, unsigned int a2);
-signed int __fastcall sub_271FC(int *a1, unsigned int a2);
+signed int __fastcall sub_27130(int *a1, unsigned int a2);
+signed int __fastcall sub_271E4(int *a1, unsigned int a2);
 int __fastcall radio::stkCallControlAlphaNotifyInd(int a1, int a2, int a3, int a4, const char *a5, int a6);
 int __fastcall radio::lceDataInd(int a1, int a2, int a3, int a4, int a5, int a6);
 int __fastcall radio::pcoDataInd(int a1, int a2, int a3, int a4, __int64 *a5, int a6);
@@ -1015,50 +1015,50 @@ int __fastcall radio::modemResetInd(int a1, int a2, int a3, int a4, const char *
 int __fastcall radio::networkScanResultInd(int a1, int a2, int a3, int a4, __int64 *a5, int a6);
 int __fastcall radio::carrierInfoForImsiEncryption(int a1, int a2, int a3, int a4, int a5, int a6);
 int __fastcall radio::keepaliveStatusInd(int a1, int a2, int a3, int a4, __int64 *a5, int a6);
-_DWORD *__fastcall sub_27B6C(_DWORD *a1, android::hardware::details::return_status *a2);
+_DWORD *__fastcall sub_27B54(_DWORD *a1, android::hardware::details::return_status *a2);
 int __fastcall radio::oemHookRawInd(int a1, int a2, int a3, int a4, void *a5, int a6);
 int __fastcall radio::registerService(int a1, int a2);
-_DWORD *__fastcall sub_282C0(int *a1);
-_DWORD *__fastcall sub_2830C(int *a1);
-_DWORD *__fastcall sub_2835C(int *a1);
-_DWORD *__fastcall sub_283B4(int *a1);
-int __fastcall sub_283F0(int a1);
-_DWORD *__fastcall sub_28454(int *a1);
-_DWORD *__fastcall sub_2848C(int *a1);
-_DWORD *__fastcall sub_284C4(int *a1);
-_DWORD *__fastcall sub_284FC(int *a1);
-_DWORD *__fastcall sub_2854C(int *a1);
-int *__fastcall sub_28588(int *a1, int *a2);
-int __fastcall sub_285D0(int a1, _QWORD **a2, unsigned int a3);
-_DWORD *__fastcall sub_28674(int *a1);
-_DWORD *__fastcall sub_286C4(int *a1);
-_DWORD *__fastcall sub_28712(int *a1);
-int *__fastcall sub_2875E(int *a1, int *a2);
-int *__fastcall sub_287A2(int *a1, int *a2);
-int __fastcall sub_287EA(int a1, int a2);
-_DWORD *__fastcall sub_2880E(int *a1, int *a2);
-int __fastcall sub_28852(int a1, int a2);
-int __fastcall sub_28876(int a1, int a2);
-int __fastcall sub_2889A(int a1, int *a2, unsigned int a3);
-int __fastcall sub_28920(int a1, int *a2, unsigned int a3);
-unsigned int __fastcall sub_289CA(int a1, _DWORD **a2, unsigned int a3);
-int __fastcall sub_28A1C(int a1, _DWORD *a2, unsigned int a3);
-_BYTE *__fastcall sub_28AB0(int a1, _BYTE **a2, unsigned int a3);
-unsigned int __fastcall sub_28AEC(int a1, _WORD **a2, unsigned int a3);
-_DWORD *__fastcall sub_28B34(int *a1, int *a2);
-int __fastcall sub_28B8C(int a1, int a2);
-_DWORD *__fastcall sub_28BB0(int *a1, int *a2);
-_DWORD *__fastcall sub_28C0A(int *a1, int *a2);
-_DWORD *__fastcall sub_28C66(int *a1, int *a2);
-int __fastcall sub_28CC2(int a1, _DWORD *a2, unsigned int a3);
-int __fastcall sub_28D8A(int a1, _DWORD **a2, unsigned int a3);
-_QWORD *__fastcall sub_28E08(int a1, _DWORD *a2, unsigned int a3);
-int __fastcall sub_28ED6(int a1, _DWORD *a2, unsigned int a3);
-int __fastcall sub_28F94(int a1, _DWORD *a2, unsigned int a3);
-int __fastcall sub_2904A(int a1, int a2);
-_DWORD *__fastcall sub_2906E(int a1, _QWORD **a2, unsigned int a3);
-int *__fastcall sub_290D4(int *a1, int *a2);
-int __fastcall sub_2911C(int a1, _QWORD **a2, unsigned int a3);
+_DWORD *__fastcall sub_282A8(int *a1);
+_DWORD *__fastcall sub_282F4(int *a1);
+_DWORD *__fastcall sub_28344(int *a1);
+_DWORD *__fastcall sub_2839C(int *a1);
+int __fastcall sub_283D8(int a1);
+_DWORD *__fastcall sub_2843C(int *a1);
+_DWORD *__fastcall sub_28474(int *a1);
+_DWORD *__fastcall sub_284AC(int *a1);
+_DWORD *__fastcall sub_284E4(int *a1);
+_DWORD *__fastcall sub_28534(int *a1);
+int *__fastcall sub_28570(int *a1, int *a2);
+int __fastcall sub_285B8(int a1, _QWORD **a2, unsigned int a3);
+_DWORD *__fastcall sub_2865C(int *a1);
+_DWORD *__fastcall sub_286AC(int *a1);
+_DWORD *__fastcall sub_286FA(int *a1);
+int *__fastcall sub_28746(int *a1, int *a2);
+int *__fastcall sub_2878A(int *a1, int *a2);
+int __fastcall sub_287D2(int a1, int a2);
+_DWORD *__fastcall sub_287F6(int *a1, int *a2);
+int __fastcall sub_2883A(int a1, int a2);
+int __fastcall sub_2885E(int a1, int a2);
+int __fastcall sub_28882(int a1, int *a2, unsigned int a3);
+int __fastcall sub_28908(int a1, int *a2, unsigned int a3);
+unsigned int __fastcall sub_289B2(int a1, _DWORD **a2, unsigned int a3);
+int __fastcall sub_28A04(int a1, _DWORD *a2, unsigned int a3);
+_BYTE *__fastcall sub_28A98(int a1, _BYTE **a2, unsigned int a3);
+unsigned int __fastcall sub_28AD4(int a1, _WORD **a2, unsigned int a3);
+_DWORD *__fastcall sub_28B1C(int *a1, int *a2);
+int __fastcall sub_28B74(int a1, int a2);
+_DWORD *__fastcall sub_28B98(int *a1, int *a2);
+_DWORD *__fastcall sub_28BF2(int *a1, int *a2);
+_DWORD *__fastcall sub_28C4E(int *a1, int *a2);
+int __fastcall sub_28CAA(int a1, _DWORD *a2, unsigned int a3);
+int __fastcall sub_28D72(int a1, _DWORD **a2, unsigned int a3);
+_QWORD *__fastcall sub_28DF0(int a1, _DWORD *a2, unsigned int a3);
+int __fastcall sub_28EBE(int a1, _DWORD *a2, unsigned int a3);
+int __fastcall sub_28F7C(int a1, _DWORD *a2, unsigned int a3);
+int __fastcall sub_29032(int a1, int a2);
+_DWORD *__fastcall sub_29056(int a1, _QWORD **a2, unsigned int a3);
+int *__fastcall sub_290BC(int *a1, int *a2);
+int __fastcall sub_29104(int a1, _QWORD **a2, unsigned int a3);
 int __fastcall SapImpl::checkReturnStatus(int a1, int a2);
 int __fastcall SapImpl::setCallback(int a1, int a2, android **a3);
 _DWORD *__fastcall SapImpl::createMsgHeader(int a1, int a2, int a3);
@@ -1084,38 +1084,38 @@ int __fastcall sap::processResponse(int *a1, int a2);
 int __fastcall sap::processUnsolResponse(int *a1, int a2);
 int sap::registerService();
 signed int __fastcall pb_read(int a1, int a2, unsigned int a3);
-int sub_2B2D0(); // weak
+int sub_2B2B8(); // weak
 int __fastcall pb_istream_from_buffer(int result, __int64 a2);
 signed int __fastcall pb_decode_varint(int a1, _DWORD *a2);
-signed int __fastcall sub_2B39C(int a1, int a2);
+signed int __fastcall sub_2B384(int a1, int a2);
 signed int __fastcall pb_decode_tag(int a1, int *a2, unsigned int *a3, _BYTE *a4);
-signed int __fastcall sub_2B43C(int a1, int *a2);
+signed int __fastcall sub_2B424(int a1, int *a2);
 int __fastcall pb_skip_field(int a1, int a2);
 signed int __fastcall pb_make_string_substream(int a1, _QWORD *a2);
 int __fastcall pb_close_string_substream(int result, int a2);
 int __fastcall pb_decode_noinit(int a1, unsigned __int8 *a2, int a3);
-int __fastcall sub_2B84C(int a1, int a2, _DWORD *a3);
-signed int __fastcall sub_2BCC0(unsigned int *a1);
+int __fastcall sub_2B834(int a1, int a2, _DWORD *a3);
+signed int __fastcall sub_2BCA8(unsigned int *a1);
 int __fastcall pb_decode(int a1, int a2, int a3);
-int __fastcall sub_2BD68(int a1, int a2);
+int __fastcall sub_2BD50(int a1, int a2);
 int __fastcall pb_release(int a1, int a2);
 int __fastcall pb_decode_delimited(int a1, int a2, int a3);
 signed int __fastcall pb_decode_svarint(int a1, _QWORD *a2);
 int __fastcall pb_decode_fixed32(int a1, int a2);
 int __fastcall pb_decode_fixed64(int a1, int a2);
-signed int __fastcall sub_2BFA8(int a1, int a2, _BYTE *a3);
-signed int __fastcall sub_2C034(int a1, int a2, _QWORD *a3);
-signed int __fastcall sub_2C0A0(int a1, int a2, _QWORD *a3);
-int __fastcall sub_2C11C(int a1, int a2, int a3);
-int __fastcall sub_2C124(int a1, int a2, int a3);
-int __fastcall sub_2C12C(int a1, int a2, void **a3);
-int __fastcall sub_2C1C4(int a1, int a2, void **a3);
-int __fastcall sub_2C25C(int a1, int a2, int a3);
+signed int __fastcall sub_2BF90(int a1, int a2, _BYTE *a3);
+signed int __fastcall sub_2C01C(int a1, int a2, _QWORD *a3);
+signed int __fastcall sub_2C088(int a1, int a2, _QWORD *a3);
+int __fastcall sub_2C104(int a1, int a2, int a3);
+int __fastcall sub_2C10C(int a1, int a2, int a3);
+int __fastcall sub_2C114(int a1, int a2, void **a3);
+int __fastcall sub_2C1AC(int a1, int a2, void **a3);
+int __fastcall sub_2C244(int a1, int a2, int a3);
 int __fastcall pb_ostream_from_buffer(int result, __int64 a2);
-int sub_2C30C(); // weak
+int sub_2C2F4(); // weak
 signed int __fastcall pb_write(int a1, int a2, int a3);
 signed int __fastcall pb_encode(__int64 *a1, unsigned __int8 *a2, int *a3);
-int __fastcall sub_2C408(__int64 *a1, unsigned __int8 *a2, _DWORD *a3);
+int __fastcall sub_2C3F0(__int64 *a1, unsigned __int8 *a2, _DWORD *a3);
 int __fastcall pb_encode_submessage(int a1, unsigned __int8 *a2, int *a3);
 int __fastcall pb_get_encoded_size(_DWORD *a1, unsigned __int8 *a2, int *a3);
 signed int __fastcall pb_encode_varint(int a1, int a2, __int64 a3);
@@ -1125,35 +1125,35 @@ signed int __fastcall pb_encode_fixed64(int a1, int a2);
 signed int __fastcall pb_encode_tag(int a1, int a2, unsigned int a3);
 signed int __fastcall pb_encode_tag_for_field(int a1, unsigned __int8 *a2);
 signed int __fastcall pb_encode_string(int a1, int a2, int a3);
-signed int __fastcall sub_2C8C4(int a1, int a2, __int64 *a3);
-signed int __fastcall sub_2C908(int a1, int a2, __int64 *a3);
-signed int __fastcall sub_2C934(int a1, int a2, _QWORD *a3);
-signed int __fastcall sub_2C974(int a1, int a2, int a3);
-signed int __fastcall sub_2C97C(int a1, int a2, int a3);
-signed int __fastcall sub_2C984(int a1, int a2, int *a3);
-signed int __fastcall sub_2CA2C(int a1, int a2, int a3);
-int __fastcall sub_2CA5C(int a1, int a2, int *a3);
+signed int __fastcall sub_2C8AC(int a1, int a2, __int64 *a3);
+signed int __fastcall sub_2C8F0(int a1, int a2, __int64 *a3);
+signed int __fastcall sub_2C91C(int a1, int a2, _QWORD *a3);
+signed int __fastcall sub_2C95C(int a1, int a2, int a3);
+signed int __fastcall sub_2C964(int a1, int a2, int a3);
+signed int __fastcall sub_2C96C(int a1, int a2, int *a3);
+signed int __fastcall sub_2CA14(int a1, int a2, int a3);
+int __fastcall sub_2CA44(int a1, int a2, int *a3);
 unsigned int *__fastcall decode_eht_entry(unsigned int *result, signed int *a2, int *a3);
 signed int __fastcall Unwind_VRS_Interpret(int a1, int a2, unsigned int a3, unsigned int a4);
 signed int __fastcall Unwind_VRS_Get(int a1, int a2, unsigned int a3, int a4, _QWORD *a5);
 signed int __fastcall Unwind_VRS_Set(int a1, int a2, unsigned int a3, int a4, int *a5);
 signed int __fastcall Unwind_VRS_Pop(int a1, int a2, unsigned int a3, int a4);
-signed int __fastcall sub_2CFE0(int a1, int a2);
+signed int __fastcall sub_2CFC8(int a1, int a2);
 signed int __fastcall _aeabi_unwind_cpp_pr1(int a1, int a2, int a3);
 signed int __fastcall _aeabi_unwind_cpp_pr2(int a1, int a2, int a3);
 signed int __fastcall Unwind_RaiseException(int *a1, int a2, int a3, int a4);
-int __fastcall sub_2D0F4(int a1, int a2, int *a3, char a4);
+int __fastcall sub_2D0DC(int a1, int a2, int *a3, char a4);
 void __fastcall __noreturn Unwind_Resume(int *a1, int a2, int a3, int a4);
 int __fastcall Unwind_GetLanguageSpecificData(int a1);
 int __fastcall Unwind_GetRegionStart(int a1);
 int __fastcall Unwind_DeleteException(int result);
 signed int __fastcall _gnu_unwind_frame(int a1, int a2);
 int __fastcall unw_getcontext(_DWORD *a1, int a2, int a3, int a4, int a5);
-_QWORD *__fastcall sub_2D344(_QWORD *result);
-_QWORD *__fastcall sub_2D34C(_QWORD *result);
-_QWORD *__fastcall sub_2D354(_QWORD *result);
+_QWORD *__fastcall sub_2D32C(_QWORD *result);
+_QWORD *__fastcall sub_2D334(_QWORD *result);
+_QWORD *__fastcall sub_2D33C(_QWORD *result);
 int __fastcall unw_init_local(int a1, int a2);
-int __fastcall sub_2D378(int a1, int a2, int a3);
+int __fastcall sub_2D360(int a1, int a2, int a3);
 signed int __fastcall unw_get_reg(int a1, int a2, _DWORD *a3);
 signed int __fastcall unw_set_reg(int a1, int a2, int a3);
 signed int __fastcall unw_get_fpreg(int a1, int a2, _QWORD *a3);
@@ -1166,15 +1166,15 @@ int __fastcall unw_is_fpreg(int a1);
 int __fastcall unw_regname(int a1);
 int __fastcall unw_is_signal_frame(int a1);
 int __fastcall unw_save_vfp_as_X(int a1);
-int __fastcall sub_2D924(int a1);
-void __fastcall sub_2D978(int a1);
-int sub_2D9AC();
-signed int __fastcall sub_2D9F4(int *a1, int a2, _DWORD *a3);
-int __fastcall sub_2DC96(int *a1, int a2, int a3, _DWORD *a4, int a5, int a6, int a7, _DWORD *a8);
-int sub_2E070(); // weak
-int sub_2E084(); // weak
-int sub_2E08C(); // weak
-int sub_2E094(); // weak
+int __fastcall sub_2D90C(int a1);
+void __fastcall sub_2D960(int a1);
+int sub_2D994();
+signed int __fastcall sub_2D9DC(int *a1, int a2, _DWORD *a3);
+int __fastcall sub_2DC7E(int *a1, int a2, int a3, _DWORD *a4, int a5, int a6, int a7, _DWORD *a8);
+int sub_2E058(); // weak
+int sub_2E06C(); // weak
+int sub_2E074(); // weak
+int sub_2E07C(); // weak
 char *__fastcall j_strncpy(char *dest, const char *src, size_t n);
 const char *__fastcall j_j_requestToString(int a1);
 void *__fastcall j_calloc(size_t nmemb, size_t size);
@@ -1375,17 +1375,17 @@ int __fastcall j_j_unw_step(int a1);
 int __fastcall j_j_unw_getcontext(_DWORD *a1, int a2, int a3, int a4, int a5);
 int __fastcall j_j_unw_init_local(int a1, int a2);
 signed int __fastcall j_j_unw_resume(int a1);
-_QWORD *__fastcall sub_2ED2C(_QWORD *result);
-_QWORD *__fastcall sub_2ED3C(_QWORD *result);
-_QWORD *__fastcall sub_2ED4C(_QWORD *result);
-void sub_2ED5C();
+_QWORD *__fastcall sub_2ED14(_QWORD *result);
+_QWORD *__fastcall sub_2ED24(_QWORD *result);
+_QWORD *__fastcall sub_2ED34(_QWORD *result);
+void sub_2ED44();
 int j_dladdr();
 int j_dl_iterate_phdr();
 unsigned int *__fastcall j_j_decode_eht_entry(unsigned int *result, signed int *a2, int *a3);
 signed int __fastcall j_j__Unwind_VRS_Interpret(int a1, int a2, unsigned int a3, unsigned int a4);
-void sub_2EDAC();
-void sub_2EDBC();
-void sub_2EDCC();
+void sub_2ED94();
+void sub_2EDA4();
+void sub_2EDB4();
 int j___vsnprintf_chk();
 
 //-------------------------------------------------------------------------
@@ -1400,10 +1400,10 @@ int dword_16718 = 49; // weak
 int dword_1671C = 48; // weak
 int dword_179B0 = 49; // weak
 int dword_179B4 = 48; // weak
-_UNKNOWN unk_34874; // weak
-_DWORD dword_34880[20] = { 1, 1, 4, 2, 2, 2, 2, 2, 4, 4, 4, 2, 2, 3, 4, 1, 5, 0, 3, 0 }; // idb
-_DWORD dword_348D0[8] = { 0, 1, 1, 3, 4, 1, 6, 0 }; // idb
-_DWORD dword_348F0[7] = { 0, 1, 1, 1, 1, 1, 6 }; // idb
+_UNKNOWN unk_34864; // weak
+_DWORD dword_34870[20] = { 1, 1, 4, 2, 2, 2, 2, 2, 4, 4, 4, 2, 2, 3, 4, 1, 5, 0, 3, 0 }; // idb
+_DWORD dword_348C0[8] = { 0, 1, 1, 3, 4, 1, 6, 0 }; // idb
+_DWORD dword_348E0[7] = { 0, 1, 1, 1, 1, 1, 6 }; // idb
 int (__fastcall *dword_364E0[150])(_DWORD, signed int, _DWORD, _DWORD, int, size_t) =
 {
   (int (__fastcall *)(_DWORD, signed int, _DWORD, _DWORD, int, size_t))0x3E8,
@@ -1558,9 +1558,9 @@ int (__fastcall *dword_364E0[150])(_DWORD, signed int, _DWORD, _DWORD, int, size
   (int (__fastcall *)(_DWORD, signed int, _DWORD, _DWORD, int, size_t))1
 }; // idb
 char *off_36740[6] = { "ACTIVE", "HOLDING", "DIALING", "ALERTING", "INCOMING", "WAITING" }; // weak
-void *off_37154 = &unk_33AAB; // weak
-void *off_373D4 = (void *)0x2BFA9; // weak
-void *off_373F8 = (void *)0x2C8C5; // weak
+void *off_37154 = &unk_33A9B; // weak
+void *off_373D4 = (void *)0x2BF91; // weak
+void *off_373F8 = (void *)0x2C8AD; // weak
 _UNKNOWN unk_37424; // weak
 int dword_37608 = 0; // weak
 int dword_3760C = 0; // weak
@@ -5086,7 +5086,7 @@ LABEL_39:
     result = (android *)(v11 ^ 1);
     if ( v11 == 1 )
     {
-      result = (android *)RIL_requestTimedCallback_0((int)&loc_139D8 + 1, 0, (__int64 *)&unk_34874);
+      result = (android *)RIL_requestTimedCallback_0((int)&loc_139D8 + 1, 0, (__int64 *)&unk_34864);
       if ( !result )
       {
 LABEL_33:
@@ -5417,7 +5417,7 @@ int sub_137BC()
   j_pthread_mutex_lock((pthread_mutex_t *)&unk_384F4);
   v0 = 1;
   j_acquire_wake_lock();
-  v1 = RIL_requestTimedCallback_0((int)&loc_139D8 + 1, 0, (__int64 *)&unk_34874);
+  v1 = RIL_requestTimedCallback_0((int)&loc_139D8 + 1, 0, (__int64 *)&unk_34864);
   if ( v1 )
   {
     if ( MEMORY[0] + 1 > MEMORY[0] )
@@ -11528,141 +11528,118 @@ LABEL_5:
 //----- (0001960C) --------------------------------------------------------
 int __fastcall radio::getIccCardStatusResponse(int a1, int a2, int a3, int a4, int a5, int a6)
 {
-  int v6; // r7
-  int v7; // r4
+  int v6; // r10
+  int v7; // r6
   signed int v8; // r0
-  int v9; // r2
-  int v10; // r5
-  signed int v11; // r1
-  bool v12; // nf
-  unsigned __int8 v13; // vf
+  signed int v9; // r1
+  signed int v10; // r2
+  int v11; // r3
+  __int64 v12; // kr00_8
+  int v13; // r5
+  int v14; // r4
+  _DWORD *v15; // r6
+  const char *v16; // r0
+  int v17; // r0
   int result; // r0
-  int v15; // r3
-  __int64 v16; // kr00_8
-  int v17; // r7
-  int v18; // r4
-  int v19; // r11
-  int v20; // r5
-  _DWORD *v21; // r9
-  _DWORD *v22; // r8
-  int v23; // r10
-  const char *v24; // r0
-  int v25; // [sp+Ch] [bp-7Ch]
-  int v26; // [sp+10h] [bp-78h]
-  int v27; // [sp+14h] [bp-74h]
-  int v28; // [sp+18h] [bp-70h]
-  char v29; // [sp+20h] [bp-68h]
-  __int64 v30; // [sp+38h] [bp-50h]
-  __int64 v31; // [sp+40h] [bp-48h]
-  int v32; // [sp+48h] [bp-40h]
-  int v33; // [sp+50h] [bp-38h]
-  int v34; // [sp+54h] [bp-34h]
-  int v35; // [sp+58h] [bp-30h]
-  char v36; // [sp+5Ch] [bp-2Ch]
-  int v37; // [sp+60h] [bp-28h]
+  int v19; // [sp+8h] [bp-78h]
+  int v20; // [sp+Ch] [bp-74h]
+  int v21; // [sp+10h] [bp-70h]
+  char v22; // [sp+18h] [bp-68h]
+  __int64 v23; // [sp+30h] [bp-50h]
+  __int64 v24; // [sp+38h] [bp-48h]
+  int v25; // [sp+40h] [bp-40h]
+  int v26; // [sp+48h] [bp-38h]
+  int v27; // [sp+4Ch] [bp-34h]
+  int v28; // [sp+50h] [bp-30h]
+  char v29; // [sp+54h] [bp-2Ch]
+  int v30; // [sp+5Ch] [bp-24h]
 
   v6 = a1;
   v7 = a4;
-  v37 = MEMORY[0];
+  v30 = MEMORY[0];
   if ( *(_DWORD *)(*(_DWORD *)(4 * a1) + 8) )
   {
     v8 = 0;
-    v28 = 0;
-    v26 = 0;
-    v27 = a3;
+    v21 = 0;
+    v19 = 0;
+    v20 = a3;
     if ( a2 )
     {
       if ( a2 != 3 )
-      {
-LABEL_6:
-        v9 = 0;
-        v28 = a4;
-        v33 = 0;
-        v34 = 0;
-        v35 = 0;
-        v30 = 0LL;
-        v31 = 0LL;
-        v32 = 0;
-        v36 = 1;
-        v25 = v6;
-        if ( !a5 || a6 != 280 )
-          goto LABEL_23;
-        v10 = *(_DWORD *)(a5 + 8);
-        v11 = *(_DWORD *)(a5 + 20);
-        v13 = __OFSUB__(v10, v11);
-        v12 = v10 - v11 < 0;
-        if ( v10 < v11 )
-        {
-          v9 = *(_DWORD *)(a5 + 12);
-          v13 = __OFSUB__(v9, v11);
-          v12 = v9 - v11 < 0;
-        }
-        if ( v12 ^ v13 && (v15 = *(_DWORD *)(a5 + 16), v15 < v11) )
-        {
-          v16 = *(_QWORD *)a5;
-          LODWORD(v31) = *(_DWORD *)(a5 + 8);
-          HIDWORD(v31) = v9;
-          v32 = v15;
-          v30 = v16;
-          sub_197F8(&v33, v11);
-          if ( *(_DWORD *)(a5 + 20) >= 1 )
-          {
-            v17 = 0;
-            v18 = 0;
-            v19 = 0;
-            v20 = v33;
-            do
-            {
-              v21 = (_DWORD *)(v20 + 2 * v18);
-              v22 = (_DWORD *)(a5 + v18);
-              *(_DWORD *)(v20 + v17) = *(_DWORD *)(a5 + v18 + 24);
-              v21[1] = *(_DWORD *)(a5 + v18 + 28);
-              v21[2] = *(_DWORD *)(a5 + v18 + 32);
-              j_convertCharPtrToHidlString(&v29, *(const char **)(a5 + v18 + 36));
-              v23 = v20 + v17;
-              android::hardware::hidl_string::operator=();
-              v24 = (const char *)android::hardware::hidl_string::~hidl_string((android::hardware::hidl_string *)&v29);
-              j_convertCharPtrToHidlString(v24, *(const char **)(a5 + v18 + 40));
-              android::hardware::hidl_string::operator=();
-              android::hardware::hidl_string::~hidl_string((android::hardware::hidl_string *)&v29);
-              v17 += 64;
-              v18 += 32;
-              ++v19;
-              v21[12] = v22[11];
-              v21[13] = v22[12];
-              *(_DWORD *)(v23 + 56) = v22[13];
-            }
-            while ( v19 < *(_DWORD *)(a5 + 20) );
-          }
-        }
-        else
-        {
-LABEL_23:
-          j___android_log_buf_print();
-          if ( !v7 )
-            v28 = 66;
-        }
-        (*(void (__fastcall **)(char *, _DWORD, int *, __int64 *))(**(_DWORD **)(*(_DWORD *)(4 * v25) + 8) + 52))(
-          &v29,
-          *(_DWORD *)(*(_DWORD *)(4 * v25) + 8),
-          &v26,
-          &v30);
-        return j_checkReturnStatus(*(_DWORD *)(*(_DWORD *)(4 * v25) + 4), (int)&v29, 1);
-      }
+        goto LABEL_6;
       v8 = 2;
     }
-    v26 = v8;
-    goto LABEL_6;
+    v19 = v8;
+LABEL_6:
+    v21 = a4;
+    v26 = 0;
+    v27 = 0;
+    v28 = 0;
+    v23 = 0LL;
+    v24 = 0LL;
+    v25 = 0;
+    v29 = 1;
+    if ( a5
+      && a6 == 412
+      && (v9 = *(_DWORD *)(a5 + 20), *(_DWORD *)(a5 + 8) < v9)
+      && (v10 = *(_DWORD *)(a5 + 12), v10 < v9)
+      && (v11 = *(_DWORD *)(a5 + 16), v11 < v9) )
+    {
+      v12 = *(_QWORD *)a5;
+      LODWORD(v24) = *(_DWORD *)(a5 + 8);
+      HIDWORD(v24) = v10;
+      v25 = v11;
+      v23 = v12;
+      sub_197E0(&v26, v9);
+      if ( *(_DWORD *)(a5 + 20) >= 1 )
+      {
+        v13 = a5 + 28;
+        v14 = 0;
+        v15 = (_DWORD *)(v26 + 32);
+        do
+        {
+          *(v15 - 8) = *(_DWORD *)(v13 - 4);
+          *(v15 - 7) = *(_DWORD *)v13;
+          *(v15 - 6) = *(_DWORD *)(v13 + 4);
+          j_convertCharPtrToHidlString(&v22, *(const char **)(v13 + 8));
+          android::hardware::hidl_string::operator=();
+          v16 = (const char *)android::hardware::hidl_string::~hidl_string((android::hardware::hidl_string *)&v22);
+          j_convertCharPtrToHidlString(v16, *(const char **)(v13 + 12));
+          android::hardware::hidl_string::operator=();
+          android::hardware::hidl_string::~hidl_string((android::hardware::hidl_string *)&v22);
+          ++v14;
+          v15[4] = *(_DWORD *)(v13 + 16);
+          v15[5] = *(_DWORD *)(v13 + 20);
+          v17 = *(_DWORD *)(v13 + 24);
+          v13 += 48;
+          v15[6] = v17;
+          v15 += 16;
+        }
+        while ( v14 < *(_DWORD *)(a5 + 20) );
+      }
+    }
+    else
+    {
+      j___android_log_buf_print();
+      if ( !v7 )
+        v21 = 66;
+    }
+    (*(void (__fastcall **)(char *, _DWORD, int *, __int64 *))(**(_DWORD **)(*(_DWORD *)(4 * v6) + 8) + 52))(
+      &v22,
+      *(_DWORD *)(*(_DWORD *)(4 * v6) + 8),
+      &v19,
+      &v23);
+    return j_checkReturnStatus(*(_DWORD *)(*(_DWORD *)(4 * v6) + 4), (int)&v22, 1);
   }
   j___android_log_buf_print();
-  result = MEMORY[0] - v37;
-  if ( MEMORY[0] == v37 )
+  result = MEMORY[0] - v30;
+  if ( MEMORY[0] == v30 )
     result = 0;
   return result;
 }
 
-//----- (000197F8) --------------------------------------------------------
-signed int __fastcall sub_197F8(int *a1, unsigned int a2)
+//----- (000197E0) --------------------------------------------------------
+signed int __fastcall sub_197E0(int *a1, unsigned int a2)
 {
   unsigned int v2; // r11
   int *v3; // r10
@@ -11771,7 +11748,7 @@ signed int __fastcall sub_197F8(int *a1, unsigned int a2)
   return result;
 }
 
-//----- (00019904) --------------------------------------------------------
+//----- (000198EC) --------------------------------------------------------
 int __fastcall radio::supplyIccPinForAppResponse(int a1, int a2, signed int a3, signed int a4, int a5, int a6)
 {
   int v6; // r4
@@ -11809,7 +11786,7 @@ int __fastcall radio::supplyIccPinForAppResponse(int a1, int a2, signed int a3, 
   return result;
 }
 
-//----- (000199F8) --------------------------------------------------------
+//----- (000199E0) --------------------------------------------------------
 int __fastcall radio::supplyIccPukForAppResponse(int a1, int a2, signed int a3, signed int a4, int a5, int a6)
 {
   int v6; // r4
@@ -11846,7 +11823,7 @@ int __fastcall radio::supplyIccPukForAppResponse(int a1, int a2, signed int a3, 
   return result;
 }
 
-//----- (00019AAC) --------------------------------------------------------
+//----- (00019A94) --------------------------------------------------------
 int __fastcall radio::supplyIccPin2ForAppResponse(int a1, int a2, signed int a3, signed int a4, int a5, int a6)
 {
   int v6; // r4
@@ -11883,7 +11860,7 @@ int __fastcall radio::supplyIccPin2ForAppResponse(int a1, int a2, signed int a3,
   return result;
 }
 
-//----- (00019B60) --------------------------------------------------------
+//----- (00019B48) --------------------------------------------------------
 int __fastcall radio::supplyIccPuk2ForAppResponse(int a1, int a2, signed int a3, signed int a4, int a5, int a6)
 {
   int v6; // r4
@@ -11920,7 +11897,7 @@ int __fastcall radio::supplyIccPuk2ForAppResponse(int a1, int a2, signed int a3,
   return result;
 }
 
-//----- (00019C14) --------------------------------------------------------
+//----- (00019BFC) --------------------------------------------------------
 int __fastcall radio::changeIccPinForAppResponse(int a1, int a2, signed int a3, signed int a4, int a5, int a6)
 {
   int v6; // r4
@@ -11957,7 +11934,7 @@ int __fastcall radio::changeIccPinForAppResponse(int a1, int a2, signed int a3, 
   return result;
 }
 
-//----- (00019CC8) --------------------------------------------------------
+//----- (00019CB0) --------------------------------------------------------
 int __fastcall radio::changeIccPin2ForAppResponse(int a1, int a2, signed int a3, signed int a4, int a5, int a6)
 {
   int v6; // r4
@@ -11994,7 +11971,7 @@ int __fastcall radio::changeIccPin2ForAppResponse(int a1, int a2, signed int a3,
   return result;
 }
 
-//----- (00019D7C) --------------------------------------------------------
+//----- (00019D64) --------------------------------------------------------
 int __fastcall radio::supplyNetworkDepersonalizationResponse(int a1, int a2, signed int a3, signed int a4, int a5, int a6)
 {
   int v6; // r4
@@ -12031,7 +12008,7 @@ int __fastcall radio::supplyNetworkDepersonalizationResponse(int a1, int a2, sig
   return result;
 }
 
-//----- (00019E30) --------------------------------------------------------
+//----- (00019E18) --------------------------------------------------------
 int __fastcall radio::getCurrentCallsResponse(int a1, int a2, int a3, int a4, int a5, unsigned int a6)
 {
   int v6; // r8
@@ -12095,7 +12072,7 @@ LABEL_6:
         }
         else
         {
-          sub_1A050(&v28, a6 >> 2);
+          sub_1A038(&v28, a6 >> 2);
           if ( a6 >> 2 )
           {
             v10 = 0;
@@ -12138,7 +12115,7 @@ LABEL_6:
               {
                 if ( *(_DWORD *)(v19 + 12) )
                 {
-                  sub_1A18A((int *)(v18 + 72), 1u);
+                  sub_1A172((int *)(v18 + 72), 1u);
                   **(_DWORD **)(v28 + v10 + 72) = *(_DWORD *)v19;
                   *(_DWORD *)(*(_DWORD *)(v28 + v10 + 72) + 4) = *(_DWORD *)(v19 + 4);
                   v20 = *(_QWORD *)(v19 + 8);
@@ -12173,8 +12150,8 @@ LABEL_6:
   return result;
 }
 
-//----- (0001A050) --------------------------------------------------------
-signed int __fastcall sub_1A050(int *a1, unsigned int a2)
+//----- (0001A038) --------------------------------------------------------
+signed int __fastcall sub_1A038(int *a1, unsigned int a2)
 {
   unsigned int v2; // r11
   int *v3; // r10
@@ -12252,7 +12229,7 @@ signed int __fastcall sub_1A050(int *a1, unsigned int a2)
       *(_DWORD *)(v14 + 48) = v16[10];
       android::hardware::hidl_string::operator=();
       *(_DWORD *)(v14 + 72) = v16[16];
-      sub_28588(&v7[v12 + 20], v16 + 18);
+      sub_28570(&v7[v12 + 20], v16 + 18);
       v19 = v3[2];
       if ( v19 >= v2 )
         v19 = v2;
@@ -12274,7 +12251,7 @@ signed int __fastcall sub_1A050(int *a1, unsigned int a2)
         v24 = -88 * v21;
         do
         {
-          sub_2854C(v23 + 12);
+          sub_28534(v23 + 12);
           android::hardware::hidl_string::~hidl_string((android::hardware::hidl_string *)(v23 + 6));
           android::hardware::hidl_string::~hidl_string((android::hardware::hidl_string *)v23);
           v24 += 88;
@@ -12292,8 +12269,8 @@ signed int __fastcall sub_1A050(int *a1, unsigned int a2)
   return result;
 }
 
-//----- (0001A18A) --------------------------------------------------------
-signed int __fastcall sub_1A18A(int *a1, unsigned int a2)
+//----- (0001A172) --------------------------------------------------------
+signed int __fastcall sub_1A172(int *a1, unsigned int a2)
 {
   unsigned int v2; // r5
   int *v3; // r4
@@ -12391,8 +12368,8 @@ signed int __fastcall sub_1A18A(int *a1, unsigned int a2)
   return result;
 }
 
-//----- (0001A250) --------------------------------------------------------
-_DWORD *__fastcall sub_1A250(int *a1)
+//----- (0001A238) --------------------------------------------------------
+_DWORD *__fastcall sub_1A238(int *a1)
 {
   _DWORD *v1; // r4
   int v2; // r0
@@ -12415,7 +12392,7 @@ _DWORD *__fastcall sub_1A250(int *a1)
         v6 = -88 * v3;
         do
         {
-          sub_2854C(v5 + 12);
+          sub_28534(v5 + 12);
           android::hardware::hidl_string::~hidl_string((android::hardware::hidl_string *)(v5 + 6));
           android::hardware::hidl_string::~hidl_string((android::hardware::hidl_string *)v5);
           v6 += 88;
@@ -12430,7 +12407,7 @@ _DWORD *__fastcall sub_1A250(int *a1)
   return v1;
 }
 
-//----- (0001A2A8) --------------------------------------------------------
+//----- (0001A290) --------------------------------------------------------
 int __fastcall radio::dialResponse(int a1, int a2, int a3, int a4)
 {
   int v4; // r4
@@ -12473,7 +12450,7 @@ LABEL_6:
   return result;
 }
 
-//----- (0001A37C) --------------------------------------------------------
+//----- (0001A364) --------------------------------------------------------
 int __fastcall radio::getIMSIForAppResponse(int a1, int a2, int a3, int a4, const char *a5)
 {
   int v5; // r5
@@ -12523,7 +12500,7 @@ LABEL_6:
   return result;
 }
 
-//----- (0001A474) --------------------------------------------------------
+//----- (0001A45C) --------------------------------------------------------
 int __fastcall radio::hangupConnectionResponse(int a1, int a2, int a3, int a4)
 {
   int v4; // r4
@@ -12566,7 +12543,7 @@ LABEL_6:
   return result;
 }
 
-//----- (0001A518) --------------------------------------------------------
+//----- (0001A500) --------------------------------------------------------
 int __fastcall radio::hangupWaitingOrBackgroundResponse(int a1, int a2, int a3, int a4)
 {
   int v4; // r4
@@ -12609,7 +12586,7 @@ LABEL_6:
   return result;
 }
 
-//----- (0001A5BC) --------------------------------------------------------
+//----- (0001A5A4) --------------------------------------------------------
 int __fastcall radio::hangupForegroundResumeBackgroundResponse(int a1, int a2, int a3, int a4)
 {
   int v4; // r4
@@ -12652,7 +12629,7 @@ LABEL_6:
   return result;
 }
 
-//----- (0001A660) --------------------------------------------------------
+//----- (0001A648) --------------------------------------------------------
 int __fastcall radio::switchWaitingOrHoldingAndActiveResponse(int a1, int a2, int a3, int a4)
 {
   int v4; // r4
@@ -12695,7 +12672,7 @@ LABEL_6:
   return result;
 }
 
-//----- (0001A704) --------------------------------------------------------
+//----- (0001A6EC) --------------------------------------------------------
 int __fastcall radio::conferenceResponse(int a1, int a2, int a3, int a4)
 {
   int v4; // r4
@@ -12738,7 +12715,7 @@ LABEL_6:
   return result;
 }
 
-//----- (0001A7E0) --------------------------------------------------------
+//----- (0001A7C8) --------------------------------------------------------
 int __fastcall radio::rejectCallResponse(int a1, int a2, int a3, int a4)
 {
   int v4; // r4
@@ -12781,7 +12758,7 @@ LABEL_6:
   return result;
 }
 
-//----- (0001A8BC) --------------------------------------------------------
+//----- (0001A8A4) --------------------------------------------------------
 int __fastcall radio::getLastCallFailCauseResponse(int a1, int a2, int a3, int a4, __int64 *a5, int a6)
 {
   int v6; // r4
@@ -12855,7 +12832,7 @@ LABEL_15:
   return result;
 }
 
-//----- (0001AA24) --------------------------------------------------------
+//----- (0001AA0C) --------------------------------------------------------
 int __fastcall radio::getSignalStrengthResponse(int a1, int a2, int a3, int a4, _DWORD *a5, int a6)
 {
   int v6; // r7
@@ -12904,9 +12881,9 @@ LABEL_6:
     v14 = 0LL;
     if ( !a5 )
       goto LABEL_19;
-    v9 = a6 == 52;
-    if ( a6 != 52 )
-      v9 = a6 == 56;
+    v9 = a6 == 60;
+    if ( a6 != 60 )
+      v9 = a6 == 64;
     if ( v9 )
     {
       j_convertRilSignalStrengthToHal(a5, a6, (int)&v11);
@@ -12932,32 +12909,32 @@ LABEL_19:
   return result;
 }
 
-//----- (0001AB4C) --------------------------------------------------------
+//----- (0001AB34) --------------------------------------------------------
 int __fastcall convertRilSignalStrengthToHal(_DWORD *a1, int a2, int a3)
 {
   int result; // r0
 
-  if ( a2 == 52 )
-    result = j_convertRilSignalStrengthToHalV8(a1, 52, a3);
+  if ( a2 == 60 )
+    result = j_convertRilSignalStrengthToHalV8(a1, 60, a3);
   else
     result = j_convertRilSignalStrengthToHalV10(a1, a2, (_DWORD *)a3);
   return result;
 }
 
-//----- (0001AB58) --------------------------------------------------------
+//----- (0001AB40) --------------------------------------------------------
 int __fastcall getCellInfoTypeRadioTechnology(char *a1)
 {
   unsigned int v1; // r0
   int result; // r0
 
   if ( a1 && (v1 = j_atoi(a1) - 1, v1 <= 0x12) )
-    result = dword_34880[v1];
+    result = dword_34870[v1];
   else
     result = 0;
   return result;
 }
 
-//----- (0001AB7C) --------------------------------------------------------
+//----- (0001AB64) --------------------------------------------------------
 int __fastcall fillCellIdentityResponse(_DWORD *a1, int a2)
 {
   _DWORD *v2; // r6
@@ -12981,20 +12958,20 @@ int __fastcall fillCellIdentityResponse(_DWORD *a1, int a2)
   v3 = a2;
   v4 = a1 + 2;
   v18 = MEMORY[0];
-  sub_1AE04(a1 + 2, 0);
+  sub_1ADEC(a1 + 2, 0);
   v5 = v2 + 6;
-  sub_1AF14(v2 + 6, 0);
+  sub_1AEFC(v2 + 6, 0);
   v6 = (int)(v2 + 10);
-  sub_1B01C((int)(v2 + 10), 0);
+  sub_1B004((int)(v2 + 10), 0);
   v7 = v2 + 18;
-  sub_1B086(v2 + 18, 0);
+  sub_1B06E(v2 + 18, 0);
   v8 = v2 + 14;
-  sub_1AF14(v2 + 14, 0);
+  sub_1AEFC(v2 + 14, 0);
   *v2 = *(_DWORD *)v3;
   switch ( *(_DWORD *)v3 )
   {
     case 1:
-      sub_1AE04(v4, 1u);
+      sub_1ADEC(v4, 1u);
       std::__1::to_string((std::__1 *)&v16, *(_DWORD *)(v3 + 4));
       v9 = *v4;
       android::hardware::hidl_string::operator=();
@@ -13011,7 +12988,7 @@ int __fastcall fillCellIdentityResponse(_DWORD *a1, int a2)
       *(_BYTE *)(*v4 + 44) = *(_BYTE *)(v3 + 24);
       break;
     case 2:
-      sub_1B01C((int)(v2 + 10), 1u);
+      sub_1B004((int)(v2 + 10), 1u);
       **(_DWORD **)v6 = *(_DWORD *)(v3 + 4);
       *(_DWORD *)(*(_DWORD *)v6 + 4) = *(_DWORD *)(v3 + 8);
       *(_DWORD *)(*(_DWORD *)v6 + 8) = *(_DWORD *)(v3 + 12);
@@ -13019,7 +12996,7 @@ int __fastcall fillCellIdentityResponse(_DWORD *a1, int a2)
       *(_DWORD *)(*(_DWORD *)v6 + 16) = *(_DWORD *)(v3 + 20);
       break;
     case 3:
-      sub_1AF14(v2 + 14, 1u);
+      sub_1AEFC(v2 + 14, 1u);
       std::__1::to_string((std::__1 *)&v16, *(_DWORD *)(v3 + 4));
       v11 = *v8;
       android::hardware::hidl_string::operator=();
@@ -13036,7 +13013,7 @@ int __fastcall fillCellIdentityResponse(_DWORD *a1, int a2)
       v12 = *v8;
       goto LABEL_18;
     case 4:
-      sub_1AF14(v2 + 6, 1u);
+      sub_1AEFC(v2 + 6, 1u);
       std::__1::to_string((std::__1 *)&v16, *(_DWORD *)(v3 + 4));
       v13 = *v5;
       android::hardware::hidl_string::operator=();
@@ -13055,7 +13032,7 @@ LABEL_18:
       *(_DWORD *)(v12 + 44) = *(_DWORD *)(v3 + 24);
       break;
     case 5:
-      sub_1B086(v2 + 18, 1u);
+      sub_1B06E(v2 + 18, 1u);
       std::__1::to_string((std::__1 *)&v16, *(_DWORD *)(v3 + 4));
       v14 = *v7;
       android::hardware::hidl_string::operator=();
@@ -13076,8 +13053,8 @@ LABEL_18:
   return MEMORY[0] - v18;
 }
 
-//----- (0001AE04) --------------------------------------------------------
-signed int __fastcall sub_1AE04(int *a1, unsigned int a2)
+//----- (0001ADEC) --------------------------------------------------------
+signed int __fastcall sub_1ADEC(int *a1, unsigned int a2)
 {
   unsigned int v2; // r11
   int *v3; // r10
@@ -13178,8 +13155,8 @@ signed int __fastcall sub_1AE04(int *a1, unsigned int a2)
   return result;
 }
 
-//----- (0001AF14) --------------------------------------------------------
-signed int __fastcall sub_1AF14(int *a1, unsigned int a2)
+//----- (0001AEFC) --------------------------------------------------------
+signed int __fastcall sub_1AEFC(int *a1, unsigned int a2)
 {
   unsigned int v2; // r11
   int *v3; // r10
@@ -13280,8 +13257,8 @@ signed int __fastcall sub_1AF14(int *a1, unsigned int a2)
   return result;
 }
 
-//----- (0001B01C) --------------------------------------------------------
-signed int __fastcall sub_1B01C(int a1, unsigned int a2)
+//----- (0001B004) --------------------------------------------------------
+signed int __fastcall sub_1B004(int a1, unsigned int a2)
 {
   int v2; // r4
   unsigned int v3; // r5
@@ -13333,8 +13310,8 @@ signed int __fastcall sub_1B01C(int a1, unsigned int a2)
   return result;
 }
 
-//----- (0001B086) --------------------------------------------------------
-signed int __fastcall sub_1B086(int *a1, unsigned int a2)
+//----- (0001B06E) --------------------------------------------------------
+signed int __fastcall sub_1B06E(int *a1, unsigned int a2)
 {
   unsigned int v2; // r11
   int *v3; // r10
@@ -13435,7 +13412,7 @@ signed int __fastcall sub_1B086(int *a1, unsigned int a2)
   return result;
 }
 
-//----- (0001B18A) --------------------------------------------------------
+//----- (0001B172) --------------------------------------------------------
 int __fastcall convertResponseStringEntryToInt(char **a1, int a2, int a3)
 {
   const char *v3; // r0
@@ -13448,7 +13425,7 @@ int __fastcall convertResponseStringEntryToInt(char **a1, int a2, int a3)
   return result;
 }
 
-//----- (0001B1A0) --------------------------------------------------------
+//----- (0001B188) --------------------------------------------------------
 int __fastcall convertResponseHexStringEntryToInt(char **a1, int a2, int a3)
 {
   const char *v3; // r0
@@ -13461,7 +13438,7 @@ int __fastcall convertResponseHexStringEntryToInt(char **a1, int a2, int a3)
   return result;
 }
 
-//----- (0001B1BC) --------------------------------------------------------
+//----- (0001B1A4) --------------------------------------------------------
 int __fastcall fillCellIdentityFromVoiceRegStateResponseString(_DWORD *a1, signed int a2, _DWORD *a3)
 {
   _DWORD *v3; // r4
@@ -13663,7 +13640,7 @@ LABEL_51:
   return MEMORY[0] - v33;
 }
 
-//----- (0001B394) --------------------------------------------------------
+//----- (0001B37C) --------------------------------------------------------
 int __fastcall fillCellIdentityFromDataRegStateResponseString(_DWORD *a1, signed int a2, _DWORD *a3)
 {
   _DWORD *v3; // r4
@@ -13789,7 +13766,7 @@ LABEL_19:
   return MEMORY[0] - v23;
 }
 
-//----- (0001B49C) --------------------------------------------------------
+//----- (0001B484) --------------------------------------------------------
 int __fastcall radio::getVoiceRegistrationStateResponse(int a1, int a2, int a3, int a4, int a5, int a6)
 {
   int v6; // r4
@@ -13979,7 +13956,7 @@ LABEL_41:
   return result;
 }
 
-//----- (0001B714) --------------------------------------------------------
+//----- (0001B6FC) --------------------------------------------------------
 int __fastcall radio::getDataRegistrationStateResponse(int a1, int a2, int a3, int a4, int a5, unsigned int a6)
 {
   int v6; // r4
@@ -14131,7 +14108,7 @@ LABEL_31:
   return result;
 }
 
-//----- (0001B934) --------------------------------------------------------
+//----- (0001B91C) --------------------------------------------------------
 int __fastcall radio::getOperatorResponse(int a1, int a2, int a3, int a4, const char **a5, int a6)
 {
   int v6; // r4
@@ -14206,7 +14183,7 @@ LABEL_6:
   return result;
 }
 
-//----- (0001BACC) --------------------------------------------------------
+//----- (0001BAB4) --------------------------------------------------------
 int __fastcall radio::setRadioPowerResponse(int a1, int a2, int a3, int a4)
 {
   int v4; // r4
@@ -14256,7 +14233,7 @@ LABEL_6:
   return result;
 }
 
-//----- (0001BBE8) --------------------------------------------------------
+//----- (0001BBD0) --------------------------------------------------------
 int __fastcall radio::sendDtmfResponse(int a1, int a2, int a3, int a4)
 {
   int v4; // r4
@@ -14299,7 +14276,7 @@ LABEL_6:
   return result;
 }
 
-//----- (0001BCC4) --------------------------------------------------------
+//----- (0001BCAC) --------------------------------------------------------
 int __fastcall makeSendSmsResult(_DWORD *a1, signed int *a2, signed int a3, int a4, signed int a5, __int64 *a6, int a7)
 {
   _DWORD *v7; // r4
@@ -14349,7 +14326,7 @@ LABEL_5:
   return MEMORY[0] - v13;
 }
 
-//----- (0001BD8C) --------------------------------------------------------
+//----- (0001BD74) --------------------------------------------------------
 int __fastcall radio::sendSmsResponse(int a1, int a2, signed int a3, signed int a4, __int64 *a5, int a6)
 {
   int v6; // r4
@@ -14386,7 +14363,7 @@ int __fastcall radio::sendSmsResponse(int a1, int a2, signed int a3, signed int 
   return result;
 }
 
-//----- (0001BE50) --------------------------------------------------------
+//----- (0001BE38) --------------------------------------------------------
 int __fastcall radio::sendSMSExpectMoreResponse(int a1, int a2, signed int a3, signed int a4, __int64 *a5, int a6)
 {
   int v6; // r4
@@ -14423,7 +14400,7 @@ int __fastcall radio::sendSMSExpectMoreResponse(int a1, int a2, signed int a3, s
   return result;
 }
 
-//----- (0001BF14) --------------------------------------------------------
+//----- (0001BEFC) --------------------------------------------------------
 int __fastcall radio::setupDataCallResponse(int a1, int a2, int a3, int a4, int a5, unsigned int a6)
 {
   int v6; // r7
@@ -14536,7 +14513,7 @@ LABEL_20:
   return result;
 }
 
-//----- (0001C1CC) --------------------------------------------------------
+//----- (0001C1B4) --------------------------------------------------------
 int __fastcall convertRilDataCallToHal(int a1, _DWORD *a2)
 {
   int v2; // r5
@@ -14573,7 +14550,7 @@ int __fastcall convertRilDataCallToHal(int a1, _DWORD *a2)
   return MEMORY[0] - v6;
 }
 
-//----- (0001C2AC) --------------------------------------------------------
+//----- (0001C294) --------------------------------------------------------
 int __fastcall convertRilDataCallToHal(int a1, _DWORD *a2)
 {
   const char **v2; // r5
@@ -14610,7 +14587,7 @@ int __fastcall convertRilDataCallToHal(int a1, _DWORD *a2)
   return MEMORY[0] - v6;
 }
 
-//----- (0001C38C) --------------------------------------------------------
+//----- (0001C374) --------------------------------------------------------
 int __fastcall convertRilDataCallToHal(int a1, _DWORD *a2)
 {
   const char **v2; // r5
@@ -14647,7 +14624,7 @@ int __fastcall convertRilDataCallToHal(int a1, _DWORD *a2)
   return MEMORY[0] - v6;
 }
 
-//----- (0001C46C) --------------------------------------------------------
+//----- (0001C454) --------------------------------------------------------
 int __fastcall responseIccIo(_DWORD *a1, signed int *a2, signed int a3, int a4, signed int a5, int a6, int a7)
 {
   _DWORD *v7; // r6
@@ -14694,7 +14671,7 @@ LABEL_5:
   return MEMORY[0] - v13;
 }
 
-//----- (0001C520) --------------------------------------------------------
+//----- (0001C508) --------------------------------------------------------
 int __fastcall radio::iccIOForAppResponse(int a1, int a2, signed int a3, signed int a4, int a5, int a6)
 {
   int v6; // r4
@@ -14731,7 +14708,7 @@ int __fastcall radio::iccIOForAppResponse(int a1, int a2, signed int a3, signed 
   return result;
 }
 
-//----- (0001C620) --------------------------------------------------------
+//----- (0001C608) --------------------------------------------------------
 int __fastcall radio::sendUssdResponse(int a1, int a2, int a3, int a4)
 {
   int v4; // r4
@@ -14774,7 +14751,7 @@ LABEL_6:
   return result;
 }
 
-//----- (0001C6FC) --------------------------------------------------------
+//----- (0001C6E4) --------------------------------------------------------
 int __fastcall radio::cancelPendingUssdResponse(int a1, int a2, int a3, int a4)
 {
   int v4; // r4
@@ -14817,7 +14794,7 @@ LABEL_6:
   return result;
 }
 
-//----- (0001C7A0) --------------------------------------------------------
+//----- (0001C788) --------------------------------------------------------
 int __fastcall radio::getClirResponse(int a1, int a2, int a3, int a4, _QWORD *a5, int a6)
 {
   int v6; // r7
@@ -14878,7 +14855,7 @@ LABEL_6:
   return result;
 }
 
-//----- (0001C8E0) --------------------------------------------------------
+//----- (0001C8C8) --------------------------------------------------------
 int __fastcall radio::setClirResponse(int a1, int a2, int a3, int a4)
 {
   int v4; // r4
@@ -14921,7 +14898,7 @@ LABEL_6:
   return result;
 }
 
-//----- (0001C9BC) --------------------------------------------------------
+//----- (0001C9A4) --------------------------------------------------------
 int __fastcall radio::getCallForwardStatusResponse(int a1, int a2, int a3, int a4, int a5, unsigned int a6)
 {
   int v6; // r8
@@ -14978,7 +14955,7 @@ LABEL_6:
         }
         else
         {
-          sub_1CB54(&v21, a6 >> 2);
+          sub_1CB3C(&v21, a6 >> 2);
           if ( a6 >> 2 )
           {
             v10 = v21;
@@ -15023,8 +15000,8 @@ LABEL_6:
   return result;
 }
 
-//----- (0001CB54) --------------------------------------------------------
-signed int __fastcall sub_1CB54(int *a1, unsigned int a2)
+//----- (0001CB3C) --------------------------------------------------------
+signed int __fastcall sub_1CB3C(int *a1, unsigned int a2)
 {
   unsigned int v2; // r11
   int *v3; // r10
@@ -15127,8 +15104,8 @@ signed int __fastcall sub_1CB54(int *a1, unsigned int a2)
   return result;
 }
 
-//----- (0001CC32) --------------------------------------------------------
-_DWORD *__fastcall sub_1CC32(int *a1)
+//----- (0001CC1A) --------------------------------------------------------
+_DWORD *__fastcall sub_1CC1A(int *a1)
 {
   _DWORD *v1; // r4
   int v2; // r0
@@ -15163,7 +15140,7 @@ _DWORD *__fastcall sub_1CC32(int *a1)
   return v1;
 }
 
-//----- (0001CC70) --------------------------------------------------------
+//----- (0001CC58) --------------------------------------------------------
 int __fastcall radio::setCallForwardResponse(int a1, int a2, int a3, int a4)
 {
   int v4; // r4
@@ -15206,7 +15183,7 @@ LABEL_6:
   return result;
 }
 
-//----- (0001CD14) --------------------------------------------------------
+//----- (0001CCFC) --------------------------------------------------------
 int __fastcall radio::getCallWaitingResponse(int a1, int a2, int a3, int a4, _QWORD *a5, int a6)
 {
   int v6; // r7
@@ -15257,7 +15234,7 @@ LABEL_6:
   return result;
 }
 
-//----- (0001CE2C) --------------------------------------------------------
+//----- (0001CE14) --------------------------------------------------------
 int __fastcall radio::setCallWaitingResponse(int a1, int a2, int a3, int a4)
 {
   int v4; // r4
@@ -15300,7 +15277,7 @@ LABEL_6:
   return result;
 }
 
-//----- (0001CED0) --------------------------------------------------------
+//----- (0001CEB8) --------------------------------------------------------
 int __fastcall radio::acknowledgeLastIncomingGsmSmsResponse(int a1, int a2, int a3, int a4)
 {
   int v4; // r4
@@ -15343,7 +15320,7 @@ LABEL_6:
   return result;
 }
 
-//----- (0001CF74) --------------------------------------------------------
+//----- (0001CF5C) --------------------------------------------------------
 int __fastcall radio::acceptCallResponse(int a1, int a2, int a3, int a4)
 {
   int v4; // r4
@@ -15386,7 +15363,7 @@ LABEL_6:
   return result;
 }
 
-//----- (0001D054) --------------------------------------------------------
+//----- (0001D03C) --------------------------------------------------------
 int __fastcall radio::deactivateDataCallResponse(int a1, int a2, int a3, int a4)
 {
   int v4; // r4
@@ -15429,7 +15406,7 @@ LABEL_6:
   return result;
 }
 
-//----- (0001D0F8) --------------------------------------------------------
+//----- (0001D0E0) --------------------------------------------------------
 int __fastcall radio::getFacilityLockForAppResponse(int a1, int a2, int a3, int a4, signed int *a5, int a6)
 {
   int v6; // r4
@@ -15486,7 +15463,7 @@ LABEL_6:
   return result;
 }
 
-//----- (0001D1D4) --------------------------------------------------------
+//----- (0001D1BC) --------------------------------------------------------
 int __fastcall radio::setFacilityLockForAppResponse(int a1, int a2, signed int a3, signed int a4, int a5, int a6)
 {
   int v6; // r4
@@ -15523,7 +15500,7 @@ int __fastcall radio::setFacilityLockForAppResponse(int a1, int a2, signed int a
   return result;
 }
 
-//----- (0001D28C) --------------------------------------------------------
+//----- (0001D274) --------------------------------------------------------
 int __fastcall radio::setBarringPasswordResponse(int a1, int a2, int a3, int a4)
 {
   int v4; // r4
@@ -15566,7 +15543,7 @@ LABEL_6:
   return result;
 }
 
-//----- (0001D330) --------------------------------------------------------
+//----- (0001D318) --------------------------------------------------------
 int __fastcall radio::getNetworkSelectionModeResponse(int a1, int a2, int a3, int a4, _DWORD *a5, int a6)
 {
   int v6; // r4
@@ -15617,7 +15594,7 @@ LABEL_6:
   return result;
 }
 
-//----- (0001D444) --------------------------------------------------------
+//----- (0001D42C) --------------------------------------------------------
 int __fastcall radio::setNetworkSelectionModeAutomaticResponse(int a1, int a2, int a3, int a4)
 {
   int v4; // r4
@@ -15660,7 +15637,7 @@ LABEL_6:
   return result;
 }
 
-//----- (0001D4E8) --------------------------------------------------------
+//----- (0001D4D0) --------------------------------------------------------
 int __fastcall radio::setNetworkSelectionModeManualResponse(int a1, int a2, int a3, int a4)
 {
   int v4; // r4
@@ -15703,7 +15680,7 @@ LABEL_6:
   return result;
 }
 
-//----- (0001D58C) --------------------------------------------------------
+//----- (0001D574) --------------------------------------------------------
 signed int __fastcall convertOperatorStatusToInt(const char *a1)
 {
   const char *v1; // r4
@@ -15724,7 +15701,7 @@ signed int __fastcall convertOperatorStatusToInt(const char *a1)
   return v3;
 }
 
-//----- (0001D600) --------------------------------------------------------
+//----- (0001D5E8) --------------------------------------------------------
 int __fastcall radio::getAvailableNetworksResponse(int a1, int a2, int a3, int a4, int a5, unsigned int a6)
 {
   int v6; // r8
@@ -15781,7 +15758,7 @@ LABEL_6:
         }
         else
         {
-          sub_1D7D0(&v21, a6 >> 4);
+          sub_1D7B8(&v21, a6 >> 4);
           if ( a6 >> 2 )
           {
             v10 = (const char **)(a5 + 8);
@@ -15834,8 +15811,8 @@ LABEL_6:
   return result;
 }
 
-//----- (0001D7D0) --------------------------------------------------------
-signed int __fastcall sub_1D7D0(int *a1, unsigned int a2)
+//----- (0001D7B8) --------------------------------------------------------
+signed int __fastcall sub_1D7B8(int *a1, unsigned int a2)
 {
   unsigned int v2; // r11
   int *v3; // r10
@@ -15934,8 +15911,8 @@ signed int __fastcall sub_1D7D0(int *a1, unsigned int a2)
   return result;
 }
 
-//----- (0001D8E8) --------------------------------------------------------
-_DWORD *__fastcall sub_1D8E8(int *a1)
+//----- (0001D8D0) --------------------------------------------------------
+_DWORD *__fastcall sub_1D8D0(int *a1)
 {
   _DWORD *v1; // r4
   int v2; // r0
@@ -15973,7 +15950,7 @@ _DWORD *__fastcall sub_1D8E8(int *a1)
   return v1;
 }
 
-//----- (0001D940) --------------------------------------------------------
+//----- (0001D928) --------------------------------------------------------
 int __fastcall radio::startDtmfResponse(int a1, int a2, int a3, int a4)
 {
   int v4; // r4
@@ -16016,7 +15993,7 @@ LABEL_6:
   return result;
 }
 
-//----- (0001DA1C) --------------------------------------------------------
+//----- (0001DA04) --------------------------------------------------------
 int __fastcall radio::stopDtmfResponse(int a1, int a2, int a3, int a4)
 {
   int v4; // r4
@@ -16059,7 +16036,7 @@ LABEL_6:
   return result;
 }
 
-//----- (0001DAF8) --------------------------------------------------------
+//----- (0001DAE0) --------------------------------------------------------
 int __fastcall radio::getBasebandVersionResponse(int a1, int a2, int a3, int a4, const char *a5)
 {
   int v5; // r5
@@ -16109,7 +16086,7 @@ LABEL_6:
   return result;
 }
 
-//----- (0001DBB8) --------------------------------------------------------
+//----- (0001DBA0) --------------------------------------------------------
 int __fastcall radio::separateConnectionResponse(int a1, int a2, int a3, int a4)
 {
   int v4; // r4
@@ -16152,7 +16129,7 @@ LABEL_6:
   return result;
 }
 
-//----- (0001DC5C) --------------------------------------------------------
+//----- (0001DC44) --------------------------------------------------------
 int __fastcall radio::setMuteResponse(int a1, int a2, int a3, int a4)
 {
   int v4; // r4
@@ -16195,7 +16172,7 @@ LABEL_6:
   return result;
 }
 
-//----- (0001DD38) --------------------------------------------------------
+//----- (0001DD20) --------------------------------------------------------
 int __fastcall radio::getMuteResponse(int a1, int a2, int a3, int a4, _DWORD *a5, int a6)
 {
   int v6; // r4
@@ -16246,7 +16223,7 @@ LABEL_6:
   return result;
 }
 
-//----- (0001DE70) --------------------------------------------------------
+//----- (0001DE58) --------------------------------------------------------
 int __fastcall radio::getClipResponse(int a1, int a2, int a3, int a4, signed int *a5, int a6)
 {
   int v6; // r4
@@ -16303,7 +16280,7 @@ LABEL_6:
   return result;
 }
 
-//----- (0001DF84) --------------------------------------------------------
+//----- (0001DF6C) --------------------------------------------------------
 int __fastcall radio::getDataCallListResponse(int a1, int a2, int a3, int a4, int a5, unsigned int a6)
 {
   int v6; // r4
@@ -16369,7 +16346,7 @@ LABEL_6:
   return result;
 }
 
-//----- (0001E0F0) --------------------------------------------------------
+//----- (0001E0D8) --------------------------------------------------------
 unsigned int __fastcall convertRilDataCallListToHal(int a1, unsigned int a2, int *a3)
 {
   int v3; // r5
@@ -16394,7 +16371,7 @@ unsigned int __fastcall convertRilDataCallListToHal(int a1, unsigned int a2, int
   v7 = HIDWORD(v6) >> 5;
   if ( v4 == 44 * (HIDWORD(v6) >> 5) )
   {
-    result = sub_2400C(a3, HIDWORD(v6) >> 5);
+    result = sub_23FF4(a3, HIDWORD(v6) >> 5);
     if ( v4 >= 0x2C )
     {
       v13 = 0;
@@ -16418,7 +16395,7 @@ unsigned int __fastcall convertRilDataCallListToHal(int a1, unsigned int a2, int
       result = v4 % 0x24;
       if ( !(v4 % 0x24) )
       {
-        result = sub_2400C(a3, v4 / 0x24);
+        result = sub_23FF4(a3, v4 / 0x24);
         if ( v4 >= 0x24 )
         {
           v11 = 0;
@@ -16436,7 +16413,7 @@ unsigned int __fastcall convertRilDataCallListToHal(int a1, unsigned int a2, int
     }
     else
     {
-      result = sub_2400C(a3, v4 / 0x28);
+      result = sub_23FF4(a3, v4 / 0x28);
       if ( v4 >= 0x28 )
       {
         v15 = 0;
@@ -16455,8 +16432,8 @@ unsigned int __fastcall convertRilDataCallListToHal(int a1, unsigned int a2, int
   return result;
 }
 
-//----- (0001E1BA) --------------------------------------------------------
-_DWORD *__fastcall sub_1E1BA(int *a1)
+//----- (0001E1A2) --------------------------------------------------------
+_DWORD *__fastcall sub_1E1A2(int *a1)
 {
   _DWORD *v1; // r9
   int v2; // r0
@@ -16498,7 +16475,7 @@ _DWORD *__fastcall sub_1E1BA(int *a1)
   return v1;
 }
 
-//----- (0001E234) --------------------------------------------------------
+//----- (0001E21C) --------------------------------------------------------
 int __fastcall radio::setSuppServiceNotificationsResponse(int a1, int a2, int a3, int a4)
 {
   int v4; // r4
@@ -16541,7 +16518,7 @@ LABEL_6:
   return result;
 }
 
-//----- (0001E2D8) --------------------------------------------------------
+//----- (0001E2C0) --------------------------------------------------------
 int __fastcall radio::deleteSmsOnSimResponse(int a1, int a2, int a3, int a4)
 {
   int v4; // r4
@@ -16584,7 +16561,7 @@ LABEL_6:
   return result;
 }
 
-//----- (0001E37C) --------------------------------------------------------
+//----- (0001E364) --------------------------------------------------------
 int __fastcall radio::setBandModeResponse(int a1, int a2, int a3, int a4)
 {
   int v4; // r4
@@ -16627,7 +16604,7 @@ LABEL_6:
   return result;
 }
 
-//----- (0001E45C) --------------------------------------------------------
+//----- (0001E444) --------------------------------------------------------
 int __fastcall radio::writeSmsToSimResponse(int a1, int a2, int a3, int a4, signed int *a5, int a6)
 {
   int v6; // r4
@@ -16684,7 +16661,7 @@ LABEL_6:
   return result;
 }
 
-//----- (0001E574) --------------------------------------------------------
+//----- (0001E55C) --------------------------------------------------------
 int __fastcall radio::getAvailableBandModesResponse(int a1, int a2, int a3, int a4, int a5, unsigned int a6)
 {
   int v6; // r4
@@ -16736,7 +16713,7 @@ LABEL_6:
         }
         else
         {
-          sub_1E6D0((int)&v16, a6 >> 2);
+          sub_1E6B8((int)&v16, a6 >> 2);
           if ( a6 >> 2 )
           {
             v10 = 0;
@@ -16767,8 +16744,8 @@ LABEL_6:
   return result;
 }
 
-//----- (0001E6D0) --------------------------------------------------------
-signed int __fastcall sub_1E6D0(int a1, unsigned int a2)
+//----- (0001E6B8) --------------------------------------------------------
+signed int __fastcall sub_1E6B8(int a1, unsigned int a2)
 {
   int v2; // r4
   unsigned int v3; // r5
@@ -16812,7 +16789,7 @@ signed int __fastcall sub_1E6D0(int a1, unsigned int a2)
   return result;
 }
 
-//----- (0001E724) --------------------------------------------------------
+//----- (0001E70C) --------------------------------------------------------
 int __fastcall radio::sendEnvelopeResponse(int a1, int a2, int a3, int a4, const char *a5)
 {
   int v5; // r5
@@ -16862,7 +16839,7 @@ LABEL_6:
   return result;
 }
 
-//----- (0001E820) --------------------------------------------------------
+//----- (0001E808) --------------------------------------------------------
 int __fastcall radio::sendTerminalResponseToSimResponse(int a1, int a2, int a3, int a4)
 {
   int v4; // r4
@@ -16905,7 +16882,7 @@ LABEL_6:
   return result;
 }
 
-//----- (0001E8C4) --------------------------------------------------------
+//----- (0001E8AC) --------------------------------------------------------
 int __fastcall radio::handleStkCallSetupRequestFromSimResponse(int a1, int a2, int a3, int a4)
 {
   int v4; // r4
@@ -16948,7 +16925,7 @@ LABEL_6:
   return result;
 }
 
-//----- (0001E968) --------------------------------------------------------
+//----- (0001E950) --------------------------------------------------------
 int __fastcall radio::explicitCallTransferResponse(int a1, int a2, int a3, int a4)
 {
   int v4; // r4
@@ -16991,7 +16968,7 @@ LABEL_6:
   return result;
 }
 
-//----- (0001EA0C) --------------------------------------------------------
+//----- (0001E9F4) --------------------------------------------------------
 int __fastcall radio::setPreferredNetworkTypeResponse(int a1, int a2, int a3, int a4)
 {
   int v4; // r4
@@ -17034,7 +17011,7 @@ LABEL_6:
   return result;
 }
 
-//----- (0001EAB0) --------------------------------------------------------
+//----- (0001EA98) --------------------------------------------------------
 int __fastcall radio::getPreferredNetworkTypeResponse(int a1, int a2, int a3, int a4, signed int *a5, int a6)
 {
   int v6; // r4
@@ -17091,7 +17068,7 @@ LABEL_6:
   return result;
 }
 
-//----- (0001EB8C) --------------------------------------------------------
+//----- (0001EB74) --------------------------------------------------------
 int __fastcall radio::getNeighboringCidsResponse(int a1, int a2, int a3, int a4, int a5, unsigned int a6)
 {
   int v6; // r8
@@ -17146,7 +17123,7 @@ LABEL_6:
         }
         else
         {
-          sub_1ED0C(&v19, a6 >> 2);
+          sub_1ECF4(&v19, a6 >> 2);
           if ( a6 >> 2 )
           {
             v10 = 0;
@@ -17184,8 +17161,8 @@ LABEL_6:
   return result;
 }
 
-//----- (0001ED0C) --------------------------------------------------------
-signed int __fastcall sub_1ED0C(int *a1, unsigned int a2)
+//----- (0001ECF4) --------------------------------------------------------
+signed int __fastcall sub_1ECF4(int *a1, unsigned int a2)
 {
   unsigned int v2; // r11
   int *v3; // r10
@@ -17280,8 +17257,8 @@ signed int __fastcall sub_1ED0C(int *a1, unsigned int a2)
   return result;
 }
 
-//----- (0001EDDC) --------------------------------------------------------
-_DWORD *__fastcall sub_1EDDC(int *a1)
+//----- (0001EDC4) --------------------------------------------------------
+_DWORD *__fastcall sub_1EDC4(int *a1)
 {
   _DWORD *v1; // r4
   int v2; // r0
@@ -17316,7 +17293,7 @@ _DWORD *__fastcall sub_1EDDC(int *a1)
   return v1;
 }
 
-//----- (0001EE18) --------------------------------------------------------
+//----- (0001EE00) --------------------------------------------------------
 int __fastcall radio::setLocationUpdatesResponse(int a1, int a2, int a3, int a4)
 {
   int v4; // r4
@@ -17359,7 +17336,7 @@ LABEL_6:
   return result;
 }
 
-//----- (0001EEBC) --------------------------------------------------------
+//----- (0001EEA4) --------------------------------------------------------
 int __fastcall radio::setCdmaSubscriptionSourceResponse(int a1, int a2, int a3, int a4)
 {
   int v4; // r4
@@ -17402,7 +17379,7 @@ LABEL_6:
   return result;
 }
 
-//----- (0001EF60) --------------------------------------------------------
+//----- (0001EF48) --------------------------------------------------------
 int __fastcall radio::setCdmaRoamingPreferenceResponse(int a1, int a2, int a3, int a4)
 {
   int v4; // r4
@@ -17445,7 +17422,7 @@ LABEL_6:
   return result;
 }
 
-//----- (0001F004) --------------------------------------------------------
+//----- (0001EFEC) --------------------------------------------------------
 int __fastcall radio::getCdmaRoamingPreferenceResponse(int a1, int a2, int a3, int a4, signed int *a5, int a6)
 {
   int v6; // r4
@@ -17502,7 +17479,7 @@ LABEL_6:
   return result;
 }
 
-//----- (0001F0E0) --------------------------------------------------------
+//----- (0001F0C8) --------------------------------------------------------
 int __fastcall radio::setTTYModeResponse(int a1, int a2, int a3, int a4)
 {
   int v4; // r4
@@ -17545,7 +17522,7 @@ LABEL_6:
   return result;
 }
 
-//----- (0001F1C0) --------------------------------------------------------
+//----- (0001F1A8) --------------------------------------------------------
 int __fastcall radio::getTTYModeResponse(int a1, int a2, int a3, int a4, signed int *a5, int a6)
 {
   int v6; // r4
@@ -17602,7 +17579,7 @@ LABEL_6:
   return result;
 }
 
-//----- (0001F2D8) --------------------------------------------------------
+//----- (0001F2C0) --------------------------------------------------------
 int __fastcall radio::setPreferredVoicePrivacyResponse(int a1, int a2, int a3, int a4)
 {
   int v4; // r4
@@ -17645,7 +17622,7 @@ LABEL_6:
   return result;
 }
 
-//----- (0001F37C) --------------------------------------------------------
+//----- (0001F364) --------------------------------------------------------
 int __fastcall radio::getPreferredVoicePrivacyResponse(int a1, int a2, int a3, int a4, _DWORD *a5, int a6)
 {
   int v6; // r7
@@ -17696,7 +17673,7 @@ LABEL_6:
   return result;
 }
 
-//----- (0001F494) --------------------------------------------------------
+//----- (0001F47C) --------------------------------------------------------
 int __fastcall radio::sendCDMAFeatureCodeResponse(int a1, int a2, int a3, int a4)
 {
   int v4; // r4
@@ -17739,7 +17716,7 @@ LABEL_6:
   return result;
 }
 
-//----- (0001F538) --------------------------------------------------------
+//----- (0001F520) --------------------------------------------------------
 int __fastcall radio::sendBurstDtmfResponse(int a1, int a2, int a3, int a4)
 {
   int v4; // r4
@@ -17782,7 +17759,7 @@ LABEL_6:
   return result;
 }
 
-//----- (0001F618) --------------------------------------------------------
+//----- (0001F600) --------------------------------------------------------
 int __fastcall radio::sendCdmaSmsResponse(int a1, int a2, signed int a3, signed int a4, __int64 *a5, int a6)
 {
   int v6; // r4
@@ -17819,7 +17796,7 @@ int __fastcall radio::sendCdmaSmsResponse(int a1, int a2, signed int a3, signed 
   return result;
 }
 
-//----- (0001F718) --------------------------------------------------------
+//----- (0001F700) --------------------------------------------------------
 int __fastcall radio::acknowledgeLastIncomingCdmaSmsResponse(int a1, int a2, int a3, int a4)
 {
   int v4; // r4
@@ -17862,7 +17839,7 @@ LABEL_6:
   return result;
 }
 
-//----- (0001F7BC) --------------------------------------------------------
+//----- (0001F7A4) --------------------------------------------------------
 int __fastcall radio::getGsmBroadcastConfigResponse(int a1, int a2, int a3, int a4, int a5, unsigned int a6)
 {
   int v6; // r8
@@ -17919,7 +17896,7 @@ LABEL_6:
         }
         else
         {
-          sub_1B01C((int)&v21, a6 >> 2);
+          sub_1B004((int)&v21, a6 >> 2);
           if ( a6 >> 2 )
           {
             v10 = (char *)v21;
@@ -17963,7 +17940,7 @@ LABEL_6:
   return result;
 }
 
-//----- (0001F940) --------------------------------------------------------
+//----- (0001F928) --------------------------------------------------------
 int __fastcall radio::setGsmBroadcastConfigResponse(int a1, int a2, int a3, int a4)
 {
   int v4; // r4
@@ -18006,7 +17983,7 @@ LABEL_6:
   return result;
 }
 
-//----- (0001F9E4) --------------------------------------------------------
+//----- (0001F9CC) --------------------------------------------------------
 int __fastcall radio::setGsmBroadcastActivationResponse(int a1, int a2, int a3, int a4)
 {
   int v4; // r4
@@ -18049,7 +18026,7 @@ LABEL_6:
   return result;
 }
 
-//----- (0001FA88) --------------------------------------------------------
+//----- (0001FA70) --------------------------------------------------------
 int __fastcall radio::getCdmaBroadcastConfigResponse(int a1, int a2, int a3, int a4, int a5, unsigned int a6)
 {
   int v6; // r8
@@ -18106,7 +18083,7 @@ LABEL_6:
         }
         else
         {
-          sub_1FC04((int)&v21, a6 >> 2);
+          sub_1FBEC((int)&v21, a6 >> 2);
           if ( a6 >> 2 )
           {
             v10 = (char *)v21;
@@ -18148,8 +18125,8 @@ LABEL_6:
   return result;
 }
 
-//----- (0001FC04) --------------------------------------------------------
-signed int __fastcall sub_1FC04(int a1, unsigned int a2)
+//----- (0001FBEC) --------------------------------------------------------
+signed int __fastcall sub_1FBEC(int a1, unsigned int a2)
 {
   int v2; // r4
   unsigned int v3; // r5
@@ -18202,7 +18179,7 @@ signed int __fastcall sub_1FC04(int a1, unsigned int a2)
   return result;
 }
 
-//----- (0001FC64) --------------------------------------------------------
+//----- (0001FC4C) --------------------------------------------------------
 int __fastcall radio::setCdmaBroadcastConfigResponse(int a1, int a2, int a3, int a4)
 {
   int v4; // r4
@@ -18245,7 +18222,7 @@ LABEL_6:
   return result;
 }
 
-//----- (0001FD08) --------------------------------------------------------
+//----- (0001FCF0) --------------------------------------------------------
 int __fastcall radio::setCdmaBroadcastActivationResponse(int a1, int a2, int a3, int a4)
 {
   int v4; // r4
@@ -18288,7 +18265,7 @@ LABEL_6:
   return result;
 }
 
-//----- (0001FDAC) --------------------------------------------------------
+//----- (0001FD94) --------------------------------------------------------
 int __fastcall radio::getCDMASubscriptionResponse(int a1, int a2, int a3, int a4, const char **a5, int a6)
 {
   int v6; // r4
@@ -18373,7 +18350,7 @@ LABEL_6:
   return result;
 }
 
-//----- (0001FF40) --------------------------------------------------------
+//----- (0001FF28) --------------------------------------------------------
 int __fastcall radio::writeSmsToRuimResponse(int a1, int a2, int a3, int a4, signed int *a5, int a6)
 {
   int v6; // r4
@@ -18430,7 +18407,7 @@ LABEL_6:
   return result;
 }
 
-//----- (0002001C) --------------------------------------------------------
+//----- (00020004) --------------------------------------------------------
 int __fastcall radio::deleteSmsOnRuimResponse(int a1, int a2, int a3, int a4)
 {
   int v4; // r4
@@ -18473,7 +18450,7 @@ LABEL_6:
   return result;
 }
 
-//----- (000200C0) --------------------------------------------------------
+//----- (000200A8) --------------------------------------------------------
 int __fastcall radio::getDeviceIdentityResponse(int a1, int a2, int a3, int a4, const char **a5, int a6)
 {
   int v6; // r4
@@ -18554,7 +18531,7 @@ LABEL_6:
   return result;
 }
 
-//----- (00020270) --------------------------------------------------------
+//----- (00020258) --------------------------------------------------------
 int __fastcall radio::exitEmergencyCallbackModeResponse(int a1, int a2, int a3, int a4)
 {
   int v4; // r4
@@ -18597,7 +18574,7 @@ LABEL_6:
   return result;
 }
 
-//----- (00020314) --------------------------------------------------------
+//----- (000202FC) --------------------------------------------------------
 int __fastcall radio::getSmscAddressResponse(int a1, int a2, int a3, int a4, const char *a5)
 {
   int v5; // r5
@@ -18647,7 +18624,7 @@ LABEL_6:
   return result;
 }
 
-//----- (000203D4) --------------------------------------------------------
+//----- (000203BC) --------------------------------------------------------
 int __fastcall radio::setSmscAddressResponse(int a1, int a2, int a3, int a4)
 {
   int v4; // r4
@@ -18690,7 +18667,7 @@ LABEL_6:
   return result;
 }
 
-//----- (00020478) --------------------------------------------------------
+//----- (00020460) --------------------------------------------------------
 int __fastcall radio::reportSmsMemoryStatusResponse(int a1, int a2, int a3, int a4)
 {
   int v4; // r4
@@ -18733,7 +18710,7 @@ LABEL_6:
   return result;
 }
 
-//----- (0002051C) --------------------------------------------------------
+//----- (00020504) --------------------------------------------------------
 int __fastcall radio::reportStkServiceIsRunningResponse(int a1, int a2, int a3, int a4)
 {
   int v4; // r4
@@ -18776,7 +18753,7 @@ LABEL_6:
   return result;
 }
 
-//----- (000205C0) --------------------------------------------------------
+//----- (000205A8) --------------------------------------------------------
 int __fastcall radio::getCdmaSubscriptionSourceResponse(int a1, int a2, int a3, int a4, signed int *a5, int a6)
 {
   int v6; // r4
@@ -18833,7 +18810,7 @@ LABEL_6:
   return result;
 }
 
-//----- (0002069C) --------------------------------------------------------
+//----- (00020684) --------------------------------------------------------
 int __fastcall radio::requestIsimAuthenticationResponse(int a1, int a2, int a3, int a4, const char *a5)
 {
   int v5; // r5
@@ -18883,7 +18860,7 @@ LABEL_6:
   return result;
 }
 
-//----- (0002075C) --------------------------------------------------------
+//----- (00020744) --------------------------------------------------------
 int __fastcall radio::acknowledgeIncomingGsmSmsWithPduResponse(int a1, int a2, int a3, int a4)
 {
   int v4; // r4
@@ -18926,7 +18903,7 @@ LABEL_6:
   return result;
 }
 
-//----- (00020800) --------------------------------------------------------
+//----- (000207E8) --------------------------------------------------------
 int __fastcall radio::sendEnvelopeWithStatusResponse(int a1, int a2, signed int a3, signed int a4, int a5, int a6)
 {
   int v6; // r4
@@ -18963,7 +18940,7 @@ int __fastcall radio::sendEnvelopeWithStatusResponse(int a1, int a2, signed int 
   return result;
 }
 
-//----- (000208C4) --------------------------------------------------------
+//----- (000208AC) --------------------------------------------------------
 int __fastcall radio::getVoiceRadioTechnologyResponse(int a1, int a2, int a3, int a4, signed int *a5, int a6)
 {
   int v6; // r4
@@ -19020,7 +18997,7 @@ LABEL_6:
   return result;
 }
 
-//----- (000209A0) --------------------------------------------------------
+//----- (00020988) --------------------------------------------------------
 int __fastcall radio::getCellInfoListResponse(int a1, int a2, int a3, int a4, int a5, unsigned int a6)
 {
   int v6; // r4
@@ -19093,7 +19070,7 @@ LABEL_6:
   return result;
 }
 
-//----- (00020AE8) --------------------------------------------------------
+//----- (00020AD0) --------------------------------------------------------
 int __fastcall convertRilCellInfoListToHal(int a1, unsigned int a2, int *a3)
 {
   int v3; // r6
@@ -19118,7 +19095,7 @@ int __fastcall convertRilCellInfoListToHal(int a1, unsigned int a2, int *a3)
   v5 = a3;
   v19 = MEMORY[0];
   v6 = a2 / 0x48;
-  sub_26170(a3, a2 / 0x48);
+  sub_26158(a3, a2 / 0x48);
   if ( v4 >= 0x48 )
   {
     v7 = 0;
@@ -19134,15 +19111,15 @@ int __fastcall convertRilCellInfoListToHal(int a1, unsigned int a2, int *a3)
       LODWORD(v10) = *(_DWORD *)(v3 + 16);
       HIDWORD(v10) = *(_DWORD *)(v3 + 20);
       *(_QWORD *)(*v5 + v7 + 16) = v10;
-      sub_26304((int *)(*v5 + v7 + 24), 0);
-      sub_2641A((int *)(*v5 + v7 + 72), 0);
-      sub_26528(*v5 + v7 + 40, 0);
-      sub_265A6((int *)(*v5 + v7 + 56), 0);
-      sub_266C0((int *)(*v5 + v7 + 88), 0);
+      sub_262EC((int *)(*v5 + v7 + 24), 0);
+      sub_26402((int *)(*v5 + v7 + 72), 0);
+      sub_26510(*v5 + v7 + 40, 0);
+      sub_2658E((int *)(*v5 + v7 + 56), 0);
+      sub_266A8((int *)(*v5 + v7 + 88), 0);
       switch ( *(_DWORD *)v3 )
       {
         case 1:
-          sub_26304((int *)(*v5 + v7 + 24), 1u);
+          sub_262EC((int *)(*v5 + v7 + 24), 1u);
           v11 = *(_DWORD *)(*v5 + v7 + 24);
           std::__1::to_string((std::__1 *)&v17, *(_DWORD *)(v3 + 24));
           android::hardware::hidl_string::operator=();
@@ -19161,7 +19138,7 @@ int __fastcall convertRilCellInfoListToHal(int a1, unsigned int a2, int *a3)
           *(_DWORD *)(v11 + 56) = *(_DWORD *)(v3 + 56);
           break;
         case 2:
-          sub_26528(*v5 + v7 + 40, 1u);
+          sub_26510(*v5 + v7 + 40, 1u);
           v12 = *(_DWORD **)(*v5 + v7 + 40);
           *v12 = *(_DWORD *)(v3 + 24);
           v12[1] = *(_DWORD *)(v3 + 28);
@@ -19175,7 +19152,7 @@ int __fastcall convertRilCellInfoListToHal(int a1, unsigned int a2, int *a3)
           v12[9] = *(_DWORD *)(v3 + 60);
           break;
         case 3:
-          sub_265A6((int *)(*v5 + v7 + 56), 1u);
+          sub_2658E((int *)(*v5 + v7 + 56), 1u);
           v13 = *(_DWORD **)(*v5 + v7 + 56);
           std::__1::to_string((std::__1 *)&v17, *(_DWORD *)(v3 + 24));
           android::hardware::hidl_string::operator=();
@@ -19197,7 +19174,7 @@ int __fastcall convertRilCellInfoListToHal(int a1, unsigned int a2, int *a3)
           v13[17] = *(_DWORD *)(v3 + 68);
           break;
         case 4:
-          sub_2641A((int *)(*v5 + v7 + 72), 1u);
+          sub_26402((int *)(*v5 + v7 + 72), 1u);
           v14 = *(_DWORD **)(*v5 + v7 + 72);
           std::__1::to_string((std::__1 *)&v17, *(_DWORD *)(v3 + 24));
           android::hardware::hidl_string::operator=();
@@ -19215,7 +19192,7 @@ int __fastcall convertRilCellInfoListToHal(int a1, unsigned int a2, int *a3)
           v14[13] = *(_DWORD *)(v3 + 52);
           break;
         case 5:
-          sub_266C0((int *)(*v5 + v7 + 88), 1u);
+          sub_266A8((int *)(*v5 + v7 + 88), 1u);
           v15 = *(_DWORD **)(*v5 + v7 + 88);
           std::__1::to_string((std::__1 *)&v17, *(_DWORD *)(v3 + 24));
           android::hardware::hidl_string::operator=();
@@ -19242,8 +19219,8 @@ int __fastcall convertRilCellInfoListToHal(int a1, unsigned int a2, int *a3)
   return MEMORY[0] - v19;
 }
 
-//----- (00020DC4) --------------------------------------------------------
-_DWORD *__fastcall sub_20DC4(int *a1)
+//----- (00020DAC) --------------------------------------------------------
+_DWORD *__fastcall sub_20DAC(int *a1)
 {
   _DWORD *v1; // r9
   int v2; // r0
@@ -19272,9 +19249,9 @@ _DWORD *__fastcall sub_20DC4(int *a1)
         v7 = v5 - 16;
         do
         {
-          sub_28674((int *)(v7 + v4));
-          sub_28674((int *)(v7 + v4 - 16));
-          sub_286C4((int *)(v7 + v4 - 32));
+          sub_2865C((int *)(v7 + v4));
+          sub_2865C((int *)(v7 + v4 - 16));
+          sub_286AC((int *)(v7 + v4 - 32));
           v8 = v5 + v4;
           if ( *(_BYTE *)(v5 + v4 - 52) )
           {
@@ -19283,7 +19260,7 @@ _DWORD *__fastcall sub_20DC4(int *a1)
               operator delete[](v9);
           }
           *(_DWORD *)(v8 - 64) = 0;
-          sub_28712((int *)(v7 + v4 - 64));
+          sub_286FA((int *)(v7 + v4 - 64));
           v4 -= 104;
         }
         while ( v6 + v4 );
@@ -19295,7 +19272,7 @@ _DWORD *__fastcall sub_20DC4(int *a1)
   return v1;
 }
 
-//----- (00020E4C) --------------------------------------------------------
+//----- (00020E34) --------------------------------------------------------
 int __fastcall radio::setCellInfoListRateResponse(int a1, int a2, int a3, int a4)
 {
   int v4; // r4
@@ -19338,7 +19315,7 @@ LABEL_6:
   return result;
 }
 
-//----- (00020EF0) --------------------------------------------------------
+//----- (00020ED8) --------------------------------------------------------
 int __fastcall radio::setInitialAttachApnResponse(int a1, int a2, int a3, int a4)
 {
   int v4; // r4
@@ -19381,7 +19358,7 @@ LABEL_6:
   return result;
 }
 
-//----- (00020F94) --------------------------------------------------------
+//----- (00020F7C) --------------------------------------------------------
 int __fastcall radio::getImsRegistrationStateResponse(int a1, int a2, int a3, int a4, _QWORD *a5, int a6)
 {
   int v6; // r7
@@ -19432,7 +19409,7 @@ LABEL_6:
   return result;
 }
 
-//----- (000210B0) --------------------------------------------------------
+//----- (00021098) --------------------------------------------------------
 int __fastcall radio::sendImsSmsResponse(int a1, int a2, signed int a3, signed int a4, __int64 *a5, int a6)
 {
   int v6; // r4
@@ -19469,7 +19446,7 @@ int __fastcall radio::sendImsSmsResponse(int a1, int a2, signed int a3, signed i
   return result;
 }
 
-//----- (00021174) --------------------------------------------------------
+//----- (0002115C) --------------------------------------------------------
 int __fastcall radio::iccTransmitApduBasicChannelResponse(int a1, int a2, signed int a3, signed int a4, int a5, int a6)
 {
   int v6; // r4
@@ -19506,7 +19483,7 @@ int __fastcall radio::iccTransmitApduBasicChannelResponse(int a1, int a2, signed
   return result;
 }
 
-//----- (00021238) --------------------------------------------------------
+//----- (00021220) --------------------------------------------------------
 int __fastcall radio::iccOpenLogicalChannelResponse(int a1, int a2, int a3, int a4, signed int *a5, unsigned int a6)
 {
   int v6; // r4
@@ -19566,7 +19543,7 @@ LABEL_6:
     {
       v9 = *a5;
       v10 = a6 >> 2;
-      sub_213A8((int)&v21, (a6 >> 2) - 1);
+      sub_21390((int)&v21, (a6 >> 2) - 1);
       if ( a6 >= 8 )
       {
         v11 = 0;
@@ -19597,8 +19574,8 @@ LABEL_6:
   return result;
 }
 
-//----- (000213A8) --------------------------------------------------------
-signed int __fastcall sub_213A8(int a1, unsigned int a2)
+//----- (00021390) --------------------------------------------------------
+signed int __fastcall sub_21390(int a1, unsigned int a2)
 {
   unsigned int v2; // r5
   int v3; // r4
@@ -19634,7 +19611,7 @@ signed int __fastcall sub_213A8(int a1, unsigned int a2)
   return result;
 }
 
-//----- (000213E4) --------------------------------------------------------
+//----- (000213CC) --------------------------------------------------------
 int __fastcall radio::iccCloseLogicalChannelResponse(int a1, int a2, int a3, int a4)
 {
   int v4; // r4
@@ -19677,7 +19654,7 @@ LABEL_6:
   return result;
 }
 
-//----- (00021488) --------------------------------------------------------
+//----- (00021470) --------------------------------------------------------
 int __fastcall radio::iccTransmitApduLogicalChannelResponse(int a1, int a2, signed int a3, signed int a4, int a5, int a6)
 {
   int v6; // r4
@@ -19714,7 +19691,7 @@ int __fastcall radio::iccTransmitApduLogicalChannelResponse(int a1, int a2, sign
   return result;
 }
 
-//----- (0002154C) --------------------------------------------------------
+//----- (00021534) --------------------------------------------------------
 int __fastcall radio::nvReadItemResponse(int a1, int a2, int a3, int a4, const char *a5)
 {
   int v5; // r5
@@ -19764,7 +19741,7 @@ LABEL_6:
   return result;
 }
 
-//----- (00021648) --------------------------------------------------------
+//----- (00021630) --------------------------------------------------------
 int __fastcall radio::nvWriteItemResponse(int a1, int a2, int a3, int a4)
 {
   int v4; // r4
@@ -19807,7 +19784,7 @@ LABEL_6:
   return result;
 }
 
-//----- (00021728) --------------------------------------------------------
+//----- (00021710) --------------------------------------------------------
 int __fastcall radio::nvWriteCdmaPrlResponse(int a1, int a2, int a3, int a4)
 {
   int v4; // r4
@@ -19850,7 +19827,7 @@ LABEL_6:
   return result;
 }
 
-//----- (000217CC) --------------------------------------------------------
+//----- (000217B4) --------------------------------------------------------
 int __fastcall radio::nvResetConfigResponse(int a1, int a2, int a3, int a4)
 {
   int v4; // r4
@@ -19893,7 +19870,7 @@ LABEL_6:
   return result;
 }
 
-//----- (000218AC) --------------------------------------------------------
+//----- (00021894) --------------------------------------------------------
 int __fastcall radio::setUiccSubscriptionResponse(int a1, int a2, int a3, int a4)
 {
   int v4; // r4
@@ -19936,7 +19913,7 @@ LABEL_6:
   return result;
 }
 
-//----- (00021950) --------------------------------------------------------
+//----- (00021938) --------------------------------------------------------
 int __fastcall radio::setDataAllowedResponse(int a1, int a2, int a3, int a4)
 {
   int v4; // r4
@@ -19979,7 +19956,7 @@ LABEL_6:
   return result;
 }
 
-//----- (000219F4) --------------------------------------------------------
+//----- (000219DC) --------------------------------------------------------
 int __fastcall radio::getHardwareConfigResponse(int a1, int a2, int a3, int a4, int a5, unsigned int a6)
 {
   int v6; // r4
@@ -20052,7 +20029,7 @@ LABEL_6:
   return result;
 }
 
-//----- (00021B14) --------------------------------------------------------
+//----- (00021AFC) --------------------------------------------------------
 int __fastcall convertRilHardwareConfigListToHal(int a1, unsigned int a2, int *a3)
 {
   int v3; // r6
@@ -20074,7 +20051,7 @@ int __fastcall convertRilHardwareConfigListToHal(int a1, unsigned int a2, int *a
   v5 = a3;
   v16 = MEMORY[0];
   v6 = a2 / 0x88;
-  sub_26BC0(a3, a2 / 0x88);
+  sub_26BA8(a3, a2 / 0x88);
   if ( v4 >= 0x88 )
   {
     v7 = v3 + 68;
@@ -20091,8 +20068,8 @@ int __fastcall convertRilHardwareConfigListToHal(int a1, unsigned int a2, int *a
       v11 = *(_DWORD *)(v7 - 68);
       if ( v11 == 1 )
       {
-        sub_25992((int *)(*v5 + v8 + 48), 1u);
-        sub_1B01C(*v5 + v8 + 32, 0);
+        sub_2597A((int *)(*v5 + v8 + 48), 1u);
+        sub_1B004(*v5 + v8 + 32, 0);
         j_convertCharPtrToHidlString((const char *)&v15, (const char *)(v7 + 4));
         v13 = *(_DWORD *)(*v5 + v8 + 48);
         android::hardware::hidl_string::operator=();
@@ -20100,8 +20077,8 @@ int __fastcall convertRilHardwareConfigListToHal(int a1, unsigned int a2, int *a
       }
       else if ( !v11 )
       {
-        sub_1B01C(*v5 + v8 + 32, 1u);
-        sub_25992((int *)(*v5 + v8 + 48), 0);
+        sub_1B004(*v5 + v8 + 32, 1u);
+        sub_2597A((int *)(*v5 + v8 + 48), 0);
         v12 = *(_DWORD **)(*v5 + v8 + 32);
         v12[1] = *(_DWORD *)(v7 + 8);
         v12[2] = *(_DWORD *)(v7 + 12);
@@ -20117,8 +20094,8 @@ int __fastcall convertRilHardwareConfigListToHal(int a1, unsigned int a2, int *a
   return MEMORY[0] - v16;
 }
 
-//----- (00021C14) --------------------------------------------------------
-_DWORD *__fastcall sub_21C14(int *a1)
+//----- (00021BFC) --------------------------------------------------------
+_DWORD *__fastcall sub_21BFC(int *a1)
 {
   _DWORD *v1; // r9
   int v2; // r0
@@ -20147,7 +20124,7 @@ _DWORD *__fastcall sub_21C14(int *a1)
         v7 = v4 - 16;
         do
         {
-          sub_2848C((int *)(v7 + v6));
+          sub_28474((int *)(v7 + v6));
           v8 = v4 + v6;
           if ( *(_BYTE *)(v4 + v6 - 20) )
           {
@@ -20168,7 +20145,7 @@ _DWORD *__fastcall sub_21C14(int *a1)
   return v1;
 }
 
-//----- (00021C88) --------------------------------------------------------
+//----- (00021C70) --------------------------------------------------------
 int __fastcall radio::requestIccSimAuthenticationResponse(int a1, int a2, signed int a3, signed int a4, int a5, int a6)
 {
   int v6; // r4
@@ -20205,7 +20182,7 @@ int __fastcall radio::requestIccSimAuthenticationResponse(int a1, int a2, signed
   return result;
 }
 
-//----- (00021D4C) --------------------------------------------------------
+//----- (00021D34) --------------------------------------------------------
 int __fastcall radio::setDataProfileResponse(int a1, int a2, int a3, int a4)
 {
   int v4; // r4
@@ -20248,7 +20225,7 @@ LABEL_6:
   return result;
 }
 
-//----- (00021DF0) --------------------------------------------------------
+//----- (00021DD8) --------------------------------------------------------
 int __fastcall radio::requestShutdownResponse(int a1, int a2, int a3, int a4)
 {
   int v4; // r4
@@ -20291,7 +20268,7 @@ LABEL_6:
   return result;
 }
 
-//----- (00021E94) --------------------------------------------------------
+//----- (00021E7C) --------------------------------------------------------
 int __fastcall responseRadioCapability(signed int *a1, signed int a2, int a3, signed int a4, int a5, int a6, _DWORD *a7)
 {
   signed int *v7; // r5
@@ -20336,7 +20313,7 @@ LABEL_5:
   return result;
 }
 
-//----- (00021F60) --------------------------------------------------------
+//----- (00021F48) --------------------------------------------------------
 int __fastcall convertRilRadioCapabilityToHal(int a1, int a2, _DWORD *a3)
 {
   int v3; // r5
@@ -20357,7 +20334,7 @@ int __fastcall convertRilRadioCapabilityToHal(int a1, int a2, _DWORD *a3)
   return MEMORY[0] - v7;
 }
 
-//----- (00021FBC) --------------------------------------------------------
+//----- (00021FA4) --------------------------------------------------------
 int __fastcall radio::getRadioCapabilityResponse(int a1, int a2, signed int a3, signed int a4, int a5, int a6)
 {
   int v6; // r4
@@ -20409,7 +20386,7 @@ int __fastcall radio::getRadioCapabilityResponse(int a1, int a2, signed int a3, 
   return result;
 }
 
-//----- (000220A0) --------------------------------------------------------
+//----- (00022088) --------------------------------------------------------
 int __fastcall radio::setRadioCapabilityResponse(int a1, int a2, signed int a3, signed int a4, int a5, int a6)
 {
   int v6; // r4
@@ -20461,7 +20438,7 @@ int __fastcall radio::setRadioCapabilityResponse(int a1, int a2, signed int a3, 
   return result;
 }
 
-//----- (00022184) --------------------------------------------------------
+//----- (0002216C) --------------------------------------------------------
 _DWORD *__fastcall responseLceStatusInfo(_DWORD *result, signed int *a2, signed int a3, int a4, signed int a5, unsigned __int8 *a6, int a7)
 {
   signed int *v7; // r4
@@ -20500,7 +20477,7 @@ LABEL_5:
   return result;
 }
 
-//----- (000221DC) --------------------------------------------------------
+//----- (000221C4) --------------------------------------------------------
 int __fastcall radio::startLceServiceResponse(int a1, int a2, signed int a3, signed int a4, unsigned __int8 *a5, int a6)
 {
   int v6; // r4
@@ -20537,7 +20514,7 @@ int __fastcall radio::startLceServiceResponse(int a1, int a2, signed int a3, sig
   return result;
 }
 
-//----- (00022298) --------------------------------------------------------
+//----- (00022280) --------------------------------------------------------
 int __fastcall radio::stopLceServiceResponse(int a1, int a2, signed int a3, signed int a4, unsigned __int8 *a5, int a6)
 {
   int v6; // r4
@@ -20574,7 +20551,7 @@ int __fastcall radio::stopLceServiceResponse(int a1, int a2, signed int a3, sign
   return result;
 }
 
-//----- (00022354) --------------------------------------------------------
+//----- (0002233C) --------------------------------------------------------
 int __fastcall radio::pullLceDataResponse(int a1, int a2, int a3, int a4, int a5, int a6)
 {
   int v6; // r4
@@ -20639,7 +20616,7 @@ LABEL_6:
   return result;
 }
 
-//----- (000224A4) --------------------------------------------------------
+//----- (0002248C) --------------------------------------------------------
 bool __fastcall convertRilLceDataInfoToHal(int a1, int a2, int a3)
 {
   _BOOL4 result; // r0
@@ -20651,7 +20628,7 @@ bool __fastcall convertRilLceDataInfoToHal(int a1, int a2, int a3)
   return result;
 }
 
-//----- (000224B8) --------------------------------------------------------
+//----- (000224A0) --------------------------------------------------------
 int __fastcall radio::getModemActivityInfoResponse(int a1, int a2, int a3, int a4, int a5, int a6)
 {
   int v6; // r7
@@ -20725,7 +20702,7 @@ LABEL_6:
   return result;
 }
 
-//----- (000225E0) --------------------------------------------------------
+//----- (000225C8) --------------------------------------------------------
 int __fastcall radio::setAllowedCarriersResponse(int a1, int a2, int a3, int a4, signed int *a5, int a6)
 {
   int v6; // r4
@@ -20782,7 +20759,7 @@ LABEL_6:
   return result;
 }
 
-//----- (000226BC) --------------------------------------------------------
+//----- (000226A4) --------------------------------------------------------
 int __fastcall radio::getAllowedCarriersResponse(int a1, int a2, int a3, int a4, unsigned int *a5, int a6)
 {
   int v6; // r11
@@ -20847,7 +20824,7 @@ LABEL_6:
           {
             v9 = (signed int)*a5 <= 0 && (signed int)a5[1] < 1;
             v24 = v9;
-            sub_2293C(&v29, *a5);
+            sub_22924(&v29, *a5);
             if ( (signed int)*a5 >= 1 )
             {
               v10 = 0;
@@ -20873,7 +20850,7 @@ LABEL_6:
               }
               while ( v12 < (signed int)*a5 );
             }
-            sub_2293C(&v33, a5[1]);
+            sub_22924(&v33, a5[1]);
             if ( (signed int)a5[1] >= 1 )
             {
               v16 = 0;
@@ -20914,8 +20891,8 @@ LABEL_6:
         }
         else
         {
-          sub_2293C(&v29, 0);
-          sub_2293C(&v33, 0);
+          sub_22924(&v29, 0);
+          sub_22924(&v33, 0);
           v22 = 1;
         }
         (*(void (__fastcall **)(char *, _DWORD, int *, signed int, int *))(**(_DWORD **)(*(_DWORD *)(4 * v6) + 8) + 548))(
@@ -20938,8 +20915,8 @@ LABEL_6:
   return result;
 }
 
-//----- (0002293C) --------------------------------------------------------
-signed int __fastcall sub_2293C(int *a1, unsigned int a2)
+//----- (00022924) --------------------------------------------------------
+signed int __fastcall sub_22924(int *a1, unsigned int a2)
 {
   unsigned int v2; // r11
   int *v3; // r10
@@ -21038,7 +21015,7 @@ signed int __fastcall sub_2293C(int *a1, unsigned int a2)
   return result;
 }
 
-//----- (00022A54) --------------------------------------------------------
+//----- (00022A3C) --------------------------------------------------------
 int __fastcall radio::sendDeviceStateResponse(int a1, int a2, int a3, int a4)
 {
   int v4; // r4
@@ -21081,7 +21058,7 @@ LABEL_6:
   return result;
 }
 
-//----- (00022AF8) --------------------------------------------------------
+//----- (00022AE0) --------------------------------------------------------
 int __fastcall radio::setCarrierInfoForImsiEncryptionResponse(int a1, int a2, int a3, int a4)
 {
   int v4; // r4
@@ -21131,7 +21108,7 @@ LABEL_6:
   return result;
 }
 
-//----- (00022BE8) --------------------------------------------------------
+//----- (00022BD0) --------------------------------------------------------
 int __fastcall radio::setIndicationFilterResponse(int a1, int a2, int a3, int a4)
 {
   int v4; // r4
@@ -21174,7 +21151,7 @@ LABEL_6:
   return result;
 }
 
-//----- (00022C8C) --------------------------------------------------------
+//----- (00022C74) --------------------------------------------------------
 int __fastcall radio::setSimCardPowerResponse(int a1, int a2, int a3, int a4)
 {
   int v4; // r4
@@ -21227,7 +21204,7 @@ LABEL_7:
   return result;
 }
 
-//----- (00022D78) --------------------------------------------------------
+//----- (00022D60) --------------------------------------------------------
 int __fastcall radio::startNetworkScanResponse(int a1, int a2, int a3, int a4)
 {
   int v4; // r5
@@ -21272,7 +21249,7 @@ LABEL_6:
   return result;
 }
 
-//----- (00022E1C) --------------------------------------------------------
+//----- (00022E04) --------------------------------------------------------
 int __fastcall radio::stopNetworkScanResponse(int a1, int a2, int a3, int a4)
 {
   int v4; // r5
@@ -21317,7 +21294,7 @@ LABEL_6:
   return result;
 }
 
-//----- (00022EC0) --------------------------------------------------------
+//----- (00022EA8) --------------------------------------------------------
 int __fastcall convertRilKeepaliveStatusToHal(_DWORD *a1, _DWORD *a2)
 {
   int result; // r0
@@ -21328,7 +21305,7 @@ int __fastcall convertRilKeepaliveStatusToHal(_DWORD *a1, _DWORD *a2)
   return result;
 }
 
-//----- (00022ECC) --------------------------------------------------------
+//----- (00022EB4) --------------------------------------------------------
 int __fastcall radio::startKeepaliveResponse(int a1, int a2, int a3, int a4, __int64 *a5, int a6)
 {
   int v6; // r4
@@ -21399,7 +21376,7 @@ LABEL_5:
   return result;
 }
 
-//----- (00022FE8) --------------------------------------------------------
+//----- (00022FD0) --------------------------------------------------------
 int __fastcall radio::stopKeepaliveResponse(int a1, int a2, int a3, int a4)
 {
   int v4; // r4
@@ -21443,7 +21420,7 @@ LABEL_5:
   return result;
 }
 
-//----- (000230A8) --------------------------------------------------------
+//----- (00023090) --------------------------------------------------------
 int __fastcall radio::sendRequestRawResponse(int a1, int a2, int a3, int a4, void *a5, int a6)
 {
   int v6; // r4
@@ -21510,7 +21487,7 @@ LABEL_6:
   return result;
 }
 
-//----- (000231C4) --------------------------------------------------------
+//----- (000231AC) --------------------------------------------------------
 int __fastcall radio::sendRequestStringsResponse(int a1, int a2, int a3, int a4, int a5, unsigned int a6)
 {
   int v6; // r8
@@ -21563,7 +21540,7 @@ LABEL_6:
         }
         else
         {
-          sub_23330(&v17, a6 >> 2);
+          sub_23318(&v17, a6 >> 2);
           if ( a6 >> 2 )
           {
             v10 = 0;
@@ -21598,8 +21575,8 @@ LABEL_6:
   return result;
 }
 
-//----- (00023330) --------------------------------------------------------
-signed int __fastcall sub_23330(int *a1, unsigned int a2)
+//----- (00023318) --------------------------------------------------------
+signed int __fastcall sub_23318(int *a1, unsigned int a2)
 {
   unsigned int v2; // r5
   int *v3; // r4
@@ -21691,8 +21668,8 @@ signed int __fastcall sub_23330(int *a1, unsigned int a2)
   return result;
 }
 
-//----- (000233DC) --------------------------------------------------------
-_DWORD *__fastcall sub_233DC(int *a1)
+//----- (000233C4) --------------------------------------------------------
+_DWORD *__fastcall sub_233C4(int *a1)
 {
   _DWORD *v1; // r4
   int v2; // r0
@@ -21727,7 +21704,7 @@ _DWORD *__fastcall sub_233DC(int *a1)
   return v1;
 }
 
-//----- (00023414) --------------------------------------------------------
+//----- (000233FC) --------------------------------------------------------
 signed int __fastcall convertIntToRadioIndicationType(int a1)
 {
   signed int v1; // r1
@@ -21738,7 +21715,7 @@ signed int __fastcall convertIntToRadioIndicationType(int a1)
   return v1;
 }
 
-//----- (00023420) --------------------------------------------------------
+//----- (00023408) --------------------------------------------------------
 int __fastcall radio::radioStateChangedInd(int a1, int a2)
 {
   int v2; // r4
@@ -21779,7 +21756,7 @@ int __fastcall radio::radioStateChangedInd(int a1, int a2)
   return result;
 }
 
-//----- (0002350C) --------------------------------------------------------
+//----- (000234F4) --------------------------------------------------------
 int __fastcall radio::callStateChangedInd(int a1, int a2)
 {
   int v2; // r4
@@ -21811,7 +21788,7 @@ int __fastcall radio::callStateChangedInd(int a1, int a2)
   return result;
 }
 
-//----- (000235D8) --------------------------------------------------------
+//----- (000235C0) --------------------------------------------------------
 int __fastcall radio::networkStateChangedInd(int a1, int a2)
 {
   int v2; // r4
@@ -21843,7 +21820,7 @@ int __fastcall radio::networkStateChangedInd(int a1, int a2)
   return result;
 }
 
-//----- (0002366C) --------------------------------------------------------
+//----- (00023654) --------------------------------------------------------
 int __fastcall hexCharToInt(unsigned __int8 a1)
 {
   int result; // r0
@@ -21869,7 +21846,7 @@ int __fastcall hexCharToInt(unsigned __int8 a1)
   return (unsigned __int8)result;
 }
 
-//----- (0002369C) --------------------------------------------------------
+//----- (00023684) --------------------------------------------------------
 void *__fastcall convertHexStringToBytes(void *a1, unsigned int a2)
 {
   unsigned int v2; // r9
@@ -21957,7 +21934,7 @@ void *__fastcall convertHexStringToBytes(void *a1, unsigned int a2)
   return v5;
 }
 
-//----- (000237CC) --------------------------------------------------------
+//----- (000237B4) --------------------------------------------------------
 int __fastcall radio::newSmsInd(void *a1, unsigned int a2, int a3, int a4, void *a5, unsigned int a6)
 {
   void *v6; // r4
@@ -21992,9 +21969,9 @@ int __fastcall radio::newSmsInd(void *a1, unsigned int a2, int a3, int a4, void 
   }
   return result;
 }
-// 13DD8: using guessed type char *off_13DD8;
+// 13DF0: using guessed type char *off_13DF0;
 
-//----- (00023934) --------------------------------------------------------
+//----- (0002391C) --------------------------------------------------------
 int __fastcall radio::newSmsStatusReportInd(void *a1, unsigned int a2, int a3, int a4, void *a5, unsigned int a6)
 {
   void *v6; // r4
@@ -22030,7 +22007,7 @@ int __fastcall radio::newSmsStatusReportInd(void *a1, unsigned int a2, int a3, i
   return result;
 }
 
-//----- (00023A80) --------------------------------------------------------
+//----- (00023A68) --------------------------------------------------------
 int __fastcall radio::newSmsOnSimInd(int a1, int a2, int a3, int a4, _DWORD *a5, int a6)
 {
   int v6; // r4
@@ -22062,7 +22039,7 @@ int __fastcall radio::newSmsOnSimInd(int a1, int a2, int a3, int a4, _DWORD *a5,
   return result;
 }
 
-//----- (00023B8C) --------------------------------------------------------
+//----- (00023B74) --------------------------------------------------------
 int __fastcall radio::onUssdInd(int a1, int a2, int a3, int a4, __int64 *a5, int a6)
 {
   int v6; // r4
@@ -22106,7 +22083,7 @@ int __fastcall radio::onUssdInd(int a1, int a2, int a3, int a4, __int64 *a5, int
   return result;
 }
 
-//----- (00023CAC) --------------------------------------------------------
+//----- (00023C94) --------------------------------------------------------
 int __fastcall radio::nitzTimeReceivedInd(int a1, int a2, int a3, int a4, const char *a5, int a6)
 {
   int v6; // r4
@@ -22158,7 +22135,7 @@ int __fastcall radio::nitzTimeReceivedInd(int a1, int a2, int a3, int a4, const 
   return result;
 }
 
-//----- (00023DF0) --------------------------------------------------------
+//----- (00023DD8) --------------------------------------------------------
 int __fastcall convertRilSignalStrengthToHalV8(_DWORD *a1, int a2, int a3)
 {
   signed int v3; // r1
@@ -22166,9 +22143,9 @@ int __fastcall convertRilSignalStrengthToHalV8(_DWORD *a1, int a2, int a3)
   int v5; // r1
   __int64 v6; // r0
 
-  if ( a1[7] == -1 )
-    a1[7] = 99;
-  v3 = a1[8];
+  if ( a1[9] == -1 )
+    a1[9] = 99;
+  v3 = a1[10];
   if ( v3 == -1 )
   {
     v5 = 0x7FFFFFFF;
@@ -22184,31 +22161,31 @@ int __fastcall convertRilSignalStrengthToHalV8(_DWORD *a1, int a2, int a3)
       j_abort();
     v5 = -v3;
   }
-  a1[8] = v5;
+  a1[10] = v5;
 LABEL_11:
-  if ( a1[9] == -1 )
-    a1[9] = 0x7FFFFFFF;
   if ( a1[11] == -1 )
     a1[11] = 0x7FFFFFFF;
+  if ( a1[13] == -1 )
+    a1[13] = 0x7FFFFFFF;
   *(_DWORD *)a3 = *a1;
   *(_DWORD *)(a3 + 4) = a1[1];
-  *(_DWORD *)(a3 + 12) = a1[2];
-  *(_DWORD *)(a3 + 16) = a1[3];
-  *(_DWORD *)(a3 + 20) = a1[4];
-  *(_DWORD *)(a3 + 24) = a1[5];
-  *(_DWORD *)(a3 + 28) = a1[6];
-  *(_DWORD *)(a3 + 32) = a1[7];
-  *(_DWORD *)(a3 + 36) = a1[8];
-  *(_DWORD *)(a3 + 40) = a1[9];
-  *(_DWORD *)(a3 + 44) = a1[10];
-  *(_DWORD *)(a3 + 48) = a1[11];
+  *(_DWORD *)(a3 + 12) = a1[4];
+  *(_DWORD *)(a3 + 16) = a1[5];
+  *(_DWORD *)(a3 + 20) = a1[6];
+  *(_DWORD *)(a3 + 24) = a1[7];
+  *(_DWORD *)(a3 + 28) = a1[8];
+  *(_DWORD *)(a3 + 32) = a1[9];
+  *(_DWORD *)(a3 + 36) = a1[10];
+  *(_DWORD *)(a3 + 40) = a1[11];
+  *(_DWORD *)(a3 + 44) = a1[12];
+  *(_DWORD *)(a3 + 48) = a1[13];
   HIDWORD(v6) = 0x7FFFFFFF;
-  LODWORD(v6) = a1[12];
+  LODWORD(v6) = a1[14];
   *(_QWORD *)(a3 + 52) = v6;
   return v6;
 }
 
-//----- (00023E78) --------------------------------------------------------
+//----- (00023E60) --------------------------------------------------------
 int __fastcall convertRilSignalStrengthToHalV10(_DWORD *a1, int a2, _DWORD *a3)
 {
   signed int v3; // r1
@@ -22216,9 +22193,9 @@ int __fastcall convertRilSignalStrengthToHalV10(_DWORD *a1, int a2, _DWORD *a3)
   int v5; // r1
   int result; // r0
 
-  if ( a1[7] == -1 )
-    a1[7] = 99;
-  v3 = a1[8];
+  if ( a1[9] == -1 )
+    a1[9] = 99;
+  v3 = a1[10];
   if ( v3 == -1 )
   {
     v5 = 0x7FFFFFFF;
@@ -22234,31 +22211,31 @@ int __fastcall convertRilSignalStrengthToHalV10(_DWORD *a1, int a2, _DWORD *a3)
       j_abort();
     v5 = -v3;
   }
-  a1[8] = v5;
+  a1[10] = v5;
 LABEL_11:
-  if ( a1[9] == -1 )
-    a1[9] = 0x7FFFFFFF;
   if ( a1[11] == -1 )
     a1[11] = 0x7FFFFFFF;
+  if ( a1[13] == -1 )
+    a1[13] = 0x7FFFFFFF;
   *a3 = *a1;
   a3[1] = a1[1];
-  a3[3] = a1[2];
-  a3[4] = a1[3];
-  a3[5] = a1[4];
-  a3[6] = a1[5];
-  a3[7] = a1[6];
-  a3[8] = a1[7];
-  a3[9] = a1[8];
-  a3[10] = a1[9];
-  a3[11] = a1[10];
-  a3[12] = a1[11];
-  a3[13] = a1[12];
-  result = a1[13];
+  a3[3] = a1[4];
+  a3[4] = a1[5];
+  a3[5] = a1[6];
+  a3[6] = a1[7];
+  a3[7] = a1[8];
+  a3[8] = a1[9];
+  a3[9] = a1[10];
+  a3[10] = a1[11];
+  a3[11] = a1[12];
+  a3[12] = a1[13];
+  a3[13] = a1[14];
+  result = a1[15];
   a3[14] = result;
   return result;
 }
 
-//----- (00023F00) --------------------------------------------------------
+//----- (00023EE8) --------------------------------------------------------
 int __fastcall radio::currentSignalStrengthInd(int a1, int a2, int a3, int a4, _DWORD *a5, int a6)
 {
   int v6; // r4
@@ -22283,9 +22260,9 @@ int __fastcall radio::currentSignalStrengthInd(int a1, int a2, int a3, int a4, _
   v8 = *(_DWORD *)(4 * a1);
   if ( !v8 || !*(_DWORD *)(v8 + 12) || !a5 )
     goto LABEL_15;
-  v9 = a6 == 52;
-  if ( a6 != 52 )
-    v9 = a6 == 56;
+  v9 = a6 == 60;
+  if ( a6 != 60 )
+    v9 = a6 == 64;
   if ( v9 )
   {
     *(_QWORD *)&v17[4] = 0LL;
@@ -22318,8 +22295,8 @@ LABEL_15:
   return result;
 }
 
-//----- (0002400C) --------------------------------------------------------
-signed int __fastcall sub_2400C(int *a1, unsigned int a2)
+//----- (00023FF4) --------------------------------------------------------
+signed int __fastcall sub_23FF4(int *a1, unsigned int a2)
 {
   unsigned int v2; // r10
   int *v3; // r9
@@ -22435,7 +22412,7 @@ signed int __fastcall sub_2400C(int *a1, unsigned int a2)
   return result;
 }
 
-//----- (00024184) --------------------------------------------------------
+//----- (0002416C) --------------------------------------------------------
 int __fastcall radio::dataCallListChangedInd(int a1, int a2, int a3, int a4, int a5, unsigned int a6)
 {
   int v6; // r4
@@ -22488,7 +22465,7 @@ int __fastcall radio::dataCallListChangedInd(int a1, int a2, int a3, int a4, int
   return result;
 }
 
-//----- (000242CC) --------------------------------------------------------
+//----- (000242B4) --------------------------------------------------------
 int __fastcall radio::suppSvcNotifyInd(int a1, int a2, int a3, int a4, int *a5, int a6)
 {
   int v6; // r4
@@ -22554,7 +22531,7 @@ int __fastcall radio::suppSvcNotifyInd(int a1, int a2, int a3, int a4, int *a5, 
   return result;
 }
 
-//----- (00024434) --------------------------------------------------------
+//----- (0002441C) --------------------------------------------------------
 int __fastcall radio::stkSessionEndInd(int a1, int a2)
 {
   int v2; // r4
@@ -22586,7 +22563,7 @@ int __fastcall radio::stkSessionEndInd(int a1, int a2)
   return result;
 }
 
-//----- (00024500) --------------------------------------------------------
+//----- (000244E8) --------------------------------------------------------
 int __fastcall radio::stkProactiveCommandInd(int a1, int a2, int a3, int a4, const char *a5, int a6)
 {
   int v6; // r4
@@ -22625,7 +22602,7 @@ int __fastcall radio::stkProactiveCommandInd(int a1, int a2, int a3, int a4, con
   return result;
 }
 
-//----- (000245EC) --------------------------------------------------------
+//----- (000245D4) --------------------------------------------------------
 int __fastcall radio::stkEventNotifyInd(int a1, int a2, int a3, int a4, const char *a5, int a6)
 {
   int v6; // r4
@@ -22664,7 +22641,7 @@ int __fastcall radio::stkEventNotifyInd(int a1, int a2, int a3, int a4, const ch
   return result;
 }
 
-//----- (00024708) --------------------------------------------------------
+//----- (000246F0) --------------------------------------------------------
 int __fastcall radio::stkCallSetupInd(int a1, int a2, int a3, int a4, signed int *a5, int a6)
 {
   int v6; // r4
@@ -22698,7 +22675,7 @@ int __fastcall radio::stkCallSetupInd(int a1, int a2, int a3, int a4, signed int
   return result;
 }
 
-//----- (00024814) --------------------------------------------------------
+//----- (000247FC) --------------------------------------------------------
 int __fastcall radio::simSmsStorageFullInd(int a1, int a2)
 {
   int v2; // r4
@@ -22730,7 +22707,7 @@ int __fastcall radio::simSmsStorageFullInd(int a1, int a2)
   return result;
 }
 
-//----- (000248A8) --------------------------------------------------------
+//----- (00024890) --------------------------------------------------------
 int __fastcall radio::simRefreshInd(int a1, int a2, int a3, int a4, int a5, int a6)
 {
   int v6; // r4
@@ -22776,9 +22753,9 @@ int __fastcall radio::simRefreshInd(int a1, int a2, int a3, int a4, int a5, int 
   }
   return result;
 }
-// 12CD8: using guessed type char *off_12CD8;
+// 12CF0: using guessed type char *off_12CF0;
 
-//----- (000249F4) --------------------------------------------------------
+//----- (000249DC) --------------------------------------------------------
 int __fastcall convertRilCdmaSignalInfoRecordToHal(char *a1, char *a2)
 {
   char v2; // r2
@@ -22795,7 +22772,7 @@ int __fastcall convertRilCdmaSignalInfoRecordToHal(char *a1, char *a2)
   return result;
 }
 
-//----- (00024A0C) --------------------------------------------------------
+//----- (000249F4) --------------------------------------------------------
 int __fastcall radio::callRingInd(int a1, int a2, int a3, int a4, int a5, int a6)
 {
   int v6; // r4
@@ -22841,7 +22818,7 @@ LABEL_9:
   return result;
 }
 
-//----- (00024B38) --------------------------------------------------------
+//----- (00024B20) --------------------------------------------------------
 int __fastcall radio::simStatusChangedInd(int a1, int a2)
 {
   int v2; // r4
@@ -22873,7 +22850,7 @@ int __fastcall radio::simStatusChangedInd(int a1, int a2)
   return result;
 }
 
-//----- (00024C04) --------------------------------------------------------
+//----- (00024BEC) --------------------------------------------------------
 int __fastcall radio::cdmaNewSmsInd(int a1, int a2, int a3, int a4, int a5, int a6)
 {
   int v6; // r4
@@ -22967,7 +22944,7 @@ int __fastcall radio::cdmaNewSmsInd(int a1, int a2, int a3, int a4, int a5, int 
   return result;
 }
 
-//----- (00024DE0) --------------------------------------------------------
+//----- (00024DC8) --------------------------------------------------------
 int __fastcall radio::newBroadcastSmsInd(int a1, int a2, int a3, int a4, void *a5, int a6)
 {
   int v6; // r4
@@ -23002,7 +22979,7 @@ int __fastcall radio::newBroadcastSmsInd(int a1, int a2, int a3, int a4, void *a
   return result;
 }
 
-//----- (00024F08) --------------------------------------------------------
+//----- (00024EF0) --------------------------------------------------------
 int __fastcall radio::cdmaRuimSmsStorageFullInd(int a1, int a2)
 {
   int v2; // r4
@@ -23034,7 +23011,7 @@ int __fastcall radio::cdmaRuimSmsStorageFullInd(int a1, int a2)
   return result;
 }
 
-//----- (00024F9C) --------------------------------------------------------
+//----- (00024F84) --------------------------------------------------------
 int __fastcall radio::restrictedStateChangedInd(int a1, int a2, int a3, int a4, _DWORD *a5, int a6)
 {
   int v6; // r4
@@ -23066,7 +23043,7 @@ int __fastcall radio::restrictedStateChangedInd(int a1, int a2, int a3, int a4, 
   return result;
 }
 
-//----- (0002507C) --------------------------------------------------------
+//----- (00025064) --------------------------------------------------------
 int __fastcall radio::enterEmergencyCallbackModeInd(int a1, int a2)
 {
   int v2; // r4
@@ -23098,7 +23075,7 @@ int __fastcall radio::enterEmergencyCallbackModeInd(int a1, int a2)
   return result;
 }
 
-//----- (00025110) --------------------------------------------------------
+//----- (000250F8) --------------------------------------------------------
 int __fastcall radio::cdmaCallWaitingInd(int a1, int a2, int a3, int a4, int a5, int a6)
 {
   int v6; // r4
@@ -23164,7 +23141,7 @@ int __fastcall radio::cdmaCallWaitingInd(int a1, int a2, int a3, int a4, int a5,
   return result;
 }
 
-//----- (000252B8) --------------------------------------------------------
+//----- (000252A0) --------------------------------------------------------
 int __fastcall radio::cdmaOtaProvisionStatusInd(int a1, int a2, int a3, int a4, _DWORD *a5, int a6)
 {
   int v6; // r4
@@ -23196,7 +23173,7 @@ int __fastcall radio::cdmaOtaProvisionStatusInd(int a1, int a2, int a3, int a4, 
   return result;
 }
 
-//----- (00025398) --------------------------------------------------------
+//----- (00025380) --------------------------------------------------------
 int __fastcall radio::cdmaInfoRecInd(int a1, int a2, int a3, int a4, unsigned __int8 *a5, int a6)
 {
   int v6; // r2
@@ -23256,7 +23233,7 @@ int __fastcall radio::cdmaInfoRecInd(int a1, int a2, int a3, int a4, unsigned __
       v28 = v8;
       j___android_log_buf_print();
     }
-    sub_25830(&v36, v32);
+    sub_25818(&v36, v32);
     if ( v32 )
     {
       v9 = (int)(a5 + 90);
@@ -23270,13 +23247,13 @@ int __fastcall radio::cdmaInfoRecInd(int a1, int a2, int a3, int a4, unsigned __
         v12 = v36 + v10;
         v13 = (int *)(v36 + v10 - 48);
         *(_DWORD *)(v36 + v10 - 56) = *(_DWORD *)(v9 - 86);
-        sub_25992(v13, 0);
-        sub_1ED0C((int *)(v12 - 32), 0);
-        sub_1E6D0(v12 - 16, 0);
-        sub_25A3E((int *)v12, 0);
-        sub_1E6D0(v12 + 16, 0);
-        sub_213A8(v12 + 32, 0);
-        sub_25B0C(v12 + 48, 0);
+        sub_2597A(v13, 0);
+        sub_1ECF4((int *)(v12 - 32), 0);
+        sub_1E6B8(v12 - 16, 0);
+        sub_25A26((int *)v12, 0);
+        sub_1E6B8(v12 + 16, 0);
+        sub_21390(v12 + 32, 0);
+        sub_25AF4(v12 + 48, 0);
         switch ( *(_DWORD *)(v9 - 86) )
         {
           case 0:
@@ -23289,7 +23266,7 @@ int __fastcall radio::cdmaInfoRecInd(int a1, int a2, int a3, int a4, unsigned __
               goto LABEL_36;
             j___aeabi_memcpy();
             v18[*(unsigned __int8 *)(v9 - 82)] = 0;
-            sub_25992(v13, 1u);
+            sub_2597A(v13, 1u);
             v19 = *(_DWORD *)(v12 - 48);
             android::hardware::hidl_string::operator=();
             j_free(v18);
@@ -23305,7 +23282,7 @@ int __fastcall radio::cdmaInfoRecInd(int a1, int a2, int a3, int a4, unsigned __
               goto LABEL_36;
             j___aeabi_memcpy();
             v15[*(unsigned __int8 *)(v9 - 82)] = 0;
-            sub_1ED0C((int *)(v12 - 32), 1u);
+            sub_1ECF4((int *)(v12 - 32), 1u);
             v16 = *(_DWORD *)(v12 - 32);
             android::hardware::hidl_string::operator=();
             j_free(v15);
@@ -23315,7 +23292,7 @@ int __fastcall radio::cdmaInfoRecInd(int a1, int a2, int a3, int a4, unsigned __
             *(_BYTE *)(*(_DWORD *)(v12 - 32) + 19) = *(_BYTE *)(v9 + 3);
             goto LABEL_28;
           case 4:
-            sub_1E6D0(v12 - 16, 1u);
+            sub_1E6B8(v12 - 16, 1u);
             v20 = *(_BYTE *)(v9 - 82);
             if ( *(_BYTE *)(v9 - 82) )
               v20 = 1;
@@ -23333,7 +23310,7 @@ int __fastcall radio::cdmaInfoRecInd(int a1, int a2, int a3, int a4, unsigned __
               goto LABEL_36;
             j___aeabi_memcpy();
             v23[*(unsigned __int8 *)(v9 - 82)] = 0;
-            sub_25A3E((int *)v12, 1u);
+            sub_25A26((int *)v12, 1u);
             v24 = v34;
             v25 = *(_DWORD *)(v31 + v34);
             android::hardware::hidl_string::operator=();
@@ -23345,7 +23322,7 @@ int __fastcall radio::cdmaInfoRecInd(int a1, int a2, int a3, int a4, unsigned __
             *(_DWORD *)(*(_DWORD *)(v31 + v34) + 24) = *(_DWORD *)(v9 + 6);
             goto LABEL_29;
           case 6:
-            sub_1E6D0(v12 + 16, 1u);
+            sub_1E6B8(v12 + 16, 1u);
             **(_BYTE **)(v12 + 16) = *(_BYTE *)(v9 - 82);
             *(_BYTE *)(*(_DWORD *)(v12 + 16) + 1) = *(_BYTE *)(v9 - 81);
             *(_BYTE *)(*(_DWORD *)(v12 + 16) + 2) = *(_BYTE *)(v9 - 80);
@@ -23354,16 +23331,16 @@ LABEL_25:
             *(_BYTE *)(v21 + 3) = *(_BYTE *)(v9 - 79);
             goto LABEL_28;
           case 8:
-            sub_213A8(v12 + 32, 1u);
+            sub_21390(v12 + 32, 1u);
             **(_BYTE **)(v12 + 32) = *(_BYTE *)(v9 - 82);
             goto LABEL_28;
           case 9:
 LABEL_36:
             j___android_log_buf_print();
-            sub_283B4(&v36);
+            sub_2839C(&v36);
             goto LABEL_34;
           case 0xA:
-            sub_25B0C(v12 + 48, 1u);
+            sub_25AF4(v12 + 48, 1u);
             **(_BYTE **)(v12 + 48) = *(_BYTE *)(v9 - 82);
             *(_BYTE *)(*(_DWORD *)(v12 + 48) + 1) = *(_BYTE *)(v9 - 81);
 LABEL_28:
@@ -23403,8 +23380,8 @@ LABEL_34:
   return result;
 }
 
-//----- (00025830) --------------------------------------------------------
-signed int __fastcall sub_25830(int *a1, unsigned int a2)
+//----- (00025818) --------------------------------------------------------
+signed int __fastcall sub_25818(int *a1, unsigned int a2)
 {
   unsigned int v2; // r10
   int *v3; // r9
@@ -23485,13 +23462,13 @@ signed int __fastcall sub_25830(int *a1, unsigned int a2)
     {
       v12 = (int *)(*v3 + v11 * 4);
       v6[v11 - 12] = *(v12 - 14);
-      sub_2875E(&v6[v11 - 10], v12 - 12);
-      sub_287A2(&v6[v11 - 6], v12 - 8);
-      sub_287EA((int)&v6[v11 - 2], (int)(v12 - 4));
-      sub_2880E(&v6[v11 + 2], v12);
-      sub_287EA((int)&v6[v11 + 6], (int)(v12 + 4));
-      sub_28852((int)&v6[v11 + 10], (int)(v12 + 8));
-      sub_28876((int)&v6[v11 + 14], (int)(v12 + 12));
+      sub_28746(&v6[v11 - 10], v12 - 12);
+      sub_2878A(&v6[v11 - 6], v12 - 8);
+      sub_287D2((int)&v6[v11 - 2], (int)(v12 - 4));
+      sub_287F6(&v6[v11 + 2], v12);
+      sub_287D2((int)&v6[v11 + 6], (int)(v12 + 4));
+      sub_2883A((int)&v6[v11 + 10], (int)(v12 + 8));
+      sub_2885E((int)&v6[v11 + 14], (int)(v12 + 12));
       v13 = v3[2];
       if ( v13 >= v2 )
         v13 = v2;
@@ -23513,7 +23490,7 @@ signed int __fastcall sub_25830(int *a1, unsigned int a2)
         v18 = 120 * v15;
         do
         {
-          sub_283F0(v17 + v18);
+          sub_283D8(v17 + v18);
           v18 -= 120;
         }
         while ( v18 );
@@ -23528,8 +23505,8 @@ signed int __fastcall sub_25830(int *a1, unsigned int a2)
   return result;
 }
 
-//----- (00025992) --------------------------------------------------------
-signed int __fastcall sub_25992(int *a1, unsigned int a2)
+//----- (0002597A) --------------------------------------------------------
+signed int __fastcall sub_2597A(int *a1, unsigned int a2)
 {
   unsigned int v2; // r5
   int *v3; // r4
@@ -23621,8 +23598,8 @@ signed int __fastcall sub_25992(int *a1, unsigned int a2)
   return result;
 }
 
-//----- (00025A3E) --------------------------------------------------------
-signed int __fastcall sub_25A3E(int *a1, unsigned int a2)
+//----- (00025A26) --------------------------------------------------------
+signed int __fastcall sub_25A26(int *a1, unsigned int a2)
 {
   unsigned int v2; // r11
   int *v3; // r10
@@ -23720,8 +23697,8 @@ signed int __fastcall sub_25A3E(int *a1, unsigned int a2)
   return result;
 }
 
-//----- (00025B0C) --------------------------------------------------------
-signed int __fastcall sub_25B0C(int a1, unsigned int a2)
+//----- (00025AF4) --------------------------------------------------------
+signed int __fastcall sub_25AF4(int a1, unsigned int a2)
 {
   unsigned int v2; // r5
   int v3; // r4
@@ -23761,7 +23738,7 @@ signed int __fastcall sub_25B0C(int a1, unsigned int a2)
   return result;
 }
 
-//----- (00025B54) --------------------------------------------------------
+//----- (00025B3C) --------------------------------------------------------
 int __fastcall radio::indicateRingbackToneInd(int a1, int a2, int a3, int a4, _DWORD *a5, int a6)
 {
   int v6; // r4
@@ -23794,7 +23771,7 @@ int __fastcall radio::indicateRingbackToneInd(int a1, int a2, int a3, int a4, _D
   return result;
 }
 
-//----- (00025C3C) --------------------------------------------------------
+//----- (00025C24) --------------------------------------------------------
 int __fastcall radio::resendIncallMuteInd(int a1, int a2)
 {
   int v2; // r4
@@ -23826,7 +23803,7 @@ int __fastcall radio::resendIncallMuteInd(int a1, int a2)
   return result;
 }
 
-//----- (00025D0C) --------------------------------------------------------
+//----- (00025CF4) --------------------------------------------------------
 int __fastcall radio::cdmaSubscriptionSourceChangedInd(int a1, int a2, int a3, int a4, _DWORD *a5, int a6)
 {
   int v6; // r4
@@ -23858,7 +23835,7 @@ int __fastcall radio::cdmaSubscriptionSourceChangedInd(int a1, int a2, int a3, i
   return result;
 }
 
-//----- (00025DF4) --------------------------------------------------------
+//----- (00025DDC) --------------------------------------------------------
 int __fastcall radio::cdmaPrlChangedInd(int a1, int a2, int a3, int a4, _DWORD *a5, int a6)
 {
   int v6; // r4
@@ -23890,7 +23867,7 @@ int __fastcall radio::cdmaPrlChangedInd(int a1, int a2, int a3, int a4, _DWORD *
   return result;
 }
 
-//----- (00025F08) --------------------------------------------------------
+//----- (00025EF0) --------------------------------------------------------
 int __fastcall radio::exitEmergencyCallbackModeInd(int a1, int a2)
 {
   int v2; // r4
@@ -23922,7 +23899,7 @@ int __fastcall radio::exitEmergencyCallbackModeInd(int a1, int a2)
   return result;
 }
 
-//----- (00025F9C) --------------------------------------------------------
+//----- (00025F84) --------------------------------------------------------
 int __fastcall radio::rilConnectedInd(int a1)
 {
   int v1; // r4
@@ -23950,7 +23927,7 @@ int __fastcall radio::rilConnectedInd(int a1)
   return result;
 }
 
-//----- (00026090) --------------------------------------------------------
+//----- (00026078) --------------------------------------------------------
 int __fastcall radio::voiceRadioTechChangedInd(int a1, int a2, int a3, int a4, _DWORD *a5, int a6)
 {
   int v6; // r4
@@ -23982,8 +23959,8 @@ int __fastcall radio::voiceRadioTechChangedInd(int a1, int a2, int a3, int a4, _
   return result;
 }
 
-//----- (00026170) --------------------------------------------------------
-signed int __fastcall sub_26170(int *a1, unsigned int a2)
+//----- (00026158) --------------------------------------------------------
+signed int __fastcall sub_26158(int *a1, unsigned int a2)
 {
   unsigned int v2; // r10
   int *v3; // r9
@@ -24071,11 +24048,11 @@ signed int __fastcall sub_26170(int *a1, unsigned int a2)
       *v16 = *(_QWORD *)v13;
       v16[1] = v14;
       *(_QWORD *)&v6[v11 + 6] = v15;
-      sub_28B34(&v6[v11 + 8], (int *)(v13 + 24));
-      sub_28B8C((int)&v6[v11 + 12], v13 + 40);
-      sub_28BB0(&v6[v11 + 16], (int *)(v13 + 56));
-      sub_28C0A(&v6[v11 + 20], (int *)(v13 + 72));
-      sub_28C66(&v6[v11 + 24], (int *)(v13 + 88));
+      sub_28B1C(&v6[v11 + 8], (int *)(v13 + 24));
+      sub_28B74((int)&v6[v11 + 12], v13 + 40);
+      sub_28B98(&v6[v11 + 16], (int *)(v13 + 56));
+      sub_28BF2(&v6[v11 + 20], (int *)(v13 + 72));
+      sub_28C4E(&v6[v11 + 24], (int *)(v13 + 88));
       v17 = v3[2];
       if ( v17 >= v2 )
         v17 = v2;
@@ -24100,9 +24077,9 @@ signed int __fastcall sub_26170(int *a1, unsigned int a2)
         v23 = v21 - 16;
         do
         {
-          sub_28674((int *)(v23 + v20));
-          sub_28674((int *)(v23 + v20 - 16));
-          sub_286C4((int *)(v23 + v20 - 32));
+          sub_2865C((int *)(v23 + v20));
+          sub_2865C((int *)(v23 + v20 - 16));
+          sub_286AC((int *)(v23 + v20 - 32));
           v24 = v21 + v20;
           if ( *(_BYTE *)(v21 + v20 - 52) )
           {
@@ -24111,7 +24088,7 @@ signed int __fastcall sub_26170(int *a1, unsigned int a2)
               operator delete[](v25);
           }
           *(_DWORD *)(v24 - 64) = 0;
-          sub_28712((int *)(v23 + v20 - 64));
+          sub_286FA((int *)(v23 + v20 - 64));
           v20 -= 104;
         }
         while ( v22 + v20 );
@@ -24127,8 +24104,8 @@ signed int __fastcall sub_26170(int *a1, unsigned int a2)
   return result;
 }
 
-//----- (00026304) --------------------------------------------------------
-signed int __fastcall sub_26304(int *a1, unsigned int a2)
+//----- (000262EC) --------------------------------------------------------
+signed int __fastcall sub_262EC(int *a1, unsigned int a2)
 {
   unsigned int v2; // r11
   int *v3; // r10
@@ -24237,8 +24214,8 @@ signed int __fastcall sub_26304(int *a1, unsigned int a2)
   return result;
 }
 
-//----- (0002641A) --------------------------------------------------------
-signed int __fastcall sub_2641A(int *a1, unsigned int a2)
+//----- (00026402) --------------------------------------------------------
+signed int __fastcall sub_26402(int *a1, unsigned int a2)
 {
   unsigned int v2; // r11
   int *v3; // r10
@@ -24342,8 +24319,8 @@ signed int __fastcall sub_2641A(int *a1, unsigned int a2)
   return result;
 }
 
-//----- (00026528) --------------------------------------------------------
-signed int __fastcall sub_26528(int a1, unsigned int a2)
+//----- (00026510) --------------------------------------------------------
+signed int __fastcall sub_26510(int a1, unsigned int a2)
 {
   int v2; // r10
   unsigned int v3; // r9
@@ -24426,8 +24403,8 @@ signed int __fastcall sub_26528(int a1, unsigned int a2)
   return result;
 }
 
-//----- (000265A6) --------------------------------------------------------
-signed int __fastcall sub_265A6(int *a1, unsigned int a2)
+//----- (0002658E) --------------------------------------------------------
+signed int __fastcall sub_2658E(int *a1, unsigned int a2)
 {
   unsigned int v2; // r11
   int *v3; // r10
@@ -24541,8 +24518,8 @@ signed int __fastcall sub_265A6(int *a1, unsigned int a2)
   return result;
 }
 
-//----- (000266C0) --------------------------------------------------------
-signed int __fastcall sub_266C0(int *a1, unsigned int a2)
+//----- (000266A8) --------------------------------------------------------
+signed int __fastcall sub_266A8(int *a1, unsigned int a2)
 {
   unsigned int v2; // r11
   int *v3; // r10
@@ -24646,7 +24623,7 @@ signed int __fastcall sub_266C0(int *a1, unsigned int a2)
   return result;
 }
 
-//----- (000267CC) --------------------------------------------------------
+//----- (000267B4) --------------------------------------------------------
 int __fastcall radio::cellInfoListInd(int a1, int a2, int a3, int a4, int a5, unsigned int a6)
 {
   int v6; // r4
@@ -24703,7 +24680,7 @@ LABEL_16:
   return result;
 }
 
-//----- (00026928) --------------------------------------------------------
+//----- (00026910) --------------------------------------------------------
 int __fastcall radio::imsNetworkStateChangedInd(int a1, int a2)
 {
   int v2; // r4
@@ -24735,7 +24712,7 @@ int __fastcall radio::imsNetworkStateChangedInd(int a1, int a2)
   return result;
 }
 
-//----- (000269BC) --------------------------------------------------------
+//----- (000269A4) --------------------------------------------------------
 int __fastcall radio::subscriptionStatusChangedInd(int a1, int a2, int a3, int a4, _DWORD *a5, int a6)
 {
   int v6; // r4
@@ -24768,7 +24745,7 @@ int __fastcall radio::subscriptionStatusChangedInd(int a1, int a2, int a3, int a
   return result;
 }
 
-//----- (00026AA8) --------------------------------------------------------
+//----- (00026A90) --------------------------------------------------------
 int __fastcall radio::srvccStateNotifyInd(int a1, int a2, int a3, int a4, _DWORD *a5, int a6)
 {
   int v6; // r4
@@ -24800,8 +24777,8 @@ int __fastcall radio::srvccStateNotifyInd(int a1, int a2, int a3, int a4, _DWORD
   return result;
 }
 
-//----- (00026BC0) --------------------------------------------------------
-signed int __fastcall sub_26BC0(int *a1, unsigned int a2)
+//----- (00026BA8) --------------------------------------------------------
+signed int __fastcall sub_26BA8(int *a1, unsigned int a2)
 {
   unsigned int v2; // r10
   int *v3; // r9
@@ -24872,8 +24849,8 @@ signed int __fastcall sub_26BC0(int *a1, unsigned int a2)
       v6[v11 + 2] = *v13;
       android::hardware::hidl_string::operator=();
       v6[v11 + 8] = v13[6];
-      sub_2904A((int)&v6[v11 + 10], (int)(v13 + 8));
-      sub_2875E(&v6[v11 + 14], v13 + 12);
+      sub_29032((int)&v6[v11 + 10], (int)(v13 + 8));
+      sub_28746(&v6[v11 + 14], v13 + 12);
       v14 = v3[2];
       if ( v14 >= v2 )
         v14 = v2;
@@ -24898,7 +24875,7 @@ signed int __fastcall sub_26BC0(int *a1, unsigned int a2)
         v20 = v17 - 16;
         do
         {
-          sub_2848C((int *)(v20 + v19));
+          sub_28474((int *)(v20 + v19));
           v21 = v17 + v19;
           if ( *(_BYTE *)(v17 + v19 - 20) )
           {
@@ -24923,7 +24900,7 @@ signed int __fastcall sub_26BC0(int *a1, unsigned int a2)
   return result;
 }
 
-//----- (00026D04) --------------------------------------------------------
+//----- (00026CEC) --------------------------------------------------------
 int __fastcall radio::hardwareConfigChangedInd(int a1, int a2, int a3, int a4, int a5, unsigned int a6)
 {
   int v6; // r4
@@ -24980,7 +24957,7 @@ LABEL_16:
   return result;
 }
 
-//----- (00026E0C) --------------------------------------------------------
+//----- (00026DF4) --------------------------------------------------------
 int __fastcall radio::radioCapabilityIndicationInd(int a1, int a2, int a3, int a4, int a5, int a6)
 {
   int v6; // r4
@@ -25029,7 +25006,7 @@ int __fastcall radio::radioCapabilityIndicationInd(int a1, int a2, int a3, int a
   return result;
 }
 
-//----- (00026F1C) --------------------------------------------------------
+//----- (00026F04) --------------------------------------------------------
 int __fastcall isServiceTypeCfQuery(unsigned int a1, int a2)
 {
   signed int v2; // r2
@@ -25046,7 +25023,7 @@ int __fastcall isServiceTypeCfQuery(unsigned int a1, int a2)
   return v2 & v4;
 }
 
-//----- (00026F34) --------------------------------------------------------
+//----- (00026F1C) --------------------------------------------------------
 int __fastcall radio::onSupplementaryServiceIndicationInd(int a1, int a2, int a3, int a4, int a5, int a6)
 {
   int v6; // r2
@@ -25103,10 +25080,10 @@ int __fastcall radio::onSupplementaryServiceIndicationInd(int a1, int a2, int a3
     v28 = v8;
     if ( v26 > 5 || (_DWORD)v7 != 2 )
     {
-      sub_271FC((int *)&v29, 1u);
+      sub_271E4((int *)&v29, 1u);
       v18 = 0;
-      sub_27148((int *)&v33, 0);
-      sub_1E6D0((int)v29, 4u);
+      sub_27130((int *)&v33, 0);
+      sub_1E6B8((int)v29, 4u);
       do
       {
         *(_DWORD *)(*v29 + 4 * v18) = *(_DWORD *)(a5 + 20 + 4 * v18);
@@ -25123,9 +25100,9 @@ int __fastcall radio::onSupplementaryServiceIndicationInd(int a1, int a2, int a3
         j___android_log_buf_print();
         *(_DWORD *)(a5 + 20) = 7;
       }
-      sub_27148((int *)&v33, 1u);
-      sub_271FC((int *)&v29, 0);
-      sub_1CB54(v33, *(_DWORD *)(a5 + 20));
+      sub_27130((int *)&v33, 1u);
+      sub_271E4((int *)&v29, 0);
+      sub_1CB3C(v33, *(_DWORD *)(a5 + 20));
       if ( *(_DWORD *)(a5 + 20) >= 1 )
       {
         v9 = (int *)(a5 + 44);
@@ -25174,8 +25151,8 @@ int __fastcall radio::onSupplementaryServiceIndicationInd(int a1, int a2, int a3
   return result;
 }
 
-//----- (00027148) --------------------------------------------------------
-signed int __fastcall sub_27148(int *a1, unsigned int a2)
+//----- (00027130) --------------------------------------------------------
+signed int __fastcall sub_27130(int *a1, unsigned int a2)
 {
   unsigned int v2; // r5
   int *v3; // r4
@@ -25229,7 +25206,7 @@ signed int __fastcall sub_27148(int *a1, unsigned int a2)
     v11 = 0;
     do
     {
-      sub_290D4((int *)(v7 + v10), (int *)(*v3 + v10));
+      sub_290BC((int *)(v7 + v10), (int *)(*v3 + v10));
       v12 = v3[2];
       if ( v12 >= v2 )
         v12 = v2;
@@ -25251,7 +25228,7 @@ signed int __fastcall sub_27148(int *a1, unsigned int a2)
         v17 = v13 - 16;
         do
         {
-          sub_1CC32((int *)(v17 + v16));
+          sub_1CC1A((int *)(v17 + v16));
           v16 -= 16;
         }
         while ( v16 );
@@ -25266,8 +25243,8 @@ signed int __fastcall sub_27148(int *a1, unsigned int a2)
   return result;
 }
 
-//----- (000271FC) --------------------------------------------------------
-signed int __fastcall sub_271FC(int *a1, unsigned int a2)
+//----- (000271E4) --------------------------------------------------------
+signed int __fastcall sub_271E4(int *a1, unsigned int a2)
 {
   unsigned int v2; // r5
   int *v3; // r4
@@ -25321,7 +25298,7 @@ signed int __fastcall sub_271FC(int *a1, unsigned int a2)
     v11 = 0;
     do
     {
-      sub_287EA(v7 + v10, *v3 + v10);
+      sub_287D2(v7 + v10, *v3 + v10);
       v12 = v3[2];
       if ( v12 >= v2 )
         v12 = v2;
@@ -25363,7 +25340,7 @@ signed int __fastcall sub_271FC(int *a1, unsigned int a2)
   return result;
 }
 
-//----- (000272C8) --------------------------------------------------------
+//----- (000272B0) --------------------------------------------------------
 int __fastcall radio::stkCallControlAlphaNotifyInd(int a1, int a2, int a3, int a4, const char *a5, int a6)
 {
   int v6; // r4
@@ -25402,7 +25379,7 @@ int __fastcall radio::stkCallControlAlphaNotifyInd(int a1, int a2, int a3, int a
   return result;
 }
 
-//----- (000273B8) --------------------------------------------------------
+//----- (000273A0) --------------------------------------------------------
 int __fastcall radio::lceDataInd(int a1, int a2, int a3, int a4, int a5, int a6)
 {
   int v6; // r4
@@ -25441,7 +25418,7 @@ int __fastcall radio::lceDataInd(int a1, int a2, int a3, int a4, int a5, int a6)
   return result;
 }
 
-//----- (000274D0) --------------------------------------------------------
+//----- (000274B8) --------------------------------------------------------
 int __fastcall radio::pcoDataInd(int a1, int a2, int a3, int a4, __int64 *a5, int a6)
 {
   int v6; // r4
@@ -25507,9 +25484,9 @@ int __fastcall radio::pcoDataInd(int a1, int a2, int a3, int a4, __int64 *a5, in
   }
   return result;
 }
-// 10084: using guessed type Elf32_Rel;
+// 1009C: using guessed type Elf32_Rel;
 
-//----- (00027654) --------------------------------------------------------
+//----- (0002763C) --------------------------------------------------------
 int __fastcall radio::modemResetInd(int a1, int a2, int a3, int a4, const char *a5, int a6)
 {
   int v6; // r4
@@ -25548,7 +25525,7 @@ int __fastcall radio::modemResetInd(int a1, int a2, int a3, int a4, const char *
   return result;
 }
 
-//----- (0002776C) --------------------------------------------------------
+//----- (00027754) --------------------------------------------------------
 int __fastcall radio::networkScanResultInd(int a1, int a2, int a3, int a4, __int64 *a5, int a6)
 {
   int v6; // r4
@@ -25615,9 +25592,9 @@ LABEL_15:
     &v18);
   return j_checkReturnStatus(*(_DWORD *)(*(_DWORD *)(4 * v6) + 4), (int)&v17, 1);
 }
-// FDCC: using guessed type Elf32_Rel;
+// FDE4: using guessed type Elf32_Rel;
 
-//----- (000278C0) --------------------------------------------------------
+//----- (000278A8) --------------------------------------------------------
 int __fastcall radio::carrierInfoForImsiEncryption(int a1, int a2, int a3, int a4, int a5, int a6)
 {
   int v6; // r4
@@ -25644,9 +25621,9 @@ int __fastcall radio::carrierInfoForImsiEncryption(int a1, int a2, int a3, int a
   }
   return result;
 }
-// FCF4: using guessed type Elf32_Rel;
+// FD0C: using guessed type Elf32_Rel;
 
-//----- (000279D0) --------------------------------------------------------
+//----- (000279B8) --------------------------------------------------------
 int __fastcall radio::keepaliveStatusInd(int a1, int a2, int a3, int a4, __int64 *a5, int a6)
 {
   int v6; // r4
@@ -25683,7 +25660,7 @@ LABEL_14:
       result = 0;
     return result;
   }
-  sub_27B6C(&v12, (android::hardware::details::return_status *)&v13);
+  sub_27B54(&v12, (android::hardware::details::return_status *)&v13);
   if ( !a5 || a6 != 8 )
   {
     j___android_log_buf_print();
@@ -25699,8 +25676,8 @@ LABEL_14:
   return j_checkReturnStatus(*(_DWORD *)(*(_DWORD *)(4 * v6) + 4), (int)&v15, 1);
 }
 
-//----- (00027B6C) --------------------------------------------------------
-_DWORD *__fastcall sub_27B6C(_DWORD *a1, android::hardware::details::return_status *a2)
+//----- (00027B54) --------------------------------------------------------
+_DWORD *__fastcall sub_27B54(_DWORD *a1, android::hardware::details::return_status *a2)
 {
   android::hardware::details::return_status *v2; // r5
   _DWORD *v3; // r4
@@ -25716,7 +25693,7 @@ _DWORD *__fastcall sub_27B6C(_DWORD *a1, android::hardware::details::return_stat
   return result;
 }
 
-//----- (00027B90) --------------------------------------------------------
+//----- (00027B78) --------------------------------------------------------
 int __fastcall radio::oemHookRawInd(int a1, int a2, int a3, int a4, void *a5, int a6)
 {
   int v6; // r4
@@ -25759,7 +25736,7 @@ int __fastcall radio::oemHookRawInd(int a1, int a2, int a3, int a4, void *a5, in
   return result;
 }
 
-//----- (00027CA4) --------------------------------------------------------
+//----- (00027C8C) --------------------------------------------------------
 int __fastcall radio::registerService(int a1, int a2)
 {
   int v2; // r8
@@ -25928,8 +25905,8 @@ LABEL_38:
 }
 // 38634: using guessed type int dword_38634;
 
-//----- (000282C0) --------------------------------------------------------
-_DWORD *__fastcall sub_282C0(int *a1)
+//----- (000282A8) --------------------------------------------------------
+_DWORD *__fastcall sub_282A8(int *a1)
 {
   _DWORD *v1; // r4
   int v2; // r0
@@ -25966,8 +25943,8 @@ _DWORD *__fastcall sub_282C0(int *a1)
   return v1;
 }
 
-//----- (0002830C) --------------------------------------------------------
-_DWORD *__fastcall sub_2830C(int *a1)
+//----- (000282F4) --------------------------------------------------------
+_DWORD *__fastcall sub_282F4(int *a1)
 {
   _DWORD *v1; // r4
   int v2; // r0
@@ -26004,8 +25981,8 @@ _DWORD *__fastcall sub_2830C(int *a1)
   return v1;
 }
 
-//----- (0002835C) --------------------------------------------------------
-_DWORD *__fastcall sub_2835C(int *a1)
+//----- (00028344) --------------------------------------------------------
+_DWORD *__fastcall sub_28344(int *a1)
 {
   _DWORD *v1; // r4
   int v2; // r0
@@ -26043,8 +26020,8 @@ _DWORD *__fastcall sub_2835C(int *a1)
   return v1;
 }
 
-//----- (000283B4) --------------------------------------------------------
-_DWORD *__fastcall sub_283B4(int *a1)
+//----- (0002839C) --------------------------------------------------------
+_DWORD *__fastcall sub_2839C(int *a1)
 {
   _DWORD *v1; // r4
   int v2; // r0
@@ -26067,7 +26044,7 @@ _DWORD *__fastcall sub_283B4(int *a1)
         v6 = 120 * v3;
         do
         {
-          sub_283F0(v5 + v6);
+          sub_283D8(v5 + v6);
           v6 -= 120;
         }
         while ( v6 );
@@ -26079,8 +26056,8 @@ _DWORD *__fastcall sub_283B4(int *a1)
   return v1;
 }
 
-//----- (000283F0) --------------------------------------------------------
-int __fastcall sub_283F0(int a1)
+//----- (000283D8) --------------------------------------------------------
+int __fastcall sub_283D8(int a1)
 {
   int v1; // r4
   void *v2; // r0
@@ -26110,7 +26087,7 @@ int __fastcall sub_283F0(int a1)
       operator delete[](v4);
   }
   *(_DWORD *)(v1 + 72) = 0;
-  sub_28454((int *)(v1 + 56));
+  sub_2843C((int *)(v1 + 56));
   if ( *(_BYTE *)(v1 + 52) )
   {
     v5 = *(void **)(v1 + 40);
@@ -26118,13 +26095,13 @@ int __fastcall sub_283F0(int a1)
       operator delete[](v5);
   }
   *(_DWORD *)(v1 + 40) = 0;
-  sub_1EDDC((int *)(v1 + 24));
-  sub_2848C((int *)(v1 + 8));
+  sub_1EDC4((int *)(v1 + 24));
+  sub_28474((int *)(v1 + 8));
   return v1;
 }
 
-//----- (00028454) --------------------------------------------------------
-_DWORD *__fastcall sub_28454(int *a1)
+//----- (0002843C) --------------------------------------------------------
+_DWORD *__fastcall sub_2843C(int *a1)
 {
   _DWORD *v1; // r4
   int v2; // r0
@@ -26159,8 +26136,8 @@ _DWORD *__fastcall sub_28454(int *a1)
   return v1;
 }
 
-//----- (0002848C) --------------------------------------------------------
-_DWORD *__fastcall sub_2848C(int *a1)
+//----- (00028474) --------------------------------------------------------
+_DWORD *__fastcall sub_28474(int *a1)
 {
   _DWORD *v1; // r4
   int v2; // r0
@@ -26195,8 +26172,8 @@ _DWORD *__fastcall sub_2848C(int *a1)
   return v1;
 }
 
-//----- (000284C4) --------------------------------------------------------
-_DWORD *__fastcall sub_284C4(int *a1)
+//----- (000284AC) --------------------------------------------------------
+_DWORD *__fastcall sub_284AC(int *a1)
 {
   _DWORD *v1; // r4
   int v2; // r0
@@ -26219,7 +26196,7 @@ _DWORD *__fastcall sub_284C4(int *a1)
         v6 = v2 - 16;
         do
         {
-          sub_1CC32((int *)(v6 + v5));
+          sub_1CC1A((int *)(v6 + v5));
           v5 -= 16;
         }
         while ( v5 );
@@ -26231,8 +26208,8 @@ _DWORD *__fastcall sub_284C4(int *a1)
   return v1;
 }
 
-//----- (000284FC) --------------------------------------------------------
-_DWORD *__fastcall sub_284FC(int *a1)
+//----- (000284E4) --------------------------------------------------------
+_DWORD *__fastcall sub_284E4(int *a1)
 {
   _DWORD *v1; // r9
   int v2; // r6
@@ -26272,8 +26249,8 @@ _DWORD *__fastcall sub_284FC(int *a1)
   return v1;
 }
 
-//----- (0002854C) --------------------------------------------------------
-_DWORD *__fastcall sub_2854C(int *a1)
+//----- (00028534) --------------------------------------------------------
+_DWORD *__fastcall sub_28534(int *a1)
 {
   _DWORD *v1; // r4
   int v2; // r0
@@ -26308,8 +26285,8 @@ _DWORD *__fastcall sub_2854C(int *a1)
   return v1;
 }
 
-//----- (00028588) --------------------------------------------------------
-int *__fastcall sub_28588(int *a1, int *a2)
+//----- (00028570) --------------------------------------------------------
+int *__fastcall sub_28570(int *a1, int *a2)
 {
   int *v2; // r5
   int *v3; // r4
@@ -26344,13 +26321,13 @@ int *__fastcall sub_28588(int *a1, int *a2)
         operator delete[](v6);
       }
     }
-    sub_285D0((int)v3, (_QWORD **)v2, v2[2]);
+    sub_285B8((int)v3, (_QWORD **)v2, v2[2]);
   }
   return v3;
 }
 
-//----- (000285D0) --------------------------------------------------------
-int __fastcall sub_285D0(int a1, _QWORD **a2, unsigned int a3)
+//----- (000285B8) --------------------------------------------------------
+int __fastcall sub_285B8(int a1, _QWORD **a2, unsigned int a3)
 {
   _DWORD *v3; // r4
   unsigned int v4; // r5
@@ -26415,8 +26392,8 @@ int __fastcall sub_285D0(int a1, _QWORD **a2, unsigned int a3)
   return result;
 }
 
-//----- (00028674) --------------------------------------------------------
-_DWORD *__fastcall sub_28674(int *a1)
+//----- (0002865C) --------------------------------------------------------
+_DWORD *__fastcall sub_2865C(int *a1)
 {
   _DWORD *v1; // r4
   int v2; // r0
@@ -26453,8 +26430,8 @@ _DWORD *__fastcall sub_28674(int *a1)
   return v1;
 }
 
-//----- (000286C4) --------------------------------------------------------
-_DWORD *__fastcall sub_286C4(int *a1)
+//----- (000286AC) --------------------------------------------------------
+_DWORD *__fastcall sub_286AC(int *a1)
 {
   _DWORD *v1; // r4
   int v2; // r0
@@ -26493,8 +26470,8 @@ _DWORD *__fastcall sub_286C4(int *a1)
   return v1;
 }
 
-//----- (00028712) --------------------------------------------------------
-_DWORD *__fastcall sub_28712(int *a1)
+//----- (000286FA) --------------------------------------------------------
+_DWORD *__fastcall sub_286FA(int *a1)
 {
   _DWORD *v1; // r4
   int v2; // r0
@@ -26531,8 +26508,8 @@ _DWORD *__fastcall sub_28712(int *a1)
   return v1;
 }
 
-//----- (0002875E) --------------------------------------------------------
-int *__fastcall sub_2875E(int *a1, int *a2)
+//----- (00028746) --------------------------------------------------------
+int *__fastcall sub_28746(int *a1, int *a2)
 {
   int *v2; // r5
   int *v3; // r4
@@ -26567,13 +26544,13 @@ int *__fastcall sub_2875E(int *a1, int *a2)
         operator delete[](v6);
       }
     }
-    sub_2889A((int)v3, v2, v2[2]);
+    sub_28882((int)v3, v2, v2[2]);
   }
   return v3;
 }
 
-//----- (000287A2) --------------------------------------------------------
-int *__fastcall sub_287A2(int *a1, int *a2)
+//----- (0002878A) --------------------------------------------------------
+int *__fastcall sub_2878A(int *a1, int *a2)
 {
   int *v2; // r5
   int *v3; // r4
@@ -26608,13 +26585,13 @@ int *__fastcall sub_287A2(int *a1, int *a2)
         operator delete[](v6);
       }
     }
-    sub_28920((int)v3, v2, v2[2]);
+    sub_28908((int)v3, v2, v2[2]);
   }
   return v3;
 }
 
-//----- (000287EA) --------------------------------------------------------
-int __fastcall sub_287EA(int a1, int a2)
+//----- (000287D2) --------------------------------------------------------
+int __fastcall sub_287D2(int a1, int a2)
 {
   int v2; // r5
   int v3; // r4
@@ -26625,13 +26602,13 @@ int __fastcall sub_287EA(int a1, int a2)
   {
     if ( *(_BYTE *)(a1 + 12) && *(_DWORD *)a1 )
       operator delete[](*(void **)a1);
-    sub_289CA(v3, (_DWORD **)v2, *(_DWORD *)(v2 + 8));
+    sub_289B2(v3, (_DWORD **)v2, *(_DWORD *)(v2 + 8));
   }
   return v3;
 }
 
-//----- (0002880E) --------------------------------------------------------
-_DWORD *__fastcall sub_2880E(int *a1, int *a2)
+//----- (000287F6) --------------------------------------------------------
+_DWORD *__fastcall sub_287F6(int *a1, int *a2)
 {
   int *v2; // r5
   _DWORD *v3; // r4
@@ -26666,13 +26643,13 @@ _DWORD *__fastcall sub_2880E(int *a1, int *a2)
         operator delete[](v6);
       }
     }
-    sub_28A1C((int)v3, v2, v2[2]);
+    sub_28A04((int)v3, v2, v2[2]);
   }
   return v3;
 }
 
-//----- (00028852) --------------------------------------------------------
-int __fastcall sub_28852(int a1, int a2)
+//----- (0002883A) --------------------------------------------------------
+int __fastcall sub_2883A(int a1, int a2)
 {
   int v2; // r5
   int v3; // r4
@@ -26683,13 +26660,13 @@ int __fastcall sub_28852(int a1, int a2)
   {
     if ( *(_BYTE *)(a1 + 12) && *(_DWORD *)a1 )
       operator delete[](*(void **)a1);
-    sub_28AB0(v3, (_BYTE **)v2, *(_DWORD *)(v2 + 8));
+    sub_28A98(v3, (_BYTE **)v2, *(_DWORD *)(v2 + 8));
   }
   return v3;
 }
 
-//----- (00028876) --------------------------------------------------------
-int __fastcall sub_28876(int a1, int a2)
+//----- (0002885E) --------------------------------------------------------
+int __fastcall sub_2885E(int a1, int a2)
 {
   int v2; // r5
   int v3; // r4
@@ -26700,13 +26677,13 @@ int __fastcall sub_28876(int a1, int a2)
   {
     if ( *(_BYTE *)(a1 + 12) && *(_DWORD *)a1 )
       operator delete[](*(void **)a1);
-    sub_28AEC(v3, (_WORD **)v2, *(_DWORD *)(v2 + 8));
+    sub_28AD4(v3, (_WORD **)v2, *(_DWORD *)(v2 + 8));
   }
   return v3;
 }
 
-//----- (0002889A) --------------------------------------------------------
-int __fastcall sub_2889A(int a1, int *a2, unsigned int a3)
+//----- (00028882) --------------------------------------------------------
+int __fastcall sub_28882(int a1, int *a2, unsigned int a3)
 {
   int *v3; // r4
   unsigned int v4; // r5
@@ -26775,8 +26752,8 @@ int __fastcall sub_2889A(int a1, int *a2, unsigned int a3)
   return result;
 }
 
-//----- (00028920) --------------------------------------------------------
-int __fastcall sub_28920(int a1, int *a2, unsigned int a3)
+//----- (00028908) --------------------------------------------------------
+int __fastcall sub_28908(int a1, int *a2, unsigned int a3)
 {
   int *v3; // r11
   unsigned int v4; // r8
@@ -26851,8 +26828,8 @@ int __fastcall sub_28920(int a1, int *a2, unsigned int a3)
   return result;
 }
 
-//----- (000289CA) --------------------------------------------------------
-unsigned int __fastcall sub_289CA(int a1, _DWORD **a2, unsigned int a3)
+//----- (000289B2) --------------------------------------------------------
+unsigned int __fastcall sub_289B2(int a1, _DWORD **a2, unsigned int a3)
 {
   unsigned int *v3; // r4
   unsigned int v4; // r5
@@ -26894,8 +26871,8 @@ unsigned int __fastcall sub_289CA(int a1, _DWORD **a2, unsigned int a3)
   return result;
 }
 
-//----- (00028A1C) --------------------------------------------------------
-int __fastcall sub_28A1C(int a1, _DWORD *a2, unsigned int a3)
+//----- (00028A04) --------------------------------------------------------
+int __fastcall sub_28A04(int a1, _DWORD *a2, unsigned int a3)
 {
   int *v3; // r9
   unsigned int v4; // r10
@@ -26963,8 +26940,8 @@ int __fastcall sub_28A1C(int a1, _DWORD *a2, unsigned int a3)
   return result;
 }
 
-//----- (00028AB0) --------------------------------------------------------
-_BYTE *__fastcall sub_28AB0(int a1, _BYTE **a2, unsigned int a3)
+//----- (00028A98) --------------------------------------------------------
+_BYTE *__fastcall sub_28A98(int a1, _BYTE **a2, unsigned int a3)
 {
   _DWORD *v3; // r4
   unsigned int v4; // r5
@@ -27000,8 +26977,8 @@ _BYTE *__fastcall sub_28AB0(int a1, _BYTE **a2, unsigned int a3)
   return result;
 }
 
-//----- (00028AEC) --------------------------------------------------------
-unsigned int __fastcall sub_28AEC(int a1, _WORD **a2, unsigned int a3)
+//----- (00028AD4) --------------------------------------------------------
+unsigned int __fastcall sub_28AD4(int a1, _WORD **a2, unsigned int a3)
 {
   unsigned int *v3; // r4
   unsigned int v4; // r5
@@ -27041,8 +27018,8 @@ unsigned int __fastcall sub_28AEC(int a1, _WORD **a2, unsigned int a3)
   return result;
 }
 
-//----- (00028B34) --------------------------------------------------------
-_DWORD *__fastcall sub_28B34(int *a1, int *a2)
+//----- (00028B1C) --------------------------------------------------------
+_DWORD *__fastcall sub_28B1C(int *a1, int *a2)
 {
   int *v2; // r5
   _DWORD *v3; // r4
@@ -27079,13 +27056,13 @@ _DWORD *__fastcall sub_28B34(int *a1, int *a2)
         operator delete[](v6);
       }
     }
-    sub_28CC2((int)v3, v2, v2[2]);
+    sub_28CAA((int)v3, v2, v2[2]);
   }
   return v3;
 }
 
-//----- (00028B8C) --------------------------------------------------------
-int __fastcall sub_28B8C(int a1, int a2)
+//----- (00028B74) --------------------------------------------------------
+int __fastcall sub_28B74(int a1, int a2)
 {
   int v2; // r5
   int v3; // r4
@@ -27096,13 +27073,13 @@ int __fastcall sub_28B8C(int a1, int a2)
   {
     if ( *(_BYTE *)(a1 + 12) && *(_DWORD *)a1 )
       operator delete[](*(void **)a1);
-    sub_28D8A(v3, (_DWORD **)v2, *(_DWORD *)(v2 + 8));
+    sub_28D72(v3, (_DWORD **)v2, *(_DWORD *)(v2 + 8));
   }
   return v3;
 }
 
-//----- (00028BB0) --------------------------------------------------------
-_DWORD *__fastcall sub_28BB0(int *a1, int *a2)
+//----- (00028B98) --------------------------------------------------------
+_DWORD *__fastcall sub_28B98(int *a1, int *a2)
 {
   int *v2; // r5
   _DWORD *v3; // r4
@@ -27141,13 +27118,13 @@ _DWORD *__fastcall sub_28BB0(int *a1, int *a2)
         operator delete[](v6);
       }
     }
-    sub_28E08((int)v3, v2, v2[2]);
+    sub_28DF0((int)v3, v2, v2[2]);
   }
   return v3;
 }
 
-//----- (00028C0A) --------------------------------------------------------
-_DWORD *__fastcall sub_28C0A(int *a1, int *a2)
+//----- (00028BF2) --------------------------------------------------------
+_DWORD *__fastcall sub_28BF2(int *a1, int *a2)
 {
   int *v2; // r5
   _DWORD *v3; // r4
@@ -27184,13 +27161,13 @@ _DWORD *__fastcall sub_28C0A(int *a1, int *a2)
         operator delete[](v6);
       }
     }
-    sub_28ED6((int)v3, v2, v2[2]);
+    sub_28EBE((int)v3, v2, v2[2]);
   }
   return v3;
 }
 
-//----- (00028C66) --------------------------------------------------------
-_DWORD *__fastcall sub_28C66(int *a1, int *a2)
+//----- (00028C4E) --------------------------------------------------------
+_DWORD *__fastcall sub_28C4E(int *a1, int *a2)
 {
   int *v2; // r5
   _DWORD *v3; // r4
@@ -27227,13 +27204,13 @@ _DWORD *__fastcall sub_28C66(int *a1, int *a2)
         operator delete[](v6);
       }
     }
-    sub_28F94((int)v3, v2, v2[2]);
+    sub_28F7C((int)v3, v2, v2[2]);
   }
   return v3;
 }
 
-//----- (00028CC2) --------------------------------------------------------
-int __fastcall sub_28CC2(int a1, _DWORD *a2, unsigned int a3)
+//----- (00028CAA) --------------------------------------------------------
+int __fastcall sub_28CAA(int a1, _DWORD *a2, unsigned int a3)
 {
   int *v3; // r9
   unsigned int v4; // r10
@@ -27310,8 +27287,8 @@ int __fastcall sub_28CC2(int a1, _DWORD *a2, unsigned int a3)
   return result;
 }
 
-//----- (00028D8A) --------------------------------------------------------
-int __fastcall sub_28D8A(int a1, _DWORD **a2, unsigned int a3)
+//----- (00028D72) --------------------------------------------------------
+int __fastcall sub_28D72(int a1, _DWORD **a2, unsigned int a3)
 {
   _DWORD *v3; // r9
   unsigned int v4; // r10
@@ -27421,8 +27398,8 @@ int __fastcall sub_28D8A(int a1, _DWORD **a2, unsigned int a3)
   return result;
 }
 
-//----- (00028E08) --------------------------------------------------------
-_QWORD *__fastcall sub_28E08(int a1, _DWORD *a2, unsigned int a3)
+//----- (00028DF0) --------------------------------------------------------
+_QWORD *__fastcall sub_28DF0(int a1, _DWORD *a2, unsigned int a3)
 {
   int *v3; // r9
   unsigned int v4; // r10
@@ -27504,8 +27481,8 @@ _QWORD *__fastcall sub_28E08(int a1, _DWORD *a2, unsigned int a3)
   return result;
 }
 
-//----- (00028ED6) --------------------------------------------------------
-int __fastcall sub_28ED6(int a1, _DWORD *a2, unsigned int a3)
+//----- (00028EBE) --------------------------------------------------------
+int __fastcall sub_28EBE(int a1, _DWORD *a2, unsigned int a3)
 {
   int *v3; // r9
   unsigned int v4; // r10
@@ -27581,8 +27558,8 @@ int __fastcall sub_28ED6(int a1, _DWORD *a2, unsigned int a3)
   return v18;
 }
 
-//----- (00028F94) --------------------------------------------------------
-int __fastcall sub_28F94(int a1, _DWORD *a2, unsigned int a3)
+//----- (00028F7C) --------------------------------------------------------
+int __fastcall sub_28F7C(int a1, _DWORD *a2, unsigned int a3)
 {
   int *v3; // r9
   unsigned int v4; // r10
@@ -27656,8 +27633,8 @@ int __fastcall sub_28F94(int a1, _DWORD *a2, unsigned int a3)
   return result;
 }
 
-//----- (0002904A) --------------------------------------------------------
-int __fastcall sub_2904A(int a1, int a2)
+//----- (00029032) --------------------------------------------------------
+int __fastcall sub_29032(int a1, int a2)
 {
   int v2; // r5
   int v3; // r4
@@ -27668,13 +27645,13 @@ int __fastcall sub_2904A(int a1, int a2)
   {
     if ( *(_BYTE *)(a1 + 12) && *(_DWORD *)a1 )
       operator delete[](*(void **)a1);
-    sub_2906E(v3, (_QWORD **)v2, *(_DWORD *)(v2 + 8));
+    sub_29056(v3, (_QWORD **)v2, *(_DWORD *)(v2 + 8));
   }
   return v3;
 }
 
-//----- (0002906E) --------------------------------------------------------
-_DWORD *__fastcall sub_2906E(int a1, _QWORD **a2, unsigned int a3)
+//----- (00029056) --------------------------------------------------------
+_DWORD *__fastcall sub_29056(int a1, _QWORD **a2, unsigned int a3)
 {
   _DWORD *v3; // r4
   unsigned int v4; // r5
@@ -27735,8 +27712,8 @@ _DWORD *__fastcall sub_2906E(int a1, _QWORD **a2, unsigned int a3)
   return result;
 }
 
-//----- (000290D4) --------------------------------------------------------
-int *__fastcall sub_290D4(int *a1, int *a2)
+//----- (000290BC) --------------------------------------------------------
+int *__fastcall sub_290BC(int *a1, int *a2)
 {
   int *v2; // r5
   int *v3; // r4
@@ -27771,13 +27748,13 @@ int *__fastcall sub_290D4(int *a1, int *a2)
         operator delete[](v6);
       }
     }
-    sub_2911C((int)v3, (_QWORD **)v2, v2[2]);
+    sub_29104((int)v3, (_QWORD **)v2, v2[2]);
   }
   return v3;
 }
 
-//----- (0002911C) --------------------------------------------------------
-int __fastcall sub_2911C(int a1, _QWORD **a2, unsigned int a3)
+//----- (00029104) --------------------------------------------------------
+int __fastcall sub_29104(int a1, _QWORD **a2, unsigned int a3)
 {
   int *v3; // r11
   unsigned int v4; // r8
@@ -27862,7 +27839,7 @@ int __fastcall sub_2911C(int a1, _QWORD **a2, unsigned int a3)
   return result;
 }
 
-//----- (000291E4) --------------------------------------------------------
+//----- (000291CC) --------------------------------------------------------
 int __fastcall SapImpl::checkReturnStatus(int a1, int a2)
 {
   int v2; // r4
@@ -27884,7 +27861,7 @@ int __fastcall SapImpl::checkReturnStatus(int a1, int a2)
   return MEMORY[0] - v6;
 }
 
-//----- (00029264) --------------------------------------------------------
+//----- (0002924C) --------------------------------------------------------
 int __fastcall SapImpl::setCallback(int a1, int a2, android **a3)
 {
   int v3; // r5
@@ -27907,7 +27884,7 @@ int __fastcall SapImpl::setCallback(int a1, int a2, android **a3)
   return result;
 }
 
-//----- (000292C8) --------------------------------------------------------
+//----- (000292B0) --------------------------------------------------------
 // local variable allocation has failed, the output may be wrong!
 _DWORD *__fastcall SapImpl::createMsgHeader(int a1, int a2, int a3)
 {
@@ -27926,10 +27903,10 @@ _DWORD *__fastcall SapImpl::createMsgHeader(int a1, int a2, int a3)
   result[2] = v3;
   return result;
 }
-// 292C8: variables would overlap: r5.4 and r5.8
-// 292C8: variables would overlap: r6.4 and r5.8
+// 292B0: variables would overlap: r5.4 and r5.8
+// 292B0: variables would overlap: r6.4 and r5.8
 
-//----- (000292E8) --------------------------------------------------------
+//----- (000292D0) --------------------------------------------------------
 int __fastcall SapImpl::addPayloadAndDispatchRequest(int a1, int a2, int *a3, int a4, void *a5)
 {
   int v5; // r7
@@ -27978,7 +27955,7 @@ int __fastcall SapImpl::addPayloadAndDispatchRequest(int a1, int a2, int *a3, in
   return result;
 }
 
-//----- (00029414) --------------------------------------------------------
+//----- (000293FC) --------------------------------------------------------
 int __fastcall SapImpl::sendFailedResponse(int a1, int a2, int a3, signed int a4, char a5)
 {
   int v5; // r8
@@ -28098,7 +28075,7 @@ LABEL_21:
   return MEMORY[0] - v29;
 }
 
-//----- (00029574) --------------------------------------------------------
+//----- (0002955C) --------------------------------------------------------
 int __fastcall SapImpl::connectReq(SapImpl *this, int a2, int a3, int a4)
 {
   SapImpl *v4; // r4
@@ -28177,7 +28154,7 @@ LABEL_10:
   return MEMORY[0] - v20;
 }
 
-//----- (00029790) --------------------------------------------------------
+//----- (00029778) --------------------------------------------------------
 // local variable allocation has failed, the output may be wrong!
 int __fastcall SapImpl::disconnectReq(SapImpl *this, int a2, int a3)
 {
@@ -28255,10 +28232,10 @@ LABEL_10:
   j_SapImpl::addPayloadAndDispatchRequest((int)v3, v5, v8, v16, v12);
   return MEMORY[0] - v19;
 }
-// 29790: variables would overlap: r5.4 and r5.8
-// 29790: variables would overlap: r6.4 and r5.8
+// 29778: variables would overlap: r5.4 and r5.8
+// 29778: variables would overlap: r6.4 and r5.8
 
-//----- (000299B8) --------------------------------------------------------
+//----- (000299A0) --------------------------------------------------------
 int __fastcall SapImpl::apduReq(int a1, int a2, int a3, int a4, int *a5)
 {
   int v5; // r10
@@ -28369,7 +28346,7 @@ LABEL_18:
   return result;
 }
 
-//----- (00029C18) --------------------------------------------------------
+//----- (00029C00) --------------------------------------------------------
 // local variable allocation has failed, the output may be wrong!
 int __fastcall SapImpl::transferAtrReq(SapImpl *this, int a2, int a3)
 {
@@ -28447,10 +28424,10 @@ LABEL_10:
   j_SapImpl::addPayloadAndDispatchRequest((int)v3, v5, v8, v16, v12);
   return MEMORY[0] - v19;
 }
-// 29C18: variables would overlap: r5.4 and r5.8
-// 29C18: variables would overlap: r6.4 and r5.8
+// 29C00: variables would overlap: r5.4 and r5.8
+// 29C00: variables would overlap: r6.4 and r5.8
 
-//----- (00029E40) --------------------------------------------------------
+//----- (00029E28) --------------------------------------------------------
 int __fastcall SapImpl::powerReq(SapImpl *this, int a2, int a3, char a4)
 {
   SapImpl *v4; // r4
@@ -28529,7 +28506,7 @@ LABEL_10:
   return MEMORY[0] - v20;
 }
 
-//----- (0002A058) --------------------------------------------------------
+//----- (0002A040) --------------------------------------------------------
 // local variable allocation has failed, the output may be wrong!
 int __fastcall SapImpl::resetSimReq(SapImpl *this, int a2, int a3)
 {
@@ -28607,10 +28584,10 @@ LABEL_10:
   j_SapImpl::addPayloadAndDispatchRequest((int)v3, v5, v8, v16, v12);
   return MEMORY[0] - v19;
 }
-// 2A058: variables would overlap: r5.4 and r5.8
-// 2A058: variables would overlap: r6.4 and r5.8
+// 2A040: variables would overlap: r5.4 and r5.8
+// 2A040: variables would overlap: r6.4 and r5.8
 
-//----- (0002A280) --------------------------------------------------------
+//----- (0002A268) --------------------------------------------------------
 // local variable allocation has failed, the output may be wrong!
 int __fastcall SapImpl::transferCardReaderStatusReq(SapImpl *this, int a2, int a3)
 {
@@ -28688,10 +28665,10 @@ LABEL_10:
   j_SapImpl::addPayloadAndDispatchRequest((int)v3, v5, v8, v16, v12);
   return MEMORY[0] - v19;
 }
-// 2A280: variables would overlap: r5.4 and r5.8
-// 2A280: variables would overlap: r6.4 and r5.8
+// 2A268: variables would overlap: r5.4 and r5.8
+// 2A268: variables would overlap: r6.4 and r5.8
 
-//----- (0002A490) --------------------------------------------------------
+//----- (0002A478) --------------------------------------------------------
 int __fastcall SapImpl::setTransferProtocolReq(int a1, int a2, int a3, int a4)
 {
   int v4; // r4
@@ -28770,7 +28747,7 @@ LABEL_10:
   return MEMORY[0] - v20;
 }
 
-//----- (0002A690) --------------------------------------------------------
+//----- (0002A678) --------------------------------------------------------
 int __fastcall sapDecodeMessage(int a1, int a2, __int64 a3)
 {
   int v3; // r5
@@ -28809,7 +28786,7 @@ int __fastcall sapDecodeMessage(int a1, int a2, __int64 a3)
       v6 = j_malloc(0xCu);
       v7 = (int)v6;
       if ( !v6 )
-        goto def_2A6C0;
+        goto def_2A6A8;
       if ( !j_j_pb_decode((int)&v21, 0, (int)v6) )
         goto LABEL_35;
       break;
@@ -28819,7 +28796,7 @@ int __fastcall sapDecodeMessage(int a1, int a2, __int64 a3)
         v8 = j_malloc(1u);
         v7 = (int)v8;
         if ( !v8 )
-          goto def_2A6C0;
+          goto def_2A6A8;
         if ( !j_j_pb_decode((int)&v21, 0, (int)v8) )
           goto LABEL_35;
       }
@@ -28828,7 +28805,7 @@ int __fastcall sapDecodeMessage(int a1, int a2, __int64 a3)
         v17 = j_malloc(4u);
         v7 = (int)v17;
         if ( !v17 )
-          goto def_2A6C0;
+          goto def_2A6A8;
         if ( !j_j_pb_decode((int)&v21, 0, (int)v17) )
           goto LABEL_35;
       }
@@ -28837,7 +28814,7 @@ int __fastcall sapDecodeMessage(int a1, int a2, __int64 a3)
       v9 = j_malloc(0xCu);
       v7 = (int)v9;
       if ( !v9 )
-        goto def_2A6C0;
+        goto def_2A6A8;
       if ( !j_j_pb_decode((int)&v21, 0, (int)v9) )
         goto LABEL_35;
       break;
@@ -28845,7 +28822,7 @@ int __fastcall sapDecodeMessage(int a1, int a2, __int64 a3)
       v10 = j_malloc(8u);
       v7 = (int)v10;
       if ( !v10 )
-        goto def_2A6C0;
+        goto def_2A6A8;
       if ( !j_j_pb_decode((int)&v21, 0, (int)v10) )
         goto LABEL_35;
       break;
@@ -28853,7 +28830,7 @@ int __fastcall sapDecodeMessage(int a1, int a2, __int64 a3)
       v11 = j_malloc(4u);
       v7 = (int)v11;
       if ( !v11 )
-        goto def_2A6C0;
+        goto def_2A6A8;
       if ( !j_j_pb_decode((int)&v21, 0, (int)v11) )
         goto LABEL_35;
       break;
@@ -28861,7 +28838,7 @@ int __fastcall sapDecodeMessage(int a1, int a2, __int64 a3)
       v12 = j_malloc(4u);
       v7 = (int)v12;
       if ( !v12 )
-        goto def_2A6C0;
+        goto def_2A6A8;
       if ( !j_j_pb_decode((int)&v21, 0, (int)v12) )
         goto LABEL_35;
       break;
@@ -28869,7 +28846,7 @@ int __fastcall sapDecodeMessage(int a1, int a2, __int64 a3)
       v13 = j_malloc(4u);
       v7 = (int)v13;
       if ( !v13 )
-        goto def_2A6C0;
+        goto def_2A6A8;
       if ( !j_j_pb_decode((int)&v21, 0, (int)v13) )
         goto LABEL_35;
       break;
@@ -28877,7 +28854,7 @@ int __fastcall sapDecodeMessage(int a1, int a2, __int64 a3)
       v14 = j_malloc(0xCu);
       v7 = (int)v14;
       if ( !v14 )
-        goto def_2A6C0;
+        goto def_2A6A8;
       if ( !j_j_pb_decode((int)&v21, 0, (int)v14) )
         goto LABEL_35;
       break;
@@ -28885,7 +28862,7 @@ int __fastcall sapDecodeMessage(int a1, int a2, __int64 a3)
       v15 = j_malloc(1u);
       v7 = (int)v15;
       if ( !v15 )
-        goto def_2A6C0;
+        goto def_2A6A8;
       if ( !j_j_pb_decode((int)&v21, 0, (int)v15) )
         goto LABEL_35;
       break;
@@ -28893,16 +28870,16 @@ int __fastcall sapDecodeMessage(int a1, int a2, __int64 a3)
       v16 = j_malloc(4u);
       v7 = (int)v16;
       if ( !v16 )
-        goto def_2A6C0;
+        goto def_2A6A8;
       if ( !j_j_pb_decode((int)&v21, 0, (int)v16) )
       {
 LABEL_35:
         j___android_log_buf_print();
-        goto def_2A6C0;
+        goto def_2A6A8;
       }
       break;
     default:
-def_2A6C0:
+def_2A6A8:
       v7 = 0;
       break;
   }
@@ -28912,7 +28889,7 @@ def_2A6C0:
   return result;
 }
 
-//----- (0002A9B0) --------------------------------------------------------
+//----- (0002A998) --------------------------------------------------------
 _DWORD *__fastcall getSapImpl(RilSapSocket *a1, int a2)
 {
   RilSapSocket *v2; // r4
@@ -28939,7 +28916,7 @@ _DWORD *__fastcall getSapImpl(RilSapSocket *a1, int a2)
   return result;
 }
 
-//----- (0002AA18) --------------------------------------------------------
+//----- (0002AA00) --------------------------------------------------------
 unsigned int __fastcall convertApduResponseProtoToHal(unsigned int result)
 {
   if ( result >= 5 )
@@ -28947,7 +28924,7 @@ unsigned int __fastcall convertApduResponseProtoToHal(unsigned int result)
   return result;
 }
 
-//----- (0002AA20) --------------------------------------------------------
+//----- (0002AA08) --------------------------------------------------------
 signed int __fastcall convertTransferAtrResponseProtoToHal(unsigned int a1)
 {
   signed int result; // r0
@@ -28955,11 +28932,11 @@ signed int __fastcall convertTransferAtrResponseProtoToHal(unsigned int a1)
   if ( a1 > 6 )
     result = 1;
   else
-    result = dword_348D0[a1];
+    result = dword_348C0[a1];
   return result;
 }
 
-//----- (0002AA38) --------------------------------------------------------
+//----- (0002AA20) --------------------------------------------------------
 signed int __fastcall convertPowerResponseProtoToHal(signed int a1)
 {
   signed int result; // r0
@@ -28989,7 +28966,7 @@ signed int __fastcall convertPowerResponseProtoToHal(signed int a1)
   return result;
 }
 
-//----- (0002AA60) --------------------------------------------------------
+//----- (0002AA48) --------------------------------------------------------
 signed int __fastcall convertResetSimResponseProtoToHal(signed int a1)
 {
   signed int result; // r0
@@ -29019,7 +28996,7 @@ signed int __fastcall convertResetSimResponseProtoToHal(signed int a1)
   return result;
 }
 
-//----- (0002AA88) --------------------------------------------------------
+//----- (0002AA70) --------------------------------------------------------
 signed int __fastcall convertTransferCardReaderStatusResponseProtoToHal(unsigned int a1)
 {
   signed int result; // r0
@@ -29027,11 +29004,11 @@ signed int __fastcall convertTransferCardReaderStatusResponseProtoToHal(unsigned
   if ( a1 > 6 )
     result = 1;
   else
-    result = dword_348F0[a1];
+    result = dword_348E0[a1];
   return result;
 }
 
-//----- (0002AAA0) --------------------------------------------------------
+//----- (0002AA88) --------------------------------------------------------
 int __fastcall processResponse(int *a1, int a2, int a3)
 {
   int *v3; // r8
@@ -29154,7 +29131,7 @@ LABEL_38:
         case 4:
           v17 = 1;
           if ( (unsigned int)*v10 <= 6 )
-            v17 = dword_348D0[*v10];
+            v17 = dword_348C0[*v10];
           v23 = *v3;
           v35 = v17;
           j___android_log_buf_print();
@@ -29261,7 +29238,7 @@ LABEL_61:
           android::hardware::details::return_status::~return_status((android::hardware::details::return_status *)&v42);
 LABEL_62:
           j_SapImpl::checkReturnStatus((int)v37, (int)&v43);
-def_2AB14:
+def_2AAFC:
           android::hardware::details::return_status::~return_status((android::hardware::details::return_status *)&v43);
           break;
         case 7:
@@ -29278,7 +29255,7 @@ def_2AB14:
           if ( (unsigned int)*v10 > 6 )
             v29 = 1;
           else
-            v29 = dword_348F0[*v10];
+            v29 = dword_348E0[*v10];
           LODWORD(v34) = *v3;
           HIDWORD(v34) = v29;
           v36 = v10[2];
@@ -29308,7 +29285,7 @@ LABEL_45:
           v14 = *(void (__fastcall **)(char *, int, int, signed int, _DWORD, _DWORD, signed int))(*(_DWORD *)v13 + 92);
           goto LABEL_59;
         default:
-          goto def_2AB14;
+          goto def_2AAFC;
       }
     }
     else
@@ -29326,19 +29303,19 @@ LABEL_45:
   return MEMORY[0] - v46;
 }
 
-//----- (0002AF78) --------------------------------------------------------
+//----- (0002AF60) --------------------------------------------------------
 int __fastcall sap::processResponse(int *a1, int a2)
 {
   return j_processResponse(a1, a2, 2);
 }
 
-//----- (0002AF7E) --------------------------------------------------------
+//----- (0002AF66) --------------------------------------------------------
 int __fastcall sap::processUnsolResponse(int *a1, int a2)
 {
   return j_processResponse(a1, a2, 3);
 }
 
-//----- (0002AF84) --------------------------------------------------------
+//----- (0002AF6C) --------------------------------------------------------
 int sap::registerService()
 {
   const char *v0; // r4
@@ -29425,7 +29402,7 @@ LABEL_18:
   return MEMORY[0] - v19;
 }
 
-//----- (0002B230) --------------------------------------------------------
+//----- (0002B218) --------------------------------------------------------
 signed int __fastcall pb_read(int a1, int a2, unsigned int a3)
 {
   int v3; // r4
@@ -29437,7 +29414,7 @@ signed int __fastcall pb_read(int a1, int a2, unsigned int a3)
   v3 = a1;
   v4 = a3;
   v8 = MEMORY[0];
-  if ( a2 || *(int (**)())a1 == sub_2B2D0 )
+  if ( a2 || *(int (**)())a1 == sub_2B2B8 )
   {
     if ( *(_DWORD *)(a1 + 8) >= a3 )
     {
@@ -29469,19 +29446,19 @@ signed int __fastcall pb_read(int a1, int a2, unsigned int a3)
   }
   return 0;
 }
-// 2B2D0: using guessed type int sub_2B2D0();
+// 2B2B8: using guessed type int sub_2B2B8();
 
-//----- (0002B2F0) --------------------------------------------------------
+//----- (0002B2D8) --------------------------------------------------------
 int __fastcall pb_istream_from_buffer(int result, __int64 a2)
 {
   *(_QWORD *)(result + 4) = a2;
   *(_DWORD *)(result + 12) = 0;
-  *(_DWORD *)result = sub_2B2D0;
+  *(_DWORD *)result = sub_2B2B8;
   return result;
 }
-// 2B2D0: using guessed type int sub_2B2D0();
+// 2B2B8: using guessed type int sub_2B2B8();
 
-//----- (0002B304) --------------------------------------------------------
+//----- (0002B2EC) --------------------------------------------------------
 signed int __fastcall pb_decode_varint(int a1, _DWORD *a2)
 {
   int v2; // r4
@@ -29508,7 +29485,7 @@ signed int __fastcall pb_decode_varint(int a1, _DWORD *a2)
     v7 = v6;
     if ( v6 >= 0x40u )
       break;
-    if ( sub_2B39C(v2, (int)&v12) != 1 )
+    if ( sub_2B384(v2, (int)&v12) != 1 )
       return 0;
     v8 = v12 & 0x7F;
     v9 = v8 >> (32 - v7);
@@ -29533,8 +29510,8 @@ signed int __fastcall pb_decode_varint(int a1, _DWORD *a2)
   return 0;
 }
 
-//----- (0002B39C) --------------------------------------------------------
-signed int __fastcall sub_2B39C(int a1, int a2)
+//----- (0002B384) --------------------------------------------------------
+signed int __fastcall sub_2B384(int a1, int a2)
 {
   int v2; // r4
   const char *v4; // r0
@@ -29563,7 +29540,7 @@ LABEL_8:
   return 0;
 }
 
-//----- (0002B3D8) --------------------------------------------------------
+//----- (0002B3C0) --------------------------------------------------------
 signed int __fastcall pb_decode_tag(int a1, int *a2, unsigned int *a3, _BYTE *a4)
 {
   int v4; // r7
@@ -29582,7 +29559,7 @@ signed int __fastcall pb_decode_tag(int a1, int *a2, unsigned int *a3, _BYTE *a4
   *a4 = 0;
   *a2 = 0;
   *a3 = 0;
-  if ( sub_2B43C(a1, (int *)&v10) )
+  if ( sub_2B424(a1, (int *)&v10) )
   {
     v8 = v10;
     if ( v10 )
@@ -29599,8 +29576,8 @@ LABEL_5:
   return 0;
 }
 
-//----- (0002B43C) --------------------------------------------------------
-signed int __fastcall sub_2B43C(int a1, int *a2)
+//----- (0002B424) --------------------------------------------------------
+signed int __fastcall sub_2B424(int a1, int *a2)
 {
   int v2; // r4
   int *v3; // r8
@@ -29614,7 +29591,7 @@ signed int __fastcall sub_2B43C(int a1, int *a2)
   v2 = a1;
   v3 = a2;
   v9 = MEMORY[0];
-  if ( sub_2B39C(a1, (int)&v8) == 1 )
+  if ( sub_2B384(a1, (int)&v8) == 1 )
   {
     v4 = v8;
     if ( !(v8 & 0x80) )
@@ -29631,7 +29608,7 @@ LABEL_7:
       v6 = v5;
       if ( v5 >= 0x20u )
         break;
-      if ( sub_2B39C(v2, (int)&v8) != 1 )
+      if ( sub_2B384(v2, (int)&v8) != 1 )
         return 0;
       v4 |= (v8 & 0x7F) << v6;
       v5 = v6 + 7;
@@ -29644,7 +29621,7 @@ LABEL_7:
   return 0;
 }
 
-//----- (0002B4D0) --------------------------------------------------------
+//----- (0002B4B8) --------------------------------------------------------
 int __fastcall pb_skip_field(int a1, int a2)
 {
   int v2; // r4
@@ -29678,7 +29655,7 @@ int __fastcall pb_skip_field(int a1, int a2)
       }
       break;
     case 2:
-      if ( sub_2B43C(a1, &v7) != 1 )
+      if ( sub_2B424(a1, &v7) != 1 )
         goto LABEL_11;
       result = j_j_pb_read(v2, 0, v7);
       break;
@@ -29702,7 +29679,7 @@ LABEL_11:
   return result;
 }
 
-//----- (0002B590) --------------------------------------------------------
+//----- (0002B578) --------------------------------------------------------
 signed int __fastcall pb_make_string_substream(int a1, _QWORD *a2)
 {
   int v2; // r4
@@ -29715,7 +29692,7 @@ signed int __fastcall pb_make_string_substream(int a1, _QWORD *a2)
   v2 = a1;
   v3 = a2;
   v8 = MEMORY[0];
-  if ( sub_2B43C(a1, (int *)&v7) != 1 )
+  if ( sub_2B424(a1, (int *)&v7) != 1 )
     return 0;
   v4 = *(_QWORD *)(v2 + 8);
   *v3 = *(_QWORD *)v2;
@@ -29732,7 +29709,7 @@ signed int __fastcall pb_make_string_substream(int a1, _QWORD *a2)
   return 1;
 }
 
-//----- (0002B60C) --------------------------------------------------------
+//----- (0002B5F4) --------------------------------------------------------
 int __fastcall pb_close_string_substream(int result, int a2)
 {
   *(_DWORD *)(result + 4) = *(_DWORD *)(a2 + 4);
@@ -29740,7 +29717,7 @@ int __fastcall pb_close_string_substream(int result, int a2)
   return result;
 }
 
-//----- (0002B618) --------------------------------------------------------
+//----- (0002B600) --------------------------------------------------------
 int __fastcall pb_decode_noinit(int a1, unsigned __int8 *a2, int a3)
 {
   int v3; // r9
@@ -29805,7 +29782,7 @@ int __fastcall pb_decode_noinit(int a1, unsigned __int8 *a2, int a3)
   v26 = 0;
   while ( 1 )
   {
-    if ( sub_2B43C(v3, (int *)&v37) )
+    if ( sub_2B424(v3, (int *)&v37) )
     {
       if ( v37 )
       {
@@ -29818,11 +29795,11 @@ int __fastcall pb_decode_noinit(int a1, unsigned __int8 *a2, int a3)
           {
             if ( !(v29[1] & 0x30) && v31 <= 0x3F )
               *((_BYTE *)&v35 + (v31 >> 3)) |= 1 << (v31 & 7);
-            v12 = sub_2B84C(v3, v27, &v28) ^ 1;
+            v12 = sub_2B834(v3, v27, &v28) ^ 1;
             v4 = v8;
             goto LABEL_38;
           }
-          sub_2BCC0((unsigned int *)&v28);
+          sub_2BCA8((unsigned int *)&v28);
           v8 = v30;
         }
         while ( v30 != v4 );
@@ -29831,7 +29808,7 @@ int __fastcall pb_decode_noinit(int a1, unsigned __int8 *a2, int a3)
         v9 = v4;
         while ( (v29[1] & 0xF) != 8 )
         {
-          sub_2BCC0((unsigned int *)&v28);
+          sub_2BCA8((unsigned int *)&v28);
           v9 = v30;
           if ( v30 == v4 )
           {
@@ -29871,7 +29848,7 @@ LABEL_26:
                 v43 = v14 + 12;
                 v41 = v18;
                 v42 = v18;
-                if ( sub_2B84C(v3, v27, &v37) != 1 )
+                if ( sub_2B834(v3, v27, &v37) != 1 )
                   goto LABEL_58;
               }
             }
@@ -29922,7 +29899,7 @@ LABEL_45:
     v21 = v31;
     v22 = v29[1];
   }
-  while ( sub_2BCC0((unsigned int *)&v28) );
+  while ( sub_2BCA8((unsigned int *)&v28) );
   if ( !(v22 & 0x30) && *v29 )
     ++v21;
   v23 = v21 >> 3;
@@ -29954,8 +29931,8 @@ LABEL_58:
   return result;
 }
 
-//----- (0002B84C) --------------------------------------------------------
-int __fastcall sub_2B84C(int a1, int a2, _DWORD *a3)
+//----- (0002B834) --------------------------------------------------------
+int __fastcall sub_2B834(int a1, int a2, _DWORD *a3)
 {
   int v3; // r9
   _DWORD *v4; // r5
@@ -30093,7 +30070,7 @@ LABEL_77:
         v60 = v63;
         v61 = v22;
         v62 = 0;
-        v59 = sub_2B2D0;
+        v59 = sub_2B2B8;
         return (*v18)(&v59, v4[1], v20);
       }
       return 0;
@@ -30221,7 +30198,7 @@ LABEL_11:
       if ( (unsigned int)(v46 - 5) >= 2 )
       {
         if ( v46 == 7 )
-          sub_2BD68(*(_DWORD *)(v44 + 6), (int)v45);
+          sub_2BD50(*(_DWORD *)(v44 + 6), (int)v45);
       }
       else
       {
@@ -30262,7 +30239,7 @@ LABEL_11:
     if ( (unsigned int)(v55 - 5) >= 2 )
     {
       if ( v55 == 7 )
-        sub_2BD68(*(_DWORD *)(v53 + 6), (int)v54);
+        sub_2BD50(*(_DWORD *)(v53 + 6), (int)v54);
     }
     else
     {
@@ -30305,7 +30282,7 @@ LABEL_54:
     if ( (unsigned int)(v41 - 5) >= 2 )
     {
       if ( v41 == 7 )
-        sub_2BD68(*(_DWORD *)(v39 + 6), (int)v40);
+        sub_2BD50(*(_DWORD *)(v39 + 6), (int)v40);
     }
     else
     {
@@ -30328,12 +30305,12 @@ LABEL_102:
   *(_DWORD *)(v3 + 12) = v62;
   return result;
 }
-// 2B2D0: using guessed type int sub_2B2D0();
+// 2B2B8: using guessed type int sub_2B2B8();
 // 373D4: using guessed type void *off_373D4;
-// 2B84C: using guessed type char var_32[10];
+// 2B834: using guessed type char var_32[10];
 
-//----- (0002BCC0) --------------------------------------------------------
-signed int __fastcall sub_2BCC0(unsigned int *a1)
+//----- (0002BCA8) --------------------------------------------------------
+signed int __fastcall sub_2BCA8(unsigned int *a1)
 {
   _BYTE *v1; // r1
   char v2; // r3
@@ -30382,7 +30359,7 @@ signed int __fastcall sub_2BCC0(unsigned int *a1)
   return v6;
 }
 
-//----- (0002BD3E) --------------------------------------------------------
+//----- (0002BD26) --------------------------------------------------------
 int __fastcall pb_decode(int a1, int a2, int a3)
 {
   int v3; // r4
@@ -30393,15 +30370,15 @@ int __fastcall pb_decode(int a1, int a2, int a3)
   v3 = a3;
   v4 = (unsigned __int8 *)a2;
   v5 = a1;
-  sub_2BD68(a2, a3);
+  sub_2BD50(a2, a3);
   v6 = j_j_pb_decode_noinit(v5, v4, v3);
   if ( !v6 )
     j_j_pb_release((int)v4, v3);
   return v6;
 }
 
-//----- (0002BD68) --------------------------------------------------------
-int __fastcall sub_2BD68(int a1, int a2)
+//----- (0002BD50) --------------------------------------------------------
+int __fastcall sub_2BD50(int a1, int a2)
 {
   int v2; // r3
   char v3; // r1
@@ -30449,7 +30426,7 @@ LABEL_12:
     }
     if ( (v3 & 0xF) == 7 )
     {
-      sub_2BD68(*(_DWORD *)(a1 + 6), v11);
+      sub_2BD50(*(_DWORD *)(a1 + 6), v11);
     }
     else
     {
@@ -30460,13 +30437,13 @@ LABEL_12:
         j___aeabi_memclr();
     }
 LABEL_16:
-    if ( sub_2BCC0((unsigned int *)&v6) != 1 )
+    if ( sub_2BCA8((unsigned int *)&v6) != 1 )
       return MEMORY[0] - v13;
     a1 = v7;
   }
 }
 
-//----- (0002BE20) --------------------------------------------------------
+//----- (0002BE08) --------------------------------------------------------
 int __fastcall pb_release(int a1, int a2)
 {
   int v2; // r5
@@ -30545,14 +30522,14 @@ int __fastcall pb_release(int a1, int a2)
         *v11 = 0;
       }
     }
-    if ( sub_2BCC0((unsigned int *)&v13) != 1 )
+    if ( sub_2BCA8((unsigned int *)&v13) != 1 )
       break;
     v2 = v14;
   }
   return MEMORY[0] - v20;
 }
 
-//----- (0002BEF0) --------------------------------------------------------
+//----- (0002BED8) --------------------------------------------------------
 int __fastcall pb_decode_delimited(int a1, int a2, int a3)
 {
   int v3; // r4
@@ -30576,7 +30553,7 @@ int __fastcall pb_decode_delimited(int a1, int a2, int a3)
   return result;
 }
 
-//----- (0002BF44) --------------------------------------------------------
+//----- (0002BF2C) --------------------------------------------------------
 signed int __fastcall pb_decode_svarint(int a1, _QWORD *a2)
 {
   _QWORD *v2; // r4
@@ -30599,20 +30576,20 @@ signed int __fastcall pb_decode_svarint(int a1, _QWORD *a2)
   return 1;
 }
 
-//----- (0002BF9C) --------------------------------------------------------
+//----- (0002BF84) --------------------------------------------------------
 int __fastcall pb_decode_fixed32(int a1, int a2)
 {
   return j_j_pb_read(a1, a2, 4);
 }
 
-//----- (0002BFA2) --------------------------------------------------------
+//----- (0002BF8A) --------------------------------------------------------
 int __fastcall pb_decode_fixed64(int a1, int a2)
 {
   return j_j_pb_read(a1, a2, 8);
 }
 
-//----- (0002BFA8) --------------------------------------------------------
-signed int __fastcall sub_2BFA8(int a1, int a2, _BYTE *a3)
+//----- (0002BF90) --------------------------------------------------------
+signed int __fastcall sub_2BF90(int a1, int a2, _BYTE *a3)
 {
   int v3; // r5
   int v4; // r6
@@ -30653,8 +30630,8 @@ signed int __fastcall sub_2BFA8(int a1, int a2, _BYTE *a3)
   return result;
 }
 
-//----- (0002C034) --------------------------------------------------------
-signed int __fastcall sub_2C034(int a1, int a2, _QWORD *a3)
+//----- (0002C01C) --------------------------------------------------------
+signed int __fastcall sub_2C01C(int a1, int a2, _QWORD *a3)
 {
   int v3; // r5
   int v4; // r6
@@ -30686,8 +30663,8 @@ signed int __fastcall sub_2C034(int a1, int a2, _QWORD *a3)
   return 0;
 }
 
-//----- (0002C0A0) --------------------------------------------------------
-signed int __fastcall sub_2C0A0(int a1, int a2, _QWORD *a3)
+//----- (0002C088) --------------------------------------------------------
+signed int __fastcall sub_2C088(int a1, int a2, _QWORD *a3)
 {
   int v3; // r5
   int v4; // r6
@@ -30727,20 +30704,20 @@ signed int __fastcall sub_2C0A0(int a1, int a2, _QWORD *a3)
   return 0;
 }
 
-//----- (0002C11C) --------------------------------------------------------
-int __fastcall sub_2C11C(int a1, int a2, int a3)
+//----- (0002C104) --------------------------------------------------------
+int __fastcall sub_2C104(int a1, int a2, int a3)
 {
   return j_j_pb_read(a1, a3, 4);
 }
 
-//----- (0002C124) --------------------------------------------------------
-int __fastcall sub_2C124(int a1, int a2, int a3)
+//----- (0002C10C) --------------------------------------------------------
+int __fastcall sub_2C10C(int a1, int a2, int a3)
 {
   return j_j_pb_read(a1, a3, 8);
 }
 
-//----- (0002C12C) --------------------------------------------------------
-int __fastcall sub_2C12C(int a1, int a2, void **a3)
+//----- (0002C114) --------------------------------------------------------
+int __fastcall sub_2C114(int a1, int a2, void **a3)
 {
   int v3; // r4
   int v4; // r7
@@ -30756,7 +30733,7 @@ int __fastcall sub_2C12C(int a1, int a2, void **a3)
   v4 = a2;
   v5 = a3;
   v12 = MEMORY[0];
-  if ( sub_2B43C(a1, &v11) != 1 )
+  if ( sub_2B424(a1, &v11) != 1 )
     return 0;
   v6 = v11;
   v7 = v11 + 4;
@@ -30792,8 +30769,8 @@ LABEL_11:
   return 0;
 }
 
-//----- (0002C1C4) --------------------------------------------------------
-int __fastcall sub_2C1C4(int a1, int a2, void **a3)
+//----- (0002C1AC) --------------------------------------------------------
+int __fastcall sub_2C1AC(int a1, int a2, void **a3)
 {
   int v3; // r4
   int v4; // r7
@@ -30810,7 +30787,7 @@ int __fastcall sub_2C1C4(int a1, int a2, void **a3)
   v4 = a2;
   v5 = a3;
   v12 = MEMORY[0];
-  if ( sub_2B43C(a1, &v11) != 1 )
+  if ( sub_2B424(a1, &v11) != 1 )
     return 0;
   v6 = v11;
   v7 = v11 + 1;
@@ -30847,8 +30824,8 @@ LABEL_11:
   return 0;
 }
 
-//----- (0002C25C) --------------------------------------------------------
-int __fastcall sub_2C25C(int a1, int a2, int a3)
+//----- (0002C244) --------------------------------------------------------
+int __fastcall sub_2C244(int a1, int a2, int a3)
 {
   int v3; // r4
   int v4; // r7
@@ -30882,18 +30859,18 @@ int __fastcall sub_2C25C(int a1, int a2, int a3)
   return result;
 }
 
-//----- (0002C2F4) --------------------------------------------------------
+//----- (0002C2DC) --------------------------------------------------------
 int __fastcall pb_ostream_from_buffer(int result, __int64 a2)
 {
   *(_QWORD *)(result + 4) = a2;
   *(_DWORD *)(result + 12) = 0;
   *(_DWORD *)(result + 16) = 0;
-  *(_DWORD *)result = sub_2C30C;
+  *(_DWORD *)result = sub_2C2F4;
   return result;
 }
-// 2C30C: using guessed type int sub_2C30C();
+// 2C2F4: using guessed type int sub_2C2F4();
 
-//----- (0002C32C) --------------------------------------------------------
+//----- (0002C314) --------------------------------------------------------
 signed int __fastcall pb_write(int a1, int a2, int a3)
 {
   int v3; // r4
@@ -30929,7 +30906,7 @@ LABEL_13:
   return 0;
 }
 
-//----- (0002C378) --------------------------------------------------------
+//----- (0002C360) --------------------------------------------------------
 signed int __fastcall pb_encode(__int64 *a1, unsigned __int8 *a2, int *a3)
 {
   unsigned __int8 *v3; // r4
@@ -30969,14 +30946,14 @@ signed int __fastcall pb_encode(__int64 *a1, unsigned __int8 *a2, int *a3)
           if ( !v10(v4, i) )
             return 0;
         }
-        else if ( sub_2C408(v4, *(unsigned __int8 **)(*(_DWORD *)i + 8), *(_DWORD **)(i + 4)) != 1 )
+        else if ( sub_2C3F0(v4, *(unsigned __int8 **)(*(_DWORD *)i + 8), *(_DWORD **)(i + 4)) != 1 )
         {
           return 0;
         }
       }
       goto LABEL_18;
     }
-    if ( sub_2C408(v4, v3, v5) != 1 )
+    if ( sub_2C3F0(v4, v3, v5) != 1 )
       return 0;
 LABEL_18:
     v11 = v3[10];
@@ -30986,8 +30963,8 @@ LABEL_18:
   }
 }
 
-//----- (0002C408) --------------------------------------------------------
-int __fastcall sub_2C408(__int64 *a1, unsigned __int8 *a2, _DWORD *a3)
+//----- (0002C3F0) --------------------------------------------------------
+int __fastcall sub_2C3F0(__int64 *a1, unsigned __int8 *a2, _DWORD *a3)
 {
   __int64 *v3; // r11
   unsigned __int8 *v4; // r6
@@ -31205,7 +31182,7 @@ LABEL_50:
 }
 // 373F8: using guessed type void *off_373F8;
 
-//----- (0002C664) --------------------------------------------------------
+//----- (0002C64C) --------------------------------------------------------
 int __fastcall pb_encode_submessage(int a1, unsigned __int8 *a2, int *a3)
 {
   int v3; // r4
@@ -31287,7 +31264,7 @@ LABEL_10:
   return result;
 }
 
-//----- (0002C748) --------------------------------------------------------
+//----- (0002C730) --------------------------------------------------------
 int __fastcall pb_get_encoded_size(_DWORD *a1, unsigned __int8 *a2, int *a3)
 {
   _DWORD *v3; // r5
@@ -31316,7 +31293,7 @@ int __fastcall pb_get_encoded_size(_DWORD *a1, unsigned __int8 *a2, int *a3)
   return result;
 }
 
-//----- (0002C79C) --------------------------------------------------------
+//----- (0002C784) --------------------------------------------------------
 signed int __fastcall pb_encode_varint(int a1, int a2, __int64 a3)
 {
   int v3; // r12
@@ -31355,9 +31332,9 @@ signed int __fastcall pb_encode_varint(int a1, int a2, __int64 a3)
   }
   return j_j_pb_write(a1, (int)v4, v7);
 }
-// 2C79C: using guessed type char var_16[10];
+// 2C784: using guessed type char var_16[10];
 
-//----- (0002C818) --------------------------------------------------------
+//----- (0002C800) --------------------------------------------------------
 signed int __fastcall pb_encode_svarint(int a1, int a2, __int64 a3)
 {
   int v3; // r1
@@ -31368,19 +31345,19 @@ signed int __fastcall pb_encode_svarint(int a1, int a2, __int64 a3)
   return j_j_pb_encode_varint(a1, v3, a3);
 }
 
-//----- (0002C82E) --------------------------------------------------------
+//----- (0002C816) --------------------------------------------------------
 signed int __fastcall pb_encode_fixed32(int a1, int a2)
 {
   return j_j_pb_write(a1, a2, 4);
 }
 
-//----- (0002C834) --------------------------------------------------------
+//----- (0002C81C) --------------------------------------------------------
 signed int __fastcall pb_encode_fixed64(int a1, int a2)
 {
   return j_j_pb_write(a1, a2, 8);
 }
 
-//----- (0002C83A) --------------------------------------------------------
+//----- (0002C822) --------------------------------------------------------
 signed int __fastcall pb_encode_tag(int a1, int a2, unsigned int a3)
 {
   __int64 v3; // r2
@@ -31390,7 +31367,7 @@ signed int __fastcall pb_encode_tag(int a1, int a2, unsigned int a3)
   return j_j_pb_encode_varint(a1, v3, v3);
 }
 
-//----- (0002C848) --------------------------------------------------------
+//----- (0002C830) --------------------------------------------------------
 signed int __fastcall pb_encode_tag_for_field(int a1, unsigned __int8 *a2)
 {
   int v2; // r2
@@ -31430,7 +31407,7 @@ signed int __fastcall pb_encode_tag_for_field(int a1, unsigned __int8 *a2)
   return result;
 }
 
-//----- (0002C8A0) --------------------------------------------------------
+//----- (0002C888) --------------------------------------------------------
 signed int __fastcall pb_encode_string(int a1, int a2, int a3)
 {
   int v3; // r4
@@ -31448,8 +31425,8 @@ signed int __fastcall pb_encode_string(int a1, int a2, int a3)
   return result;
 }
 
-//----- (0002C8C4) --------------------------------------------------------
-signed int __fastcall sub_2C8C4(int a1, int a2, __int64 *a3)
+//----- (0002C8AC) --------------------------------------------------------
+signed int __fastcall sub_2C8AC(int a1, int a2, __int64 *a3)
 {
   int v3; // r1
   int v4; // r2
@@ -31481,8 +31458,8 @@ LABEL_8:
   return result;
 }
 
-//----- (0002C908) --------------------------------------------------------
-signed int __fastcall sub_2C908(int a1, int a2, __int64 *a3)
+//----- (0002C8F0) --------------------------------------------------------
+signed int __fastcall sub_2C8F0(int a1, int a2, __int64 *a3)
 {
   int v3; // r1
 
@@ -31496,8 +31473,8 @@ signed int __fastcall sub_2C908(int a1, int a2, __int64 *a3)
   return 0;
 }
 
-//----- (0002C934) --------------------------------------------------------
-signed int __fastcall sub_2C934(int a1, int a2, _QWORD *a3)
+//----- (0002C91C) --------------------------------------------------------
+signed int __fastcall sub_2C91C(int a1, int a2, _QWORD *a3)
 {
   int v3; // r1
   unsigned int v4; // r12
@@ -31527,20 +31504,20 @@ LABEL_5:
   return 0;
 }
 
-//----- (0002C974) --------------------------------------------------------
-signed int __fastcall sub_2C974(int a1, int a2, int a3)
+//----- (0002C95C) --------------------------------------------------------
+signed int __fastcall sub_2C95C(int a1, int a2, int a3)
 {
   return j_j_pb_write(a1, a3, 4);
 }
 
-//----- (0002C97C) --------------------------------------------------------
-signed int __fastcall sub_2C97C(int a1, int a2, int a3)
+//----- (0002C964) --------------------------------------------------------
+signed int __fastcall sub_2C964(int a1, int a2, int a3)
 {
   return j_j_pb_write(a1, a3, 8);
 }
 
-//----- (0002C984) --------------------------------------------------------
-signed int __fastcall sub_2C984(int a1, int a2, int *a3)
+//----- (0002C96C) --------------------------------------------------------
+signed int __fastcall sub_2C96C(int a1, int a2, int *a3)
 {
   int v3; // r4
   signed int v4; // r5
@@ -31577,8 +31554,8 @@ LABEL_11:
   return result;
 }
 
-//----- (0002CA2C) --------------------------------------------------------
-signed int __fastcall sub_2CA2C(int a1, int a2, int a3)
+//----- (0002CA14) --------------------------------------------------------
+signed int __fastcall sub_2CA14(int a1, int a2, int a3)
 {
   unsigned int v3; // r12
   unsigned int v4; // r3
@@ -31601,8 +31578,8 @@ signed int __fastcall sub_2CA2C(int a1, int a2, int a3)
   return j_j_pb_encode_string(a1, a3, v4);
 }
 
-//----- (0002CA5C) --------------------------------------------------------
-int __fastcall sub_2CA5C(int a1, int a2, int *a3)
+//----- (0002CA44) --------------------------------------------------------
+int __fastcall sub_2CA44(int a1, int a2, int *a3)
 {
   unsigned __int8 *v3; // r1
 
@@ -31614,7 +31591,7 @@ int __fastcall sub_2CA5C(int a1, int a2, int *a3)
   return 0;
 }
 
-//----- (0002CA90) --------------------------------------------------------
+//----- (0002CA78) --------------------------------------------------------
 unsigned int *__fastcall decode_eht_entry(unsigned int *result, signed int *a2, int *a3)
 {
   unsigned int v3; // r3
@@ -31651,7 +31628,7 @@ LABEL_8:
   return 0;
 }
 
-//----- (0002CAE4) --------------------------------------------------------
+//----- (0002CACC) --------------------------------------------------------
 signed int __fastcall Unwind_VRS_Interpret(int a1, int a2, unsigned int a3, unsigned int a4)
 {
   int v4; // r9
@@ -31843,7 +31820,7 @@ LABEL_40:
   return 8;
 }
 
-//----- (0002CD2C) --------------------------------------------------------
+//----- (0002CD14) --------------------------------------------------------
 signed int __fastcall Unwind_VRS_Get(int a1, int a2, unsigned int a3, int a4, _QWORD *a5)
 {
   unsigned int v5; // r5
@@ -31886,7 +31863,7 @@ LABEL_13:
   return result;
 }
 
-//----- (0002CDDC) --------------------------------------------------------
+//----- (0002CDC4) --------------------------------------------------------
 signed int __fastcall Unwind_VRS_Set(int a1, int a2, unsigned int a3, int a4, int *a5)
 {
   unsigned int v5; // r4
@@ -31929,7 +31906,7 @@ LABEL_13:
   return result;
 }
 
-//----- (0002CE80) --------------------------------------------------------
+//----- (0002CE68) --------------------------------------------------------
 signed int __fastcall Unwind_VRS_Pop(int a1, int a2, unsigned int a3, int a4)
 {
   int v4; // r4
@@ -32029,8 +32006,8 @@ LABEL_26:
   return result;
 }
 
-//----- (0002CFE0) --------------------------------------------------------
-signed int __fastcall sub_2CFE0(int a1, int a2)
+//----- (0002CFC8) --------------------------------------------------------
+signed int __fastcall sub_2CFC8(int a1, int a2)
 {
   int v2; // r5
   int v3; // r4
@@ -32053,19 +32030,19 @@ signed int __fastcall sub_2CFE0(int a1, int a2)
   return result;
 }
 
-//----- (0002D03C) --------------------------------------------------------
+//----- (0002D024) --------------------------------------------------------
 signed int __fastcall _aeabi_unwind_cpp_pr1(int a1, int a2, int a3)
 {
-  return sub_2CFE0(a2, a3);
+  return sub_2CFC8(a2, a3);
 }
 
-//----- (0002D044) --------------------------------------------------------
+//----- (0002D02C) --------------------------------------------------------
 signed int __fastcall _aeabi_unwind_cpp_pr2(int a1, int a2, int a3)
 {
-  return sub_2CFE0(a2, a3);
+  return sub_2CFC8(a2, a3);
 }
 
-//----- (0002D04C) --------------------------------------------------------
+//----- (0002D034) --------------------------------------------------------
 signed int __fastcall Unwind_RaiseException(int *a1, int a2, int a3, int a4)
 {
   int *v4; // r4
@@ -32113,12 +32090,12 @@ signed int __fastcall Unwind_RaiseException(int *a1, int a2, int a3, int a4)
       return 9;
     return 3;
   }
-  sub_2D0F4((int)&v16, (int)&v15, v4, 0);
+  sub_2D0DC((int)&v16, (int)&v15, v4, 0);
   return 2;
 }
 
-//----- (0002D0F4) --------------------------------------------------------
-int __fastcall sub_2D0F4(int a1, int a2, int *a3, char a4)
+//----- (0002D0DC) --------------------------------------------------------
+int __fastcall sub_2D0DC(int a1, int a2, int *a3, char a4)
 {
   int v4; // r4
   char v5; // r10
@@ -32197,7 +32174,7 @@ LABEL_17:
   return result;
 }
 
-//----- (0002D20C) --------------------------------------------------------
+//----- (0002D1F4) --------------------------------------------------------
 void __fastcall __noreturn Unwind_Resume(int *a1, int a2, int a3, int a4)
 {
   int *v4; // r4
@@ -32207,13 +32184,13 @@ void __fastcall __noreturn Unwind_Resume(int *a1, int a2, int a3, int a4)
 
   v4 = a1;
   j_j_unw_getcontext(&v7, a2, a3, a4, v5);
-  sub_2D0F4((int)&v7, (int)&v6, v4, 1);
+  sub_2D0DC((int)&v7, (int)&v6, v4, 1);
   j_fprintf(MEMORY[0], "libunwind: %s %s:%d - %s\n");
   j_fflush(MEMORY[0]);
   j_abort();
 }
 
-//----- (0002D294) --------------------------------------------------------
+//----- (0002D27C) --------------------------------------------------------
 int __fastcall Unwind_GetLanguageSpecificData(int a1)
 {
   signed int v1; // r1
@@ -32230,7 +32207,7 @@ int __fastcall Unwind_GetLanguageSpecificData(int a1)
   return result;
 }
 
-//----- (0002D2D0) --------------------------------------------------------
+//----- (0002D2B8) --------------------------------------------------------
 int __fastcall Unwind_GetRegionStart(int a1)
 {
   signed int v1; // r1
@@ -32246,7 +32223,7 @@ int __fastcall Unwind_GetRegionStart(int a1)
   return result;
 }
 
-//----- (0002D30C) --------------------------------------------------------
+//----- (0002D2F4) --------------------------------------------------------
 int __fastcall Unwind_DeleteException(int result)
 {
   int (__fastcall *v1)(signed int); // r2
@@ -32257,7 +32234,7 @@ int __fastcall Unwind_DeleteException(int result)
   return result;
 }
 
-//----- (0002D318) --------------------------------------------------------
+//----- (0002D300) --------------------------------------------------------
 signed int __fastcall _gnu_unwind_frame(int a1, int a2)
 {
   int v2; // r0
@@ -32270,7 +32247,7 @@ signed int __fastcall _gnu_unwind_frame(int a1, int a2)
   return v3;
 }
 
-//----- (0002D32C) --------------------------------------------------------
+//----- (0002D314) --------------------------------------------------------
 int __fastcall unw_getcontext(_DWORD *a1, int a2, int a3, int a4, int a5)
 {
   int v5; // r4
@@ -32303,8 +32280,8 @@ int __fastcall unw_getcontext(_DWORD *a1, int a2, int a3, int a4, int a5)
   return 0;
 }
 
-//----- (0002D344) --------------------------------------------------------
-_QWORD *__fastcall sub_2D344(_QWORD *result)
+//----- (0002D32C) --------------------------------------------------------
+_QWORD *__fastcall sub_2D32C(_QWORD *result)
 {
   __int64 v1; // d0
   __int64 v2; // d1
@@ -32342,8 +32319,8 @@ _QWORD *__fastcall sub_2D344(_QWORD *result)
   return result;
 }
 
-//----- (0002D34C) --------------------------------------------------------
-_QWORD *__fastcall sub_2D34C(_QWORD *result)
+//----- (0002D334) --------------------------------------------------------
+_QWORD *__fastcall sub_2D334(_QWORD *result)
 {
   __int64 v1; // d0
   __int64 v2; // d1
@@ -32381,8 +32358,8 @@ _QWORD *__fastcall sub_2D34C(_QWORD *result)
   return result;
 }
 
-//----- (0002D354) --------------------------------------------------------
-_QWORD *__fastcall sub_2D354(_QWORD *result)
+//----- (0002D33C) --------------------------------------------------------
+_QWORD *__fastcall sub_2D33C(_QWORD *result)
 {
   __int64 v1; // d16
   __int64 v2; // d17
@@ -32420,18 +32397,18 @@ _QWORD *__fastcall sub_2D354(_QWORD *result)
   return result;
 }
 
-//----- (0002D35C) --------------------------------------------------------
+//----- (0002D344) --------------------------------------------------------
 int __fastcall unw_init_local(int a1, int a2)
 {
   int v2; // r0
 
-  v2 = sub_2D378(a1, a2, (int)&unk_38664);
+  v2 = sub_2D360(a1, a2, (int)&unk_38664);
   (*(void (**)(void))(*(_DWORD *)v2 + 52))();
   return 0;
 }
 
-//----- (0002D378) --------------------------------------------------------
-int __fastcall sub_2D378(int a1, int a2, int a3)
+//----- (0002D360) --------------------------------------------------------
+int __fastcall sub_2D360(int a1, int a2, int a3)
 {
   int v3; // r4
   _QWORD *v4; // r0
@@ -32459,7 +32436,7 @@ int __fastcall sub_2D378(int a1, int a2, int a3)
   return result;
 }
 
-//----- (0002D3D8) --------------------------------------------------------
+//----- (0002D3C0) --------------------------------------------------------
 signed int __fastcall unw_get_reg(int a1, int a2, _DWORD *a3)
 {
   int v3; // r6
@@ -32475,7 +32452,7 @@ signed int __fastcall unw_get_reg(int a1, int a2, _DWORD *a3)
   return 0;
 }
 
-//----- (0002D406) --------------------------------------------------------
+//----- (0002D3EE) --------------------------------------------------------
 signed int __fastcall unw_set_reg(int a1, int a2, int a3)
 {
   int v3; // r4
@@ -32496,7 +32473,7 @@ signed int __fastcall unw_set_reg(int a1, int a2, int a3)
   return v6;
 }
 
-//----- (0002D448) --------------------------------------------------------
+//----- (0002D430) --------------------------------------------------------
 signed int __fastcall unw_get_fpreg(int a1, int a2, _QWORD *a3)
 {
   int v3; // r6
@@ -32514,7 +32491,7 @@ signed int __fastcall unw_get_fpreg(int a1, int a2, _QWORD *a3)
   return 0;
 }
 
-//----- (0002D478) --------------------------------------------------------
+//----- (0002D460) --------------------------------------------------------
 signed int __fastcall unw_set_fpreg(int a1, int a2, int a3, int a4)
 {
   int v4; // r7
@@ -32532,13 +32509,13 @@ signed int __fastcall unw_set_fpreg(int a1, int a2, int a3, int a4)
   return 0;
 }
 
-//----- (0002D4AE) --------------------------------------------------------
+//----- (0002D496) --------------------------------------------------------
 int __fastcall unw_step(int a1)
 {
   return (*(int (**)(void))(*(_DWORD *)a1 + 32))();
 }
 
-//----- (0002D4B4) --------------------------------------------------------
+//----- (0002D49C) --------------------------------------------------------
 signed int __fastcall unw_get_proc_info(int a1, int a2)
 {
   int v2; // r4
@@ -32552,14 +32529,14 @@ signed int __fastcall unw_get_proc_info(int a1, int a2)
   return result;
 }
 
-//----- (0002D4D4) --------------------------------------------------------
+//----- (0002D4BC) --------------------------------------------------------
 signed int __fastcall unw_resume(int a1)
 {
   (*(void (**)(void))(*(_DWORD *)a1 + 40))();
   return -6540;
 }
 
-//----- (0002D4E6) --------------------------------------------------------
+//----- (0002D4CE) --------------------------------------------------------
 signed int __fastcall unw_get_proc_name(int a1)
 {
   int v1; // r0
@@ -32572,32 +32549,32 @@ signed int __fastcall unw_get_proc_name(int a1)
   return v2;
 }
 
-//----- (0002D504) --------------------------------------------------------
+//----- (0002D4EC) --------------------------------------------------------
 int __fastcall unw_is_fpreg(int a1)
 {
   return (*(int (**)(void))(*(_DWORD *)a1 + 20))();
 }
 
-//----- (0002D50E) --------------------------------------------------------
+//----- (0002D4F6) --------------------------------------------------------
 int __fastcall unw_regname(int a1)
 {
   return (*(int (**)(void))(*(_DWORD *)a1 + 56))();
 }
 
-//----- (0002D514) --------------------------------------------------------
+//----- (0002D4FC) --------------------------------------------------------
 int __fastcall unw_is_signal_frame(int a1)
 {
   return (*(int (**)(void))(*(_DWORD *)a1 + 44))();
 }
 
-//----- (0002D51E) --------------------------------------------------------
+//----- (0002D506) --------------------------------------------------------
 int __fastcall unw_save_vfp_as_X(int a1)
 {
   return (*(int (**)(void))(*(_DWORD *)a1 + 60))();
 }
 
-//----- (0002D924) --------------------------------------------------------
-int __fastcall sub_2D924(int a1)
+//----- (0002D90C) --------------------------------------------------------
+int __fastcall sub_2D90C(int a1)
 {
   int v1; // r5
   signed int v2; // r4
@@ -32621,8 +32598,8 @@ int __fastcall sub_2D924(int a1)
   return result;
 }
 
-//----- (0002D978) --------------------------------------------------------
-void __fastcall sub_2D978(int a1)
+//----- (0002D960) --------------------------------------------------------
+void __fastcall sub_2D960(int a1)
 {
   int v1; // r4
 
@@ -32630,16 +32607,16 @@ void __fastcall sub_2D978(int a1)
   if ( *(_BYTE *)(a1 + 65) )
   {
     if ( *(_BYTE *)(a1 + 64) )
-      sub_2EDAC();
+      sub_2ED94();
     else
-      sub_2EDBC();
+      sub_2EDA4();
   }
   if ( *(_BYTE *)(v1 + 66) )
-    sub_2EDCC();
+    sub_2EDB4();
 }
 
-//----- (0002D9AC) --------------------------------------------------------
-int sub_2D9AC()
+//----- (0002D994) --------------------------------------------------------
+int sub_2D994()
 {
   int v0; // ST0C_4
 
@@ -32648,8 +32625,8 @@ int sub_2D9AC()
   return MEMORY[0] - v0;
 }
 
-//----- (0002D9F4) --------------------------------------------------------
-signed int __fastcall sub_2D9F4(int *a1, int a2, _DWORD *a3)
+//----- (0002D9DC) --------------------------------------------------------
+signed int __fastcall sub_2D9DC(int *a1, int a2, _DWORD *a3)
 {
   int *v3; // r4
   signed int v4; // r5
@@ -32683,7 +32660,7 @@ signed int __fastcall sub_2D9F4(int *a1, int a2, _DWORD *a3)
   v27 = a2;
   v5 = &v27;
   v6 = a3[1] >> 3;
-  sub_2DC96(&v25, 0, v3[1], a3, v6, v3[1], (int)a3, &v27);
+  sub_2DC7E(&v25, 0, v3[1], a3, v6, v3[1], (int)a3, &v27);
   if ( !v25 || v25 == v6 )
     goto LABEL_29;
   v7 = *v26 + 8 * v25;
@@ -32780,8 +32757,8 @@ LABEL_29:
 // 37670: using guessed type int dword_37670;
 // 37674: using guessed type int dword_37674;
 
-//----- (0002DC96) --------------------------------------------------------
-int __fastcall sub_2DC96(int *a1, int a2, int a3, _DWORD *a4, int a5, int a6, int a7, _DWORD *a8)
+//----- (0002DC7E) --------------------------------------------------------
+int __fastcall sub_2DC7E(int *a1, int a2, int a3, _DWORD *a4, int a5, int a6, int a7, _DWORD *a8)
 {
   unsigned int v8; // r4
   int v9; // r6
@@ -32807,1308 +32784,1308 @@ int __fastcall sub_2DC96(int *a1, int a2, int a3, _DWORD *a4, int a5, int a6, in
   return (int)(a1 + 3);
 }
 
-//----- (0002E09C) --------------------------------------------------------
+//----- (0002E084) --------------------------------------------------------
 char *__fastcall j_strncpy(char *dest, const char *src, size_t n)
 {
   return strncpy(dest, src, n);
 }
 
-//----- (0002E0AC) --------------------------------------------------------
+//----- (0002E094) --------------------------------------------------------
 const char *__fastcall j_j_requestToString(int a1)
 {
   return j_requestToString(a1);
 }
 
-//----- (0002E0BC) --------------------------------------------------------
+//----- (0002E0A4) --------------------------------------------------------
 void *__fastcall j_calloc(size_t nmemb, size_t size)
 {
   return calloc(nmemb, size);
 }
 
-//----- (0002E0CC) --------------------------------------------------------
+//----- (0002E0B4) --------------------------------------------------------
 int __fastcall j_pthread_mutex_lock(pthread_mutex_t *mutex)
 {
   return pthread_mutex_lock(mutex);
 }
 
-//----- (0002E0DC) --------------------------------------------------------
+//----- (0002E0C4) --------------------------------------------------------
 int __fastcall j_pthread_mutex_unlock(pthread_mutex_t *mutex)
 {
   return pthread_mutex_unlock(mutex);
 }
 
-//----- (0002E0EC) --------------------------------------------------------
+//----- (0002E0D4) --------------------------------------------------------
 int j___android_log_buf_print()
 {
   return _android_log_buf_print();
 }
 // 10528: using guessed type int _android_log_buf_print(void);
 
-//----- (0002E0FC) --------------------------------------------------------
+//----- (0002E0E4) --------------------------------------------------------
 android *__fastcall j_j_RIL_onUnsolicitedResponse(int a1, int a2, size_t a3)
 {
   return j_RIL_onUnsolicitedResponse(a1, a2, a3);
 }
 
-//----- (0002E10C) --------------------------------------------------------
+//----- (0002E0F4) --------------------------------------------------------
 int __fastcall j_radio::nitzTimeReceivedInd(int a1, int a2, int a3, int a4, const char *a5, int a6)
 {
   return radio::nitzTimeReceivedInd(a1, a2, a3, a4, a5, a6);
 }
 
-//----- (0002E11C) --------------------------------------------------------
+//----- (0002E104) --------------------------------------------------------
 void __fastcall j_free(void *ptr)
 {
   free(ptr);
 }
 
-//----- (0002E12C) --------------------------------------------------------
+//----- (0002E114) --------------------------------------------------------
 int j_property_set()
 {
   return property_set();
 }
 // 10558: using guessed type int property_set(void);
 
-//----- (0002E14C) --------------------------------------------------------
+//----- (0002E134) --------------------------------------------------------
 void *__fastcall j_radio::getRadioServiceRwlock(radio *this, int a2)
 {
   return radio::getRadioServiceRwlock(this, a2);
 }
 
-//----- (0002E15C) --------------------------------------------------------
+//----- (0002E144) --------------------------------------------------------
 int __fastcall j_pthread_rwlock_rdlock(pthread_rwlock_t *rwlock)
 {
   return pthread_rwlock_rdlock(rwlock);
 }
 
-//----- (0002E16C) --------------------------------------------------------
+//----- (0002E154) --------------------------------------------------------
 int __fastcall j_pthread_rwlock_unlock(pthread_rwlock_t *rwlock)
 {
   return pthread_rwlock_unlock(rwlock);
 }
 
-//----- (0002E17C) --------------------------------------------------------
+//----- (0002E164) --------------------------------------------------------
 int j___aeabi_memcpy()
 {
   return _aeabi_memcpy();
 }
 // 10594: using guessed type int _aeabi_memcpy(void);
 
-//----- (0002E18C) --------------------------------------------------------
+//----- (0002E174) --------------------------------------------------------
 int __fastcall j_android::releaseWakeLock(android *this)
 {
   return android::releaseWakeLock(this);
 }
 
-//----- (0002E19C) --------------------------------------------------------
+//----- (0002E184) --------------------------------------------------------
 void __noreturn j_abort()
 {
   abort();
 }
 
-//----- (0002E1AC) --------------------------------------------------------
+//----- (0002E194) --------------------------------------------------------
 int __fastcall j_pthread_attr_init(pthread_attr_t *attr)
 {
   return pthread_attr_init(attr);
 }
 
-//----- (0002E1BC) --------------------------------------------------------
+//----- (0002E1A4) --------------------------------------------------------
 int __fastcall j_pthread_attr_setdetachstate(pthread_attr_t *attr, int detachstate)
 {
   return pthread_attr_setdetachstate(attr, detachstate);
 }
 
-//----- (0002E1CC) --------------------------------------------------------
+//----- (0002E1B4) --------------------------------------------------------
 int __fastcall j_pthread_create(pthread_t *newthread, const pthread_attr_t *attr, void *(*start_routine)(void *), void *arg)
 {
   return pthread_create(newthread, attr, start_routine, arg);
 }
 
-//----- (0002E1DC) --------------------------------------------------------
+//----- (0002E1C4) --------------------------------------------------------
 char *__fastcall j_strerror(int errnum)
 {
   return strerror(errnum);
 }
 
-//----- (0002E1EC) --------------------------------------------------------
+//----- (0002E1D4) --------------------------------------------------------
 int __fastcall j_pthread_cond_wait(pthread_cond_t *cond, pthread_mutex_t *mutex)
 {
   return pthread_cond_wait(cond, mutex);
 }
 
-//----- (0002E1FC) --------------------------------------------------------
+//----- (0002E1E4) --------------------------------------------------------
 void *j_ril_event_init(void)
 {
   return ril_event_init();
 }
 
-//----- (0002E20C) --------------------------------------------------------
+//----- (0002E1F4) --------------------------------------------------------
 int __fastcall j_pthread_cond_broadcast(pthread_cond_t *cond)
 {
   return pthread_cond_broadcast(cond);
 }
 
-//----- (0002E21C) --------------------------------------------------------
+//----- (0002E204) --------------------------------------------------------
 int __fastcall j_pipe(int pipedes[2])
 {
   return pipe(pipedes);
 }
 
-//----- (0002E22C) --------------------------------------------------------
+//----- (0002E214) --------------------------------------------------------
 int __fastcall j_fcntl(int fd, int cmd)
 {
   return fcntl(fd, cmd);
 }
 
-//----- (0002E23C) --------------------------------------------------------
+//----- (0002E224) --------------------------------------------------------
 int __fastcall j_ril_event_set(int a1, int a2, char a3, int a4, int a5)
 {
   return ril_event_set(a1, a2, a3, a4, a5);
 }
 
-//----- (0002E24C) --------------------------------------------------------
+//----- (0002E234) --------------------------------------------------------
 int __fastcall j_ril_event_add(int a1)
 {
   return ril_event_add(a1);
 }
 
-//----- (0002E25C) --------------------------------------------------------
+//----- (0002E244) --------------------------------------------------------
 int j_ril_event_loop(void)
 {
   return ril_event_loop();
 }
 
-//----- (0002E26C) --------------------------------------------------------
+//----- (0002E254) --------------------------------------------------------
 int j___errno()
 {
   return _errno();
 }
 // 10648: using guessed type int _errno(void);
 
-//----- (0002E27C) --------------------------------------------------------
+//----- (0002E264) --------------------------------------------------------
 int __fastcall j_kill(__pid_t pid, int sig)
 {
   return kill(pid, sig);
 }
 
-//----- (0002E28C) --------------------------------------------------------
+//----- (0002E274) --------------------------------------------------------
 int __fastcall j_radio::registerService(int a1, int a2)
 {
   return radio::registerService(a1, a2);
 }
 
-//----- (0002E29C) --------------------------------------------------------
+//----- (0002E284) --------------------------------------------------------
 int __fastcall j_RilSapSocket::initSapSocket(const char *a1, unsigned int a2)
 {
   return RilSapSocket::initSapSocket(a1, a2);
 }
 
-//----- (0002E2AC) --------------------------------------------------------
+//----- (0002E294) --------------------------------------------------------
 int j_sap::registerService()
 {
   return sap::registerService();
 }
 
-//----- (0002E2BC) --------------------------------------------------------
+//----- (0002E2A4) --------------------------------------------------------
 int __fastcall j_radio::acknowledgeRequest(radio *this, int a2, int a3)
 {
   return radio::acknowledgeRequest(this, a2, a3);
 }
 
-//----- (0002E2CC) --------------------------------------------------------
+//----- (0002E2B4) --------------------------------------------------------
 int j_acquire_wake_lock()
 {
   return acquire_wake_lock();
 }
 // 10690: using guessed type int acquire_wake_lock(void);
 
-//----- (0002E2DC) --------------------------------------------------------
+//----- (0002E2C4) --------------------------------------------------------
 int j_release_wake_lock()
 {
   return release_wake_lock();
 }
 // 1069C: using guessed type int release_wake_lock(void);
 
-//----- (0002E2EC) --------------------------------------------------------
+//----- (0002E2D4) --------------------------------------------------------
 int __fastcall j_ril_timer_add(int **a1, _DWORD *a2)
 {
   return ril_timer_add(a1, a2);
 }
 
-//----- (0002E2FC) --------------------------------------------------------
+//----- (0002E2E4) --------------------------------------------------------
 int j___read_chk()
 {
   return _read_chk();
 }
 // 106B4: using guessed type int _read_chk(void);
 
-//----- (0002E30C) --------------------------------------------------------
+//----- (0002E2F4) --------------------------------------------------------
 pthread_t j_pthread_self()
 {
   return pthread_self();
 }
 
-//----- (0002E31C) --------------------------------------------------------
+//----- (0002E304) --------------------------------------------------------
 int __fastcall j_pthread_equal(pthread_t thread1, pthread_t thread2)
 {
   return pthread_equal(thread1, thread2);
 }
 
-//----- (0002E32C) --------------------------------------------------------
+//----- (0002E314) --------------------------------------------------------
 int j___write_chk()
 {
   return _write_chk();
 }
 // 106D8: using guessed type int _write_chk(void);
 
-//----- (0002E33C) --------------------------------------------------------
+//----- (0002E324) --------------------------------------------------------
 int __fastcall j_pthread_mutex_init(pthread_mutex_t *mutex, const pthread_mutexattr_t *mutexattr)
 {
   return pthread_mutex_init(mutex, mutexattr);
 }
 
-//----- (0002E34C) --------------------------------------------------------
+//----- (0002E334) --------------------------------------------------------
 int j___FD_SET_chk()
 {
   return _FD_SET_chk();
 }
 // 10F78: using guessed type int _FD_SET_chk(void);
 
-//----- (0002E35C) --------------------------------------------------------
+//----- (0002E344) --------------------------------------------------------
 int __fastcall j_clock_gettime(clockid_t clock_id, struct timespec *tp)
 {
   return clock_gettime(clock_id, tp);
 }
 
-//----- (0002E36C) --------------------------------------------------------
+//----- (0002E354) --------------------------------------------------------
 int j___FD_CLR_chk()
 {
   return _FD_CLR_chk();
 }
 // 10F90: using guessed type int _FD_CLR_chk(void);
 
-//----- (0002E37C) --------------------------------------------------------
+//----- (0002E364) --------------------------------------------------------
 int j___aeabi_memcpy8()
 {
   return _aeabi_memcpy8();
 }
 // 10F9C: using guessed type int _aeabi_memcpy8(void);
 
-//----- (0002E38C) --------------------------------------------------------
+//----- (0002E374) --------------------------------------------------------
 int __fastcall j_select(int nfds, fd_set *readfds, fd_set *writefds, fd_set *exceptfds, struct timeval *timeout)
 {
   return select(nfds, readfds, writefds, exceptfds, timeout);
 }
 
-//----- (0002E39C) --------------------------------------------------------
+//----- (0002E384) --------------------------------------------------------
 int j___FD_ISSET_chk()
 {
   return _FD_ISSET_chk();
 }
 // 10FB4: using guessed type int _FD_ISSET_chk(void);
 
-//----- (0002E3AC) --------------------------------------------------------
+//----- (0002E394) --------------------------------------------------------
 int __fastcall j_RilSapSocket::getSocketById(int a1)
 {
   return RilSapSocket::getSocketById(a1);
 }
 
-//----- (0002E3BC) --------------------------------------------------------
+//----- (0002E3A4) --------------------------------------------------------
 int __fastcall j_RilSapSocket::onRequestComplete(int a1, int a2, int a3, int a4, unsigned int a5)
 {
   return RilSapSocket::onRequestComplete(a1, a2, a3, a4, a5);
 }
 
-//----- (0002E3CC) --------------------------------------------------------
+//----- (0002E3B4) --------------------------------------------------------
 int __fastcall j_RilSapSocket::onUnsolicitedResponse(RilSapSocket *this, int a2, void *a3, unsigned int a4)
 {
   return RilSapSocket::onUnsolicitedResponse(this, a2, a3, a4);
 }
 
-//----- (0002E3DC) --------------------------------------------------------
+//----- (0002E3C4) --------------------------------------------------------
 int __fastcall j_RilSapSocket::printList(RilSapSocket *this)
 {
   return RilSapSocket::printList(this);
 }
 
-//----- (0002E3EC) --------------------------------------------------------
+//----- (0002E3D4) --------------------------------------------------------
 int __fastcall j_sap::processResponse(int *a1, int a2)
 {
   return sap::processResponse(a1, a2);
 }
 
-//----- (0002E3FC) --------------------------------------------------------
+//----- (0002E3E4) --------------------------------------------------------
 signed int __fastcall j_Ril_queue<RilSapSocket::SapSocketRequest>::checkAndDequeue(int a1, int a2, int a3)
 {
   return Ril_queue<RilSapSocket::SapSocketRequest>::checkAndDequeue(a1, a2, a3);
 }
 
-//----- (0002E40C) --------------------------------------------------------
+//----- (0002E3F4) --------------------------------------------------------
 int __fastcall j_sap::processUnsolResponse(int *a1, int a2)
 {
   return sap::processUnsolResponse(a1, a2);
 }
 
-//----- (0002E41C) --------------------------------------------------------
+//----- (0002E404) --------------------------------------------------------
 int __fastcall j_strcmp(const char *s1, const char *s2)
 {
   return strcmp(s1, s2);
 }
 
-//----- (0002E42C) --------------------------------------------------------
+//----- (0002E414) --------------------------------------------------------
 signed int __fastcall j_RilSapSocket::SocketExists(RilSapSocket *this, const char *a2)
 {
   return RilSapSocket::SocketExists(this, a2);
 }
 
-//----- (0002E43C) --------------------------------------------------------
+//----- (0002E424) --------------------------------------------------------
 signed int __fastcall j_RilSapSocket::addSocketToList(RilSapSocket *a1, const char *a2, unsigned int a3)
 {
   return RilSapSocket::addSocketToList(a1, a2, a3);
 }
 
-//----- (0002E44C) --------------------------------------------------------
+//----- (0002E434) --------------------------------------------------------
 int __fastcall operator new(unsigned int a1)
 {
   return operator new(a1);
 }
 
-//----- (0002E45C) --------------------------------------------------------
+//----- (0002E444) --------------------------------------------------------
 int __fastcall j_RilSapSocket::RilSapSocket(int a1, int r1_0, __int64 a2, int a3)
 {
   return RilSapSocket::RilSapSocket(a1, r1_0, a2, a3);
 }
 
-//----- (0002E46C) --------------------------------------------------------
+//----- (0002E454) --------------------------------------------------------
 void *__fastcall j_malloc(size_t size)
 {
   return malloc(size);
 }
 
-//----- (0002E47C) --------------------------------------------------------
+//----- (0002E464) --------------------------------------------------------
 int __fastcall j_pthread_mutexattr_init(pthread_mutexattr_t *attr)
 {
   return pthread_mutexattr_init(attr);
 }
 
-//----- (0002E48C) --------------------------------------------------------
+//----- (0002E474) --------------------------------------------------------
 int __fastcall j_Ril_queue<RilSapSocket::SapSocketRequest>::enqueue(int a1, int a2)
 {
   return Ril_queue<RilSapSocket::SapSocketRequest>::enqueue(a1, a2);
 }
 
-//----- (0002E49C) --------------------------------------------------------
+//----- (0002E484) --------------------------------------------------------
 void __fastcall operator delete(void *a1)
 {
   operator delete(a1);
 }
 
-//----- (0002E4AC) --------------------------------------------------------
+//----- (0002E494) --------------------------------------------------------
 int __fastcall android::RefBase::decStrong(android::RefBase *this, const void *a2)
 {
   return android::RefBase::decStrong(this, a2);
 }
 
-//----- (0002E4BC) --------------------------------------------------------
+//----- (0002E4A4) --------------------------------------------------------
 int j___cxa_atexit()
 {
   return _cxa_atexit();
 }
 // 104D4: using guessed type int _cxa_atexit(void);
 
-//----- (0002E4CC) --------------------------------------------------------
+//----- (0002E4B4) --------------------------------------------------------
 int __fastcall android::hardware::hidl_string::size(android::hardware::hidl_string *this)
 {
   return android::hardware::hidl_string::size(this);
 }
 
-//----- (0002E4DC) --------------------------------------------------------
+//----- (0002E4C4) --------------------------------------------------------
 int __fastcall android::hardware::hidl_string::c_str(android::hardware::hidl_string *this)
 {
   return android::hardware::hidl_string::c_str(this);
 }
 
-//----- (0002E4EC) --------------------------------------------------------
+//----- (0002E4D4) --------------------------------------------------------
 char *__fastcall j_copyHidlStringToRil(char **a1, android::hardware::hidl_string *a2, int a3, int a4)
 {
   return copyHidlStringToRil(a1, a2, a3, a4);
 }
 
-//----- (0002E4FC) --------------------------------------------------------
+//----- (0002E4E4) --------------------------------------------------------
 int __fastcall android::hardware::hidl_string::hidl_string(android::hardware::hidl_string *this)
 {
   return android::hardware::hidl_string::hidl_string(this);
 }
 
-//----- (0002E50C) --------------------------------------------------------
+//----- (0002E4F4) --------------------------------------------------------
 size_t __fastcall j_strlen(const char *s)
 {
   return strlen(s);
 }
 
-//----- (0002E51C) --------------------------------------------------------
+//----- (0002E504) --------------------------------------------------------
 int __fastcall android::hardware::hidl_string::setToExternal(android::hardware::hidl_string *this, const char *a2, unsigned int a3)
 {
   return android::hardware::hidl_string::setToExternal(this, a2, a3);
 }
 
-//----- (0002E52C) --------------------------------------------------------
+//----- (0002E514) --------------------------------------------------------
 int __fastcall j_android::addRequestToList(android *this, int a2, int a3, int a4)
 {
   return android::addRequestToList(this, a2, a3, a4);
 }
 
-//----- (0002E53C) --------------------------------------------------------
+//----- (0002E524) --------------------------------------------------------
 int __fastcall android::hardware::hidl_string::hidl_string(android::hardware::hidl_string *this, const char *a2)
 {
   return android::hardware::hidl_string::hidl_string(this, a2);
 }
 
-//----- (0002E54C) --------------------------------------------------------
+//----- (0002E534) --------------------------------------------------------
 int __fastcall android::hardware::hidl_string::~hidl_string(android::hardware::hidl_string *this)
 {
   return android::hardware::hidl_string::~hidl_string(this);
 }
 
-//----- (0002E55C) --------------------------------------------------------
+//----- (0002E544) --------------------------------------------------------
 int j_memsetAndFreeStrings(int a1, ...)
 {
   return memsetAndFreeStrings(a1);
 }
 
-//----- (0002E56C) --------------------------------------------------------
+//----- (0002E554) --------------------------------------------------------
 int __fastcall j_pthread_rwlock_wrlock(pthread_rwlock_t *rwlock)
 {
   return pthread_rwlock_wrlock(rwlock);
 }
 
-//----- (0002E57C) --------------------------------------------------------
+//----- (0002E564) --------------------------------------------------------
 android **__fastcall j_android::sp<android::hardware::radio::V1_1::IRadioIndication>::operator=(void *a1, android *a2)
 {
   return android::sp<android::hardware::radio::V1_1::IRadioIndication>::operator=(a1, a2);
 }
 
-//----- (0002E58C) --------------------------------------------------------
+//----- (0002E574) --------------------------------------------------------
 android **__fastcall j_android::sp<android::hardware::radio::V1_1::IRadioIndication>::operator=(void *a1, android *a2)
 {
   return android::sp<android::hardware::radio::V1_1::IRadioIndication>::operator=(a1, a2);
 }
 
-//----- (0002E59C) --------------------------------------------------------
+//----- (0002E584) --------------------------------------------------------
 android **__fastcall j_android::sp<android::hardware::radio::V1_1::IRadioIndication>::operator=(void *a1, android *a2)
 {
   return android::sp<android::hardware::radio::V1_1::IRadioIndication>::operator=(a1, a2);
 }
 
-//----- (0002E5AC) --------------------------------------------------------
+//----- (0002E594) --------------------------------------------------------
 android **__fastcall j_android::sp<android::hardware::radio::V1_1::IRadioIndication>::operator=(void *a1, android *a2)
 {
   return android::sp<android::hardware::radio::V1_1::IRadioIndication>::operator=(a1, a2);
 }
 
-//----- (0002E5BC) --------------------------------------------------------
+//----- (0002E5A4) --------------------------------------------------------
 android **__fastcall j_android::sp<android::hardware::radio::V1_1::IRadioIndication>::operator=(void *a1, android *a2)
 {
   return android::sp<android::hardware::radio::V1_1::IRadioIndication>::operator=(a1, a2);
 }
 
-//----- (0002E5CC) --------------------------------------------------------
+//----- (0002E5B4) --------------------------------------------------------
 android **__fastcall j_android::sp<android::hardware::radio::V1_1::IRadioIndication>::operator=(void *a1, android *a2)
 {
   return android::sp<android::hardware::radio::V1_1::IRadioIndication>::operator=(a1, a2);
 }
 
-//----- (0002E5DC) --------------------------------------------------------
+//----- (0002E5C4) --------------------------------------------------------
 int __fastcall android::RefBase::incStrong(android::RefBase *this, const void *a2)
 {
   return android::RefBase::incStrong(this, a2);
 }
 
-//----- (0002E5EC) --------------------------------------------------------
+//----- (0002E5D4) --------------------------------------------------------
 int __fastcall android::sp_report_race(android *this)
 {
   return android::sp_report_race(this);
 }
 
-//----- (0002E5FC) --------------------------------------------------------
+//----- (0002E5E4) --------------------------------------------------------
 int __fastcall j_checkReturnStatus(int a1, int a2, int a3)
 {
   return checkReturnStatus(a1, a2, a3);
 }
 
-//----- (0002E60C) --------------------------------------------------------
+//----- (0002E5F4) --------------------------------------------------------
 android **__fastcall j_android::sp<android::hardware::radio::V1_0::IRadioIndication>::operator=(void *a1, android **a2)
 {
   return android::sp<android::hardware::radio::V1_0::IRadioIndication>::operator=(a1, a2);
 }
 
-//----- (0002E61C) --------------------------------------------------------
+//----- (0002E604) --------------------------------------------------------
 android **__fastcall j_android::sp<android::hardware::radio::V1_0::IRadioIndication>::operator=(void *a1, android **a2)
 {
   return android::sp<android::hardware::radio::V1_0::IRadioIndication>::operator=(a1, a2);
 }
 
-//----- (0002E62C) --------------------------------------------------------
+//----- (0002E614) --------------------------------------------------------
 int android::hardware::radio::V1_1::IRadioResponse::castFrom()
 {
   return android::hardware::radio::V1_1::IRadioResponse::castFrom();
 }
 // 111B8: using guessed type int android::hardware::radio::V1_1::IRadioResponse::castFrom(void);
 
-//----- (0002E63C) --------------------------------------------------------
+//----- (0002E624) --------------------------------------------------------
 android **__fastcall j_android::sp<android::hardware::radio::V1_1::IRadioIndication>::operator=(void *a1, android **a2)
 {
   return android::sp<android::hardware::radio::V1_1::IRadioIndication>::operator=(a1, a2);
 }
 
-//----- (0002E64C) --------------------------------------------------------
+//----- (0002E634) --------------------------------------------------------
 int android::hardware::radio::V1_1::IRadioIndication::castFrom()
 {
   return android::hardware::radio::V1_1::IRadioIndication::castFrom();
 }
 // 111D0: using guessed type int android::hardware::radio::V1_1::IRadioIndication::castFrom(void);
 
-//----- (0002E65C) --------------------------------------------------------
+//----- (0002E644) --------------------------------------------------------
 android **__fastcall j_android::sp<android::hardware::radio::V1_1::IRadioIndication>::operator=(void *a1, android **a2)
 {
   return android::sp<android::hardware::radio::V1_1::IRadioIndication>::operator=(a1, a2);
 }
 
-//----- (0002E66C) --------------------------------------------------------
+//----- (0002E654) --------------------------------------------------------
 int __fastcall j_android::onNewCommandConnect(int a1)
 {
   return android::onNewCommandConnect(a1);
 }
 
-//----- (0002E67C) --------------------------------------------------------
+//----- (0002E664) --------------------------------------------------------
 int __fastcall android::hardware::details::return_status::~return_status(android::hardware::details::return_status *this)
 {
   return android::hardware::details::return_status::~return_status(this);
 }
 
-//----- (0002E68C) --------------------------------------------------------
+//----- (0002E674) --------------------------------------------------------
 char *j_dispatchStrings(int a1, int a2, int a3, int a4, int a5, const char *a6, ...)
 {
   return dispatchStrings(a1, a2, a3, a4, a5, a6);
 }
 
-//----- (0002E69C) --------------------------------------------------------
+//----- (0002E684) --------------------------------------------------------
 signed int j_dispatchInts(int a1, int a2, int a3, int a4, int a5, ...)
 {
   return dispatchInts(a1, a2, a3, a4, a5);
 }
 
-//----- (0002E6AC) --------------------------------------------------------
+//----- (0002E694) --------------------------------------------------------
 char *__fastcall j_dispatchString(int a1, int a2, int a3, const char *a4)
 {
   return dispatchString(a1, a2, a3, a4);
 }
 
-//----- (0002E6BC) --------------------------------------------------------
+//----- (0002E6A4) --------------------------------------------------------
 int __fastcall std::__1::to_string(std::__1 *this, int a2)
 {
   return std::__1::to_string(this, a2);
 }
 
-//----- (0002E6CC) --------------------------------------------------------
+//----- (0002E6B4) --------------------------------------------------------
 char *__fastcall j_dispatchCallForwardStatus(android *a1, int a2, int a3, int a4)
 {
   return dispatchCallForwardStatus(a1, a2, a3, a4);
 }
 
-//----- (0002E6DC) --------------------------------------------------------
+//----- (0002E6C4) --------------------------------------------------------
 int j___aeabi_memclr4()
 {
   return _aeabi_memclr4();
 }
 // 1123C: using guessed type int _aeabi_memclr4(void);
 
-//----- (0002E6EC) --------------------------------------------------------
+//----- (0002E6D4) --------------------------------------------------------
 int j___aeabi_memclr8()
 {
   return _aeabi_memclr8();
 }
 // 11248: using guessed type int _aeabi_memclr8(void);
 
-//----- (0002E6FC) --------------------------------------------------------
+//----- (0002E6E4) --------------------------------------------------------
 int __fastcall j_constructCdmaSms(int result, int a2)
 {
   return constructCdmaSms(result, a2);
 }
 
-//----- (0002E70C) --------------------------------------------------------
+//----- (0002E6F4) --------------------------------------------------------
 char *__fastcall j_dispatchImsGsmSms(int a1, int a2)
 {
   return dispatchImsGsmSms(a1, a2);
 }
 
-//----- (0002E71C) --------------------------------------------------------
+//----- (0002E704) --------------------------------------------------------
 int __fastcall j_dispatchImsCdmaSms(int a1, __int64 *a2)
 {
   return dispatchImsCdmaSms(a1, a2);
 }
 
-//----- (0002E72C) --------------------------------------------------------
+//----- (0002E714) --------------------------------------------------------
 char *__fastcall j_dispatchIccApdu(android *a1, int a2, int a3, int a4)
 {
   return dispatchIccApdu(a1, a2, a3, a4);
 }
 
-//----- (0002E73C) --------------------------------------------------------
+//----- (0002E724) --------------------------------------------------------
 signed int __fastcall j_dispatchRaw(android *a1, int a2, int a3, int a4)
 {
   return dispatchRaw(a1, a2, a3, a4);
 }
 
-//----- (0002E74C) --------------------------------------------------------
+//----- (0002E734) --------------------------------------------------------
 int __fastcall j_freeSetDataProfileData<RIL_DataProfileInfo>(signed int a1, char *a2, void *a3, signed int a4, char a5)
 {
   return freeSetDataProfileData<RIL_DataProfileInfo>(a1, a2, a3, a4, a5);
 }
 
-//----- (0002E75C) --------------------------------------------------------
+//----- (0002E744) --------------------------------------------------------
 int __fastcall j_freeSetDataProfileData<RIL_DataProfileInfo_v15>(signed int a1, char *a2, void *a3, signed int a4, char a5)
 {
   return freeSetDataProfileData<RIL_DataProfileInfo_v15>(a1, a2, a3, a4, a5);
 }
 
-//----- (0002E76C) --------------------------------------------------------
+//----- (0002E754) --------------------------------------------------------
 int __fastcall operator new[](unsigned int a1)
 {
   return operator new[](a1);
 }
 
-//----- (0002E77C) --------------------------------------------------------
+//----- (0002E764) --------------------------------------------------------
 int j___memcpy_chk()
 {
   return _memcpy_chk();
 }
 // 112B4: using guessed type int _memcpy_chk(void);
 
-//----- (0002E78C) --------------------------------------------------------
+//----- (0002E774) --------------------------------------------------------
 android **__fastcall j_android::sp<android::hardware::radio::V1_0::IRadioIndication>::operator=(void *a1, android **a2)
 {
   return android::sp<android::hardware::radio::V1_0::IRadioIndication>::operator=(a1, a2);
 }
 
-//----- (0002E79C) --------------------------------------------------------
+//----- (0002E784) --------------------------------------------------------
 android **__fastcall j_android::sp<android::hardware::radio::V1_0::IRadioIndication>::operator=(void *a1, android **a2)
 {
   return android::sp<android::hardware::radio::V1_0::IRadioIndication>::operator=(a1, a2);
 }
 
-//----- (0002E7AC) --------------------------------------------------------
+//----- (0002E794) --------------------------------------------------------
 char *__fastcall j_dispatchStrings(android *a1, int a2, int a3, int a4)
 {
   return dispatchStrings(a1, a2, a3, a4);
 }
 
-//----- (0002E7BC) --------------------------------------------------------
+//----- (0002E7A4) --------------------------------------------------------
 int __fastcall j_convertCharPtrToHidlString(const char *a1, const char *a2)
 {
   return convertCharPtrToHidlString(a1, a2);
 }
 
-//----- (0002E7CC) --------------------------------------------------------
+//----- (0002E7B4) --------------------------------------------------------
 int android::hardware::hidl_string::operator=()
 {
   return android::hardware::hidl_string::operator=();
 }
 // 112F0: using guessed type int android::hardware::hidl_string::operator=(void);
 
-//----- (0002E7DC) --------------------------------------------------------
+//----- (0002E7C4) --------------------------------------------------------
 int android::hardware::hidl_string::operator=()
 {
   return android::hardware::hidl_string::operator=();
 }
 // 112FC: using guessed type int android::hardware::hidl_string::operator=(void);
 
-//----- (0002E7EC) --------------------------------------------------------
+//----- (0002E7D4) --------------------------------------------------------
 void __fastcall operator delete[](void *a1)
 {
   operator delete[](a1);
 }
 
-//----- (0002E7FC) --------------------------------------------------------
+//----- (0002E7E4) --------------------------------------------------------
 signed int __fastcall j_responseIntOrEmpty(signed int *a1, signed int a2, int a3, signed int a4, int a5, int a6)
 {
   return responseIntOrEmpty(a1, a2, a3, a4, a5, a6);
 }
 
-//----- (0002E80C) --------------------------------------------------------
+//----- (0002E7F4) --------------------------------------------------------
 int j_strndup()
 {
   return strndup();
 }
 // 11320: using guessed type int strndup(void);
 
-//----- (0002E81C) --------------------------------------------------------
+//----- (0002E804) --------------------------------------------------------
 int android::hardware::hidl_string::operator=()
 {
   return android::hardware::hidl_string::operator=();
 }
 // 1132C: using guessed type int android::hardware::hidl_string::operator=(void);
 
-//----- (0002E82C) --------------------------------------------------------
+//----- (0002E814) --------------------------------------------------------
 int __fastcall j_convertRilSignalStrengthToHal(_DWORD *a1, int a2, int a3)
 {
   return convertRilSignalStrengthToHal(a1, a2, a3);
 }
 
-//----- (0002E83C) --------------------------------------------------------
+//----- (0002E824) --------------------------------------------------------
 int __fastcall j_convertRilSignalStrengthToHalV8(_DWORD *a1, int a2, int a3)
 {
   return convertRilSignalStrengthToHalV8(a1, a2, a3);
 }
 
-//----- (0002E84C) --------------------------------------------------------
+//----- (0002E834) --------------------------------------------------------
 int __fastcall j_convertRilSignalStrengthToHalV10(_DWORD *a1, int a2, _DWORD *a3)
 {
   return convertRilSignalStrengthToHalV10(a1, a2, a3);
 }
 
-//----- (0002E85C) --------------------------------------------------------
+//----- (0002E844) --------------------------------------------------------
 int __fastcall j_atoi(const char *nptr)
 {
   return atoi(nptr);
 }
 
-//----- (0002E86C) --------------------------------------------------------
+//----- (0002E854) --------------------------------------------------------
 int android::hardware::hidl_string::operator=()
 {
   return android::hardware::hidl_string::operator=();
 }
 // 11368: using guessed type int android::hardware::hidl_string::operator=(void);
 
-//----- (0002E87C) --------------------------------------------------------
+//----- (0002E864) --------------------------------------------------------
 int __fastcall j_strtol(const char *nptr, char **endptr, int base)
 {
   return strtol(nptr, endptr, base);
 }
 
-//----- (0002E88C) --------------------------------------------------------
+//----- (0002E874) --------------------------------------------------------
 int j___aeabi_memset8()
 {
   return _aeabi_memset8();
 }
 // 11380: using guessed type int _aeabi_memset8(void);
 
-//----- (0002E89C) --------------------------------------------------------
+//----- (0002E884) --------------------------------------------------------
 int __fastcall j_fillCellIdentityResponse(_DWORD *a1, int a2)
 {
   return fillCellIdentityResponse(a1, a2);
 }
 
-//----- (0002E8AC) --------------------------------------------------------
+//----- (0002E894) --------------------------------------------------------
 int __fastcall j_fillCellIdentityFromVoiceRegStateResponseString(_DWORD *a1, signed int a2, _DWORD *a3)
 {
   return fillCellIdentityFromVoiceRegStateResponseString(a1, a2, a3);
 }
 
-//----- (0002E8BC) --------------------------------------------------------
+//----- (0002E8A4) --------------------------------------------------------
 int __fastcall j_fillCellIdentityFromDataRegStateResponseString(_DWORD *a1, signed int a2, _DWORD *a3)
 {
   return fillCellIdentityFromDataRegStateResponseString(a1, a2, a3);
 }
 
-//----- (0002E8CC) --------------------------------------------------------
+//----- (0002E8B4) --------------------------------------------------------
 int __fastcall j_makeSendSmsResult(_DWORD *a1, signed int *a2, signed int a3, int a4, signed int a5, __int64 *a6, int a7)
 {
   return makeSendSmsResult(a1, a2, a3, a4, a5, a6, a7);
 }
 
-//----- (0002E8DC) --------------------------------------------------------
+//----- (0002E8C4) --------------------------------------------------------
 int __fastcall j_convertRilDataCallToHal(int a1, _DWORD *a2)
 {
   return convertRilDataCallToHal(a1, a2);
 }
 
-//----- (0002E8EC) --------------------------------------------------------
+//----- (0002E8D4) --------------------------------------------------------
 int __fastcall j_convertRilDataCallToHal(int a1, _DWORD *a2)
 {
   return convertRilDataCallToHal(a1, a2);
 }
 
-//----- (0002E8FC) --------------------------------------------------------
+//----- (0002E8E4) --------------------------------------------------------
 int __fastcall j_convertRilDataCallToHal(int a1, _DWORD *a2)
 {
   return convertRilDataCallToHal(a1, a2);
 }
 
-//----- (0002E90C) --------------------------------------------------------
+//----- (0002E8F4) --------------------------------------------------------
 int __fastcall j_responseIccIo(_DWORD *a1, signed int *a2, signed int a3, int a4, signed int a5, int a6, int a7)
 {
   return responseIccIo(a1, a2, a3, a4, a5, a6, a7);
 }
 
-//----- (0002E91C) --------------------------------------------------------
+//----- (0002E904) --------------------------------------------------------
 int __fastcall j_strncmp(const char *s1, const char *s2, size_t n)
 {
   return strncmp(s1, s2, n);
 }
 
-//----- (0002E92C) --------------------------------------------------------
+//----- (0002E914) --------------------------------------------------------
 signed int __fastcall j_convertOperatorStatusToInt(const char *a1)
 {
   return convertOperatorStatusToInt(a1);
 }
 
-//----- (0002E93C) --------------------------------------------------------
+//----- (0002E924) --------------------------------------------------------
 unsigned int __fastcall j_convertRilDataCallListToHal(int a1, unsigned int a2, int *a3)
 {
   return convertRilDataCallListToHal(a1, a2, a3);
 }
 
-//----- (0002E94C) --------------------------------------------------------
+//----- (0002E934) --------------------------------------------------------
 int __fastcall j_convertRilCellInfoListToHal(int a1, unsigned int a2, int *a3)
 {
   return convertRilCellInfoListToHal(a1, a2, a3);
 }
 
-//----- (0002E95C) --------------------------------------------------------
+//----- (0002E944) --------------------------------------------------------
 int __fastcall j_convertRilHardwareConfigListToHal(int a1, unsigned int a2, int *a3)
 {
   return convertRilHardwareConfigListToHal(a1, a2, a3);
 }
 
-//----- (0002E96C) --------------------------------------------------------
+//----- (0002E954) --------------------------------------------------------
 int __fastcall j_convertRilRadioCapabilityToHal(int a1, int a2, _DWORD *a3)
 {
   return convertRilRadioCapabilityToHal(a1, a2, a3);
 }
 
-//----- (0002E97C) --------------------------------------------------------
+//----- (0002E964) --------------------------------------------------------
 int __fastcall j_responseRadioCapability(signed int *a1, signed int a2, int a3, signed int a4, int a5, int a6, _DWORD *a7)
 {
   return responseRadioCapability(a1, a2, a3, a4, a5, a6, a7);
 }
 
-//----- (0002E98C) --------------------------------------------------------
+//----- (0002E974) --------------------------------------------------------
 _DWORD *__fastcall j_responseLceStatusInfo(_DWORD *result, signed int *a2, signed int a3, int a4, signed int a5, unsigned __int8 *a6, int a7)
 {
   return responseLceStatusInfo(result, a2, a3, a4, a5, a6, a7);
 }
 
-//----- (0002E99C) --------------------------------------------------------
+//----- (0002E984) --------------------------------------------------------
 void *__fastcall j_convertHexStringToBytes(void *a1, unsigned int a2)
 {
   return convertHexStringToBytes(a1, a2);
 }
 
-//----- (0002E9AC) --------------------------------------------------------
+//----- (0002E994) --------------------------------------------------------
 int __fastcall android::elapsedRealtime(android *this)
 {
   return android::elapsedRealtime(this);
 }
 
-//----- (0002E9BC) --------------------------------------------------------
+//----- (0002E9A4) --------------------------------------------------------
 int __fastcall android::hardware::details::return_status::assertOk(android::hardware::details::return_status *this)
 {
   return android::hardware::details::return_status::assertOk(this);
 }
 
-//----- (0002E9CC) --------------------------------------------------------
+//----- (0002E9B4) --------------------------------------------------------
 int __fastcall j_android::RIL_getServiceName(android *this)
 {
   return android::RIL_getServiceName(this);
 }
 
-//----- (0002E9DC) --------------------------------------------------------
+//----- (0002E9C4) --------------------------------------------------------
 int __fastcall android::hardware::configureRpcThreadpool(android::hardware *this, unsigned int a2, bool a3)
 {
   return android::hardware::configureRpcThreadpool(this, a2, a3);
 }
 
-//----- (0002E9EC) --------------------------------------------------------
+//----- (0002E9D4) --------------------------------------------------------
 int __fastcall android::RefBase::RefBase(android::RefBase *this)
 {
   return android::RefBase::RefBase(this);
 }
 
-//----- (0002E9FC) --------------------------------------------------------
+//----- (0002E9E4) --------------------------------------------------------
 android **__fastcall j_android::sp<android::hardware::radio::V1_1::IRadioIndication>::operator=(void *a1, android *a2)
 {
   return android::sp<android::hardware::radio::V1_1::IRadioIndication>::operator=(a1, a2);
 }
 
-//----- (0002EA0C) --------------------------------------------------------
+//----- (0002E9F4) --------------------------------------------------------
 android **__fastcall j_android::sp<android::hardware::radio::V1_1::IRadioIndication>::operator=(void *a1, android *a2)
 {
   return android::sp<android::hardware::radio::V1_1::IRadioIndication>::operator=(a1, a2);
 }
 
-//----- (0002EA1C) --------------------------------------------------------
+//----- (0002EA04) --------------------------------------------------------
 int android::hardware::radio::V1_1::IRadio::registerAsService()
 {
   return android::hardware::radio::V1_1::IRadio::registerAsService();
 }
 // 114AC: using guessed type int android::hardware::radio::V1_1::IRadio::registerAsService(void);
 
-//----- (0002EA2C) --------------------------------------------------------
+//----- (0002EA14) --------------------------------------------------------
 int android::hardware::radio::deprecated::V1_0::IOemHook::registerAsService()
 {
   return android::hardware::radio::deprecated::V1_0::IOemHook::registerAsService();
 }
 // 114B8: using guessed type int android::hardware::radio::deprecated::V1_0::IOemHook::registerAsService(void);
 
-//----- (0002EA3C) --------------------------------------------------------
+//----- (0002EA24) --------------------------------------------------------
 int __fastcall android::hardware::joinRpcThreadpool(android::hardware *this)
 {
   return android::hardware::joinRpcThreadpool(this);
 }
 
-//----- (0002EA4C) --------------------------------------------------------
+//----- (0002EA34) --------------------------------------------------------
 int __fastcall android::RefBase::~RefBase(android::RefBase *this)
 {
   return android::RefBase::~RefBase(this);
 }
 
-//----- (0002EA5C) --------------------------------------------------------
+//----- (0002EA44) --------------------------------------------------------
 int __fastcall android::hardware::Status::description(android::hardware::Status *this)
 {
   return android::hardware::Status::description(this);
 }
 
-//----- (0002EA6C) --------------------------------------------------------
+//----- (0002EA54) --------------------------------------------------------
 android **__fastcall j_android::sp<android::hardware::radio::V1_1::IRadioIndication>::operator=(void *a1, android *a2)
 {
   return android::sp<android::hardware::radio::V1_1::IRadioIndication>::operator=(a1, a2);
 }
 
-//----- (0002EA7C) --------------------------------------------------------
+//----- (0002EA64) --------------------------------------------------------
 android **__fastcall j_android::sp<android::hardware::radio::V1_0::IRadioIndication>::operator=(void *a1, android **a2)
 {
   return android::sp<android::hardware::radio::V1_0::IRadioIndication>::operator=(a1, a2);
 }
 
-//----- (0002EA8C) --------------------------------------------------------
+//----- (0002EA74) --------------------------------------------------------
 void __fastcall j_RilSapSocket::dispatchRequest(int a1, _DWORD *a2)
 {
   RilSapSocket::dispatchRequest(a1, a2);
 }
 
-//----- (0002EA9C) --------------------------------------------------------
+//----- (0002EA84) --------------------------------------------------------
 int __fastcall j_SapImpl::sendFailedResponse(int a1, int a2, int a3, signed int a4, char a5)
 {
   return SapImpl::sendFailedResponse(a1, a2, a3, a4, a5);
 }
 
-//----- (0002EAAC) --------------------------------------------------------
+//----- (0002EA94) --------------------------------------------------------
 int android::hardware::details::return_status::operator=()
 {
   return android::hardware::details::return_status::operator=();
 }
 // 11DB8: using guessed type int android::hardware::details::return_status::operator=(void);
 
-//----- (0002EABC) --------------------------------------------------------
+//----- (0002EAA4) --------------------------------------------------------
 int __fastcall j_SapImpl::checkReturnStatus(int a1, int a2)
 {
   return SapImpl::checkReturnStatus(a1, a2);
 }
 
-//----- (0002EACC) --------------------------------------------------------
+//----- (0002EAB4) --------------------------------------------------------
 int __fastcall j_j_pb_get_encoded_size(_DWORD *a1, unsigned __int8 *a2, int *a3)
 {
   return j_pb_get_encoded_size(a1, a2, a3);
 }
 
-//----- (0002EADC) --------------------------------------------------------
+//----- (0002EAC4) --------------------------------------------------------
 int __fastcall j_j_pb_ostream_from_buffer(int result, int r1_0, __int64 a2)
 {
   return j_pb_ostream_from_buffer(result, r1_0, a2);
 }
 
-//----- (0002EAEC) --------------------------------------------------------
+//----- (0002EAD4) --------------------------------------------------------
 signed int __fastcall j_j_pb_encode(__int64 *a1, unsigned __int8 *a2, int *a3)
 {
   return j_pb_encode(a1, a2, a3);
 }
 
-//----- (0002EAFC) --------------------------------------------------------
+//----- (0002EAE4) --------------------------------------------------------
 int __fastcall j_SapImpl::addPayloadAndDispatchRequest(int a1, int a2, int *a3, int a4, void *a5)
 {
   return SapImpl::addPayloadAndDispatchRequest(a1, a2, a3, a4, a5);
 }
 
-//----- (0002EB0C) --------------------------------------------------------
+//----- (0002EAF4) --------------------------------------------------------
 int __fastcall j_j_pb_istream_from_buffer(int result, int r1_0, __int64 a2)
 {
   return j_pb_istream_from_buffer(result, r1_0, a2);
 }
 
-//----- (0002EB1C) --------------------------------------------------------
+//----- (0002EB04) --------------------------------------------------------
 int __fastcall j_j_pb_decode(int a1, int a2, int a3)
 {
   return j_pb_decode(a1, a2, a3);
 }
 
-//----- (0002EB2C) --------------------------------------------------------
+//----- (0002EB14) --------------------------------------------------------
 int __fastcall j_sapDecodeMessage(int a1, int a2, __int64 a3)
 {
   return sapDecodeMessage(a1, a2, a3);
 }
 
-//----- (0002EB3C) --------------------------------------------------------
+//----- (0002EB24) --------------------------------------------------------
 _DWORD *__fastcall j_getSapImpl(RilSapSocket *a1, int a2)
 {
   return getSapImpl(a1, a2);
 }
 
-//----- (0002EB4C) --------------------------------------------------------
+//----- (0002EB34) --------------------------------------------------------
 int __fastcall j_processResponse(int *a1, int a2, int a3)
 {
   return processResponse(a1, a2, a3);
 }
 
-//----- (0002EB5C) --------------------------------------------------------
+//----- (0002EB44) --------------------------------------------------------
 android **__fastcall j_android::sp<android::hardware::radio::V1_1::IRadioIndication>::operator=(void *a1, android *a2)
 {
   return android::sp<android::hardware::radio::V1_1::IRadioIndication>::operator=(a1, a2);
 }
 
-//----- (0002EB6C) --------------------------------------------------------
+//----- (0002EB54) --------------------------------------------------------
 int android::hardware::radio::V1_1::ISap::registerAsService()
 {
   return android::hardware::radio::V1_1::ISap::registerAsService();
 }
 // 11E48: using guessed type int android::hardware::radio::V1_1::ISap::registerAsService(void);
 
-//----- (0002EB7C) --------------------------------------------------------
+//----- (0002EB64) --------------------------------------------------------
 int __fastcall j_j_pb_read(int a1, int a2, int a3)
 {
   return j_pb_read(a1, a2, a3);
 }
 
-//----- (0002EB8C) --------------------------------------------------------
+//----- (0002EB74) --------------------------------------------------------
 int __fastcall j_j_pb_skip_field(int a1, int a2)
 {
   return j_pb_skip_field(a1, a2);
 }
 
-//----- (0002EB9C) --------------------------------------------------------
+//----- (0002EB84) --------------------------------------------------------
 signed int __fastcall j_j_pb_make_string_substream(int a1, _QWORD *a2)
 {
   return j_pb_make_string_substream(a1, a2);
 }
 
-//----- (0002EBAC) --------------------------------------------------------
+//----- (0002EB94) --------------------------------------------------------
 void *__fastcall j_realloc(void *ptr, size_t size)
 {
   return realloc(ptr, size);
 }
 
-//----- (0002EBBC) --------------------------------------------------------
+//----- (0002EBA4) --------------------------------------------------------
 int __fastcall j_j_pb_decode_noinit(int a1, unsigned __int8 *a2, int a3)
 {
   return j_pb_decode_noinit(a1, a2, a3);
 }
 
-//----- (0002EBCC) --------------------------------------------------------
+//----- (0002EBB4) --------------------------------------------------------
 int __fastcall j_j_pb_release(int a1, int a2)
 {
   return j_pb_release(a1, a2);
 }
 
-//----- (0002EBDC) --------------------------------------------------------
+//----- (0002EBC4) --------------------------------------------------------
 int j___aeabi_memclr()
 {
   return _aeabi_memclr();
 }
 // 11FF8: using guessed type int _aeabi_memclr(void);
 
-//----- (0002EBEC) --------------------------------------------------------
+//----- (0002EBD4) --------------------------------------------------------
 signed int __fastcall j_j_pb_decode_varint(int a1, _DWORD *a2)
 {
   return j_pb_decode_varint(a1, a2);
 }
 
-//----- (0002EBFC) --------------------------------------------------------
+//----- (0002EBE4) --------------------------------------------------------
 signed int __fastcall j_j_pb_encode_tag_for_field(int a1, unsigned __int8 *a2)
 {
   return j_pb_encode_tag_for_field(a1, a2);
 }
 
-//----- (0002EC0C) --------------------------------------------------------
+//----- (0002EBF4) --------------------------------------------------------
 signed int __fastcall j_j_pb_encode_varint(int a1, int a2, __int64 a3)
 {
   return j_pb_encode_varint(a1, a2, a3);
 }
 
-//----- (0002EC1C) --------------------------------------------------------
+//----- (0002EC04) --------------------------------------------------------
 signed int __fastcall j_j_pb_write(int a1, int a2, int a3)
 {
   return j_pb_write(a1, a2, a3);
 }
 
-//----- (0002EC2C) --------------------------------------------------------
+//----- (0002EC14) --------------------------------------------------------
 int __fastcall j_j_pb_encode_submessage(int a1, unsigned __int8 *a2, int *a3)
 {
   return j_pb_encode_submessage(a1, a2, a3);
 }
 
-//----- (0002EC3C) --------------------------------------------------------
+//----- (0002EC24) --------------------------------------------------------
 signed int __fastcall j_j_pb_encode_string(int a1, int a2, int a3)
 {
   return j_pb_encode_string(a1, a2, a3);
 }
 
-//----- (0002EC4C) --------------------------------------------------------
+//----- (0002EC34) --------------------------------------------------------
 signed int __fastcall j_j_unw_get_reg(int a1, int a2, _DWORD *a3)
 {
   return j_unw_get_reg(a1, a2, a3);
 }
 
-//----- (0002EC5C) --------------------------------------------------------
+//----- (0002EC44) --------------------------------------------------------
 signed int __fastcall j_j_unw_set_reg(int a1, int a2, int a3)
 {
   return j_unw_set_reg(a1, a2, a3);
 }
 
-//----- (0002EC6C) --------------------------------------------------------
+//----- (0002EC54) --------------------------------------------------------
 signed int __fastcall j_j__Unwind_VRS_Pop(int a1, int a2, unsigned int a3, int a4)
 {
   return j__Unwind_VRS_Pop(a1, a2, a3, a4);
 }
 
-//----- (0002EC7C) --------------------------------------------------------
+//----- (0002EC64) --------------------------------------------------------
 int __fastcall j_j_unw_save_vfp_as_X(int a1)
 {
   return j_unw_save_vfp_as_X(a1);
 }
 
-//----- (0002EC8C) --------------------------------------------------------
+//----- (0002EC74) --------------------------------------------------------
 signed int __fastcall j_j_unw_get_fpreg(int a1, int a2, _QWORD *a3)
 {
   return j_unw_get_fpreg(a1, a2, a3);
 }
 
-//----- (0002EC9C) --------------------------------------------------------
+//----- (0002EC84) --------------------------------------------------------
 int __fastcall j_fprintf(FILE *stream, const char *format)
 {
   return fprintf(stream, format);
 }
 
-//----- (0002ECAC) --------------------------------------------------------
+//----- (0002EC94) --------------------------------------------------------
 int __fastcall j_fflush(FILE *stream)
 {
   return fflush(stream);
 }
 
-//----- (0002ECBC) --------------------------------------------------------
+//----- (0002ECA4) --------------------------------------------------------
 signed int __fastcall j_j_unw_set_fpreg(int a1, int a2, int a3, int a4)
 {
   return j_unw_set_fpreg(a1, a2, a3, a4);
 }
 
-//----- (0002ECCC) --------------------------------------------------------
+//----- (0002ECB4) --------------------------------------------------------
 signed int __fastcall j_j__Unwind_VRS_Set(int a1, int a2, unsigned int a3, int a4, int *a5)
 {
   return j__Unwind_VRS_Set(a1, a2, a3, a4, a5);
 }
 
-//----- (0002ECDC) --------------------------------------------------------
+//----- (0002ECC4) --------------------------------------------------------
 signed int __fastcall j_j_unw_get_proc_info(int a1, int a2)
 {
   return j_unw_get_proc_info(a1, a2);
 }
 
-//----- (0002ECEC) --------------------------------------------------------
+//----- (0002ECD4) --------------------------------------------------------
 int __fastcall j_j_unw_step(int a1)
 {
   return j_unw_step(a1);
 }
 
-//----- (0002ECFC) --------------------------------------------------------
+//----- (0002ECE4) --------------------------------------------------------
 int __fastcall j_j_unw_getcontext(_DWORD *a1, int a2, int a3, int a4, int a5)
 {
   return j_unw_getcontext(a1, a2, a3, a4, a5);
 }
 
-//----- (0002ED0C) --------------------------------------------------------
+//----- (0002ECF4) --------------------------------------------------------
 int __fastcall j_j_unw_init_local(int a1, int a2)
 {
   return j_unw_init_local(a1, a2);
 }
 
-//----- (0002ED1C) --------------------------------------------------------
+//----- (0002ED04) --------------------------------------------------------
 signed int __fastcall j_j_unw_resume(int a1)
 {
   return j_unw_resume(a1);
 }
 
-//----- (0002ED2C) --------------------------------------------------------
-_QWORD *__fastcall sub_2ED2C(_QWORD *result)
+//----- (0002ED14) --------------------------------------------------------
+_QWORD *__fastcall sub_2ED14(_QWORD *result)
 {
-  return sub_2D34C(result);
+  return sub_2D334(result);
 }
 
-//----- (0002ED3C) --------------------------------------------------------
-_QWORD *__fastcall sub_2ED3C(_QWORD *result)
+//----- (0002ED24) --------------------------------------------------------
+_QWORD *__fastcall sub_2ED24(_QWORD *result)
 {
-  return sub_2D354(result);
+  return sub_2D33C(result);
 }
 
-//----- (0002ED4C) --------------------------------------------------------
-_QWORD *__fastcall sub_2ED4C(_QWORD *result)
+//----- (0002ED34) --------------------------------------------------------
+_QWORD *__fastcall sub_2ED34(_QWORD *result)
 {
-  return sub_2D344(result);
+  return sub_2D32C(result);
 }
 
-//----- (0002ED5C) --------------------------------------------------------
-void sub_2ED5C()
+//----- (0002ED44) --------------------------------------------------------
+void sub_2ED44()
 {
-  JUMPOUT(sub_2E070);
+  JUMPOUT(sub_2E058);
 }
-// 2E070: using guessed type int sub_2E070();
+// 2E058: using guessed type int sub_2E058();
 
-//----- (0002ED6C) --------------------------------------------------------
+//----- (0002ED54) --------------------------------------------------------
 int j_dladdr()
 {
   return dladdr();
 }
 // 120F4: using guessed type int dladdr(void);
 
-//----- (0002ED7C) --------------------------------------------------------
+//----- (0002ED64) --------------------------------------------------------
 int j_dl_iterate_phdr()
 {
   return dl_iterate_phdr();
 }
 // 12100: using guessed type int dl_iterate_phdr(void);
 
-//----- (0002ED8C) --------------------------------------------------------
+//----- (0002ED74) --------------------------------------------------------
 unsigned int *__fastcall j_j_decode_eht_entry(unsigned int *result, signed int *a2, int *a3)
 {
   return j_decode_eht_entry(result, a2, a3);
 }
 
-//----- (0002ED9C) --------------------------------------------------------
+//----- (0002ED84) --------------------------------------------------------
 signed int __fastcall j_j__Unwind_VRS_Interpret(int a1, int a2, unsigned int a3, unsigned int a4)
 {
   return j__Unwind_VRS_Interpret(a1, a2, a3, a4);
 }
 
-//----- (0002EDAC) --------------------------------------------------------
-void sub_2EDAC()
+//----- (0002ED94) --------------------------------------------------------
+void sub_2ED94()
 {
-  JUMPOUT(sub_2E08C);
+  JUMPOUT(sub_2E074);
 }
-// 2E08C: using guessed type int sub_2E08C();
+// 2E074: using guessed type int sub_2E074();
 
-//----- (0002EDBC) --------------------------------------------------------
-void sub_2EDBC()
+//----- (0002EDA4) --------------------------------------------------------
+void sub_2EDA4()
 {
-  JUMPOUT(sub_2E084);
+  JUMPOUT(sub_2E06C);
 }
-// 2E084: using guessed type int sub_2E084();
+// 2E06C: using guessed type int sub_2E06C();
 
-//----- (0002EDCC) --------------------------------------------------------
-void sub_2EDCC()
+//----- (0002EDB4) --------------------------------------------------------
+void sub_2EDB4()
 {
-  JUMPOUT(sub_2E094);
+  JUMPOUT(sub_2E07C);
 }
-// 2E094: using guessed type int sub_2E094();
+// 2E07C: using guessed type int sub_2E07C();
 
-//----- (0002EDDC) --------------------------------------------------------
+//----- (0002EDC4) --------------------------------------------------------
 int j___vsnprintf_chk()
 {
   return _vsnprintf_chk();
